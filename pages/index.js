@@ -1,5 +1,6 @@
-import Layout from '@components/Layout'
-import PostList from '@components/PostList'
+import Link from 'next/link'
+import Layout from '@components/Layout/'
+import PostList from '@components/PostList/'
 
 import getPosts from '@utils/getPosts'
 
@@ -7,23 +8,17 @@ const Index = ({ posts, title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={title} description={description}>
-        <h1 className="title">Notes</h1>
-
-        <p className="description">
-          This is a simple blog built with Next, easily deployable on{' '}
-          <a href="https://url.netlify.com/r1j6ybSYU">Netlify</a>.
+        <img src="/notes-logo.svg" alt="Ryan Parag" width="64" style={{ borderRadius: '8px' }}/> 
+        <h1>Notes</h1>
+        <p className="lead">Hello, I'm Ryan - these are my notes about designing in the open and building thoughtful products.</p>
+        <p>
+          <Link href="/about">More about me &rarr;</Link>
+          <br/>
+          <a href="https://ryanparag.com">View my portfolio &rarr;</a>
         </p>
         <main>
           <PostList posts={posts} />
         </main>
-        <p>
-          You can look at the repository for this project{' '}
-          <a href="https://github.com/cassidoo/next-netlify-blog-starter">
-            here
-          </a>
-          , and a tutorial on how to build it {` `}
-          <a href="https://url.netlify.com/ByVW0bCF8">here</a>.
-        </p>
       </Layout>
     </>
   )

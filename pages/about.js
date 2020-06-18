@@ -1,31 +1,22 @@
-import Layout from '@components/Layout'
+import Layout from '@components/Layout/'
 
 const About = ({ title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={`${title} | About`} description={description}>
-        <h1 className="title">Welcome to this demo blog!</h1>
-
-        <p className="description">
-          This is a simple blog built with Next, easily deployable on{' '}
-          <a href="https://url.netlify.com/r1j6ybSYU">Netlify</a>.
-        </p>
+        <h2>Hello, I'm Ryan.✌🏼</h2>
 
         <p>
-          You can check out the{' '}
-          <a href="https://github.com/cassidoo/next-netlify-blog-starter">
-            repo here.
-          </a>{' '}
-          If you'd like to build it yourself,{' '}
-          <a href="https://url.netlify.com/ByVW0bCF8">
-            here is a tutorial on how to do so
-          </a>
-          !
+        I'm a Digital Product Designer currently based in Tampa, Florida. I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
         </p>
-
         <p>
-          This project includes a basic layout and header, base styles, dynamic
-          routing with getStaticPaths, and posts saved as Markdown.
+          I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at Masonite. Previously, I helped build a problem-solving platform for payments as the first product designer at Chargebacks911.
+        </p>
+        <p>
+          I’m driven to learn why people do what they do so I can create experiences that are intuitive and successful. I’ve helped rethink, prototype and design solutions to help bring empathy and simplicity into complex problems - which is a fancier way of saying I help things make sense.
+        </p>
+        <p>
+          If you'd like to see more of what I've been working on, take a look at my CodePen, Dribbble, and Github. For a more in-depth look at my design process, let's chat.
         </p>
       </Layout>
     </>

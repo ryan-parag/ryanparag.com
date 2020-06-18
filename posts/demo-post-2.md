@@ -1,6 +1,7 @@
 ---
 title: 'The city of coffee-drinkers'
 author: 'Netlifriends'
+description: 'This is a description. It should summarize the general content of the note'
 date: '2020-04-28'
 ---
 
