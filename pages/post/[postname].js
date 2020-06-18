@@ -34,21 +34,9 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
       <style jsx>{`
         article {
           width: 100%;
-          max-width: 1200px;
-        }
-        h1 {
-          font-size: 3rem;
-        }
-        h3 {
-          font-size: 2rem;
         }
         .hero {
           width: 100%;
-        }
-        .back {
-          width: 100%;
-          max-width: 1200px;
-          color: #00a395;
         }
       `}</style>
     </>
