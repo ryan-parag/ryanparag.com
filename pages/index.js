@@ -12,11 +12,17 @@ const Index = ({ posts, title, description, ...props }) => {
         <h1>Notes</h1>
         <p className="lead">Hello, I'm Ryan - these are my notes about designing in the open and building thoughtful products.</p>
         <p>
-          <Link href="/about">More about me &rarr;</Link>
+          <Link href="/about">
+            More about me
+          </Link>
           <br/>
-          <a href="https://ryanparag.com">View my portfolio &rarr;</a>
+          <a href="https://ryanparag.com">
+            View my portfolio
+            <span className="icon">&rarr;</span>
+          </a>
         </p>
         <main>
+          <h3>Writing</h3>
           <PostList posts={posts} />
         </main>
       </Layout>

@@ -19,6 +19,12 @@ const Main = styled.main`
 
 export default function Layout({ children, pageTitle, description, ...props }) {
 
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const localTheme = localStorage.getItem('theme');
@@ -37,7 +43,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
     setTheme(theme === 'light' ? 'dark' : 'light');
   }
 
-  return (
+  const body = 
     <>
       <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
         <Head>
@@ -51,8 +57,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
         `}</style>
         <GlobalStyles/>
         <section>
-          <Header />
-          <button onClick={toggleTheme}>Theme</button>
+          <Header toggleTheme={toggleTheme} theme={theme} />
           <Main>
             <LayoutContainer>{children}</LayoutContainer>
           </Main>
@@ -62,5 +67,11 @@ export default function Layout({ children, pageTitle, description, ...props }) {
         </footer>
       </ThemeProvider>
     </>
-  )
+
+  // prevents ssr flash for mismatched dark mode
+  if (!mounted) {
+    return <div style={{ visibility: 'hidden' }}>{body}</div>
+  }
+
+  return body
 }

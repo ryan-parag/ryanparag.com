@@ -118,6 +118,19 @@ export const GlobalStyles = createGlobalStyle`
     &:focus {
       outline: none;
     }
+    .icon {
+      opacity: 0.54;
+      position: relative;
+      margin-left: ${designTokens.space[2]};
+      display: inline-block;
+      transition: all 120ms ease-out 0s;
+    }
+    &:hover, &:focus {
+      .icon {
+        opacity: 1;
+        transform: translateX(${designTokens.space[1]});
+      }
+    }
   }
   p {
     a:visited {
