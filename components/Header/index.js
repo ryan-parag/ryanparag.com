@@ -60,6 +60,7 @@ const OutboundNavLink = styled.a`
 
 const ThemeButton = styled.button`
   background: transparent;
+  padding: 0;
   border-radius: ${designTokens.space[1]};
   color: ${({ theme }) => theme.grey600};
   display: inline-flex;
