@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 
 const HeaderContainer = styled.header`
-  padding: ${designTokens.space[2]} ${designTokens.space[3]};
+  padding: ${designTokens.space[4]} ${designTokens.space[2]} ${designTokens.space[3]};
   width: 100%;
   position: fixed;
   top: 0;
@@ -14,11 +14,21 @@ const HeaderContainer = styled.header`
   border-bottom: 1px solid ${({ theme }) => theme.grey100};
   background: ${({ theme }) => theme.transparent};
   backdrop-filter: blur(40px) saturate(200%);
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: ${designTokens.space[2]};
+    background: ${({ theme }) => theme.green};
+    background:linear-gradient(to right, ${({ theme }) => theme.green}, ${({ theme }) => theme.blue}, ${({ theme }) => theme.pink});
+  }
 `
 
 const HeaderInner = styled.div`
   width: 100%;
-  max-width: 640px;
+  max-width: ${designTokens.layoutWidth};
   margin: auto;
   display: flex;
   justify-content: space-between;

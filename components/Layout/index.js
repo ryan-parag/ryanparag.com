@@ -6,15 +6,16 @@ import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '../Theme/'
 import { designTokens } from '../Theme/designTokens'
+import Footer from '../Footer'
 
 const LayoutContainer = styled.div`
   width: 100%;
-  max-width: 640px;
+  max-width: ${designTokens.layoutWidth};
   margin: auto;
 `
 
 const Main = styled.main`
-  padding: ${designTokens.space[9]} ${designTokens.space[3]};
+  padding: ${designTokens.space[9]} ${designTokens.space[3]} ${designTokens.space[6]};
 `
 
 export default function Layout({ children, pageTitle, description, ...props }) {
@@ -62,9 +63,9 @@ export default function Layout({ children, pageTitle, description, ...props }) {
             <LayoutContainer>{children}</LayoutContainer>
           </Main>
         </section>
-        <footer>
+        <Footer>
           Built with <img src="/netliheart.svg" alt="Netlify Heart" /> for you
-        </footer>
+        </Footer>
       </ThemeProvider>
     </>
 
