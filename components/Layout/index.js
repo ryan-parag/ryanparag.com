@@ -51,6 +51,13 @@ export default function Layout({ children, pageTitle, description, ...props }) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
           <meta name="Description" content={description}></meta>
+          <meta property="og:url" content="https://notes.ryanparag.com"></meta>
+          <meta property="og:type" content="website"></meta>
+          <meta property="og:title" content={pageTitle}></meta>
+          <meta property="og:description" content={description}></meta>
+          <meta property="og:image" content="/notes-social-media.png"></meta>
+          <link rel="mask-icon" href="/notes-favicon.svg" color="#00d1b2"></link>
+          <link rel="icon" href="/notes-favicon.svg"></link>
           <title>{pageTitle}</title>
         </Head>
         <style jsx global>{`
@@ -63,9 +70,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
             <LayoutContainer>{children}</LayoutContainer>
           </Main>
         </section>
-        <Footer>
-          Built with <img src="/netliheart.svg" alt="Netlify Heart" /> for you
-        </Footer>
+        <Footer/>
       </ThemeProvider>
     </>
 
