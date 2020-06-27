@@ -1,8 +1,8 @@
 ---
-title: 'Sup Fool'
+title: 'Example Note'
 author: 'Netlifriends'
 description: 'This is a description. It should summarize the general content of the note'
-date: '2020-04-27'
+date: '2020-06-27'
 hero_image: ../static/milkovi-seattle-unsplash.jpg
 ---
 

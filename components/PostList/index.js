@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
+import { format } from 'timeago.js'
 
 const ListItem = styled.li`
   background: ${({ theme }) => theme.grey100};
@@ -35,7 +36,7 @@ export default function PostList({ posts }) {
                     </h4>
                     <p style={{ marginBottom: designTokens.space[2] }}>{post?.frontmatter.description}</p>
                     <div>
-                      <small>{post.frontmatter.date}: {` `}</small>
+                      <small>Updated {format(post.frontmatter.date)}</small>
                     </div>
                   </div>
                 </ListLink>

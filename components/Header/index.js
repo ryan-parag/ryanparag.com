@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 
 const HeaderContainer = styled.header`
-  padding: ${designTokens.space[4]} ${designTokens.space[2]} ${designTokens.space[3]};
+  padding: ${designTokens.space[4]} ${designTokens.space[3]} ${designTokens.space[3]};
   width: 100%;
   position: fixed;
   top: 0;

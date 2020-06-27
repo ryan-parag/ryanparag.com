@@ -2,6 +2,8 @@ import Link from 'next/link'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '@components/CodeBlock'
+import { format } from 'timeago.js'
+import { designTokens } from '@components/Theme/designTokens'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
@@ -12,18 +14,31 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   return (
     <>
       <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
-        <div className="back">
+        <div>
           ←{' '}
           <Link href="/">
-            <a>Back to post list</a>
+            <a>Back to Notes</a>
           </Link>
         </div>
         <article>
           <h1>{frontmatter.title}</h1>
+          <div
+            style={{
+              marginBottom: designTokens.space[3]
+            }}
+          >
+            <small>
+              Updated {format(frontmatter.date)}
+            </small>
+          </div>
           {frontmatter.hero_image && (
             <img
               src={frontmatter.hero_image}
-              className="hero"
+              style={{
+                marginBottom: designTokens.space[3],
+                display: 'block',
+                width: '100%'
+              }}
               alt={frontmatter.title}
             />
           )}
@@ -35,14 +50,6 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
           </div>
         </article>
       </Layout>
-      <style jsx>{`
-        article {
-          width: 100%;
-        }
-        .hero {
-          width: 100%;
-        }
-      `}</style>
     </>
   )
 }

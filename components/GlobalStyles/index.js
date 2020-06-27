@@ -133,6 +133,13 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   p {
+    a {
+      color: ${({ theme}) => theme.highlightedText};
+      transition: all 120ms ease-out 0s;
+      &:hover, &:focus {
+        opacity: .75;
+      }
+    }
     a:visited {
       color: ${({ theme}) => theme.visited};
     }
@@ -156,6 +163,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: ${designTokens.space[4]} 0 ${designTokens.space[1]} ${designTokens.space[4]};
     font-style: italic;
     margin-left: 0;
+    margin-right: 0;
     position: relative;
     font-size: ${designTokens.fontSizes[3]};
     background: ${({ theme }) => theme.greenTransparent};
