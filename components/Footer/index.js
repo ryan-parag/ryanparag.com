@@ -7,6 +7,7 @@ const FooterContainer = styled.footer`
   width: 100%;
   padding: ${designTokens.space[6]} ${designTokens.space[3]};
   border-top: 1px solid ${({ theme }) => theme.grey100};
+  color: ${({ theme }) => theme.grey500};
 `
 
 const FooterInner = styled.div`
@@ -74,6 +75,7 @@ export default function Footer() {
             </a>
           </FooterListItem>
         </FooterList>
+        <small>Made with Next.js and Styled Components</small>
       </FooterInner>
     </FooterContainer>
   )

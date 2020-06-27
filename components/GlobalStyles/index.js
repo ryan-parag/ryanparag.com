@@ -142,7 +142,9 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: ${designTokens.fontWeights.bold};
   }
   pre, code {
-    font-weight: ${designTokens.fonts.monospace};
+    font-family: ${designTokens.fonts.monospace};
+    margin-top:${designTokens.space[4]} !important;
+    margin-bottom:${designTokens.space[5]} !important;
   }
   code {
     color: ${({ theme }) => theme.grey500};
