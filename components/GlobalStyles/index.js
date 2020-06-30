@@ -1,9 +1,32 @@
 import { createGlobalStyle } from 'styled-components'
 import { normalize } from 'styled-normalize'
 import { designTokens } from '../Theme/designTokens'
+import { transparentize } from 'polished'
 
 export const GlobalStyles = createGlobalStyle`
   ${normalize}
+  :root {
+    --grey900: ${({ theme }) => theme.grey900};
+    --grey800: ${({ theme }) => theme.grey800};
+    --grey700: ${({ theme }) => theme.grey700};
+    --grey600: ${({ theme }) => theme.grey600};
+    --grey500: ${({ theme }) => theme.grey500};
+    --grey400: ${({ theme }) => theme.grey400};
+    --grey300: ${({ theme }) => theme.grey300};
+    --grey200: ${({ theme }) => theme.grey200};
+    --grey100: ${({ theme }) => theme.grey100};
+    --grey0: ${({ theme }) => theme.grey0};
+    --transparent: ${({ theme}) => theme.transparent};
+    --primary: ${({ theme }) => theme.primary};
+    --primaryDark: ${({ theme }) => theme.primaryDark};
+    --primaryTransparent: ${({ theme }) => theme.primaryTransparent};
+    --secondary: ${({ theme }) => theme.secondary};
+    --secondaryDark: ${({ theme }) => theme.secondaryDark};
+    --secondaryTransparent: ${({ theme }) => theme.secondaryTransparent};
+    --tertiary: ${({ theme }) => theme.tertiary};
+    --tertiaryDark: ${({ theme }) => theme.tertiaryDark};
+    --tertiaryTransparent: ${({ theme }) => theme.tertiaryTransparent};
+  }
   html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -17,15 +40,15 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     font-size: ${designTokens.fontSizesMobile[1]};
-    background: ${({ theme }) => theme.grey0};
-    color: ${({ theme }) => theme.grey900};
+    background: var(--grey0);
+    color: var(--grey900);
     font-family: ${designTokens.fonts.body};
     @media screen and (min-width: ${designTokens.breakpoints[2]}) {
       font-size: ${designTokens.fontSizes[1]};
     }
   }
   ::selection {
-    background: ${({ theme }) => theme.greenTransparent}
+    background: var(--primaryTransparent);
   }
   code {
     font-family: ${designTokens.fonts.code};
@@ -134,14 +157,14 @@ export const GlobalStyles = createGlobalStyle`
   }
   p {
     a {
-      color: ${({ theme}) => theme.highlightedText};
+      color: var(--primaryDark);
       transition: all 120ms ease-out 0s;
       &:hover, &:focus {
         opacity: .75;
       }
     }
     a:visited {
-      color: ${({ theme}) => theme.visited};
+      color: var(--secondaryDark);
     }
   }
   
@@ -154,7 +177,7 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom:${designTokens.space[5]} !important;
   }
   code {
-    color: ${({ theme }) => theme.grey500};
+    color: var--grey500;
   }
 
   blockquote {
@@ -166,7 +189,7 @@ export const GlobalStyles = createGlobalStyle`
     margin-right: 0;
     position: relative;
     font-size: ${designTokens.fontSizes[3]};
-    background: ${({ theme }) => theme.greenTransparent};
+    background: var(--primaryTransparent);
     p {
       font-size: ${designTokens.fontSizes[3]};
     }
@@ -177,7 +200,7 @@ export const GlobalStyles = createGlobalStyle`
       bottom: 0;
       left: 0;
       width: ${designTokens.space[1]};
-      background: ${({ theme }) => theme.green};
+      background: var(--primary);
     }
   }
   
@@ -193,14 +216,14 @@ export const GlobalStyles = createGlobalStyle`
     &:focus, &:active {
       outline: none;
       opacity: .75;
-      box-shadow: 0px 0px 0px ${designTokens.space[1]} ${({ theme }) => theme.grey100};
+      box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--grey100);
       transition: all 120ms ease-out 0s;
     }
   }
   hr {
     margin-top: ${designTokens.space[7]};
     margin-bottom: ${designTokens.space[7]};
-    border-color: ${({ theme }) => theme.grey200};
+    border-color: var(--grey200);
     @media screen and (max-width:${designTokens.breakpoints[2]}) {
       margin-top: ${designTokens.space[5]};
     margin-bottom: ${designTokens.space[5]};

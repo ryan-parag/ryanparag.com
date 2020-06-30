@@ -4,7 +4,7 @@ import Header from '../Header/'
 import { GlobalStyles } from '../GlobalStyles/'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
-import { lightTheme, darkTheme } from '../Theme/'
+import { notionLight, notionDark, darkTheme, lightTheme } from '../Theme/'
 import { designTokens } from '../Theme/designTokens'
 import Footer from '../Footer'
 
@@ -29,7 +29,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const localTheme = localStorage.getItem('theme');
-      return localTheme === null || localTheme === 'light' ? 'light' : 'dark'
+      return localTheme === null || localTheme
     }
     return 'light'
   })
@@ -40,13 +40,24 @@ export default function Layout({ children, pageTitle, description, ...props }) {
     }
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+  const toggleTheme = (themeName) => {
+    setTheme(themeName)
   }
 
   const body = 
     <>
-      <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+      <ThemeProvider theme={
+        theme === 'Default Dark' ?
+          darkTheme
+          :
+          theme === 'Default Light' ?
+            lightTheme
+            :
+            theme === 'Notion Light' ?
+              notionLight
+              :
+              notionDark
+      }>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />

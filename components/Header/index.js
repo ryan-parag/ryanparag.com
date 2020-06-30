@@ -2,17 +2,63 @@ import React, { useState } from 'react'
 import NavItem from '../NavItem/'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
+import { lightTheme, darkTheme, notionLight, notionDark } from '@components/Theme/'
 
-const HeaderContainer = styled.header`
-  padding: ${designTokens.space[4]} ${designTokens.space[3]} ${designTokens.space[3]};
-  width: 100%;
+const HeaderContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  border-bottom: 1px solid ${({ theme }) => theme.grey100};
-  background: ${({ theme }) => theme.transparent};
+`;
+
+const ThemePicker = styled.div`
+  position: relative;
+  max-height: 0;
+  width: 100%;
+  overflow: hidden;
+  background: var(--grey100);
+  transition: all 400ms cubic-bezier(.4,0,.2,1);
+  &.isOpen {
+    max-height: 200px;
+  }
+`
+
+const ThemePickerBody = styled.div`
+  padding: ${designTokens.space[4]} ${designTokens.space[3]};
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  text-align: center;
+`
+
+const ThemeItem = styled.button`
+  display: inline-block;
+  padding: ${designTokens.space[3]} ${designTokens.space[4]};
+  background: ${props => props.bg};
+  color: ${props => props.color};
+  text-align: center;
+  font-family: inherit;
+  border: 1px solid ${props => props.border};
+  cursor: pointer;
+  border-radius: ${designTokens.space[1]};
+  margin: 0 ${designTokens.space[3]};
+  font-size: ${designTokens.fontSizes[0]};
+  transition: all 200ms ease-out 0s;
+  &.active {
+    border: 2px solid var(--primary);
+  }
+  &:hover, &:focus {
+    transform: scale(1.03);
+  }
+`
+
+const NavContainer = styled.header`
+  padding: ${designTokens.space[4]} ${designTokens.space[3]} ${designTokens.space[3]};
+  width: 100%;
+  border-bottom: 1px solid var(--grey100);
+  box-shadow: 0px 1px 0px rgba(0,0,0,.08);
+  background: var(--transparent);
   backdrop-filter: blur(40px) saturate(200%);
   &:before {
     content: '';
@@ -21,8 +67,8 @@ const HeaderContainer = styled.header`
     right: 0;
     left: 0;
     height: ${designTokens.space[2]};
-    background: ${({ theme }) => theme.green};
-    background:linear-gradient(to right, ${({ theme }) => theme.green}, ${({ theme }) => theme.blue}, ${({ theme }) => theme.pink});
+    background: var(--primary);
+    background:linear-gradient(to right, var(--primary), var(--tertiary), var(--secondary));
   }
 `
 
@@ -41,17 +87,17 @@ const HeaderInner = styled.div`
 const Nav = styled.nav`
   a {
     padding: ${designTokens.space[2]} ${designTokens.space[3]};
-    border: 1px solid ${({ theme }) => theme.grey200};
+    border: 1px solid var(--grey200);
     border-radius: ${designTokens.space[1]};
     margin: 0 ${designTokens.space[1]} 0 0;
     display: inline-block;
     transition: all 120ms ease-out 0s;
     &:hover {
-      background: ${({ theme }) => theme.grey100};
+      background: var(--grey100);
     }
     &.selected {
-      background: ${({ theme }) => theme.greenTransparent};
-      color: ${({ theme }) => theme.highlightedText};
+      background: var(--primaryTransparent);
+      color: var(--primaryDark);
       border-color: transparent;
     }
   }
@@ -76,7 +122,7 @@ const OutboundNavLink = styled.a`
   border-radius: ${designTokens.space[1]};
   display: inline-block;
   &:hover {
-    background: ${({ theme }) => theme.grey100};
+    background: var(--grey100);
   }
 `
 const MobileNav = styled.header`
@@ -113,11 +159,11 @@ const MobileNavItem = styled.li`
   width: 100%;
   transition: all 120ms ease-out 0s;
   &:hover {
-    background: ${({ theme }) => theme.grey100};
+    background: var(--grey100);
   }
   &.selected {
-    background: ${({ theme }) => theme.greenTransparent};
-    color: ${({ theme }) => theme.highlightedText};
+    background: var(--primaryTransparent);
+    color: var(--primaryDark);
     border-color: transparent;
   }
  }
@@ -132,36 +178,75 @@ const ThemeButton = styled.button`
   background: transparent;
   padding: 0;
   border-radius: ${designTokens.space[1]};
-  color: ${({ theme }) => theme.grey600};
+  color: var(--grey600);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: inherit;
   color: inherit;
   cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.grey200};
+  border: 1px solid var(--grey200);
   height: 40px;
   width: 40px;
   svg {
     fill: currentColor;
-    color: ${({ theme }) => theme.grey600};;
+    color: var(--grey600);
   }
 `
 
 export default function Header({ toggleTheme, theme }) {
 
   const [isExpanded, setExpanded] = React.useState(false)
+  const [isPickerOpen, setPickerOpen] = React.useState(false)
+  const toggle = () => setPickerOpen(!isPickerOpen);
+
+  const themes = [
+    lightTheme,
+    darkTheme,
+    notionLight,
+    notionDark
+  ]
+
+  const closeMobile = () => {
+    setExpanded(false)
+    setPickerOpen(false)
+  }
+
+  const handleThemeToggle = (themeName) => {
+    toggleTheme(themeName)
+  }
 
   return (
-    <>
-      <HeaderContainer>
+    <HeaderContainer>
+      <ThemePicker className={isPickerOpen ? 'isOpen' : null}>
+        <ThemePickerBody>
+          {
+            themes.map(theme => (
+              <ThemeItem
+                bg={theme.grey0}
+                border={theme.grey300}
+                color={theme.grey900}
+                onClick={() => handleThemeToggle(theme.name)}
+              >
+                {theme.name}
+                <div style={{display: 'flex', marginTop: '8px', justifyContent: 'center'}}>
+                  <div style={{ borderRadius: '50%', margin: '0 2px', height:'16px', width: '16px', background: theme.primary}}></div>
+                  <div style={{ borderRadius: '50%', margin: '0 2px', height:'16px', width: '16px', background: theme.secondary}}></div>
+                  <div style={{ borderRadius: '50%', margin: '0 2px', height:'16px', width: '16px', background: theme.tertiary}}></div>
+                </div>
+              </ThemeItem>
+            ))
+          }
+        </ThemePickerBody>
+      </ThemePicker>
+      <NavContainer>
         <MobileNav>
           {
             isExpanded ?
               (
                 <>
                   <MobileNavList>
-                    <ThemeButton onClick={() => setExpanded(false)}>
+                    <ThemeButton onClick={closeMobile}>
                       <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><path d='M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z'/></svg>
                     </ThemeButton>
                     <MobileNavItem>
@@ -180,23 +265,9 @@ export default function Header({ toggleTheme, theme }) {
                       </a>
                     </MobileNavItem>
                     <MobileNavItem>
-                      <div className="theme-button" role="button" onClick={toggleTheme}>
-                        {
-                          theme == 'dark' ? 
-                            (
-                              <>
-                                <span>Light Mode</span>
-                                <svg xmlns='http://www.w3.org/2000/svg' fill="currentColor" width='20' height='20' viewBox='0 0 512 512'><path d='M256,118a22,22,0,0,1-22-22V48a22,22,0,0,1,44,0V96A22,22,0,0,1,256,118Z'/><path d='M256,486a22,22,0,0,1-22-22V416a22,22,0,0,1,44,0v48A22,22,0,0,1,256,486Z'/><path d='M369.14,164.86a22,22,0,0,1-15.56-37.55l33.94-33.94a22,22,0,0,1,31.11,31.11l-33.94,33.94A21.93,21.93,0,0,1,369.14,164.86Z'/><path d='M108.92,425.08a22,22,0,0,1-15.55-37.56l33.94-33.94a22,22,0,1,1,31.11,31.11l-33.94,33.94A21.94,21.94,0,0,1,108.92,425.08Z'/><path d='M464,278H416a22,22,0,0,1,0-44h48a22,22,0,0,1,0,44Z'/><path d='M96,278H48a22,22,0,0,1,0-44H96a22,22,0,0,1,0,44Z'/><path d='M403.08,425.08a21.94,21.94,0,0,1-15.56-6.45l-33.94-33.94a22,22,0,0,1,31.11-31.11l33.94,33.94a22,22,0,0,1-15.55,37.56Z'/><path d='M142.86,164.86a21.89,21.89,0,0,1-15.55-6.44L93.37,124.48a22,22,0,0,1,31.11-31.11l33.94,33.94a22,22,0,0,1-15.56,37.55Z'/><path d='M256,358A102,102,0,1,1,358,256,102.12,102.12,0,0,1,256,358Z'/></svg>
-                              </>
-                            )
-                            :
-                            (
-                              <>
-                                <span>Dark Mode</span>
-                                <svg xmlns='http://www.w3.org/2000/svg' fill="currentColor" width='20' height='20' viewBox='0 0 512 512'><path d='M264,480A232,232,0,0,1,32,248C32,154,86,69.72,169.61,33.33a16,16,0,0,1,21.06,21.06C181.07,76.43,176,104.66,176,136c0,110.28,89.72,200,200,200,31.34,0,59.57-5.07,81.61-14.67a16,16,0,0,1,21.06,21.06C442.28,426,358,480,264,480Z'/></svg>
-                              </>
-                            )
-                        }
+                      <div className="theme-button" role="button" onClick={toggle}>
+                        <span>Toggle Theme</span>
+                        <svg xmlns='http://www.w3.org/2000/svg' fill="currentColor" width='20' height='20' viewBox='0 0 512 512'><path d='M441,336.2l-.06-.05c-9.93-9.18-22.78-11.34-32.16-12.92l-.69-.12c-9.05-1.49-10.48-2.5-14.58-6.17-2.44-2.17-5.35-5.65-5.35-9.94s2.91-7.77,5.34-9.94l30.28-26.87c25.92-22.91,40.2-53.66,40.2-86.59S449.73,119.92,423.78,97c-35.89-31.59-85-49-138.37-49C223.72,48,162,71.37,116,112.11c-43.87,38.77-68,90.71-68,146.24s24.16,107.47,68,146.23c21.75,19.24,47.49,34.18,76.52,44.42a266.17,266.17,0,0,0,86.87,15h1.81c61,0,119.09-20.57,159.39-56.4,9.7-8.56,15.15-20.83,15.34-34.56C456.14,358.87,450.56,345.09,441,336.2ZM112,208a32,32,0,1,1,32,32A32,32,0,0,1,112,208Zm40,135a32,32,0,1,1,32-32A32,32,0,0,1,152,343Zm40-199a32,32,0,1,1,32,32A32,32,0,0,1,192,144Zm64,271a48,48,0,1,1,48-48A48,48,0,0,1,256,415Zm72-239a32,32,0,1,1,32-32A32,32,0,0,1,328,176Z'/></svg>
                       </div>
                     </MobileNavItem>
                   </MobileNavList>
@@ -241,27 +312,12 @@ export default function Header({ toggleTheme, theme }) {
             </NavList>
           </Nav>
           <ThemeButton
-            className={
-              theme == 'dark' ?
-                'active'
-                :
-                null
-            }
-            onClick={toggleTheme}
+            onClick={toggle}
           >
-            {
-              theme == 'dark' ?
-                (
-                  <svg xmlns='http://www.w3.org/2000/svg' fill="currentColor" width='20' height='20' viewBox='0 0 512 512'><path d='M256,118a22,22,0,0,1-22-22V48a22,22,0,0,1,44,0V96A22,22,0,0,1,256,118Z'/><path d='M256,486a22,22,0,0,1-22-22V416a22,22,0,0,1,44,0v48A22,22,0,0,1,256,486Z'/><path d='M369.14,164.86a22,22,0,0,1-15.56-37.55l33.94-33.94a22,22,0,0,1,31.11,31.11l-33.94,33.94A21.93,21.93,0,0,1,369.14,164.86Z'/><path d='M108.92,425.08a22,22,0,0,1-15.55-37.56l33.94-33.94a22,22,0,1,1,31.11,31.11l-33.94,33.94A21.94,21.94,0,0,1,108.92,425.08Z'/><path d='M464,278H416a22,22,0,0,1,0-44h48a22,22,0,0,1,0,44Z'/><path d='M96,278H48a22,22,0,0,1,0-44H96a22,22,0,0,1,0,44Z'/><path d='M403.08,425.08a21.94,21.94,0,0,1-15.56-6.45l-33.94-33.94a22,22,0,0,1,31.11-31.11l33.94,33.94a22,22,0,0,1-15.55,37.56Z'/><path d='M142.86,164.86a21.89,21.89,0,0,1-15.55-6.44L93.37,124.48a22,22,0,0,1,31.11-31.11l33.94,33.94a22,22,0,0,1-15.56,37.55Z'/><path d='M256,358A102,102,0,1,1,358,256,102.12,102.12,0,0,1,256,358Z'/></svg>
-                )
-                :
-                (
-                  <svg xmlns='http://www.w3.org/2000/svg' fill="currentColor" width='20' height='20' viewBox='0 0 512 512'><path d='M264,480A232,232,0,0,1,32,248C32,154,86,69.72,169.61,33.33a16,16,0,0,1,21.06,21.06C181.07,76.43,176,104.66,176,136c0,110.28,89.72,200,200,200,31.34,0,59.57-5.07,81.61-14.67a16,16,0,0,1,21.06,21.06C442.28,426,358,480,264,480Z'/></svg>
-                )
-            }
+            <svg xmlns='http://www.w3.org/2000/svg' fill="currentColor" width='20' height='20' viewBox='0 0 512 512'><path d='M441,336.2l-.06-.05c-9.93-9.18-22.78-11.34-32.16-12.92l-.69-.12c-9.05-1.49-10.48-2.5-14.58-6.17-2.44-2.17-5.35-5.65-5.35-9.94s2.91-7.77,5.34-9.94l30.28-26.87c25.92-22.91,40.2-53.66,40.2-86.59S449.73,119.92,423.78,97c-35.89-31.59-85-49-138.37-49C223.72,48,162,71.37,116,112.11c-43.87,38.77-68,90.71-68,146.24s24.16,107.47,68,146.23c21.75,19.24,47.49,34.18,76.52,44.42a266.17,266.17,0,0,0,86.87,15h1.81c61,0,119.09-20.57,159.39-56.4,9.7-8.56,15.15-20.83,15.34-34.56C456.14,358.87,450.56,345.09,441,336.2ZM112,208a32,32,0,1,1,32,32A32,32,0,0,1,112,208Zm40,135a32,32,0,1,1,32-32A32,32,0,0,1,152,343Zm40-199a32,32,0,1,1,32,32A32,32,0,0,1,192,144Zm64,271a48,48,0,1,1,48-48A48,48,0,0,1,256,415Zm72-239a32,32,0,1,1,32-32A32,32,0,0,1,328,176Z'/></svg>
           </ThemeButton>
         </HeaderInner>
-      </HeaderContainer>
-    </>
+      </NavContainer>
+    </HeaderContainer>
   )
 }

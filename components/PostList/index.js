@@ -4,14 +4,15 @@ import { designTokens } from '../Theme/designTokens'
 import { format } from 'timeago.js'
 
 const ListItem = styled.li`
-  background: ${({ theme }) => theme.grey100};
+  background: var(--grey100);
+  border: 1px solid var(--grey200);
   padding: ${designTokens.space[4]} ${designTokens.space[3]};
   border-radius: ${designTokens.space[1]};
   cursor: pointer;
   margin-bottom: ${designTokens.space[3]};
   transition: all 120ms ease-out 0s;
   &:hover {
-    background: ${({ theme }) => theme.grey200};
+    background: var(--grey200);
   }
 `
 const ListLink = styled(Link)`

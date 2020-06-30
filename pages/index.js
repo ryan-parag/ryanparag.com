@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Layout from '@components/Layout/'
 import PostList from '@components/PostList/'
+import Logo from '@components/Logo'
 
 import getPosts from '@utils/getPosts'
 
@@ -8,7 +9,9 @@ const Index = ({ posts, title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={title} description={description}>
-        <img src="/notes-logo.svg" alt="Ryan Parag" width="64" style={{ borderRadius: '8px' }}/> 
+        <div style={{ width: '64px'}}>
+          <Logo/>
+        </div>
         <h1>Notes</h1>
         <p className="lead">Hello, I'm Ryan - these are my notes about designing in the open and building thoughtful products.</p>
         <p>

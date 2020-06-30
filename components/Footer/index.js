@@ -6,8 +6,8 @@ import { designTokens } from '../Theme/designTokens'
 const FooterContainer = styled.footer`
   width: 100%;
   padding: ${designTokens.space[6]} ${designTokens.space[3]};
-  border-top: 1px solid ${({ theme }) => theme.grey100};
-  color: ${({ theme }) => theme.grey500};
+  border-top: 1px solid var(--grey100);
+  color: var(--grey600);
 `
 
 const FooterInner = styled.div`
@@ -29,12 +29,12 @@ const FooterListItem = styled.li`
   margin-right: ${designTokens.space[3]};
   a {
     font-size: ${designTokens.fontSizes[0]};
-    color: ${({ theme }) => theme.grey500};
+    color: var(--grey600);
     transition: all 120ms ease-out 0s;
     &:hover, &:focus {
-      color: ${({ theme }) => theme.highlightedText};
-      background: ${({ theme }) => theme.greenTransparent};
-      box-shadow: 0 0 0 ${designTokens.space[2]} ${({ theme }) => theme.greenTransparent};
+      color: var(--primaryDark);
+      background: var(--primaryTransparent);
+      box-shadow: 0 0 0 ${designTokens.space[2]} var(--primaryTransparent);
     }
   }
 `
