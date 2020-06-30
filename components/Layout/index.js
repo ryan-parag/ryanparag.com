@@ -15,7 +15,7 @@ const LayoutContainer = styled.div`
 `
 
 const Main = styled.main`
-  padding: ${designTokens.space[9]} ${designTokens.space[3]} ${designTokens.space[6]};
+  padding: calc(${designTokens.space[9]} + ${designTokens.space[7]}) ${designTokens.space[3]} ${designTokens.space[6]};
 `
 
 export default function Layout({ children, pageTitle, description, ...props }) {
@@ -31,7 +31,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
       const localTheme = localStorage.getItem('theme');
       return localTheme === null || localTheme
     }
-    return 'light'
+    return 'Default Light'
   })
 
   useEffect(() => {
