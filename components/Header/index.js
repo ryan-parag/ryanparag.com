@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NavItem from '../NavItem/'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
-import { lightTheme, darkTheme, notionLight, notionDark } from '@components/Theme/'
+import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo } from '@components/Theme/'
 
 const HeaderContainer = styled.div`
   position: fixed;
@@ -204,7 +204,10 @@ export default function Header({ toggleTheme, theme }) {
     lightTheme,
     darkTheme,
     notionLight,
-    notionDark
+    notionDark,
+    hyrule,
+    zora,
+    gerudo
   ]
 
   const closeMobile = () => {

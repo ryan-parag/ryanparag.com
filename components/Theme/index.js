@@ -1,5 +1,5 @@
 import { designTokens } from './designTokens'
-import { transparentize } from 'polished'
+import { transparentize, darken } from 'polished'
 
 export const lightTheme = {
   name: 'Default Light',
@@ -95,4 +95,76 @@ export const notionDark = {
   secondaryDark: 'rgb(6, 156, 205)',
   primaryDark: 'rgb(235, 87, 87)',
   tertiaryDark: 'rgb(6, 156, 205)',
+}
+
+export const hyrule = {
+  name: 'Hyrule',
+  grey900: 'rgb(255,255,255)',
+  grey800: 'rgb(249,255,255)',
+  grey700: 'rgb(223,248,242)',
+  grey600: 'rgb(114,206,195)',
+  grey500: 'rgb(103,182,176)',
+  grey400: 'rgb(62,124,123)',
+  grey300: 'rgb(48,104,103)',
+  grey200: 'rgb(37,91,91)',
+  grey100: 'rgb(30,79,76)',
+  grey0: 'rgb(28,59,61)',
+  primary: 'rgb(255, 142, 113)',
+  tertiary: 'rgb(155,72,109)',
+  secondary: 'rgb(39, 237, 252)',
+  primaryTransparent: transparentize(0.8, 'rgb(255, 142, 113)'),
+  tertiaryTransparent: transparentize(0.8, 'rgb(155,72,109)'),
+  secondaryTransparent: transparentize(0.8, 'rgb(39, 237, 252)'),
+  transparent: transparentize(0.25, 'rgb(28,59,61)'),
+  secondaryDark: darken(0.12, 'rgb(39, 237, 252)'),
+  primaryDark: darken(0.12, 'rgb(255, 142, 113)'),
+  tertiaryDark: darken(0.12, 'rgb(155,72,109)'),
+}
+
+export const zora = {
+  name: 'Zora\'s Domain',
+  grey900: 'rgb(255,255,255)',
+  grey800: 'rgb(222,249,255)',
+  grey700: 'rgb(194,244,255)',
+  grey600: 'rgb(162,225,239)',
+  grey500: 'rgb(131,172,209)',
+  grey400: 'rgb(106,135,175)',
+  grey300: 'rgb(65,101,151)',
+  grey200: 'rgb(44,76,120)',
+  grey100: 'rgb(35,63,100)',
+  grey0: 'rgb(30,50,83)',
+  primary: 'rgb(216, 132, 255)',
+  tertiary: 'rgb(235,80,90)',
+  secondary: 'rgb(170,200,110)',
+  primaryTransparent: transparentize(0.8, 'rgb(216, 132, 255)'),
+  tertiaryTransparent: transparentize(0.8, 'rgb(235,80,90)'),
+  secondaryTransparent: transparentize(0.8, 'rgb(170,200,110)'),
+  transparent: transparentize(0.25, 'rgb(30,50,83)'),
+  secondaryDark: darken(0.12, 'rgb(170,200,110)'),
+  primaryDark: darken(0.12, 'rgb(216, 132, 255)'),
+  tertiaryDark: darken(0.12, 'rgb(235,80,90)'),
+}
+
+export const gerudo = {
+  name: 'Gerudo Village',
+  grey900: 'rgb(28,25,16)',
+  grey800: 'rgb(45,41,29)',
+  grey700: 'rgb(114,103,72)',
+  grey600: 'rgb(159,144,100)',
+  grey500: 'rgb(204,185,129)',
+  grey400: 'rgb(227,206,143)',
+  grey300: 'rgb(233,216,165)',
+  grey200: 'rgb(238,226,188)',
+  grey100: 'rgb(244,235,210)',
+  grey0: 'rgb(249,245,233)',
+  primary: 'rgb(27, 204, 242)',
+  tertiary: 'rgb(165,202,68)',
+  secondary: 'rgb(243,92,63)',
+  primaryTransparent: transparentize(0.8, 'rgb(27, 204, 242)'),
+  tertiaryTransparent: transparentize(0.8, 'rgb(165,202,68)'),
+  secondaryTransparent: transparentize(0.8, 'rgb(243,92,63)'),
+  transparent: transparentize(0.25, 'rgb(249,245,233)'),
+  secondaryDark: darken(0.12, 'rgb(243,92,63)'),
+  primaryDark: darken(0.12, 'rgb(27, 204, 242)'),
+  tertiaryDark: darken(0.12, 'rgb(165,202,68)'),
 }

@@ -4,7 +4,7 @@ import Header from '../Header/'
 import { GlobalStyles } from '../GlobalStyles/'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
-import { notionLight, notionDark, darkTheme, lightTheme } from '../Theme/'
+import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo } from '../Theme/'
 import { designTokens } from '../Theme/designTokens'
 import Footer from '../Footer'
 
@@ -56,7 +56,16 @@ export default function Layout({ children, pageTitle, description, ...props }) {
             theme === 'Notion Light' ?
               notionLight
               :
-              notionDark
+              theme === 'Notion Dark' ?
+                notionDark
+                :
+                theme === 'Hyrule' ?
+                 hyrule
+                 :
+                 theme === 'Zora\'s Domain' ?
+                  zora
+                  :
+                  gerudo
       }>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
