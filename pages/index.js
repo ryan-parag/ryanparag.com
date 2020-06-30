@@ -13,7 +13,12 @@ const Index = ({ posts, title, description, ...props }) => {
           <Logo/>
         </div>
         <h1>Notes</h1>
-        <p className="lead">Hello, I'm Ryan - these are my notes about designing in the open and building thoughtful products.</p>
+        <p className="lead">
+          Hello, I'm Ryan - these are my notes about designing in the open and building thoughtful products. 
+        </p>
+        <p>
+          ..also my playground for some expiremental UI ideas 🤔
+        </p>
         <p>
           <Link href="/about">
             More about me
