@@ -40,7 +40,7 @@ export default function ThemeItem({theme, clickHandle, active}) {
       style={{
         background: theme.grey0,
         borderColor: active ? 'var(--primary)' : theme.grey300,
-        borderWidth: active ? '2px' : null,
+        boxShadow: active ? '0px 0px 0px 2px var(--primary)' : null,
         color: theme.grey900
       }}
     >

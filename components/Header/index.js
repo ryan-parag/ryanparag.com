@@ -41,6 +41,7 @@ const NavContainer = styled.header`
   box-shadow: 0px 1px 0px rgba(0,0,0,.08);
   background: var(--transparent);
   backdrop-filter: blur(40px) saturate(200%);
+  position: relative;
   &:before {
     content: '';
     position: absolute;
