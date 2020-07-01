@@ -1,5 +1,5 @@
 import { designTokens } from './designTokens'
-import { transparentize, darken } from 'polished'
+import { transparentize, darken, lighten } from 'polished'
 
 export const lightTheme = {
   name: 'Light',
@@ -68,9 +68,9 @@ export const notionLight = {
   tertiaryTransparent: transparentize(0.8, 'rgb(249,191,82)'),
   secondaryTransparent: transparentize(0.8, 'rgb(6, 156, 205)'),
   transparent: transparentize(0.25, 'rgb(255,255,255)'),
-  secondaryDark: 'rgb(6, 156, 205)',
-  primaryDark: 'rgb(235, 87, 87)',
-  tertiaryDark: 'rgb(6, 156, 205)',
+  secondaryDark: darken(0.12,'rgb(6, 156, 205)'),
+  primaryDark: darken(0.12,'rgb(235, 87, 87)'),
+  tertiaryDark: darken(0.12,'rgb(249,191,82)')
 }
 
 export const notionDark = {
@@ -92,9 +92,9 @@ export const notionDark = {
   tertiaryTransparent: transparentize(0.8, 'rgb(249,191,82)'),
   secondaryTransparent: transparentize(0.8, 'rgb(6, 156, 205)'),
   transparent: transparentize(0.25, 'rgb(48,52,55)'),
-  secondaryDark: 'rgb(6, 156, 205)',
-  primaryDark: 'rgb(235, 87, 87)',
-  tertiaryDark: 'rgb(6, 156, 205)',
+  secondaryDark: lighten(0.12,'rgb(6, 156, 205)'),
+  primaryDark: lighten(0.12,'rgb(235, 87, 87)'),
+  tertiaryDark: lighten(0.12,'rgb(249,191,82)')
 }
 
 export const hyrule = {
@@ -116,9 +116,9 @@ export const hyrule = {
   tertiaryTransparent: transparentize(0.8, 'rgb(155,72,109)'),
   secondaryTransparent: transparentize(0.8, 'rgb(39, 237, 252)'),
   transparent: transparentize(0.25, 'rgb(28,59,61)'),
-  secondaryDark: darken(0.12, 'rgb(39, 237, 252)'),
-  primaryDark: darken(0.12, 'rgb(255, 142, 113)'),
-  tertiaryDark: darken(0.12, 'rgb(155,72,109)'),
+  secondaryDark: lighten(0.12, 'rgb(39, 237, 252)'),
+  primaryDark: lighten(0.12, 'rgb(255, 142, 113)'),
+  tertiaryDark: lighten(0.12, 'rgb(155,72,109)'),
 }
 
 export const zora = {
@@ -140,9 +140,9 @@ export const zora = {
   tertiaryTransparent: transparentize(0.8, 'rgb(235,80,90)'),
   secondaryTransparent: transparentize(0.8, 'rgb(170,200,110)'),
   transparent: transparentize(0.25, 'rgb(30,50,83)'),
-  secondaryDark: darken(0.12, 'rgb(170,200,110)'),
-  primaryDark: darken(0.12, 'rgb(216, 132, 255)'),
-  tertiaryDark: darken(0.12, 'rgb(235,80,90)'),
+  secondaryDark: lighten(0.12, 'rgb(170,200,110)'),
+  primaryDark: lighten(0.12, 'rgb(216, 132, 255)'),
+  tertiaryDark: lighten(0.12, 'rgb(235,80,90)'),
 }
 
 export const gerudo = {
@@ -212,9 +212,9 @@ export const eldin = {
   tertiaryTransparent:transparentize(0.8, 'rgb(255,246,67)'),
   secondaryTransparent: transparentize(0.8, 'rgb(131,213,255)'),
   transparent: transparentize(0.25, 'rgb(47,14,13)'),
-  secondaryDark: darken(0.12, 'rgb(131,213,255)'),
-  primaryDark: darken(0.12, 'rgb(254, 131, 37)'),
-  tertiaryDark: darken(0.12, 'rgb(255,246,67)'),
+  secondaryDark: lighten(0.12, 'rgb(131,213,255)'),
+  primaryDark: lighten(0.12, 'rgb(254, 131, 37)'),
+  tertiaryDark: lighten(0.12, 'rgb(255,246,67)'),
 }
 
 export const sheikah = {
@@ -236,7 +236,7 @@ export const sheikah = {
   tertiaryTransparent:transparentize(0.8, 'rgb(133,196,107)'),
   secondaryTransparent: transparentize(0.8, 'rgb(42,210,246)'),
   transparent: transparentize(0.25, 'rgb(44,40,26)'),
-  secondaryDark: darken(0.12, 'rgb(42,210,246)'),
-  primaryDark: darken(0.12, 'rgb(255, 173, 50)'),
-  tertiaryDark: darken(0.12, 'rgb(133,196,107)'),
+  secondaryDark: lighten(0.12, 'rgb(42,210,246)'),
+  primaryDark: lighten(0.12, 'rgb(255, 173, 50)'),
+  tertiaryDark: lighten(0.12, 'rgb(133,196,107)'),
 }
