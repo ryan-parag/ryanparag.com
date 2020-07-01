@@ -2,7 +2,7 @@ import { designTokens } from './designTokens'
 import { transparentize, darken } from 'polished'
 
 export const lightTheme = {
-  name: 'Default Light',
+  name: 'Light',
   grey900: designTokens.colors.base.grey900,
   grey800: designTokens.colors.base.grey800,
   grey700: designTokens.colors.base.grey700,
@@ -26,7 +26,7 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
-  name: 'Default Dark',
+  name: 'Dark',
   grey900: designTokens.colors.base.grey0,
   grey800: designTokens.colors.base.grey100,
   grey700: designTokens.colors.base.grey200,
@@ -146,7 +146,7 @@ export const zora = {
 }
 
 export const gerudo = {
-  name: 'Gerudo Village',
+  name: 'Gerudo Town',
   grey900: 'rgb(28,25,16)',
   grey800: 'rgb(45,41,29)',
   grey700: 'rgb(114,103,72)',
@@ -167,4 +167,76 @@ export const gerudo = {
   secondaryDark: darken(0.12, 'rgb(243,92,63)'),
   primaryDark: darken(0.12, 'rgb(27, 204, 242)'),
   tertiaryDark: darken(0.12, 'rgb(165,202,68)'),
+}
+
+export const hebra = {
+  name: 'Hebra Mountains',
+  grey900: 'rgb(22,23,24)',
+  grey800: 'rgb(87,93,96)',
+  grey700: 'rgb(131,140,144)',
+  grey600: 'rgb(174,186,192)',
+  grey500: 'rgb(196,210,216)',
+  grey400: 'rgb(218,233,240)',
+  grey300: 'rgb(225,237,243)',
+  grey200: 'rgb(233,242,246)',
+  grey100: 'rgb(244,248,251)',
+  grey0: 'rgb(251,253,254)',
+  primary: 'rgb(155, 204, 229)',
+  tertiary: 'rgb(124,153,150)',
+  secondary: 'rgb(212,196,150)',
+  primaryTransparent: transparentize(0.8, 'rgb(155, 204, 229)'),
+  tertiaryTransparent:transparentize(0.8, 'rgb(124,153,150)'),
+  secondaryTransparent: transparentize(0.8, 'rgb(212,196,150)'),
+  transparent: transparentize(0.25, 'rgb(251,253,254)'),
+  secondaryDark: darken(0.12, 'rgb(212,196,150)'),
+  primaryDark: darken(0.12, 'rgb(155, 204, 229)'),
+  tertiaryDark: darken(0.12, 'rgb(124,153,150)'),
+}
+
+export const eldin = {
+  name: 'Eldin Canyon',
+  grey900: 'rgb(239,214,214)',
+  grey800: 'rgb(187,145,144)',
+  grey700: 'rgb(159,100,99)',
+  grey600: 'rgb(132,56,54)',
+  grey500: 'rgb(118,34,32)',
+  grey400: 'rgb(106,31,29)',
+  grey300: 'rgb(94,27,26)',
+  grey200: 'rgb(83,24,22)',
+  grey100: 'rgb(71,20,19)',
+  grey0: 'rgb(47,14,13)',
+  primary: 'rgb(254, 131, 37)',
+  tertiary: 'rgb(255,246,67)',
+  secondary: 'rgb(131,213,255)',
+  primaryTransparent: transparentize(0.8, 'rgb(254, 131, 37)'),
+  tertiaryTransparent:transparentize(0.8, 'rgb(255,246,67)'),
+  secondaryTransparent: transparentize(0.8, 'rgb(131,213,255)'),
+  transparent: transparentize(0.25, 'rgb(47,14,13)'),
+  secondaryDark: darken(0.12, 'rgb(131,213,255)'),
+  primaryDark: darken(0.12, 'rgb(254, 131, 37)'),
+  tertiaryDark: darken(0.12, 'rgb(255,246,67)'),
+}
+
+export const sheikah = {
+  name: 'Sheikah Shrine',
+  grey900: 'rgb(252,250,243)',
+  grey800: 'rgb(248,244,230)',
+  grey700: 'rgb(241,233,206)',
+  grey600: 'rgb(235,223,181)',
+  grey500: 'rgb(228,212,157)',
+  grey400: 'rgb(221,201,132)',
+  grey300: 'rgb(177,161,106)',
+  grey200: 'rgb(133,121,79)',
+  grey100: 'rgb(88,80,53)',
+  grey0: 'rgb(44,40,26)',
+  primary: 'rgb(255, 173, 50)',
+  tertiary: 'rgb(133,196,107)',
+  secondary: 'rgb(42,210,246)',
+  primaryTransparent: transparentize(0.8, 'rgb(255, 173, 50)'),
+  tertiaryTransparent:transparentize(0.8, 'rgb(133,196,107)'),
+  secondaryTransparent: transparentize(0.8, 'rgb(42,210,246)'),
+  transparent: transparentize(0.25, 'rgb(44,40,26)'),
+  secondaryDark: darken(0.12, 'rgb(42,210,246)'),
+  primaryDark: darken(0.12, 'rgb(255, 173, 50)'),
+  tertiaryDark: darken(0.12, 'rgb(133,196,107)'),
 }

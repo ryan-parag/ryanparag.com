@@ -4,7 +4,7 @@ import Header from '../Header/'
 import { GlobalStyles } from '../GlobalStyles/'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
-import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo } from '../Theme/'
+import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, hebra, eldin, sheikah } from '../Theme/'
 import { designTokens } from '../Theme/designTokens'
 import Footer from '../Footer'
 
@@ -16,6 +16,12 @@ const LayoutContainer = styled.div`
 
 const Main = styled.main`
   padding: calc(${designTokens.space[9]} + ${designTokens.space[7]}) ${designTokens.space[3]} ${designTokens.space[6]};
+`
+
+const Sidebar = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
 `
 
 export default function Layout({ children, pageTitle, description, ...props }) {
@@ -31,7 +37,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
       const localTheme = localStorage.getItem('theme');
       return localTheme === null || localTheme
     }
-    return 'Default Light'
+    return 'Light'
   })
 
   useEffect(() => {
@@ -44,28 +50,28 @@ export default function Layout({ children, pageTitle, description, ...props }) {
     setTheme(themeName)
   }
 
+  const themeList = [
+    darkTheme,
+    notionLight,
+    notionDark,
+    hyrule,
+    zora,
+    gerudo,
+    eldin,
+    hebra,
+    sheikah,
+    lightTheme
+  ]
+
   const body = 
     <>
       <ThemeProvider theme={
-        theme === 'Default Dark' ?
-          darkTheme
-          :
-          theme === 'Default Light' ?
-            lightTheme
-            :
-            theme === 'Notion Light' ?
-              notionLight
-              :
-              theme === 'Notion Dark' ?
-                notionDark
-                :
-                theme === 'Hyrule' ?
-                 hyrule
-                 :
-                 theme === 'Zora\'s Domain' ?
-                  zora
-                  :
-                  gerudo
+        themeList.find(obj => {
+          if(obj.name !== 'undefined') {
+            return obj.name === theme
+          }
+          return lightTheme
+        })
       }>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -84,8 +90,8 @@ export default function Layout({ children, pageTitle, description, ...props }) {
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap');
         `}</style>
         <GlobalStyles/>
+        <Header toggleTheme={toggleTheme} theme={theme} />
         <section>
-          <Header toggleTheme={toggleTheme} theme={theme} />
           <Main>
             <LayoutContainer>{children}</LayoutContainer>
           </Main>
