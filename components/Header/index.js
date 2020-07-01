@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import NavItem from '../NavItem/'
+import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo, hebra, eldin, sheikah } from '@components/Theme/'
@@ -178,6 +179,7 @@ export default function Header({ toggleTheme, theme }) {
 
   const [isExpanded, setExpanded] = React.useState(false)
   const [isPickerOpen, setPickerOpen] = React.useState(false)
+  const [activeTheme, setActiveTheme] = useState(null);
   const toggle = () => setPickerOpen(!isPickerOpen);
 
   const themes = [
@@ -200,17 +202,38 @@ export default function Header({ toggleTheme, theme }) {
 
   const handleThemeToggle = (themeName) => {
     toggleTheme(themeName)
+    setActiveTheme(themeName)
   }
 
   return (
     <HeaderContainer>
       <ThemePicker className={isPickerOpen ? 'isOpen' : null}>
+        <div style={{
+          textAlign: 'center',
+          padding: `${designTokens.space[2]} ${designTokens.space[2]} ${designTokens.space[0]}`,
+        }}>
+          <small>
+            <strong>Select a theme.</strong> Inspired by Breath of the Wild and{' '}
+            <a
+              title="Max Böck's Color Theme Switcher"
+              href="https://mxb.dev/blog/color-theme-switcher/"
+              target="_blank"
+              rel="noreferrer noopener"
+              style={{
+                color: 'var(--secondaryDark)'
+              }}
+            >
+              Max's awesome color switcher
+            </a>
+          </small>
+        </div>
         <ThemePickerBody>
           {
             themes.map(theme => (
               <ThemeItem
                 theme={theme}
                 clickHandle={() => handleThemeToggle(theme.name)}
+                active={activeTheme === theme.name ? true : false}
               />
             ))
           }
@@ -263,7 +286,9 @@ export default function Header({ toggleTheme, theme }) {
                       </ThemeButton>
                       <div style={{ paddingLeft: designTokens.space[3]}}>
                         <strong>
-                          Ryan's Notes
+                          <Link href="/">
+                            Ryan's Notes
+                          </Link>
                         </strong>
                       </div>
                     </div>
