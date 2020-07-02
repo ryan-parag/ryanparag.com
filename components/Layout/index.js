@@ -15,7 +15,7 @@ const LayoutContainer = styled.div`
 `
 
 const Main = styled.main`
-  padding: calc(${designTokens.space[9]} + ${designTokens.space[7]}) ${designTokens.space[3]} ${designTokens.space[6]};
+  padding: ${designTokens.space[9]} ${designTokens.space[3]} ${designTokens.space[6]};
 `
 
 const Sidebar = styled.div`
