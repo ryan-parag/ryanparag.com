@@ -39,11 +39,11 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
   body {
-    font-size: ${designTokens.fontSizesMobile[1]};
+    font-size: ${designTokens.fontSizesMobile[2]};
     background: var(--grey0);
     color: var(--grey900);
     font-family: ${designTokens.fonts.body};
-    @media screen and (min-width: ${designTokens.breakpoints[2]}) {
+    @media screen and (max-width: ${designTokens.breakpoints[2]}) {
       font-size: ${designTokens.fontSizes[1]};
     }
   }

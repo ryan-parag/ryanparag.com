@@ -32,9 +32,9 @@ export default function PostList({ posts }) {
               <ListItem key={post.slug}>
                 <ListLink href={{ pathname: `/post/${post.slug}` }}>
                   <div>
-                    <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
+                    <h3 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
                       {post?.frontmatter?.title}
-                    </h4>
+                    </h3>
                     <p style={{ marginBottom: designTokens.space[2] }}>{post?.frontmatter.description}</p>
                     <div>
                       <small>Updated {format(post.frontmatter.date)}</small>

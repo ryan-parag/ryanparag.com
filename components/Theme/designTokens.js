@@ -25,14 +25,14 @@ export const designTokens = {
     '256px',// 10
   ],
   fontSizes: [
-    '1.2rem',
-    '1.4rem',   // 0
-    '1.6rem',   // 1
-    '2.4rem',   // 2
-    '3.2rem',   // 3
-    '4.4rem',   // 4
-    '5.6rem',   // 5
-    '8.8rem',   // 6
+    '1.2rem',   // 0
+    '1.4rem',   // 1
+    '1.6rem',   // 2
+    '2.4rem',   // 3
+    '3.2rem',   // 4
+    '4.4rem',   // 5
+    '5.6rem',   // 6
+    '8.8rem',   // 7
   ],
   fontSizesMobile: [
     '1.4rem',   // 0

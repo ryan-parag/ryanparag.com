@@ -7,11 +7,14 @@ import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo, h
 import ThemeItem from '@components/ThemeItem'
 
 const HeaderContainer = styled.div`
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    z-index: 100;
+    position:fixed;
+  }
 `;
 
 const ThemePicker = styled.div`
@@ -38,7 +41,7 @@ const NavContainer = styled.header`
   padding: ${designTokens.space[4]} ${designTokens.space[3]} ${designTokens.space[3]};
   width: 100%;
   border-bottom: 1px solid var(--grey100);
-  box-shadow: 0px 1px 0px rgba(0,0,0,.08);
+  box-shadow: 0px 1px 0px rgba(0,0,0,.12);
   background: var(--transparent);
   backdrop-filter: blur(40px) saturate(200%);
   position: relative;
@@ -70,6 +73,7 @@ const Nav = styled.nav`
   a {
     padding: ${designTokens.space[2]} ${designTokens.space[3]};
     border: 1px solid var(--grey200);
+    font-size: ${designTokens.fontSizes[1]};
     border-radius: ${designTokens.space[1]};
     margin: 0 ${designTokens.space[1]} 0 0;
     display: inline-block;
@@ -253,7 +257,11 @@ export default function Header({ toggleTheme, theme }) {
               (
                 <>
                   <MobileNavList>
-                    <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      marginBottom: designTokens.space[2]
+                    }}>
                       <ThemeButton onClick={closeMobile}>
                         <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><path d='M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z'/></svg>
                       </ThemeButton>
