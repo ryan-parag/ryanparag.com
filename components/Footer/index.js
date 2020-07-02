@@ -38,8 +38,28 @@ const FooterListItem = styled.li`
     }
   }
 `
+const FooterButton = styled.button`
+  padding: ${designTokens.space[2]};
+  border: 1px solid var(--grey200);
+  border-radius: ${designTokens.space[1]};
+  margin-top: ${designTokens.space[3]};
+  display: inline-block;
+  font-family: inherit;
+  font-size: ${designTokens.fontSizes[0]};
+  cursor: pointer;
+  background: transparent;
+  transition: all 120ms ease-out 0s;
+  &:hover, &:focus {
+    background: var(--grey100);
+  }
+`
 
 export default function Footer() {
+  const clearStorage = () => {
+    localStorage.removeItem('theme')
+    window.location.reload()
+  }
+
   return(
     <FooterContainer>
       <FooterInner>
@@ -76,6 +96,8 @@ export default function Footer() {
           </FooterListItem>
         </FooterList>
         <small>Made with Next.js and Styled Components</small>
+        <br/>
+        <FooterButton onClick={clearStorage}>Clear Storage</FooterButton>
       </FooterInner>
     </FooterContainer>
   )
