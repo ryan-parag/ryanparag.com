@@ -240,3 +240,27 @@ export const sheikah = {
   primaryDark: lighten(0.12, 'rgb(255, 173, 50)'),
   tertiaryDark: lighten(0.12, 'rgb(133,196,107)'),
 }
+
+export const korok = {
+  name: 'Korok Forest',
+  grey900: 'rgb(48,62,34)',
+  grey800: 'rgb(64,82,46)',
+  grey700: 'rgb(97,124,69)',
+  grey600: 'rgb(113,144,81)',
+  grey500: 'rgb(145,185,104)',
+  grey400: 'rgb(161,206,115)',
+  grey300: 'rgb(180,216,143)',
+  grey200: 'rgb(199,226,171)',
+  grey100: 'rgb(217,235,199)',
+  grey0: 'rgb(236,245,227)',
+  primary: 'rgb(45, 150, 65)',
+  tertiary: 'rgb(184,114,63)',
+  secondary: 'rgb(179,57,56)',
+  primaryTransparent: transparentize(0.8, 'rgb(45, 150, 65)'),
+  tertiaryTransparent:transparentize(0.8, 'rgb(184,114,63)'),
+  secondaryTransparent: transparentize(0.8, 'rgb(179,57,56)'),
+  transparent: transparentize(0.25, 'rgb(236,245,227)'),
+  secondaryDark: darken(0.12, 'rgb(179,57,56)'),
+  primaryDark: darken(0.12, 'rgb(45, 150, 65)'),
+  tertiaryDark: darken(0.12, 'rgb(184,114,63)'),
+}

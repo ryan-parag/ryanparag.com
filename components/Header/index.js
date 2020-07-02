@@ -3,7 +3,7 @@ import NavItem from '../NavItem/'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
-import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo, hebra, eldin, sheikah } from '@components/Theme/'
+import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo, hebra, eldin, sheikah, korok } from '@components/Theme/'
 import ThemeItem from '@components/ThemeItem'
 
 const HeaderContainer = styled.div`
@@ -197,7 +197,8 @@ export default function Header({ toggleTheme, theme }) {
     gerudo,
     hebra,
     eldin,
-    sheikah
+    sheikah,
+    korok
   ]
 
   const closeMobile = () => {
