@@ -232,6 +232,7 @@ export default function Header({ toggleTheme, theme }) {
           {
             themes.map(theme => (
               <ThemeItem
+                key={theme.name}
                 theme={theme}
                 clickHandle={() => handleThemeToggle(theme.name)}
                 active={activeTheme === theme.name ? true : false}

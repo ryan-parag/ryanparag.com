@@ -35,7 +35,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const localTheme = localStorage.getItem('theme');
-      return localTheme === null || localTheme
+      return localTheme === null || localTheme === 'Light' ? 'Light' : localTheme
     }
     return 'Light'
   })
@@ -84,11 +84,9 @@ export default function Layout({ children, pageTitle, description, ...props }) {
           <meta property="og:image" content="/notes-social-media.png"></meta>
           <link rel="mask-icon" href="/notes-favicon.svg" color="#00d1b2"></link>
           <link rel="icon" href="/notes-favicon.svg"></link>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet"></link>
           <title>{pageTitle}</title>
         </Head>
-        <style jsx global>{`
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap');
-        `}</style>
         <GlobalStyles/>
         <Header toggleTheme={toggleTheme} theme={theme} />
         <section>
