@@ -149,6 +149,7 @@ export const GlobalStyles = createGlobalStyle`
       transition: all 120ms ease-out 0s;
     }
     &:hover, &:focus {
+      text-decoration: underline dotted;
       .icon {
         opacity: 1;
         transform: translateX(${designTokens.space[1]});
@@ -160,7 +161,7 @@ export const GlobalStyles = createGlobalStyle`
       color: var(--primaryDark);
       transition: all 120ms ease-out 0s;
       &:hover, &:focus {
-        opacity: .75;
+        opacity: .8;
       }
     }
     a:visited {

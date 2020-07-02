@@ -18,12 +18,6 @@ const Main = styled.main`
   padding: ${designTokens.space[9]} ${designTokens.space[3]} ${designTokens.space[6]};
 `
 
-const Sidebar = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-`
-
 export default function Layout({ children, pageTitle, description, ...props }) {
 
   const [mounted, setMounted] = React.useState(false)
