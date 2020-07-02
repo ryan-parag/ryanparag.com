@@ -170,9 +170,13 @@ const ThemeButton = styled.button`
   border: 1px solid var(--grey200);
   height: 40px;
   width: 40px;
+  transition: all 120ms ease-out 0s;
   svg {
     fill: currentColor;
     color: inherit;
+  }
+  &:hover, &:focus {
+    background: var(--grey100);
   }
 `
 
