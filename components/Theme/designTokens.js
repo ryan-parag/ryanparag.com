@@ -35,13 +35,14 @@ export const designTokens = {
     '8.8rem',   // 7
   ],
   fontSizesMobile: [
-    '1.4rem',   // 0
-    '1.6rem',   // 1
-    '1.8rem',   // 2
-    '2.4rem',   // 3
-    '3.0rem',   // 4
-    '3.6rem',   // 5
-    '4.0rem',   // 6
+    '1.2rem',   // 0
+    '1.4rem',   // 1
+    '1.6rem',   // 2
+    '1.8rem',   // 3
+    '2.4rem',   // 4
+    '3.0rem',   // 5
+    '3.6rem',   // 6
+    '4.0rem',   // 7
   ],
   fonts: {
     body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",

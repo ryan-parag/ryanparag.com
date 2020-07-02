@@ -121,7 +121,7 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   p {
-    font-size: ${designTokens.fontSizesMobile[1]};
+    font-size: ${designTokens.fontSizesMobile[2]};
     line-height: ${designTokens.lineHeights.body};
     margin-top: 0;
     margin-bottom: ${designTokens.space[4]};

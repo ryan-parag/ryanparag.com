@@ -14,6 +14,9 @@ const FooterInner = styled.div`
   width: 100%;
   max-width: ${designTokens.layoutWidth};
   margin: auto;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    text-align: center;
+  }
 `
 
 const FooterList = styled.ul`
@@ -22,13 +25,17 @@ const FooterList = styled.ul`
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    justify-content: center;
+    padding: 0 ${designTokens.space[3]};
+  }
 `
 
 const FooterListItem = styled.li`
   margin-bottom: ${designTokens.space[3]};
   margin-right: ${designTokens.space[3]};
   a {
-    font-size: ${designTokens.fontSizes[0]};
+    font-size: ${designTokens.fontSizes[1]};
     color: var(--grey600);
     transition: all 120ms ease-out 0s;
     &:hover, &:focus {
