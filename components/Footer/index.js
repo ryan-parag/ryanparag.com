@@ -61,6 +61,24 @@ const FooterButton = styled.button`
   }
 `
 
+const FooterBottom = styled.div`
+  display: inline-flex;
+  align-items: center;
+  margin-top: ${designTokens.space[4]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    flex-direction: column;
+  }
+`
+
+const FooterLogo = styled.div`
+  display: inline-flex;
+  align-items: center;
+  margin-right: ${designTokens.space[4]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    margin-bottom: ${designTokens.space[2]};
+  }
+`
+
 export default function Footer() {
   const clearStorage = () => {
     localStorage.removeItem('theme')
@@ -104,16 +122,8 @@ export default function Footer() {
         </FooterList>
         <small>Made with Next.js and Styled Components</small>
         <br/>
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          marginTop: designTokens.space[4]
-        }}>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            marginRight: designTokens.space[4]
-          }}>
+        <FooterBottom>
+          <FooterLogo>
             <div style={{
               width: '32px',
               marginRight: designTokens.space[2],
@@ -121,9 +131,9 @@ export default function Footer() {
               <Logo/>
             </div>
             <strong>Ryan's Notes</strong>
-          </div>
-          <FooterButton onClick={clearStorage}>Clear Storage</FooterButton>
-        </div>
+          </FooterLogo>
+          <FooterButton onClick={clearStorage}>Reset Theme</FooterButton>
+        </FooterBottom>
       </FooterInner>
     </FooterContainer>
   )

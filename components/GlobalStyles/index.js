@@ -168,6 +168,45 @@ export const GlobalStyles = createGlobalStyle`
       color: var(--secondaryDark);
     }
   }
+
+  hr {
+    background: var(--grey200);
+    border: 0;
+    height: 1px
+  }
+
+  input, textarea, select {
+    font-family: inherit;
+    color: inherit;
+    background: var(--grey100);
+    display: block;
+    width: 100%;
+    border: 1px solid var(--grey400);
+    border-radius: ${designTokens.space[1]};
+    padding: ${designTokens.space[3]};
+    margin: ${designTokens.space[2]} auto ${designTokens.space[3]};
+    transition: all 120ms ease-out 0s;
+    &:focus {
+      background: transparent;
+      border-color: var(--primary);
+    }
+  }
+
+  textarea {
+    height: ${designTokens.space[9]};
+    resize: none;
+  }
+
+  ::placeholder {
+    color: var(--grey500);
+  }
+
+  form {
+    label {
+      font-size: ${designTokens.fontSizes[1]};
+      color: var(--grey700);
+    }
+  }
   
   strong {
     font-weight: ${designTokens.fontWeights.bold};
