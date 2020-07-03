@@ -1,5 +1,5 @@
 import { designTokens } from './designTokens'
-import { transparentize, darken, lighten } from 'polished'
+import { transparentize, darken, lighten, saturate } from 'polished'
 
 export const lightTheme = {
   name: 'Light',
@@ -263,4 +263,28 @@ export const korok = {
   secondaryDark: darken(0.12, 'rgb(179,57,56)'),
   primaryDark: darken(0.12, 'rgb(45, 150, 65)'),
   tertiaryDark: darken(0.12, 'rgb(184,114,63)'),
+}
+
+export const yiga = {
+  name: 'Yiga Clan',
+  grey900: 'rgb(235,233,238)',
+  grey800: 'rgb(218,211,217)',
+  grey700: 'rgb(202,188,196)',
+  grey600: 'rgb(185,164,175)',
+  grey500: 'rgb(169,142,154)',
+  grey400: 'rgb(153,119,133)',
+  grey300: 'rgb(137,97,113)',
+  grey200: 'rgb(121,73,92)',
+  grey100: 'rgb(105,51,71)',
+  grey0: 'rgb(98,24,50)',
+  primary: 'rgb(255, 216, 69)',
+  tertiary: 'rgb(212,65,89)',
+  secondary: 'rgb(206,170,239)',
+  primaryTransparent: transparentize(0.8, 'rgb(255, 216, 69)'),
+  tertiaryTransparent:transparentize(0.8, 'rgb(212,65,89)'),
+  secondaryTransparent: transparentize(0.8, 'rgb(206,170,239)'),
+  transparent: transparentize(0.25, 'rgb(98,24,50)'),
+  secondaryDark: saturate(0.2, 'rgb(206,170,239)'),
+  primaryDark: saturate(0.2, 'rgb(255, 216, 69)'),
+  tertiaryDark: saturate(0.2, 'rgb(212,65,89)'),
 }

@@ -4,7 +4,7 @@ import Header from '../Header/'
 import { GlobalStyles } from '../GlobalStyles/'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
-import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, hebra, eldin, sheikah, korok } from '../Theme/'
+import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '../Theme/'
 import { designTokens } from '../Theme/designTokens'
 import Footer from '../Footer'
 
@@ -55,6 +55,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
     hebra,
     sheikah,
     korok,
+    yiga,
     lightTheme
   ]
 

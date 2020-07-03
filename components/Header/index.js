@@ -3,7 +3,7 @@ import NavItem from '../NavItem/'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
-import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo, hebra, eldin, sheikah, korok } from '@components/Theme/'
+import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '@components/Theme/'
 import ThemeItem from '@components/ThemeItem'
 
 const HeaderContainer = styled.div`
@@ -41,9 +41,8 @@ const NavContainer = styled.header`
   padding: ${designTokens.space[4]} ${designTokens.space[3]} ${designTokens.space[3]};
   width: 100%;
   border-bottom: 1px solid var(--grey100);
-  box-shadow: 0px 1px 0px rgba(0,0,0,.12);
-  background: var(--transparent);
-  backdrop-filter: blur(40px) saturate(200%);
+  box-shadow: 0px 1px 0px var(--grey100);
+  background: var(--grey0);
   position: relative;
   &:before {
     content: '';
@@ -54,6 +53,10 @@ const NavContainer = styled.header`
     height: ${designTokens.space[2]};
     background: var(--primary);
     background:linear-gradient(to right, var(--primary), var(--tertiary), var(--secondary));
+  }
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    background: var(--transparent);
+    backdrop-filter: blur(40px) saturate(200%);
   }
 `
 
@@ -210,7 +213,8 @@ export default function Header({ toggleTheme, theme }) {
     hebra,
     eldin,
     sheikah,
-    korok
+    korok,
+    yiga,
   ]
 
   const closeMobile = () => {
