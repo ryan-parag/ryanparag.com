@@ -188,6 +188,7 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    box-shadow: none;
     transition: all 120ms ease-out 0s;
     &:focus {
       background: transparent;
