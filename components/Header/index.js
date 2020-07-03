@@ -184,6 +184,14 @@ const ThemeButton = styled.button`
   }
 `
 
+const CloseButton = styled(ThemeButton)`
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: ${designTokens.space[2]};
+  right: ${designTokens.space[2]};
+`
+
 export default function Header({ toggleTheme, theme }) {
 
   const [isExpanded, setExpanded] = React.useState(false)
@@ -220,7 +228,7 @@ export default function Header({ toggleTheme, theme }) {
       <ThemePicker className={isPickerOpen ? 'isOpen' : null}>
         <div style={{
           textAlign: 'center',
-          padding: `${designTokens.space[2]} ${designTokens.space[2]} ${designTokens.space[0]}`,
+          padding: `${designTokens.space[2]} ${designTokens.space[6]} ${designTokens.space[0]}`,
         }}>
           <small>
             <strong>Select a theme.</strong> Inspired by Breath of the Wild and{' '}
@@ -236,6 +244,11 @@ export default function Header({ toggleTheme, theme }) {
               Max's awesome color switcher
             </a>
           </small>
+          <CloseButton
+           onClick={toggle}
+          >
+            &times;
+          </CloseButton>
         </div>
         <ThemePickerBody>
           {
