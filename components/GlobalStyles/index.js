@@ -185,6 +185,9 @@ export const GlobalStyles = createGlobalStyle`
     border-radius: ${designTokens.space[1]};
     padding: ${designTokens.space[3]};
     margin: ${designTokens.space[2]} auto ${designTokens.space[3]};
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     transition: all 120ms ease-out 0s;
     &:focus {
       background: transparent;

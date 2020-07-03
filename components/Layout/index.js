@@ -75,6 +75,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta charSet="utf-8" />
             <meta name="Description" content={description}></meta>
+            <meta name="viewport" content="width=device-width, user-scalable=no">
             <meta property="og:url" content="https://notes.ryanparag.com"></meta>
             <meta property="og:type" content="website"></meta>
             <meta property="og:title" content={pageTitle}></meta>
