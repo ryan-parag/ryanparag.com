@@ -52,7 +52,8 @@ export default function ThemeItem({theme, clickHandle, active}) {
           height: designTokens.space[3],
           width: designTokens.space[3], 
           background: theme.primary,
-          border: `1px solid ${theme.primaryDark}`
+          border: `1px solid ${theme.primaryDark}`,
+          boxShadow: `0px 0px 0px 2px ${theme.tertiaryTransparent}`
         }}>
         </div>
         <div style={{
@@ -61,7 +62,8 @@ export default function ThemeItem({theme, clickHandle, active}) {
           height: designTokens.space[3],
           width: designTokens.space[3], 
           background: theme.secondary,
-          border: `1px solid ${theme.secondaryDark}`
+          border: `1px solid ${theme.secondaryDark}`,
+          boxShadow: `0px 0px 0px 2px ${theme.tertiaryTransparent}`
         }}>
         </div>
         <div style={{
@@ -70,7 +72,8 @@ export default function ThemeItem({theme, clickHandle, active}) {
           height: designTokens.space[3],
           width: designTokens.space[3], 
           background: theme.tertiary,
-          border: `1px solid ${theme.tertiaryDark}`
+          border: `1px solid ${theme.tertiaryDark}`,
+          boxShadow: `0px 0px 0px 2px ${theme.tertiaryTransparent}`
         }}>
         </div>
       </div>
