@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
+import Logo from '@components/Logo'
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -49,7 +50,6 @@ const FooterButton = styled.button`
   padding: ${designTokens.space[2]};
   border: 1px solid var(--grey200);
   border-radius: ${designTokens.space[1]};
-  margin-top: ${designTokens.space[3]};
   display: inline-block;
   font-family: inherit;
   font-size: ${designTokens.fontSizes[0]};
@@ -104,7 +104,26 @@ export default function Footer() {
         </FooterList>
         <small>Made with Next.js and Styled Components</small>
         <br/>
-        <FooterButton onClick={clearStorage}>Clear Storage</FooterButton>
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          marginTop: designTokens.space[4]
+        }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            marginRight: designTokens.space[4]
+          }}>
+            <div style={{
+              width: '32px',
+              marginRight: designTokens.space[2],
+            }}>
+              <Logo/>
+            </div>
+            <strong>Ryan's Notes</strong>
+          </div>
+          <FooterButton onClick={clearStorage}>Clear Storage</FooterButton>
+        </div>
       </FooterInner>
     </FooterContainer>
   )
