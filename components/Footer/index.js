@@ -89,8 +89,13 @@ export default function Footer() {
     <FooterContainer>
       <FooterInner>
         <FooterList>
-          <FooterListItem>
+        <FooterListItem>
             <Link href="/">
+              Home
+            </Link>
+          </FooterListItem>
+          <FooterListItem>
+            <Link href="/notes">
               Notes
             </Link>
           </FooterListItem>

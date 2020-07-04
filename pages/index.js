@@ -6,13 +6,17 @@ import Logo from '@components/Logo'
 import getPosts from '@utils/getPosts'
 
 const Index = ({ posts, title, description, ...props }) => {
+
+  const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+  const latestPosts = sortedPosts.slice(0, 3)
+
   return (
     <>
       <Layout pageTitle={title} description={description}>
         <div style={{ width: '64px'}}>
           <Logo/>
         </div>
-        <h1>Notes</h1>
+        <h1>Ryan's Notes</h1>
         <p className="lead">
           Hello, I'm Ryan - these are my notes about designing in the open and building thoughtful products. 
         </p>
@@ -30,8 +34,16 @@ const Index = ({ posts, title, description, ...props }) => {
           </a>
         </p>
         <main>
-          <h3>Writing</h3>
-          <PostList posts={posts} />
+          <h3>Latest Notes</h3>
+          <PostList posts={latestPosts} />
+          <p>
+            <Link href="/notes">
+              <a>
+                Read More
+                <span className="icon">&rarr;</span>
+              </a>
+            </Link>
+          </p>
         </main>
       </Layout>
     </>
@@ -45,7 +57,7 @@ export async function getStaticProps() {
 
   const posts = ((context) => {
     return getPosts(context)
-  })(require.context('../posts', true, /\.md$/))
+  })(require.context('../notes', true, /\.md$/))
 
   return {
     props: {

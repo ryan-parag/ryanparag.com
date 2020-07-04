@@ -295,6 +295,11 @@ export default function Header({ toggleTheme, theme }) {
                     </div>
                     <MobileNavItem>
                       <NavItem href="/">
+                        <a>Home</a>
+                      </NavItem>
+                    </MobileNavItem>
+                    <MobileNavItem>
+                      <NavItem href="/notes">
                         <a>Notes</a>
                       </NavItem>
                     </MobileNavItem>
@@ -342,8 +347,13 @@ export default function Header({ toggleTheme, theme }) {
         <HeaderInner>
           <Nav role="navigation" aria-label="main navigation">
             <NavList>
-              <NavListItem>
+            <NavListItem>
                 <NavItem href="/">
+                  <a>Home</a>
+                </NavItem>
+              </NavListItem>
+              <NavListItem>
+                <NavItem href="/notes">
                   <a>Notes</a>
                 </NavItem>
               </NavListItem>
