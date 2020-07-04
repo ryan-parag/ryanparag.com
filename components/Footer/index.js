@@ -81,7 +81,7 @@ const FooterLogo = styled.div`
 
 export default function Footer() {
   const clearStorage = () => {
-    localStorage.removeItem('theme')
+    localStorage.removeItem('ryansNotesTheme')
     window.location.reload()
   }
 
@@ -128,15 +128,19 @@ export default function Footer() {
         <small>Made with Next.js and Styled Components</small>
         <br/>
         <FooterBottom>
-          <FooterLogo>
-            <div style={{
-              width: '32px',
-              marginRight: designTokens.space[2],
-            }}>
-              <Logo/>
-            </div>
-            <strong>Ryan's Notes</strong>
-          </FooterLogo>
+          <Link href="/">
+            <a>
+              <FooterLogo>
+                <div style={{
+                  width: '32px',
+                  marginRight: designTokens.space[2],
+                }}>
+                  <Logo/>
+                </div>
+                <strong>Ryan's Notes</strong>
+              </FooterLogo>
+            </a>
+          </Link>
           <FooterButton onClick={clearStorage}>Reset Theme</FooterButton>
         </FooterBottom>
       </FooterInner>
