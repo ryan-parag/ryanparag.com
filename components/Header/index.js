@@ -58,6 +58,9 @@ const NavContainer = styled.header`
     background: var(--transparent);
     backdrop-filter: blur(40px) saturate(200%);
   }
+  &.isOpen {
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2), 0px 5px 8px -1px rgba(0,0,0,.14), 0px 10px 20px -2px rgba(0,0,0,.12);
+  }
 `
 
 const HeaderInner = styled.div`
@@ -267,7 +270,7 @@ export default function Header({ toggleTheme, theme }) {
           }
         </ThemePickerBody>
       </ThemePicker>
-      <NavContainer>
+      <NavContainer className={isExpanded ? 'isOpen' : null}>
         <MobileNav>
           {
             isExpanded ?

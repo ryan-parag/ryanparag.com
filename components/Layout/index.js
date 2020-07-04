@@ -29,7 +29,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
 
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      const localTheme = localStorage.getItem('theme');
+      const localTheme = localStorage.getItem('ryansNotesTheme');
       return localTheme === null || localTheme === 'Light' ? 'Light' : localTheme
     }
     return 'Light'
@@ -37,7 +37,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('ryansNotesTheme', theme);
     }
   }, [theme]);
 
