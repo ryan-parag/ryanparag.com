@@ -6,7 +6,9 @@ export default ({ href, children }) => {
   const router = useRouter()
 
   let className = children.props.className || ''
-  if (router.pathname === href) {
+  if(router.pathname === '/' && router.pathname === href) {
+    className = `${className} selected`
+  } else if (href !== '/' && router.pathname.includes(href)) {
     className = `${className} selected`
   }
 
