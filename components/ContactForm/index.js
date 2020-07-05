@@ -62,6 +62,7 @@ export default function ContactForm() {
 
   return(
     <form onSubmit={handleSubmit}>
+      <h3>Thanks for reading!</h3>
       <p>Do you have feedback about this post or want to suggest an idea you'd like to hear about in a future post? Send me a message!</p>
       <label htmlFor="message">
         Message
