@@ -1,6 +1,53 @@
 import Layout from '@components/Layout/'
+import styled from 'styled-components'
+import { designTokens } from '@components/Theme/designTokens'
+
+const Swatch = styled.div`
+  height: ${designTokens.space[6]};
+  width: 100%;
+  border-radius: ${designTokens.space[1]};
+  position: relative;
+  border: 1px solid var(--grey300);
+`
+
+const SwatchContainer = styled.div`
+  display: grid;
+  grid-column-gap: ${designTokens.space[3]};
+  grid-row-gap: ${designTokens.space[3]};
+  grid-template-columns: repeat(9, 1fr);
+  margin-bottom: ${designTokens.space[4]};
+  margin-top: ${designTokens.space[3]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`
 
 const About = ({ title, description, ...props }) => {
+
+  const neutrals = [
+    'var(--grey900)',
+    'var(--grey800)',
+    'var(--grey700)',
+    'var(--grey600)',
+    'var(--grey500)',
+    'var(--grey400)',
+    'var(--grey300)',
+    'var(--grey200)',
+    'var(--grey100)'
+  ];
+
+  const states = [
+    'var(--primary)',
+    'var(--primaryTransparent)',
+    'var(--primaryDark)',
+    'var(--secondary)',
+    'var(--secondaryTransparent)',
+    'var(--secondaryDark)',
+    'var(--tertiary)',
+    'var(--tertiaryTransparent)',
+    'var(--tertiaryDark)'
+  ];
+  
   return (
     <>
       <Layout pageTitle={`${title} | About`} description={description}>
@@ -21,6 +68,30 @@ const About = ({ title, description, ...props }) => {
         <p>
           If you'd like to see more of what I've been working on, take a look at my <a href="https://codepen.io/ryanparag">CodePen</a>, <a href="https://dribbble.com/ryanparag">Dribbble</a>, and <a href="https://github.com/ryan-parag">GitHub</a>. For a more in-depth look at my design process or if you have a project in mind, <a href="mailto:parag.ryan@gmail.com">let's chat - I'm available</a>.
         </p>
+        <hr/>
+        <h4>Current Theme:</h4>
+        <span>Neutrals</span>
+        <SwatchContainer>
+          {
+            neutrals.map(color => (
+              <Swatch bg={color} style={{
+                background: color,
+                color: color
+              }}/>
+            ))
+          }
+        </SwatchContainer>
+        <span>Primary / Secondary / Tertiary</span>
+        <SwatchContainer>
+          {
+            states.map(color => (
+              <Swatch bg={color} style={{
+                background: color,
+                color: color
+              }}/>
+            ))
+          }
+        </SwatchContainer>
       </Layout>
     </>
   )
