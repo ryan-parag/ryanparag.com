@@ -6,21 +6,24 @@ date: '2020-07-07'
 hero_image: ../static/starting-the-journey.png
 ---
 
-For the past year, I've pondered whether to begin writing and sharing about the things I'm tinkering with - not only as a way to pull back the curtain a bit on desiging products, but also a way to begin tracking my own progress on learning new things.
+For the past year, I've pondered whether to begin writing and sharing about the things I'm tinkering with - not only as a way to pull back the curtain a bit on desiging products, but also a way to begin tracking my progress on learning new things. I also want to share things I find interesting and maybe even spotlighting the designs of other products.
 
-So I'll be starting to document my journey in learning and building new things. Expect to see sketches and ideas about some of the recent tools and ideas I've been playing with:
+ Expect to see sketches and ideas about some of the recent tools and ideas I've been playing with:
 
-- Figma Plugins
-- Design Token tooling
-- SwiftUI
+- Figma plugins
+- Design token tooling
+- Prototyping
+- Design portfolios 😭
+- SwiftUI/Flutter
 - React, Next.js, Gatsby
-- Firebase
 
 ```
 Code Example
 ```
 
-Besides design/development tools, I've also been thinking about how teams are structured and what's working for my current team, and what doesn't.
+Besides design/development tools, I've also been thinking about how designers fit in teams and how cross-team collaboration works between different team structures (eg. solo designers to large design teams).
+
+I have alot of other thoughts and hobbies (☕️, 🚴‍♀️, 🚘), so maybe I'll sprinkle some of those in as well.
 
 If you have an idea or want to hear my take on something, fill out the form below.
 
