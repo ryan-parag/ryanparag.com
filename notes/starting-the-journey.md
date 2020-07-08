@@ -17,14 +17,10 @@ For the past year, I've pondered whether to begin writing and sharing about the 
 - SwiftUI/Flutter
 - React, Next.js, Gatsby
 
-```
-Code Example
-```
-
 Besides design/development tools, I've also been thinking about how designers fit in teams and how cross-team collaboration works between different team structures (eg. solo designers to large design teams).
 
 I have alot of other thoughts and hobbies (☕️, 🚴‍♀️, 🚘), so maybe I'll sprinkle some of those in as well.
 
-If you have an idea or want to hear my take on something, fill out the form below.
+If you have an idea or want to hear my take on something in particular, let me know by filling out the form below.
 
 Stay tuned!
