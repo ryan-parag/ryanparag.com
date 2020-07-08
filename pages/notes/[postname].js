@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
-import CodeBlock from '@components/CodeBlock'
 import { format } from 'timeago.js'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactForm from '@components/ContactForm'
@@ -47,7 +46,6 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
           <div>
             <ReactMarkdown
               source={markdownBody}
-              renderers={{ code: CodeBlock }}
             />
           </div>
         </article>
