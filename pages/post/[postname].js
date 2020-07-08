@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
-import CodeBlock from './node_modules/@components/CodeBlock'
+import CodeBlock from '@components/CodeBlock'
 import { format } from 'timeago.js'
-import { designTokens } from './node_modules/@components/Theme/designTokens'
-import ContactForm from './node_modules/@components/ContactForm'
+import { designTokens } from '@components/Theme/designTokens'
+import ContactForm from '@components/ContactForm'
 
-import Layout from './node_modules/@components/Layout'
-import getSlugs from './node_modules/@utils/getSlugs'
+import Layout from '@components/Layout'
+import getSlugs from '@utils/getSlugs'
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>
