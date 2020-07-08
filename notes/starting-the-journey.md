@@ -16,6 +16,10 @@ So I'll be starting to document my journey in learning and building new things. 
 - React, Next.js, Gatsby
 - Firebase
 
+```
+Code Example
+```
+
 Besides design/development tools, I've also been thinking about how teams are structured and what's working for my current team, and what doesn't.
 
 If you have an idea or want to hear my take on something, fill out the form below.
