@@ -38,7 +38,8 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
               style={{
                 marginBottom: designTokens.space[3],
                 display: 'block',
-                width: '100%'
+                width: '100%',
+                borderRadius: designTokens.space[2]
               }}
               alt={frontmatter.title}
             />
