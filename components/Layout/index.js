@@ -8,6 +8,7 @@ import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, h
 import { designTokens } from '../Theme/designTokens'
 import Footer from '../Footer'
 import { StaticKitProvider } from '@statickit/react'
+import ReactGA from 'react-ga'
 
 const LayoutContainer = styled.div`
   width: 100%;
@@ -20,6 +21,11 @@ const Main = styled.main`
 `
 
 export default function Layout({ children, pageTitle, description, ...props }) {
+
+  if (typeof window !== "undefined") {
+    ReactGA.initialize('UA-63443247-5')
+    ReactGA.pageview(window.location.pathname + window.location.search)
+  }
 
   const [mounted, setMounted] = React.useState(false)
 
