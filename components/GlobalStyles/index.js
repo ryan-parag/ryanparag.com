@@ -273,4 +273,8 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom: ${designTokens.space[5]};
     }
   }
+  article img {
+    display: block;
+    width: 100%;
+  }
 `;
