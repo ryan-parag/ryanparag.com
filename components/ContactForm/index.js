@@ -38,6 +38,24 @@ const EmptyState = styled.div`
   flex-direction: column;
 `
 
+const ImgContainer = styled.div`
+  width: ${designTokens.space[8]};
+  height: ${designTokens.space[8]};
+  display: inline-flex;
+  background: var(--grey200);
+  border: 1px solid var(--grey300);
+  color: var(--primary);
+  align-items: center;
+  justify-content: center;
+  padding: ${designTokens.space[1]};
+  border-radius: calc(${designTokens.space[4]} - ${designTokens.space[1]});
+`
+
+const ImgProfile = styled.img`
+  display: block;
+  width: 100%;
+`
+
 export default function ContactForm() {
   
   const [state, handleSubmit] = useForm("contactForm");
@@ -62,6 +80,9 @@ export default function ContactForm() {
 
   return(
     <form onSubmit={handleSubmit}>
+      <ImgContainer>
+        <ImgProfile src="/static/thanks.png"/>
+      </ImgContainer>
       <h3>Thanks for reading!</h3>
       <p>Do you have feedback about this post or want to suggest an idea you'd like to hear about in a future post? Send me a message!</p>
       <label htmlFor="message">
