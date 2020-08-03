@@ -22,6 +22,35 @@ const SwatchContainer = styled.div`
   }
 `
 
+const ProfileImg = styled.div`
+  width: ${designTokens.space[9]};
+  height: ${designTokens.space[9]};
+  border-radius: 50%;
+  background: var(--primaryTransparent);
+  position: relative;
+  img {
+    display: block; width: 100%;
+  }
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: -${designTokens.space[4]};
+    right: -${designTokens.space[4]};
+    width: ${designTokens.space[4]};
+    height: ${designTokens.space[4]};
+    display: block;
+    background: var(--secondaryTransparent);
+    border-radius: 50%;
+  }
+  &:after {
+    top: ${designTokens.space[2]};
+    right: -${designTokens.space[7]};
+    width: ${designTokens.space[3]};
+    height: ${designTokens.space[3]};
+    background: var(--tertiaryTransparent);
+  }
+`
+
 const About = ({ title, description, ...props }) => {
 
   const neutrals = [
@@ -51,7 +80,10 @@ const About = ({ title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={`${title} | About`} description={description}>
-        <h2>Hello, I'm Ryan.✌🏼</h2>
+        <ProfileImg>
+          <img src="/static/profile.png"/>
+        </ProfileImg>
+        <h2>Hello, I'm Ryan.👋</h2>
 
         <p>
         I'm a Digital Product Designer currently based in Tampa, Florida. I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
