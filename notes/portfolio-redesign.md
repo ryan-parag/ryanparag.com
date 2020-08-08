@@ -22,6 +22,8 @@ If you're setting out to (re)build your portfolio, there are a few routes/tools 
 
 I'm probably forgetting some, but I think that should cover what most designers use to build their portfolios.
 
+---
+
 > I chose to code my previous portfolio. I also chose to code my new portfolio, but with newer technologies.
 
 ![Old Portfolio](../static/portfolio-redesign-old.png)
@@ -32,6 +34,8 @@ I'm probably forgetting some, but I think that should cover what most designers 
 - SCSS
 - JS, Jquery
 - Drag-and-drop FTP for deploying
+
+---
 
 ![New Portfolio](../static/portfolio-redesign-new.png)
 
@@ -53,6 +57,8 @@ Previously, I was using:
 I switched to:
 
 **Inter**: an open-source sans-serif made for more-legible UI
+
+---
 
 **Why did I choose to change the typographic style?**
 
@@ -80,6 +86,8 @@ $color-green: #00d1b2;
 $color-blue: #79cbca;
 $color-pink: #e684ae;
 ```
+
+---
 
 New:
 ![New Theme](../static/portfolio-redesign-theme-new.png)
@@ -112,9 +120,13 @@ colors: {
   }
 ```
 
+---
+
 **Things I changed in the color theme:**
 - Higher-contrast
 - Transparency and variants
+
+---
 
 I also chose to change the UI for the toggle itself.
 
@@ -122,6 +134,8 @@ I also chose to change the UI for the toggle itself.
 
 Old:
 ![Old Toggle](../static/portfolio-redesign-toggle-old.png)
+
+---
 
 New:
 ![New Toggle](../static/portfolio-redesign-toggle-new.png)
@@ -147,8 +161,12 @@ Using a little JavaScript, I could hide routes and show users a password-protect
 Old:
 ![Old Auth](../static/portfolio-redesign-auth-old.png)
 
+---
+
 New:
 ![New Auth](../static/portfolio-redesign-auth-new.png)
+
+---
 
 One of the most annoying things when looking at portfolios with password-protection is the fact that users must repeatedly input a password when entering password-protected projects.
 
