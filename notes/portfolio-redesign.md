@@ -160,4 +160,4 @@ Layout was all over the place in my old portfolio. I wanted to change it so the 
 
 ## Conclusion
 
-Hopefully some of that helps! I'm still making incremental changes, but if you have feedback or need help iwth your own portfolio, ping me using the form below.
+Hopefully some of that helps! I'm still making incremental changes, but if you have feedback or need help with your own portfolio, ping me using the form below.
