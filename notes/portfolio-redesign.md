@@ -52,7 +52,7 @@ Previously, I was using:
 
  **Why did I choose to change the typographic style?**
 
- Because 🤷‍♀️- but really, I wanted to implement a _bit_ more minimalism and have the typography not intrude on the designs I would be showcasing.
+ Because 🤷‍♀️- but really, I wanted to implement a _bit_ more minimalism and not have the typography intrude on the designs I would be showcasing.
 
  ## Colors and Dark Mode
 
