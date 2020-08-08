@@ -6,7 +6,7 @@ date: '2020-08-08'
 hero_image: ../static/portfolio-redesign.png
 ---
 
-A few months back, I began redesigning my portfolio - again 🤦‍♀️. I not only wanted to add a couple of the newer projects I was working on, but I also wanted to address larger design issues and expirement with building it in some newer technologies.
+A few months back, I began redesigning my portfolio - again 🤦‍♀️. I not only wanted to add a couple of the newer projects I was working on, but I also wanted to address larger design issues and experiment with building it in some newer technologies.
 
 Although the overall design might seem unchanged at a glance, I implemented/changed a ton of details in the design and under-the-hood.
 
@@ -45,18 +45,18 @@ I'm probably forgetting some, but I think that should cover what most designers 
 ## Typography
 
 Previously, I was using:
-- **IBM Plex Sans**: a tall x-height sans-serif that comes in a wide range of weights
+**IBM Plex Sans**: a tall x-height sans-serif that comes in a wide range of weights
  
- I switched to:
- - **Inter**: an open-source sans-serif made for more-legible UI
+I switched to:
+- **Inter**: an open-source sans-serif made for more-legible UI
 
- **Why did I choose to change the typographic style?**
+- **Why did I choose to change the typographic style?**
 
- Because 🤷‍♀️- but really, I wanted to implement a _bit_ more minimalism and not have the typography intrude on the designs I would be showcasing.
+Because 🤷‍♀️- but really, I wanted to implement a _bit_ more minimalism and not have the typography intrude on the designs I would be showcasing.
 
- ## Colors and Dark Mode
+## Colors and Dark Mode
 
- I _love_ when I see websites/apps give me the option to choose to use dark/night modes. When I was building out my previous portfolio, I _really_ wanted to implement the feature and give viewers the option to choose which to use.
+I _love_ when I see websites/apps give me the option to choose to use dark/night modes. When I was building out my previous portfolio, I _really_ wanted to implement the feature and give viewers the option to choose which to use.
 
 Old:
 ![Old Theme](../static/portfolio-redesign-theme-old.png)
@@ -133,12 +133,12 @@ I wanted to make the about page focus on the content more. Here are the things t
 - Reduced number of social media/contact items
 
 ![About page](../static/portfolio-redesign-about-page.png)
- 
- ## Auth and Private Projects
 
- Alot of tools (Webflow, Squarespace) let designers password-protect projects using their CMS platform. Even previously, I needed to figure out a way to simply password protect selected projects.
+## Auth and Private Projects
 
- Using a little JavaScript, I could hide routes and show users a password-protect screen on projects that required authorization. I also chose to add in some _custom lettering_ for a bit of flourish when users came upon this page:
+Alot of tools (Webflow, Squarespace) let designers password-protect projects using their CMS platform. Even previously, I needed to figure out a way to simply password protect selected projects.
+
+Using a little JavaScript, I could hide routes and show users a password-protect screen on projects that required authorization. I also chose to add in some _custom lettering_ for a bit of flourish when users came upon this page:
 
 Old:
 ![Old Auth](../static/portfolio-redesign-auth-old.png)
