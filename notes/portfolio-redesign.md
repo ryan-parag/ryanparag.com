@@ -45,12 +45,16 @@ I'm probably forgetting some, but I think that should cover what most designers 
 ## Typography
 
 Previously, I was using:
-**IBM Plex Sans**: a tall x-height sans-serif that comes in a wide range of weights
- 
-I switched to:
-- **Inter**: an open-source sans-serif made for more-legible UI
 
-- **Why did I choose to change the typographic style?**
+**IBM Plex Sans**: a tall x-height sans-serif that comes in a wide range of weights
+
+---
+
+I switched to:
+
+**Inter**: an open-source sans-serif made for more-legible UI
+
+**Why did I choose to change the typographic style?**
 
 Because 🤷‍♀️- but really, I wanted to implement a _bit_ more minimalism and not have the typography intrude on the designs I would be showcasing.
 
