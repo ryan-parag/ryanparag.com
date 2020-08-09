@@ -46,6 +46,8 @@ I'm probably forgetting some, but I think that should cover what most designers 
 - MDX for markdown-ish pages
 - Vercel for deploying
 
+---
+
 ## Typography
 
 Previously, I was using:
@@ -63,6 +65,8 @@ I switched to:
 **Why did I choose to change the typographic style?**
 
 Because 🤷‍♀️- but really, I wanted to implement a _bit_ more minimalism and not have the typography intrude on the designs I would be showcasing.
+
+---
 
 ## Colors and Dark Mode
 
@@ -140,6 +144,8 @@ Old:
 New:
 ![New Toggle](../static/portfolio-redesign-toggle-new.png)
 
+---
+
 ## About Page
 
 I wanted to make the about page focus on the content more. Here are the things that changed:
@@ -151,6 +157,8 @@ I wanted to make the about page focus on the content more. Here are the things t
 - Reduced number of social media/contact items
 
 ![About page](../static/portfolio-redesign-about-page.png)
+
+---
 
 ## Auth and Private Projects
 
@@ -174,11 +182,15 @@ _What if I could make it so users only have to input the password once and saved
 
 In my new portfolio I have it so once users enter the password once, they no longer have to input a password again. A few other navigation items become available, as well as a nice little "+" next to the logo.
 
+---
+
 ## Pages
 
 Layout was all over the place in my old portfolio. I wanted to change it so the layout was more Medium-like (single column) and was a less sporadic while scrolling through. On top of changing the page headers, I changed it so that each case study had defined sections:
 
 ![New Auth](../static/portfolio-redesign-pages.png)
+
+---
 
 ## Conclusion
 
