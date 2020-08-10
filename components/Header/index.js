@@ -78,19 +78,26 @@ const HeaderInner = styled.div`
 const Nav = styled.nav`
   a {
     padding: ${designTokens.space[2]} ${designTokens.space[3]};
-    border: 1px solid var(--grey200);
     font-size: ${designTokens.fontSizes[1]};
-    border-radius: ${designTokens.space[1]};
     margin: 0 ${designTokens.space[1]} 0 0;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    border-radius: ${designTokens.space[2]};
+    border: 1px solid var(--grey200);
+    background: linear-gradient(to top, var(--grey100), var(--grey0));
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
     transition: all 120ms ease-out 0s;
     &:hover {
-      background: var(--grey100);
+      border-color: var(--grey300);
+      background: transparent;
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);
     }
     &.selected {
       background: var(--primaryTransparent);
       color: var(--primaryDark);
-      border-color: transparent;
+      border-color: var(--primaryTransparent);
     }
   }
 `
@@ -167,9 +174,7 @@ const MobileNavItem = styled.li`
 `
 
 const ThemeButton = styled.button`
-  background: transparent;
   padding: 0;
-  border-radius: ${designTokens.space[1]};
   color: var(--grey600);
   display: inline-flex;
   align-items: center;
@@ -177,16 +182,19 @@ const ThemeButton = styled.button`
   font-family: inherit;
   color: inherit;
   cursor: pointer;
-  border: 1px solid var(--grey200);
   height: 40px;
   width: 40px;
+  border-radius: ${designTokens.space[2]};
+  border: 1px solid var(--grey200);
+  background: linear-gradient(to top, var(--grey100), var(--grey0));
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
   transition: all 120ms ease-out 0s;
   svg {
     fill: currentColor;
     color: inherit;
   }
   &:hover, &:focus {
-    background: var(--grey100);
+    border-color: var(--grey300);
   }
 `
 

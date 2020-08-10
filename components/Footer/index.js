@@ -48,16 +48,17 @@ const FooterListItem = styled.li`
 `
 const FooterButton = styled.button`
   padding: ${designTokens.space[2]};
-  border: 1px solid var(--grey200);
-  border-radius: ${designTokens.space[1]};
   display: inline-block;
   font-family: inherit;
   font-size: ${designTokens.fontSizes[0]};
   cursor: pointer;
-  background: transparent;
+  border-radius: ${designTokens.space[1]};
+  border: 1px solid var(--grey200);
+  background: linear-gradient(to top, var(--grey100), var(--grey0));
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
   transition: all 120ms ease-out 0s;
   &:hover, &:focus {
-    background: var(--grey100);
+    border-color: var(--grey300);
   }
 `
 
