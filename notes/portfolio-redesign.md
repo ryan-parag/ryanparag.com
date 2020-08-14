@@ -54,11 +54,15 @@ Previously, I was using:
 
 **IBM Plex Sans**: a tall x-height sans-serif that comes in a wide range of weights
 
+![Old Typography](../static/portfolio-redesign-type-old.png)
+
 ---
 
 I switched to:
 
 **Inter**: an open-source sans-serif made for more-legible UI
+
+![New Typography](../static/portfolio-redesign-type-new.png)
 
 ---
 
