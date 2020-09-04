@@ -1,7 +1,7 @@
 ---
 title: 'From Figma to Code'
 author: 'Ryan Parag'
-description: 'Kicking off designing things in the open and sharing the things I build'
+description: 'Designing a simple Bitcoin Tracker and translating to code'
 date: '2020-09-04'
 hero_image: ../static/from-figma-to-code.png
 ---
