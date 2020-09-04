@@ -12,7 +12,7 @@ In an effort to keep up with this site's ethos and show a bit more of how I desi
 
 TLDR:
 
-[Click here for the Figma file](https://www.figma.com/file/yZBajBKy1rlvunZXe1Hqub/Bitcoin-Tracker?node-id=2%3A5175)
+[Click here for the Figma file](https://www.figma.com/community/file/883721353057504948/Bitcoin-Tracker)
 
 [Click here to go to the CodePen](https://codepen.io/ryanparag/pen/mdPMqmv)
 
@@ -39,7 +39,7 @@ Let's start with a use case: **a user wants to be able to see the current price 
 
 Let's also start by reverse engineering what I did:
 
-[Click here for the Figma file](https://www.figma.com/file/yZBajBKy1rlvunZXe1Hqub/Bitcoin-Tracker?node-id=2%3A5175)
+[Click here for the Figma file](https://www.figma.com/community/file/883721353057504948/Bitcoin-Tracker)
 
 ------------------
 
@@ -55,13 +55,13 @@ In order to start building some of the base UI, I created a color palette (with 
 
 ### Components
 
-Now that we have a few colors and text styles to use, we can start building components. Since we're incorporating a dark and light mode, we probably need two versions of a components to accomodate for each theme. We would start by building a _.base_ components - prefixed with a period to avoid publishing when we publish a library.
+Now that we have a few colors and text styles to use, we can start building components. Since we're incorporating a dark and light mode, we probably need two versions of a components to accomodate for each theme. We would start by building a _.base_ component - prefixed with a period to avoid publishing when we publish a library.
 
-Now that we have a _.base_ we would use that to build light/dark versions of the components:
+Now that we have a _.base_, we would use that to build light/dark versions of the components:
 
 ![Themed components](../static/from-figma-to-code_3.png)
 
-Once we finish building our components, we ca start building the layout:
+Once we finish building our components, we can start building the layout:
 
 ![Layout](../static/from-figma-to-code_4.png)
 
