@@ -5,6 +5,7 @@ import CodeBlock from '@components/CodeBlock'
 import { format } from 'timeago.js'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactForm from '@components/ContactForm'
+import ImgZoom from '@components/ImgZoom'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
@@ -46,7 +47,10 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
           <div>
             <ReactMarkdown
               source={markdownBody}
-              renderers={{ code: CodeBlock }}
+              renderers={{
+                code: CodeBlock,
+                image: ImgZoom
+              }}
             />
           </div>
         </article>
