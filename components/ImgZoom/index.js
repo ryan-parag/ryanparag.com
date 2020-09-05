@@ -11,6 +11,7 @@ export default function({src,alt}) {
             border: '1px solid var(--grey300)',
             cursor: 'zoom-in'
           }}
+          title="Click or scroll to zoom, drag to navigate"
         >
           <TransformComponent>
             <img
