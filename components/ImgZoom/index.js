@@ -9,7 +9,9 @@ export default function({src,alt}) {
         <div
           style={{
             border: '1px solid var(--grey300)',
-            cursor: 'zoom-in'
+            cursor: 'zoom-in',
+            background: 'var(--grey300)',
+            width: '100%'
           }}
           title="Click or scroll to zoom, drag to navigate"
         >

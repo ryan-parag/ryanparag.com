@@ -274,7 +274,7 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   article img {
-    display: block;
     width: 100%;
+    height: auto;
   }
 `;
