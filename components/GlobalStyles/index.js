@@ -275,6 +275,5 @@ export const GlobalStyles = createGlobalStyle`
   }
   article img {
     width: 100%;
-    height: auto;
   }
 `;

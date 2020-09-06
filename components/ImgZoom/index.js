@@ -1,27 +1,24 @@
 import React from 'react'
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
+import Zoom from 'react-medium-image-zoom'
 
 export default function({src,alt}) {
   return(
-      <TransformWrapper
-       maxScale={3}
+      <Zoom
+      overlayBgColorEnd={'var(--transparent)'}
+      overlayBgColorStart={'var(--transparent)'}
+      closeText={'Close'}
+      zoomMargin={40}
       >
-        <div
+        <img
+          src={src}
+          alt={alt}
+          width="500"
           style={{
-            border: '1px solid var(--grey300)',
-            cursor: 'zoom-in',
-            background: 'var(--grey300)',
-            width: '100%'
+            display: 'block',
+            margin: 'auto',
+            border: '1px solid var(--grey300)'
           }}
-          title="Click or scroll to zoom, drag to navigate"
-        >
-          <TransformComponent>
-            <img
-              src={src}
-              alt={alt}
-            />
-          </TransformComponent>
-        </div>
-      </TransformWrapper>
+        />
+      </Zoom>
   )
 }
