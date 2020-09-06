@@ -9,6 +9,15 @@ const Notes = ({ posts, title, description, ...props }) => {
         <h1>Notes</h1>
         <p>I wanted to begin designing in the open and sharing what/how I design digital products. These are my collection of notes and ideas - thanks for reading!</p>
         <PostList posts={posts} />
+        <p>
+          <small
+            style={{
+              color: 'var(--grey400)'
+            }}
+          >
+            You've made it to the end
+          </small>
+        </p>
       </Layout>
     </>
   )

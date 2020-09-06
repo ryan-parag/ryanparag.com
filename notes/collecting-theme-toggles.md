@@ -18,9 +18,11 @@ I'll try to keep this list updated as I add something new to CodePen or when I t
 
 I've documented the theme toggles in my own portfolio (new and old), but here they are again:
 
-[![Theme toggle](../static/collecting-theme-toggles_new-p.png)](https://ryanparag.com)
+[![Theme toggle](../static/collecting-theme-toggles_new-p.png)]
+[View the toggle](https://ryanparag.com)
 
-[![Theme toggle](../static/collecting-theme-toggles_old-p.png)](https://grapalab.com)
+[![Theme toggle](../static/collecting-theme-toggles_old-p.png)]
+[View the toggle](https://grapalab.com)
 
 ----
 
@@ -29,50 +31,73 @@ I've documented the theme toggles in my own portfolio (new and old), but here th
 Here are some code sketches in CodePen - click an image to play with a toggle and check out the code:
 
 [![Theme toggle](../static/collecting-theme-toggles_1.gif)](https://codepen.io/ryanparag/full/yGaZwr)
+[View the toggle](https://codepen.io/ryanparag/full/yGaZwr)
 
 [![Theme toggle](../static/collecting-theme-toggles_2.gif)](https://codepen.io/ryanparag/full/rqVoJw)
+[View the toggle](https://codepen.io/ryanparag/full/rqVoJw)
 
 [![Theme toggle](../static/collecting-theme-toggles_3.png)](https://codepen.io/ryanparag/full/XywVEQ)
+[View the toggle](https://codepen.io/ryanparag/full/XywVEQ)
 
 [![Theme toggle](../static/collecting-theme-toggles_4.png)](https://codepen.io/ryanparag/full/gZEbOq)
+[View the toggle](https://codepen.io/ryanparag/full/gZEbOq)
 
 [![Theme toggle](../static/collecting-theme-toggles_5.png)](https://codepen.io/ryanparag/full/Vgxrbx)
+[View the toggle](https://codepen.io/ryanparag/full/Vgxrbx)
 
 [![Theme toggle](../static/collecting-theme-toggles_6.png)](https://codepen.io/ryanparag/full/YmQmmJ)
+[View the toggle](https://codepen.io/ryanparag/full/YmQmmJ)
 
 [![Theme toggle](../static/collecting-theme-toggles_7.png)](https://codepen.io/ryanparag/full/RvxWzG)
+[View the toggle](https://codepen.io/ryanparag/full/RvxWzG)
 
 [![Theme toggle](../static/collecting-theme-toggles_8.png)](https://codepen.io/ryanparag/full/JVmmgv)
+[View the toggle](https://codepen.io/ryanparag/full/JVmmgv)
 
 [![Theme toggle](../static/collecting-theme-toggles_9.png)](https://codepen.io/ryanparag/full/PVvgdP)
+[View the toggle](https://codepen.io/ryanparag/full/PVvgdP)
 
 [![Theme toggle](../static/collecting-theme-toggles_10.png)](https://codepen.io/ryanparag/full/WBvdjR)
+[View the toggle](https://codepen.io/ryanparag/full/WBvdjR)
 
 [![Theme toggle](../static/collecting-theme-toggles_11.png)](https://codepen.io/ryanparag/full/ZNZzrb)
+[View the toggle](https://codepen.io/ryanparag/full/ZNZzrb)
 
 [![Theme toggle](../static/collecting-theme-toggles_12.png)](https://codepen.io/ryanparag/full/vPoGmJ)
+[View the toggle](https://codepen.io/ryanparag/full/vPoGmJ)
 
 [![Theme toggle](../static/collecting-theme-toggles_13.png)](https://codepen.io/ryanparag/full/OeNYVg)
+[View the toggle](https://codepen.io/ryanparag/full/OeNYVg)
 
 [![Theme toggle](../static/collecting-theme-toggles_14.png)](https://codepen.io/ryanparag/full/yLBvdWR)
+[View the toggle](https://codepen.io/ryanparag/full/yLBvdWR)
 
 [![Theme toggle](../static/collecting-theme-toggles_15.png)](https://codepen.io/ryanparag/full/eYObzOP)
+[View the toggle](https://codepen.io/ryanparag/full/eYObzOP)
 
 [![Theme toggle](../static/collecting-theme-toggles_16.png)](https://codepen.io/ryanparag/full/rXJgjE)
+[View the toggle](https://codepen.io/ryanparag/full/rXJgjE)
 
 [![Theme toggle](../static/collecting-theme-toggles_17.png)](https://codepen.io/ryanparag/full/LYPdpmw)
+[View the toggle](https://codepen.io/ryanparag/full/LYPdpmw)
 
 [![Theme toggle](../static/collecting-theme-toggles_18.png)](https://codepen.io/ryanparag/full/NWWRYro)
+[View the toggle](https://codepen.io/ryanparag/full/NWWRYro)
 
 [![Theme toggle](../static/collecting-theme-toggles_19.png)](https://codepen.io/ryanparag/full/QWyOVJe)
+[View the toggle](https://codepen.io/ryanparag/full/QWyOVJe)
 
 [![Theme toggle](../static/collecting-theme-toggles_20.png)](https://codepen.io/ryanparag/full/agKQaM)
+[View the toggle](https://codepen.io/ryanparag/full/agKQaM)
 
 [![Theme toggle](../static/collecting-theme-toggles_21.png)](https://codepen.io/ryanparag/full/VoZJrd)
+[View the toggle](https://codepen.io/ryanparag/full/VoZJrd)
 
 [![Theme toggle](../static/collecting-theme-toggles_22.png)](https://codepen.io/ryanparag/full/rNeybEe)
+[View the toggle](https://codepen.io/ryanparag/full/rNeybEe)
 
 [![Theme toggle](../static/collecting-theme-toggles_23.png)](https://codepen.io/ryanparag/full/gJXgYw)
+[View the toggle](https://codepen.io/ryanparag/full/gJXgYw)
 
 ----
 

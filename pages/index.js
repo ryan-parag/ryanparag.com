@@ -42,7 +42,7 @@ const Index = ({ posts, title, description, ...props }) => {
         </div>
         <h1>Ryan's Notes</h1>
         <p className="lead">
-          Hello, I'm Ryan - these are my notes about designing in the open and building thoughtful products. 
+          Hello, I'm Ryan Parag - these are my notes about designing in the open and building thoughtful products. 
         </p>
         <p>
           ..also my playground for some expiremental UI ideas 🤔
