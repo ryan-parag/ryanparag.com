@@ -12,11 +12,11 @@ export default function({src,alt}) {
         <img
           src={src}
           alt={alt}
-          width="500"
           style={{
             display: 'block',
             margin: 'auto',
-            border: '1px solid var(--grey300)'
+            border: '1px solid var(--grey300)',
+            width: '100%'
           }}
         />
       </Zoom>
