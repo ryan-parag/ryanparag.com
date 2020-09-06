@@ -44,7 +44,7 @@ export default function PostList({ posts }) {
                       <h3 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
                         {post?.frontmatter?.title}
                       </h3>
-                      <p style={{ marginBottom: designTokens.space[2] }}>{post?.frontmatter.description}</p>
+                      <p style={{ marginBottom: designTokens.space[2] }}>{post.frontmatter.description}</p>
                       <div>
                         <small>Updated {format(post.frontmatter.date)}</small>
                       </div>
