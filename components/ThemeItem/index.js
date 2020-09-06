@@ -32,6 +32,17 @@ const ThemeContainer = styled.button`
   }
 `
 
+const SwatchItem = styled.div`
+  border-radius: 50%;
+  width: ${designTokens.space[3]};
+  height: ${designTokens.space[3]};
+  box-shadow: 0px 0px 0px 2px ${props => props.shadow};
+  border: 1px solid ${props => props.borderColor};
+  background: ${props => props.color};
+  display: inline-block;
+  margin: 0 ${designTokens.space[1]};
+`
+
 export default function ThemeItem({theme, clickHandle, active}) {
   return(
     <ThemeContainer
@@ -45,37 +56,22 @@ export default function ThemeItem({theme, clickHandle, active}) {
       }}
     >
       {theme.name}
-      <div style={{display: 'flex', marginTop: designTokens.space[2], justifyContent: 'center'}}>
-        <div style={{
-          borderRadius: '50%',
-          margin: `0 ${designTokens.space[1]}`,
-          height: designTokens.space[3],
-          width: designTokens.space[3], 
-          background: theme.primary,
-          border: `1px solid ${theme.primaryDark}`,
-          boxShadow: `0px 0px 0px 2px ${theme.tertiaryTransparent}`
-        }}>
-        </div>
-        <div style={{
-          borderRadius: '50%',
-          margin: `0 ${designTokens.space[1]}`,
-          height: designTokens.space[3],
-          width: designTokens.space[3], 
-          background: theme.secondary,
-          border: `1px solid ${theme.secondaryDark}`,
-          boxShadow: `0px 0px 0px 2px ${theme.tertiaryTransparent}`
-        }}>
-        </div>
-        <div style={{
-          borderRadius: '50%',
-          margin: `0 ${designTokens.space[1]}`,
-          height: designTokens.space[3],
-          width: designTokens.space[3], 
-          background: theme.tertiary,
-          border: `1px solid ${theme.tertiaryDark}`,
-          boxShadow: `0px 0px 0px 2px ${theme.tertiaryTransparent}`
-        }}>
-        </div>
+      <div style={{textAlign: 'center', marginTop: designTokens.space[2]}}>
+        <SwatchItem
+          color={theme.primary}
+          borderColor={theme.primaryDark}
+          shadow={theme.tertiaryTransparent}
+        />
+        <SwatchItem
+          color={theme.secondary}
+          borderColor={theme.secondaryDark}
+          shadow={theme.tertiaryTransparent}
+        />
+        <SwatchItem
+          color={theme.tertiary}
+          borderColor={theme.tertiaryDark}
+          shadow={theme.tertiaryTransparent}
+        />
       </div>
     </ThemeContainer>
   )

@@ -4,30 +4,9 @@ import PostList from '@components/PostList/'
 import Logo from '@components/Logo'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
+import { ButtonLink, ButtonAnchorTag } from '@components/Button'
 
 import getPosts from '@utils/getPosts'
-
-const PostsLink = styled.span`
-  a {
-    padding: ${designTokens.space[2]} ${designTokens.space[3]};
-    display: inline-flex;
-    align-items:center;
-    font-weight: 700;
-    font-size: ${designTokens.fontSizes[1]};
-    border-radius: ${designTokens.space[2]};
-    border: 1px solid var(--grey200);
-    background: linear-gradient(to top, var(--grey100), var(--grey0));
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
-    transition: all 120ms ease-out 0s;
-    &:hover {
-      border-color: var(--grey300);
-      text-decoration: none;
-    }
-    &:focus {
-      box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);
-    }
-  }
-`
 
 const Index = ({ posts, title, description, ...props }) => {
 
@@ -47,16 +26,19 @@ const Index = ({ posts, title, description, ...props }) => {
         <p>
           ..also my playground for some expiremental UI ideas 🤔
         </p>
-        <p>
-          <Link href="/about">
-            More about me
-          </Link>
-          <br/>
-          <a href="https://ryanparag.com">
+        <div>
+          <ButtonLink
+            marginRight={designTokens.space[3]}
+          >
+            <Link href="/about">
+              More about me
+            </Link>
+          </ButtonLink>
+          <ButtonAnchorTag href="https://ryanparag.com">
             View my portfolio
             <span className="icon">&rarr;</span>
-          </a>
-        </p>
+          </ButtonAnchorTag>
+        </div>
         <main>
           <h3>Latest Notes</h3>
           <PostList posts={latestPosts} />
@@ -66,7 +48,7 @@ const Index = ({ posts, title, description, ...props }) => {
               padding: designTokens.space[3]
             }}
           >
-            <PostsLink>
+            <ButtonLink>
               <Link href="/notes/">
                 <a>
                   <img
@@ -80,7 +62,7 @@ const Index = ({ posts, title, description, ...props }) => {
                   Read more notes
                 </a>
               </Link>
-            </PostsLink>
+            </ButtonLink>
           </div>
         </main>
       </Layout>

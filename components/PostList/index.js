@@ -45,8 +45,15 @@ export default function PostList({ posts }) {
                         {post?.frontmatter?.title}
                       </h3>
                       <p style={{ marginBottom: designTokens.space[2] }}>{post.frontmatter.description}</p>
-                      <div>
-                        <small>Updated {format(post.frontmatter.date)}</small>
+                      <div
+                        style={{
+                          color: 'var(--primaryDark)',
+                          
+                        }}
+                      >
+                        <small>
+                          Updated {format(post.frontmatter.date)}
+                        </small>
                       </div>
                     </div>
                   </a>

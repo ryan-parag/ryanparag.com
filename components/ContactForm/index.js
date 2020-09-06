@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import { useForm, ValidationError } from '@statickit/react';
 import Link from 'next/link'
+import { ButtonLink } from '@components/Button'
 
 const ContactContainer = styled.div`
   padding: ${designTokens.space[4]};
@@ -36,28 +37,6 @@ const LinkContainer = styled.div`
   padding: ${designTokens.space[7]} 0 0;
   display: flex;
   justify-content: center;
-`
-
-const PostsLink = styled.span`
-  a {
-    padding: ${designTokens.space[2]} ${designTokens.space[3]};
-    display: inline-flex;
-    align-items:center;
-    font-weight: 700;
-    font-size: ${designTokens.fontSizes[1]};
-    border-radius: ${designTokens.space[2]};
-    border: 1px solid var(--grey200);
-    background: linear-gradient(to top, var(--grey100), var(--grey0));
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
-    transition: all 120ms ease-out 0s;
-    &:hover {
-      border-color: var(--grey300);
-      text-decoration: none;
-    }
-    &:focus {
-      box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);
-    }
-  }
 `
 
 const Button = styled.button`
@@ -155,7 +134,7 @@ export default function ContactForm() {
         </ContactContent>
       </ContactContainer>
       <LinkContainer>
-        <PostsLink>
+        <ButtonLink>
           <Link href="/notes/">
             <a>
               <img
@@ -169,7 +148,7 @@ export default function ContactForm() {
               Read more notes
             </a>
           </Link>
-        </PostsLink>
+        </ButtonLink>
       </LinkContainer>
       <hr/>
       <form onSubmit={handleSubmit}>

@@ -6,6 +6,7 @@ import { format } from 'timeago.js'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactForm from '@components/ContactForm'
 import ImgZoom from '@components/ImgZoom'
+import { ButtonLink } from '@components/Button'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
@@ -17,10 +18,11 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
     <>
       <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
         <div>
-          ←{' '}
-          <Link href="/notes">
-            <a>Back to Notes</a>
-          </Link>
+          <ButtonLink>
+            <Link href="/notes">
+              <a>←{' '}Back to Notes</a>
+            </Link>
+          </ButtonLink>
         </div>
         <article>
           <h1>{frontmatter.title}</h1>
