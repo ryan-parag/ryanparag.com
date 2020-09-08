@@ -6,6 +6,7 @@ const ButtonBase = css`
   display: inline-flex;
   align-items:center;
   font-weight: 700;
+  cursor: pointer;
   font-size: ${designTokens.fontSizes[1]};
   border-radius: ${designTokens.space[2]};
   border: 1px solid var(--grey200);

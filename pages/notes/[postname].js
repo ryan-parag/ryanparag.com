@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import styled from 'styled-components'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '@components/CodeBlock'
@@ -6,13 +7,31 @@ import { format } from 'timeago.js'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactForm from '@components/ContactForm'
 import ImgZoom from '@components/ImgZoom'
-import { ButtonLink } from '@components/Button'
+import { Button, ButtonLink } from '@components/Button'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
 
+const ScrolledButton = styled(Button)`
+  position: fixed;
+  bottom: ${designTokens.space[3]};
+  right: ${designTokens.space[3]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    display: none;
+  }
+`
+
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>
+  const scrollToTop = () => {
+    if(process.browser) {
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+      });
+    }
+  }
 
   return (
     <>
@@ -58,6 +77,11 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
         </article>
         <hr/>
         <ContactForm/>
+        <ScrolledButton
+          onClick={() => scrollToTop()}
+        >
+          Scroll to Top
+        </ScrolledButton>
       </Layout>
     </>
   )
