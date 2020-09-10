@@ -129,7 +129,7 @@ export default function ContactForm() {
             Thanks for reading!
           </ContactTitle>
           <p>
-            I'm <a href="https://ryanparag.com">Ryan</a> and I'm a designer who codes - currently based in Tampa, FL. If you're looking for help or would like to chat, <a href="mailto:parag.ryan@gmail.com">reach out</a>!
+            I'm <a href="https://ryanparag.com">Ryan</a> and I'm a product designer - currently based in Tampa, FL. If you're looking for help or would like to chat, <a href="mailto:parag.ryan@gmail.com">reach out</a>!
           </p>
         </ContactContent>
       </ContactContainer>

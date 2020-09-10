@@ -35,7 +35,7 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
 
   return (
     <>
-      <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
+      <Layout pageTitle={`${frontmatter.title} | ${siteTitle}`}>
         <div>
           <ButtonLink>
             <Link href="/notes">
