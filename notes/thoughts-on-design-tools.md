@@ -6,6 +6,8 @@ date: '2020-09-10'
 hero_image: ../static/thoughts-on-design-tools.png
 ---
 
+_Illustrations from [Lattice's Simplified Wireframes](https://www.figma.com/community/file/821393507131833959/Simplified-Wireframes)_
+
 If you've been keeping up with these posts chronologically, I've mostly been writing about the more pragmatic aspects of design. For this note, I thought to take a more introspective, cathartic take on things that I've been thinking about.
 
 As designers, we've seen an era of innovation in our design tools recently - tools like Sketch, Figma, Adobe XD, Framer have transformed the way we share what we design. These innovations have also spurred debate in design communities around being "the best design tool" - sometimes where we tie ourselves to a particular tool, rather than why we're using a design tool.
