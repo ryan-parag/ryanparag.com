@@ -96,6 +96,14 @@ const ImgProfile = styled.img`
   width: 100%;
 `
 
+const TextArea = styled.textarea`
+  padding: ${designTokens.space[3]} ${designTokens.space[3]};
+`
+
+const TextInput = styled.input`
+  padding: ${designTokens.space[3]} ${designTokens.space[3]};
+`
+
 export default function ContactForm() {
   
   const [state, handleSubmit] = useForm("contactForm");
@@ -156,7 +164,7 @@ export default function ContactForm() {
         <label htmlFor="message">
           Message
         </label>
-        <textarea
+        <TextArea
           id="message"
           name="message"
           placeholder="What is your feedback or suggestion?"
@@ -175,7 +183,7 @@ export default function ContactForm() {
         <label htmlFor="email">
           Email Address (Optional)
         </label>
-        <input
+        <TextInput
           id="email"
           type="email" 
           name="email"
