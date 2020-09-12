@@ -3,11 +3,14 @@ import Layout from '@components/Layout/'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import ColorPicker from '@components/ColorPicker'
+import { SliderPicker } from 'react-color'
 import ThemeItem from '@components/ThemeItem'
 import { transparentize, darken, lighten, saturate } from 'polished'
 import { Button, ButtonPrimary } from '@components/Button'
 import generate from '@utils/generate'
 import chroma from 'chroma-js'
+import RangeSlider from '@components/RangeSlider'
+import Switch from '@components/Switch'
 
 const Card = styled.div`
   margin: ${(props) => props.marginTop ? props.marginTop : '0'} 0 ${(props) => props.marginBottom ? props.marginBottom : designTokens.space[3]};
@@ -20,26 +23,24 @@ const Card = styled.div`
 `
 const CardBody = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: ${(props) => props.grid ? props.grid : '1fr 3fr'};
   grid-column-gap: 0;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const CardColumn = styled.div`
   --borderColor: var(--grey200);
+  background: ${(props) => props.tinted ? 'var(--grey100)' : 'transparent'};
   &:not(:last-of-type) {
     border-right: 1px solid var(--borderColor);
-  }
-  &:first-of-type {
-    --borderColor: var(--grey200);
-    background: var(--grey100);
   }
 `
 
 const CardRow = styled.div`
   padding: ${(props) => props.paddingY ? props.paddingY : designTokens.space[3]} ${(props) => props.paddingX ? props.paddingX : designTokens.space[3]} ${(props) => props.paddingY ? props.paddingY : designTokens.space[3]};
-  &:not(:last-of-type) {
-    border-bottom: 1px solid var(--borderColor);
-  }
+  border-bottom: ${(props) => props.bottomBorder ? '1px solid var(--borderColor)' : '0'};
 `
 
 const CardHeader = styled.div`
@@ -65,50 +66,50 @@ const SwatchGrid = styled.div`
   grid-row-gap: ${designTokens.space[2]};
 `
 
+const LargeTitle = styled.h3`
+  margin-top: 0;
+  margin-bottom: ${(props) => props.spacing ? designTokens.space[3] : '0'};
+`
+
+const SectionTitle = styled.h4`
+  margin-top: 0;
+  margin-bottom: ${(props) => props.spacing ? designTokens.space[3] : '0'};
+`
+
+const SectionSubtitle = styled.h5`
+  margin-top: 0;
+  margin-bottom: ${(props) => props.spacing ? designTokens.space[2] : '0'};
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: ${designTokens.space[2]};
+`
+
 const CreateTheme = ({ title, description, ...props }) => {
 
-  const theme = {
-    name: 'Custom Theme',
-    grey900: 'rgb(17,17,17)',
-    grey800: 'rgb(55,53,47)',
-    grey700: 'rgb(112,110,106)',
-    grey600: 'rgb(175,173,170)',
-    grey500: 'rgb(223,222,218)',
-    grey400: 'rgb(238,237,233)',
-    grey300: 'rgb(241,240,237)',
-    grey200: 'rgb(247,246,243)',
-    grey100: 'rgb(255,254,252)',
-    grey0: 'rgb(255,255,255)',
-    primary: 'rgb(235, 87, 87)',
-    tertiary: 'rgb(249,191,82)',
-    secondary: 'rgb(6, 156, 205)',
-    primaryTransparent: transparentize(0.8, 'rgb(235, 87, 87)'),
-    tertiaryTransparent: transparentize(0.8, 'rgb(249,191,82)'),
-    secondaryTransparent: transparentize(0.8, 'rgb(6, 156, 205)'),
-    transparent: transparentize(0.25, 'rgb(255,255,255)'),
-    secondaryDark: darken(0.12,'rgb(6, 156, 205)'),
-    primaryDark: darken(0.12,'rgb(235, 87, 87)'),
-    tertiaryDark: darken(0.12,'rgb(249,191,82)')
-  }
-
-  const [customTheme, setCustomTheme] = useState(theme)
-  const [themeType, setThemeType] = useState('light')
-  const [neutralHue, setNeutralHue] = useState(200)
-  const [neutralSat, setNeutralSat] = useState(10)
-  const [neutralLum, setNeutralLum] = useState(50)
+  const [neutralHueStart, setNeutralHueStart] = useState(190)
+  const [neutralHueEnd, setNeutralHueEnd] = useState(210)
+  const [neutralSatStart, setNeutralSatStart] = useState(5)
+  const [neutralSatEnd, setNeutralSatEnd] = useState(15)
+  const [neutralLumStart, setNeutralLumStart] = useState(10)
+  const [neutralLumEnd, setNeutralLumEnd] = useState(90)
+  const [darkMode, setDarkMode] = useState(false)
 
   const input = {
     specs: {
       steps: 10,
-      hue_start: neutralHue + 10,
-      hue_end: neutralHue - 10,
+      hue_start: neutralHueStart,
+      hue_end: neutralHueEnd,
       hue_curve: "easeInQuad",
-      sat_start: neutralSat - 5,
-      sat_end: neutralSat + 5,
+      sat_start: neutralSatStart,
+      sat_end: neutralSatEnd,
       sat_curve: "easeOutQuad",
       sat_rate: 100,
-      lum_start: neutralLum - 40,
-      lum_end: neutralLum + 40,
+      lum_start: neutralLumStart,
+      lum_end: neutralLumEnd,
       lum_curve: "easeOutQuad",
       modifier: 10
     }
@@ -116,21 +117,12 @@ const CreateTheme = ({ title, description, ...props }) => {
 
   const palette = generate(input)
 
-  const changeColor = (value) => {
-    setCustomTheme(prevState => ({
-      ...prevState,
-      grey500: value
-    }))
-    let hue = chroma(value).get('hsl.h')
-    let sat = chroma(value).get('hsl.s')
-    let lum = chroma(value).get('hsl.l')
-    setNeutralHue(hue)
-    setNeutralSat(sat)
+  const changeColor = () => {
     let newNeutralTheme = []
     palette.map(color => {
       newNeutralTheme.push(color.hex)
     })
-    if(themeType === 'light') {
+    if(darkMode) {
       setCustomTheme(prevState => ({
         ...prevState,
         grey900: newNeutralTheme[0],
@@ -161,6 +153,36 @@ const CreateTheme = ({ title, description, ...props }) => {
     }
   }
 
+  const changeHueStart = (value) => {
+    setNeutralHueStart(value)
+    changeColor()
+  }
+
+  const changeHueEnd = (value) => {
+    setNeutralHueEnd(value)
+    changeColor()
+  }
+
+  const changeSatStart = (value) => {
+    setNeutralSatStart(value)
+    changeColor()
+  }
+
+  const changeSatEnd = (value) => {
+    setNeutralSatEnd(value)
+    changeColor()
+  }
+
+  const changeLumStart = (value) => {
+    setNeutralLumStart(value)
+    changeColor()
+  }
+
+  const changeLumEnd = (value) => {
+    setNeutralLumEnd(value)
+    changeColor()
+  }
+
   const changePrimary = (value) => {
     setCustomTheme(prevState => ({
       ...prevState,
@@ -188,38 +210,70 @@ const CreateTheme = ({ title, description, ...props }) => {
    }))
   }
 
+  const changeDarkMode = () => {
+    setDarkMode(!darkMode)
+    changeColor()
+  }
+
+  const theme = {
+    name: 'Custom Theme',
+    grey900: palette[0].hex,
+    grey800: palette[1].hex,
+    grey700: palette[2].hex,
+    grey600: palette[3].hex,
+    grey500: palette[4].hex,
+    grey400: palette[5].hex,
+    grey300: palette[6].hex,
+    grey200: palette[7].hex,
+    grey100: palette[8].hex,
+    grey0: palette[9].hex,
+    primary: 'rgb(235, 87, 87)',
+    tertiary: 'rgb(249,191,82)',
+    secondary: 'rgb(6, 156, 205)',
+    primaryTransparent: transparentize(0.8, 'rgb(235, 87, 87)'),
+    tertiaryTransparent: transparentize(0.8, 'rgb(249,191,82)'),
+    secondaryTransparent: transparentize(0.8, 'rgb(6, 156, 205)'),
+    transparent: transparentize(0.25, 'rgb(255,255,255)'),
+    secondaryDark: darken(0.12,'rgb(6, 156, 205)'),
+    primaryDark: darken(0.12,'rgb(235, 87, 87)'),
+    tertiaryDark: darken(0.12,'rgb(249,191,82)')
+  }
+
+  const [customTheme, setCustomTheme] = useState(theme)
+
+  const addAndSave = () => {
+    if (typeof window !== 'undefined') {
+      const customThemeList = localStorage.getItem('customThemes')
+      if(customThemeList === null) {
+        const themeList = []
+        let currentTheme = customTheme
+        themeList.push(currentTheme)
+        localStorage.setItem('customThemes', themeList)
+        console.log(themeList)
+      }
+    }
+  }
+
   return (
     <>
       <Layout pageTitle={`${title} | Create a Theme`} description={description}>
         <h2>[WIP] Create a Theme 🎨</h2>
         <p>If you've stumbled onto this website, you're most likely a designer - or probably very design minded 👍.</p>
         <p>As designers, we're naturally curious and enjoy tinkering with things - so why not play around with creating a new theme for this website! <strong>Have fun!</strong></p>
-        {
-          /*palette.map((color,i) => (
-            <div style={{
-              background: color.hex,
-              color: color.displayColor,
-              padding: '16px',
-              textAlign: 'center'
-            }}>
-              Grey{i} {color.hex}
-            </div>
-          ))*/
-        }
         <Card>
           <CardHeader>
-            <strong>New Theme</strong>
+            <LargeTitle>New Theme</LargeTitle>
             <div>
               <Button marginRight={designTokens.space[2]}>Test</Button>
-              <ButtonPrimary >Save & Add</ButtonPrimary>
+              <ButtonPrimary onClick={() => addAndSave()}>Save & Add</ButtonPrimary>
             </div>
           </CardHeader>
           <CardBody>
-            <CardColumn>
-              <CardRow>
-                <small>Preview ✨</small>
+            <CardColumn tinted>
+              <CardRow bottomBorder>
+                <SectionTitle>Preview ✨</SectionTitle>
               </CardRow>
-              <CardRow>
+              <CardRow bottomBorder>
                 <ThemeItem
                   theme={customTheme}
                 />
@@ -249,34 +303,127 @@ const CreateTheme = ({ title, description, ...props }) => {
               </CardRow>
             </CardColumn>
             <CardColumn>
-              <CardRow>
-                <div><strong><small>Neutrals</small></strong></div>
-                <ColorPicker
-                  color={customTheme.grey500}
-                  changeColor={changeColor}
-                />
+              <CardRow bottomBorder>
+                <FlexContainer>
+                  <SectionTitle>Neutrals</SectionTitle>
+                  <Switch
+                    isOn={darkMode}
+                    handleToggle={() => changeDarkMode()}
+                  />
+                </FlexContainer>
               </CardRow>
-              <CardRow>
-                <div><strong><small>Primary</small></strong></div>
-                <ColorPicker
-                  color={customTheme.primary}
-                  changeColor={changePrimary}
-                />
-              </CardRow>
-              <CardRow>
-                <div><strong><small>Secondary</small></strong></div>
-                <ColorPicker
-                  color={customTheme.secondary}
-                  changeColor={changeSecondary}
-                />
-              </CardRow>
-              <CardRow>
-                <div><strong><small>Tertiary</small></strong></div>
-                <ColorPicker
-                  color={customTheme.tertiary}
-                  changeColor={changeTertiary}
-                />
-              </CardRow>
+              <CardBody grid={'repeat(2, 1fr)'}>
+                <CardRow bottomBorder>
+                  <FlexContainer>
+                    <SectionSubtitle>Hue Start</SectionSubtitle>
+                    <small>{neutralHueStart}</small>
+                  </FlexContainer>
+                  <RangeSlider
+                    min={0}
+                    max={359}
+                    value={neutralHueStart}
+                    modifier={'hue'}
+                    changeFunction={changeHueStart}
+                  />
+                </CardRow>
+                <CardRow bottomBorder>
+                  <FlexContainer>
+                    <SectionSubtitle>Hue End</SectionSubtitle>
+                    <small>{neutralHueEnd}</small>
+                  </FlexContainer>
+                  <RangeSlider
+                    min={0}
+                    max={359}
+                    value={neutralHueEnd}
+                    modifier={'hue'}
+                    changeFunction={changeHueEnd}
+                  />
+                </CardRow>
+                <CardRow bottomBorder>
+                  <FlexContainer>
+                    <SectionSubtitle>Saturation Start</SectionSubtitle>
+                    <small>{neutralSatStart}%</small>
+                  </FlexContainer>
+                  <RangeSlider
+                    min={0}
+                    max={100}
+                    value={neutralSatStart}
+                    modifier={'saturation'}
+                    changeFunction={changeSatStart}
+                  />
+                </CardRow>
+                <CardRow bottomBorder>
+                  <FlexContainer>
+                    <SectionSubtitle>Saturation End</SectionSubtitle>
+                    <small>{neutralSatEnd}%</small>
+                  </FlexContainer>
+                  <RangeSlider
+                    min={0}
+                    max={100}
+                    value={neutralSatEnd}
+                    modifier={'saturation'}
+                    changeFunction={changeSatEnd}
+                  />
+                </CardRow>
+                <CardRow bottomBorder>
+                  <FlexContainer>
+                    <SectionSubtitle>Brightness Start</SectionSubtitle>
+                    <small>{neutralLumStart}%</small>
+                  </FlexContainer>
+                  <RangeSlider
+                    min={0}
+                    max={40}
+                    value={neutralLumStart}
+                    modifier={darkMode ? 'brightness-rev' : 'brightness'}
+                    changeFunction={changeLumStart}
+                  />
+                </CardRow>
+                <CardRow bottomBorder>
+                  <FlexContainer>
+                    <SectionSubtitle>Brightness End</SectionSubtitle>
+                    <small>{neutralLumEnd}%</small>
+                  </FlexContainer>
+                  <RangeSlider
+                    min={60}
+                    max={100}
+                    value={neutralLumEnd}
+                    modifier={darkMode ? 'brightness-rev' : 'brightness'}
+                    changeFunction={changeLumEnd}
+                  />
+                </CardRow>
+              </CardBody>
+              <CardBody grid={'repeat(2, 1fr)'}>
+                <CardColumn>
+                  <CardRow bottomBorder>
+                    <SectionTitle spacing>Primary</SectionTitle>
+                    <ColorPicker
+                      color={customTheme.primary}
+                      changeColor={changePrimary}
+                    />
+                  </CardRow>
+                </CardColumn>
+                <CardColumn>
+                  <CardRow bottomBorder>
+                    <SectionTitle spacing>Secondary</SectionTitle>
+                    <ColorPicker
+                      color={customTheme.secondary}
+                      changeColor={changeSecondary}
+                    />
+                  </CardRow>
+                </CardColumn>
+                <CardColumn>
+                  <CardRow bottomBorder>
+                    <SectionTitle spacing>Tertiary</SectionTitle>
+                    <ColorPicker
+                      color={customTheme.tertiary}
+                      changeColor={changeTertiary}
+                    />
+                  </CardRow>
+                </CardColumn>
+                <CardColumn>
+
+                </CardColumn>
+              </CardBody>
             </CardColumn>
           </CardBody>
         </Card>

@@ -12,7 +12,9 @@ const PickerContainer = styled.div`
 const PickerInput = styled.input`
  margin-top: 0;
  margin-bottom: 0;
- padding-left: calc(${designTokens.space[7]} + ${designTokens.space[3]});
+ padding-left: calc(${designTokens.space[8]} + ${designTokens.space[3]});
+ background: transparent;
+ user-select: none;
 `
 
 const PickerButton = styled.button`
@@ -39,7 +41,7 @@ const PickerButtonContainer = styled.div`
   top: 0;
   bottom: 0;
   left: 0;
-  width: ${designTokens.space[7]};
+  width: ${designTokens.space[8]};
   border-right: 1px solid var(--grey400);
 `
 
@@ -79,7 +81,7 @@ const ColorPicker = (props) => {
   return(
     <>
       <PickerContainer>
-        <PickerInput onChange={() => handleChange(event.target.value)} type="text" value={pickerColor} />
+        <PickerInput disabled type="text" value={pickerColor} />
         <PickerButtonContainer>
           <PickerButton color={pickerColor} onClick={() => handleDisplay()}/>
         </PickerButtonContainer>
