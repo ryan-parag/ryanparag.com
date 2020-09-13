@@ -51,6 +51,7 @@ const SelectContainer = styled.div`
   transform: translate(${designTokens.space[3]}, -${designTokens.space[3]});
   input {
     padding: ${designTokens.space[1]};
+    background: white;
   }
 `
 
