@@ -188,7 +188,7 @@ const CreateTheme = ({ title, description, ...props }) => {
     setCustomTheme(prevState => ({
       ...prevState,
       primary: value,
-      primaryDark: darken(0.12, value),
+      primaryDark: darkMode ? lighten(0.12, value) : darken(0.12, value),
       primaryTransparent: transparentize(0.8, value),
    }))
   }
@@ -197,7 +197,7 @@ const CreateTheme = ({ title, description, ...props }) => {
     setCustomTheme(prevState => ({
       ...prevState,
       secondary: value,
-      secondaryDark: darken(0.12, value),
+      secondaryDark: darkMode ? lighten(0.12, value) : darken(0.12, value),
       secondaryTransparent: transparentize(0.8, value),
    }))
   }
@@ -206,7 +206,7 @@ const CreateTheme = ({ title, description, ...props }) => {
     setCustomTheme(prevState => ({
       ...prevState,
       tertiary: value,
-      tertiaryDark: darken(0.12, value),
+      tertiaryDark: darkMode ? lighten(0.12, value) : darken(0.12, value),
       tertiaryTransparent: transparentize(0.8, value),
    }))
   }
@@ -234,7 +234,7 @@ const CreateTheme = ({ title, description, ...props }) => {
     primaryTransparent: transparentize(0.8, 'rgb(235, 87, 87)'),
     tertiaryTransparent: transparentize(0.8, 'rgb(249,191,82)'),
     secondaryTransparent: transparentize(0.8, 'rgb(6, 156, 205)'),
-    transparent: transparentize(0.25, 'rgb(255,255,255)'),
+    transparent: transparentize(0.25, palette[9].hex),
     secondaryDark: darken(0.12,'rgb(6, 156, 205)'),
     primaryDark: darken(0.12,'rgb(235, 87, 87)'),
     tertiaryDark: darken(0.12,'rgb(249,191,82)')
