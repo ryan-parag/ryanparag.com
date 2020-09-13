@@ -11,6 +11,7 @@ import generate from '@utils/generate'
 import chroma from 'chroma-js'
 import RangeSlider from '@components/RangeSlider'
 import Switch from '@components/Switch'
+import Router from 'next/router'
 
 const Card = styled.div`
   margin: ${(props) => props.marginTop ? props.marginTop : '0'} 0 ${(props) => props.marginBottom ? props.marginBottom : designTokens.space[3]};
@@ -244,6 +245,8 @@ const CreateTheme = ({ title, description, ...props }) => {
   const addAndSave = () => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('customThemes', JSON.stringify(customTheme))
+      localStorage.setItem('ryansNotesNewTheme', JSON.stringify(customTheme))
+      Router.reload(window.location.pathname)
     }
   }
 
@@ -257,7 +260,7 @@ const CreateTheme = ({ title, description, ...props }) => {
           <CardHeader>
             <LargeTitle>New Theme</LargeTitle>
             <div>
-              <Button marginRight={designTokens.space[2]}>Test</Button>
+              {/*<Button marginRight={designTokens.space[2]}>Test</Button>*/}
               <ButtonPrimary onClick={() => addAndSave()}>Save & Add</ButtonPrimary>
             </div>
           </CardHeader>
