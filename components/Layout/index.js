@@ -33,24 +33,6 @@ export default function Layout({ children, pageTitle, description, ...props }) {
     setMounted(true)
   }, [])
 
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const localTheme = localStorage.getItem('ryansNotesTheme');
-      return localTheme === null || localTheme === 'Light' ? 'Light' : localTheme
-    }
-    return 'Light'
-  })
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('ryansNotesTheme', theme);
-    }
-  }, [theme]);
-
-  const toggleTheme = (themeName) => {
-    setTheme(themeName)
-  }
-
   const themeList = [
     darkTheme,
     notionLight,
@@ -66,16 +48,47 @@ export default function Layout({ children, pageTitle, description, ...props }) {
     lightTheme
   ]
 
+  const getCustomTheme = () => {
+    if(localStorage.getItem('customThemes') !== null) {
+      let customTheme = JSON.parse(localStorage.getItem('customThemes'))
+      themeList.push(customTheme)
+    }
+  }
+
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem("ryansNotesNewTheme") !== null) {
+        const localTheme = JSON.parse(localStorage.getItem('ryansNotesNewTheme'))
+        return localTheme
+      }
+      return lightTheme
+    }
+    return lightTheme
+  })
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme));
+    }
+  }, [theme]);
+
+  const toggleTheme = (theme) => {
+    localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme))
+    setTheme(theme)
+  }
+
+  const renderTheme = () => {
+    themeList.find(obj => {
+      if(obj.name !== 'undefined') {
+        return obj.name === theme
+      }
+      return lightTheme
+    })
+  }
+
   const body = 
     <>
-      <ThemeProvider theme={
-        themeList.find(obj => {
-          if(obj.name !== 'undefined') {
-            return obj.name === theme
-          }
-          return lightTheme
-        })
-      }>
+      <ThemeProvider theme={theme}>
         <StaticKitProvider site="3f3ebc6301b7">
           <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />

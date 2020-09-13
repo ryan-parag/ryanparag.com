@@ -230,6 +230,18 @@ export default function Header({ toggleTheme, theme }) {
     yiga,
   ]
 
+  const localCustomTheme = () => {
+    if (typeof window !== 'undefined') {
+      const localTheme = localStorage.getItem('customThemes');
+      if(localTheme !== null) {
+        let customTheme = JSON.parse(localTheme)
+        themes.push(customTheme)
+      }
+    }
+  }
+
+  localCustomTheme()
+
   const closeMobile = () => {
     setExpanded(false)
     setPickerOpen(false)
@@ -279,7 +291,7 @@ export default function Header({ toggleTheme, theme }) {
               >
                 <ThemeItem
                   theme={theme}
-                  clickHandle={() => handleThemeToggle(theme.name)}
+                  clickHandle={() => handleThemeToggle(theme)}
                   active={activeTheme === theme.name ? true : false}
                 />
               </div>

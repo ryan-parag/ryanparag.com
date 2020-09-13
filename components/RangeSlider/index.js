@@ -57,7 +57,6 @@ export default function RangeSlider({min, max, value, changeFunction, modifier=n
 
   const handleChange = e => {
     setCurrentValue(e.target.value)
-    console.log(currentValue)
     changeFunction(e.target.value)
   }
   return(

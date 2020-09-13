@@ -2,6 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 
+const SwitchContainer = styled.div`
+  display:inline-flex;
+  align-items:center;
+`
+
+const ToggleLabel = styled.span`
+  font-size: ${designTokens.fontSizes[0]};
+  display: inline-block;
+  margin: 0 ${designTokens.space[1]};
+`
+
 const SwitchInput = styled.input`
   height: 0;
   width: 0;
@@ -13,7 +24,7 @@ const SwitchLabel = styled.label`
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: ${designTokens.space[6]};
+  width: calc(${designTokens.space[5]} + ${designTokens.space[2]});
   height: ${designTokens.space[4]};
   background: grey;
   border-radius: 999px;
@@ -34,9 +45,19 @@ const SwitchHandle = styled.span`
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
 `
 
-const Switch = ({ isOn, handleToggle }) => {
+const Switch = ({ isOn, handleToggle, startLabel=null, endLabel=null }) => {
   return (
-    <>
+    <SwitchContainer>
+      {
+        startLabel ? 
+        (
+          <ToggleLabel>
+            {startLabel}
+          </ToggleLabel>
+        )
+        :
+        null
+      }
       <SwitchInput
         checked={isOn}
         onChange={handleToggle}
@@ -54,7 +75,17 @@ const Switch = ({ isOn, handleToggle }) => {
           }}
         />
       </SwitchLabel>
-    </>
+      {
+        endLabel ? 
+        (
+          <ToggleLabel>
+            {endLabel}
+          </ToggleLabel>
+        )
+        :
+        null
+      }
+    </SwitchContainer>
   )
 }
 
