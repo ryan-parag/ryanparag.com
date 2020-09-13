@@ -98,20 +98,21 @@ const CreateTheme = ({ title, description, ...props }) => {
   const [neutralLumStart, setNeutralLumStart] = useState(10)
   const [neutralLumEnd, setNeutralLumEnd] = useState(90)
   const [darkMode, setDarkMode] = useState(false)
+  const [easing, setEasing] = useState('easeInQuad')
 
   const input = {
     specs: {
       steps: 10,
       hue_start: neutralHueStart,
       hue_end: neutralHueEnd,
-      hue_curve: "easeInQuad",
+      hue_curve: easing,
       sat_start: neutralSatStart,
       sat_end: neutralSatEnd,
-      sat_curve: "easeOutQuad",
+      sat_curve: easing,
       sat_rate: 100,
       lum_start: neutralLumStart,
       lum_end: neutralLumEnd,
-      lum_curve: "easeOutQuad",
+      lum_curve: easing,
       modifier: 10
     }
   }
@@ -136,6 +137,7 @@ const CreateTheme = ({ title, description, ...props }) => {
         grey200: newNeutralTheme[2],
         grey100: newNeutralTheme[1],
         grey0: newNeutralTheme[0],
+        transparent: transparentize(0.25, newNeutralTheme[0]),
       }))
     } else {
       setCustomTheme(prevState => ({
@@ -150,6 +152,7 @@ const CreateTheme = ({ title, description, ...props }) => {
         grey200: newNeutralTheme[7],
         grey100: newNeutralTheme[8],
         grey0: newNeutralTheme[9],
+        transparent: transparentize(0.25, newNeutralTheme[0]),
       }))
     }
   }
@@ -181,6 +184,11 @@ const CreateTheme = ({ title, description, ...props }) => {
 
   const changeLumEnd = (value) => {
     setNeutralLumEnd(value)
+    changeColor()
+  }
+
+  const changeEasing = (e) => {
+    setEasing(e.target.value)
     changeColor()
   }
 
@@ -249,6 +257,34 @@ const CreateTheme = ({ title, description, ...props }) => {
       Router.reload(window.location.pathname)
     }
   }
+
+  const spacings = [
+    { name: 'Quad - EaseIn', value: 'easeInQuad'},
+    { name: 'Quad - EaseOut', value: 'easeOutQuad'},
+    { name: 'Quad - EaseInOut', value: 'easeInOutQuad'},
+    { name: 'Quart - EaseIn', value: 'easeInQuart'},
+    { name: 'Quart - EaseOut', value: 'easeOutQuart'},
+    { name: 'Quart - EaseInOut', value: 'easeInOutQuart'},
+    { name: 'Sine - EaseIn', value: 'easeInSine'},
+    { name: 'Sine - EaseOut', value: 'easeOutSine'},
+    { name: 'Sine - EaseInOut', value: 'easeInOutSine'},
+    { name: 'Cubic - EaseIn', value: 'easeInCubic'},
+    { name: 'Cubic - EaseOut', value: 'easeOutCubic'},
+    { name: 'Cubic - EaseInOut', value: 'easeInOutCubic'},
+    { name: 'Expo - EaseIn', value: 'easeInExpo'},
+    { name: 'Expo - EaseOut', value: 'easeOutExpo'},
+    { name: 'Expo - EaseInOut', value: 'easeInOutExpo'},
+    { name: 'Quint - EaseIn', value: 'easeInQuint'},
+    { name: 'Quint - EaseOut', value: 'easeOutQuint'},
+    { name: 'Quint - EaseInOut', value: 'easeInOutQuint'},
+    { name: 'Circ - EaseIn', value: 'easeInCirc'},
+    { name: 'Circ - EaseOut', value: 'easeOutCirc'},
+    { name: 'Circ - EaseInOut', value: 'easeInOutCirc'},
+    { name: 'Back - EaseIn', value: 'easeInBack'},
+    { name: 'Back - EaseOut', value: 'easeOutBack'},
+    { name: 'Back - EaseInOut', value: 'easeInOutBack'},
+    { name: 'Linear', value: 'linear'},
+  ]
 
   return (
     <>
@@ -393,7 +429,7 @@ const CreateTheme = ({ title, description, ...props }) => {
               <CardBody grid={'repeat(2, 1fr)'}>
                 <CardColumn>
                   <CardRow bottomBorder>
-                    <SectionTitle spacing>Primary</SectionTitle>
+                    <SectionTitle spacing="true">Primary</SectionTitle>
                     <ColorPicker
                       color={customTheme.primary}
                       changeColor={changePrimary}
@@ -402,7 +438,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                 </CardColumn>
                 <CardColumn>
                   <CardRow bottomBorder>
-                    <SectionTitle spacing>Secondary</SectionTitle>
+                    <SectionTitle spacing="true">Secondary</SectionTitle>
                     <ColorPicker
                       color={customTheme.secondary}
                       changeColor={changeSecondary}
@@ -411,7 +447,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                 </CardColumn>
                 <CardColumn>
                   <CardRow bottomBorder>
-                    <SectionTitle spacing>Tertiary</SectionTitle>
+                    <SectionTitle spacing="true">Tertiary</SectionTitle>
                     <ColorPicker
                       color={customTheme.tertiary}
                       changeColor={changeTertiary}
@@ -419,7 +455,19 @@ const CreateTheme = ({ title, description, ...props }) => {
                   </CardRow>
                 </CardColumn>
                 <CardColumn>
-
+                  <CardRow>
+                    <SectionTitle spacing="true">Color Easing</SectionTitle>
+                    <select
+                      value={easing}
+                      onChange={changeEasing}
+                    >
+                      {
+                        spacings.map(option => (
+                          <option key={option.name} value={option.value}>{option.name}</option>
+                        ))
+                      }
+                    </select>
+                  </CardRow>
                 </CardColumn>
               </CardBody>
             </CardColumn>

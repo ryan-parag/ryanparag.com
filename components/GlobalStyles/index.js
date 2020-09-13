@@ -191,6 +191,9 @@ export const GlobalStyles = createGlobalStyle`
     appearance: none;
     box-shadow: none;
     transition: all 120ms ease-out 0s;
+  }
+
+  input, textarea {
     &:focus {
       background: transparent;
       border-color: var(--primary);
@@ -200,6 +203,17 @@ export const GlobalStyles = createGlobalStyle`
   textarea {
     height: ${designTokens.space[9]};
     resize: none;
+  }
+
+  select {
+    cursor: pointer;
+    background: linear-gradient(45deg,transparent 50%,var(--primary) 0),linear-gradient(135deg,var(--primary) 50%,transparent 0),linear-gradient(90deg,var(--grey0),var(--grey0));
+    background-position: calc(100% - 18px) calc(1em + 0px),calc(100% - 12px) calc(1em + 0px),100% 0;
+    background-size: 6px 6px,6px 6px,5em 5em;
+    background-repeat: no-repeat;
+    &:focus {
+      border-color: var(--primary);
+    }
   }
 
   ::placeholder {
