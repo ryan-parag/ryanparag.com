@@ -408,7 +408,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                     min={0}
                     max={40}
                     value={neutralLumStart}
-                    modifier={darkMode ? 'brightness-rev' : 'brightness'}
+                    modifier={darkMode ? 'brightness-rev-start' : 'brightness-start'}
                     changeFunction={changeLumStart}
                   />
                 </CardRow>
@@ -421,7 +421,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                     min={60}
                     max={100}
                     value={neutralLumEnd}
-                    modifier={darkMode ? 'brightness-rev' : 'brightness'}
+                    modifier={darkMode ? 'brightness-rev-end' : 'brightness-end'}
                     changeFunction={changeLumEnd}
                   />
                 </CardRow>

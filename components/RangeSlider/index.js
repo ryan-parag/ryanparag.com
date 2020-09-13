@@ -20,11 +20,17 @@ const Slider = styled.input`
   &.saturation {
     background: linear-gradient(to right, transparent, var(--primary));
   }
-  &.brightness {
-    background: linear-gradient(to right, var(--grey0), var(--grey900));
+  &.brightness-start {
+    background: linear-gradient(to right, var(--grey0), var(--grey400));
   }
-  &.brightness-rev {
-    background: linear-gradient(to right, var(--grey900), var(--grey0));
+  &.brightness-rev-start {
+    background: linear-gradient(to right, var(--grey900), var(--grey400));
+  }
+  &.brightness-end {
+    background: linear-gradient(to right, var(--grey400), var(--grey900));
+  }
+  &.brightness-rev-end {
+    background: linear-gradient(to right, var(--grey400), var(--grey0));
   }
   &::-webkit-slider-thumb {
 		-webkit-appearance: none;
