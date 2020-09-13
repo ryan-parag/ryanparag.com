@@ -82,7 +82,8 @@ const FooterLogo = styled.div`
 
 export default function Footer() {
   const clearStorage = () => {
-    localStorage.removeItem('ryansNotesTheme')
+    localStorage.removeItem('ryansNotesNewTheme')
+    localStorage.removeItem('customThemes')
     window.location.reload()
   }
 

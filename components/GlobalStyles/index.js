@@ -30,6 +30,7 @@ export const GlobalStyles = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 62.5%;
+    scroll-behavior: smooth;
   }
   *,*:before,*:after {
     box-sizing: inherit;
@@ -183,7 +184,7 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     border: 1px solid var(--grey400);
     border-radius: ${designTokens.space[1]};
-    padding: ${designTokens.space[3]};
+    padding: ${designTokens.space[2]} ${designTokens.space[3]};
     margin: ${designTokens.space[2]} auto ${designTokens.space[3]};
     -webkit-appearance: none;
     -moz-appearance: none;

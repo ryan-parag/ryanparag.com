@@ -10,7 +10,7 @@ const ThemeContainer = styled.button`
   border: 1px solid;
   cursor: pointer;
   border-radius: ${designTokens.space[1]};
-  margin: 0 ${designTokens.space[3]};
+  margin: 0;
   font-size: ${designTokens.fontSizes[0]};
   min-width: ${designTokens.space[9]};
   position: relative;
