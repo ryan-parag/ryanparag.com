@@ -292,7 +292,7 @@ export default function Header({ toggleTheme, theme }) {
                 <ThemeItem
                   theme={theme}
                   clickHandle={() => handleThemeToggle(theme)}
-                  active={activeTheme === theme.name ? true : false}
+                  active={activeTheme === theme ? true : false}
                 />
               </div>
             ))
