@@ -7,6 +7,15 @@ const PickerContainer = styled.div`
   width: 100%;
   margin-top: ${designTokens.space[2]};
   position: relative;
+  cursor: pointer;
+  border-radius: ${designTokens.space[1]};
+  border: 1px solid var(--grey400);
+  &:hover, &:focus {
+    background: var(--grey100);
+  }
+  &:focus, &:active {
+    border-color: var(--primary);
+  }
 `
 
 const PickerInput = styled.input`
@@ -15,9 +24,11 @@ const PickerInput = styled.input`
  padding-left: calc(${designTokens.space[8]} + ${designTokens.space[3]});
  background: transparent;
  user-select: none;
+ cursor: pointer;
+ border: 0;
 `
 
-const PickerButton = styled.button`
+const PickerSwatch = styled.div`
   background: ${(props) => props.color ? props.color : 'var(--grey100)'};
   width: 100%;
   height: 100%;
@@ -29,10 +40,6 @@ const PickerButton = styled.button`
   align-items: center;
   justify-content: center;
   transition: all 120ms ease-out 0s;
-  &:hover, &:focus {
-    transform: scale(1.05);
-    box-shadow: 0px 2px 4px var(--grey200);
-  }
 `
 
 const PickerButtonContainer = styled.div`
@@ -81,10 +88,10 @@ const ColorPicker = (props) => {
 
   return(
     <>
-      <PickerContainer>
+      <PickerContainer role="button" onClick={() => handleDisplay()}>
         <PickerInput disabled type="text" value={pickerColor} />
         <PickerButtonContainer>
-          <PickerButton color={pickerColor} onClick={() => handleDisplay()}/>
+          <PickerSwatch color={pickerColor}/>
         </PickerButtonContainer>
       </PickerContainer>
       {

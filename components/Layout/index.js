@@ -27,11 +27,29 @@ export default function Layout({ children, pageTitle, description, ...props }) {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }
 
+  const [debugOutline, setDebugOutline] = React.useState(false)
+
+  const debugEvents = () => {
+    // press ALT-G to toggle grid
+    // press ALT-D to toggle debug visualization
+    if (typeof window !== 'undefined') {
+      document.addEventListener("keypress", ev => {
+        if (ev.altKey) {
+          if (ev.code == "KeyD") {
+            debugOutline ? document.querySelector('html').classList.remove('debug-outline') : document.querySelector('html').classList.add('debug-outline')
+            setDebugOutline(!debugOutline)
+          }
+        }
+      })
+    }
+  }
+
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
     setMounted(true)
-  }, [])
+    setDebugOutline(false)
+  }, [debugOutline])
 
   const themeList = [
     darkTheme,

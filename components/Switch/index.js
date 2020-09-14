@@ -26,7 +26,7 @@ const SwitchLabel = styled.label`
   cursor: pointer;
   width: calc(${designTokens.space[5]} + ${designTokens.space[2]});
   height: ${designTokens.space[4]};
-  background: grey;
+  background: var(--grey400);
   border-radius: 999px;
   position: relative;
   transition: background-color .2s;
@@ -41,7 +41,7 @@ const SwitchHandle = styled.span`
   height: calc(${designTokens.space[4]} - 4px);
   border-radius: 50%;
   transition: 0.2s;
-  background: #fff;
+  background: var(--grey0);
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
 `
 
@@ -65,7 +65,7 @@ const Switch = ({ isOn, handleToggle, startLabel=null, endLabel=null }) => {
         type="checkbox"
       />
       <SwitchLabel
-        style={{ background: isOn && '#06D6A0' }}
+        style={{ background: isOn && 'var(--primary)' }}
         htmlFor={`switch`}
       >
         <SwitchHandle

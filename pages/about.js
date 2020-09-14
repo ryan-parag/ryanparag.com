@@ -1,6 +1,8 @@
 import Layout from '@components/Layout/'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
+import Link from 'next/link'
+import { ButtonLink } from '@components/Button'
 
 const ListItem = styled.li`
   display: flex;
@@ -12,6 +14,12 @@ const ListItem = styled.li`
   &:not(:last-of-type) {
     border-bottom: 1px solid var(--grey200);
   }
+`
+
+const LinkContainer = styled.div`
+  padding: ${designTokens.space[4]} 0;
+  display: flex;
+  justify-content: center;
 `
 
 const ListLabel = styled.div`
@@ -192,8 +200,25 @@ const About = ({ title, description, ...props }) => {
         </svg>
         <h3>Current Theme:</h3>
         <p>
-          View all of the colors in your selected theme below. Change the theme to see the updated colors in the theme!
+          View all of the colors in your selected theme below. Change the theme to see the updated colors in the palette!
         </p>
+        <LinkContainer>
+          <ButtonLink>
+            <Link href="/create-theme/">
+              <a>
+                <img
+                  src="/static/theme.svg"
+                  width="32"
+                  style={{
+                    marginRight: designTokens.space[2],
+                    transform: 'rotate(-10deg) translateX(-4px)'
+                  }}
+                />
+                Create a New Theme
+              </a>
+            </Link>
+          </ButtonLink>
+        </LinkContainer>
         <SwatchContainer>
           <ListItem>
             <strong><small>Neutrals</small></strong>

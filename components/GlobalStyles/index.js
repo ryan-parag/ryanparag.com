@@ -26,6 +26,10 @@ export const GlobalStyles = createGlobalStyle`
     --tertiary: ${({ theme }) => theme.tertiary};
     --tertiaryDark: ${({ theme }) => theme.tertiaryDark};
     --tertiaryTransparent: ${({ theme }) => theme.tertiaryTransparent};
+    --debug-outline: transparent;
+    &.debug-outline {
+      --debug-outline: var(--secondary);
+    }
   }
   html {
     box-sizing: border-box;
@@ -290,5 +294,9 @@ export const GlobalStyles = createGlobalStyle`
   }
   article img {
     width: 100%;
+  }
+
+  * {
+    outline: 1px dotted var(--debug-outline);
   }
 `;
