@@ -48,13 +48,6 @@ export default function Layout({ children, pageTitle, description, ...props }) {
     lightTheme
   ]
 
-  const getCustomTheme = () => {
-    if(localStorage.getItem('customThemes') !== null) {
-      let customTheme = JSON.parse(localStorage.getItem('customThemes'))
-      themeList.push(customTheme)
-    }
-  }
-
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       if (localStorage.getItem("ryansNotesNewTheme") !== null) {

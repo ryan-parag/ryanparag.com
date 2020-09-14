@@ -235,7 +235,7 @@ export default function Header({ toggleTheme, theme }) {
       const localTheme = localStorage.getItem('customThemes');
       if(localTheme !== null) {
         let customTheme = JSON.parse(localTheme)
-        themes.push(customTheme)
+        themes.unshift(customTheme)
       }
     }
   }

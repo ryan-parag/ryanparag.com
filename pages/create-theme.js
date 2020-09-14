@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '@components/Layout/'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import ColorPicker from '@components/ColorPicker'
-import { SliderPicker } from 'react-color'
 import ThemeItem from '@components/ThemeItem'
 import { transparentize, darken, lighten, saturate } from 'polished'
 import { Button, ButtonPrimary } from '@components/Button'
 import generate from '@utils/generate'
-import chroma from 'chroma-js'
 import RangeSlider from '@components/RangeSlider'
 import Switch from '@components/Switch'
 import Router from 'next/router'
+import ContactBox from '@components/ContactBox'
 
 const Card = styled.div`
   margin: ${(props) => props.marginTop ? props.marginTop : '0'} 0 ${(props) => props.marginBottom ? props.marginBottom : designTokens.space[3]};
@@ -29,6 +28,11 @@ const CardBody = styled.div`
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     grid-template-columns: 1fr;
   }
+`
+const CardDivider = styled.div`
+  width: 100%;
+  height: 1px;
+  background: var(--grey400);
 `
 
 const CardColumn = styled.div`
@@ -155,6 +159,7 @@ const CreateTheme = ({ title, description, ...props }) => {
         transparent: transparentize(0.25, newNeutralTheme[0]),
       }))
     }
+    return customTheme
   }
 
   const changeHueStart = (value) => {
@@ -226,16 +231,16 @@ const CreateTheme = ({ title, description, ...props }) => {
 
   const theme = {
     name: 'Custom Theme',
-    grey900: palette[0].hex,
-    grey800: palette[1].hex,
-    grey700: palette[2].hex,
-    grey600: palette[3].hex,
-    grey500: palette[4].hex,
-    grey400: palette[5].hex,
-    grey300: palette[6].hex,
-    grey200: palette[7].hex,
-    grey100: palette[8].hex,
-    grey0: palette[9].hex,
+    grey900: darkMode ? palette[9].hex : palette[0].hex,
+    grey800: darkMode ? palette[8].hex : palette[1].hex,
+    grey700: darkMode ? palette[7].hex : palette[2].hex,
+    grey600: darkMode ? palette[6].hex : palette[3].hex,
+    grey500: darkMode ? palette[5].hex : palette[4].hex,
+    grey400: darkMode ? palette[4].hex : palette[5].hex,
+    grey300: darkMode ? palette[3].hex : palette[6].hex,
+    grey200: darkMode ? palette[2].hex : palette[7].hex,
+    grey100: darkMode ? palette[1].hex : palette[8].hex,
+    grey0: darkMode ? palette[0].hex : palette[9].hex,
     primary: 'rgb(235, 87, 87)',
     tertiary: 'rgb(249,191,82)',
     secondary: 'rgb(6, 156, 205)',
@@ -249,6 +254,11 @@ const CreateTheme = ({ title, description, ...props }) => {
   }
 
   const [customTheme, setCustomTheme] = useState(theme)
+
+  useEffect(() => {
+    changeColor()
+    setCustomTheme(prevState => customTheme);
+  }, [customTheme])
 
   const addAndSave = () => {
     if (typeof window !== 'undefined') {
@@ -335,7 +345,7 @@ const CreateTheme = ({ title, description, ...props }) => {
               </CardRow>
             </CardColumn>
             <CardColumn>
-              <CardRow bottomBorder>
+              <CardRow>
                 <FlexContainer>
                   <SectionTitle>Neutrals</SectionTitle>
                   <Switch
@@ -347,7 +357,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                 </FlexContainer>
               </CardRow>
               <CardBody grid={'repeat(2, 1fr)'}>
-                <CardRow bottomBorder>
+                <CardRow>
                   <FlexContainer>
                     <SectionSubtitle>Hue Start</SectionSubtitle>
                     <small>{neutralHueStart}</small>
@@ -360,7 +370,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                     changeFunction={changeHueStart}
                   />
                 </CardRow>
-                <CardRow bottomBorder>
+                <CardRow>
                   <FlexContainer>
                     <SectionSubtitle>Hue End</SectionSubtitle>
                     <small>{neutralHueEnd}</small>
@@ -373,7 +383,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                     changeFunction={changeHueEnd}
                   />
                 </CardRow>
-                <CardRow bottomBorder>
+                <CardRow>
                   <FlexContainer>
                     <SectionSubtitle>Saturation Start</SectionSubtitle>
                     <small>{neutralSatStart}%</small>
@@ -386,7 +396,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                     changeFunction={changeSatStart}
                   />
                 </CardRow>
-                <CardRow bottomBorder>
+                <CardRow>
                   <FlexContainer>
                     <SectionSubtitle>Saturation End</SectionSubtitle>
                     <small>{neutralSatEnd}%</small>
@@ -475,7 +485,7 @@ const CreateTheme = ({ title, description, ...props }) => {
         </Card>
         <div style={{
           textAlign: 'center',
-          paddingTop: designTokens.space[3]
+          padding: `${designTokens.space[3]} 0 ${designTokens.space[5]}`
         }}>
           <div style={{
             marginBottom: designTokens.space[2],
@@ -516,6 +526,27 @@ const CreateTheme = ({ title, description, ...props }) => {
           </span>
           </a>
         </div>
+        <div style={{
+          padding: designTokens.space[3],
+          background: 'var(--secondaryTransparent)',
+          borderRadius: designTokens.space[2],
+          marginBottom: designTokens.space[4]
+        }}>
+          <h5>Logged Issues</h5>
+          <ul>
+            <li>
+              Switching between light and dark mode does not update the theme right away. In the meantime, when switching between light/dark modes, alter one of the neutral sliders.
+              <br/>
+              <small>Currently trying to fix this issue with the refactoring of the initial state.</small>
+            </li>
+            <li>
+              The rendered theme could be inaccessible
+              <br/>
+              <small>WCAG guidelines are on my roadmap</small>
+            </li>
+          </ul>
+        </div>
+        <ContactBox/>
       </Layout>
     </>
   )
