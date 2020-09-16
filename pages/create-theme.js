@@ -118,6 +118,10 @@ const CreateTheme = ({ title, description, ...props }) => {
     }
   }
 
+  const getTransparent = (value) => {
+    return transparentize(0.25, value)
+  }
+
   const palette = generate(input)
 
   const changeColor = () => {
@@ -138,7 +142,7 @@ const CreateTheme = ({ title, description, ...props }) => {
         grey200: newNeutralTheme[2],
         grey100: newNeutralTheme[1],
         grey0: newNeutralTheme[0],
-        transparent: transparentize(0.25, newNeutralTheme[0]),
+        transparent: getTransparent(newNeutralTheme[0]),
       }))
     } else {
       setCustomTheme(prevState => ({
@@ -245,7 +249,7 @@ const CreateTheme = ({ title, description, ...props }) => {
     primaryTransparent: transparentize(0.8, 'rgb(255, 134, 243)'),
     secondaryTransparent: transparentize(0.8, 'rgb(0, 255, 33)'),
     tertiaryTransparent: transparentize(0.8, 'rgb(255,198,56)'),
-    transparent: transparentize(0.25, palette[9].hex),
+    transparent: darkMode ? getTransparent(palette[0].hex) : getTransparent(palette[9].hex),
     primaryDark: darken(0.12,'rgb(255, 134, 243)'),
     secondaryDark: darken(0.12,'rgb(0, 255, 33)'),
     tertiaryDark: darken(0.12,'rgb(255,198,56)')
@@ -339,6 +343,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                   <Swatch style={{ background: customTheme.tertiary }}/>
                   <Swatch style={{ background: customTheme.tertiaryTransparent }}/>
                   <Swatch style={{ background: customTheme.tertiaryDark }}/>
+                  <Swatch style={{ background: customTheme.transparent }}/>
                 </SwatchGrid>
               </CardRow>
             </CardColumn>
