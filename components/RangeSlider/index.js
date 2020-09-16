@@ -21,13 +21,13 @@ const Slider = styled.input`
     background: linear-gradient(to right, transparent, var(--primary));
   }
   &.brightness-start {
-    background: linear-gradient(to right, var(--grey0), var(--grey400));
+    background: linear-gradient(to right, var(--grey900), var(--grey400));
   }
   &.brightness-rev-start {
     background: linear-gradient(to right, var(--grey900), var(--grey400));
   }
   &.brightness-end {
-    background: linear-gradient(to right, var(--grey400), var(--grey900));
+    background: linear-gradient(to right, var(--grey400), var(--grey0));
   }
   &.brightness-rev-end {
     background: linear-gradient(to right, var(--grey400), var(--grey0));

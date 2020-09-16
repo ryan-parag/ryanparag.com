@@ -11,6 +11,8 @@ import RangeSlider from '@components/RangeSlider'
 import Switch from '@components/Switch'
 import Router from 'next/router'
 import ContactBox from '@components/ContactBox'
+import ContrastChecker from '@components/ContrastChecker'
+import chroma from 'chroma-js'
 
 const Card = styled.div`
   margin: ${(props) => props.marginTop ? props.marginTop : '0'} 0 ${(props) => props.marginBottom ? props.marginBottom : designTokens.space[3]};
@@ -28,11 +30,6 @@ const CardBody = styled.div`
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     grid-template-columns: 1fr;
   }
-`
-const CardDivider = styled.div`
-  width: 100%;
-  height: 1px;
-  background: var(--grey400);
 `
 
 const CardColumn = styled.div`
@@ -198,9 +195,10 @@ const CreateTheme = ({ title, description, ...props }) => {
   }
 
   const changePrimary = (value) => {
+    let hexValue = chroma(value).hex()
     setCustomTheme(prevState => ({
       ...prevState,
-      primary: value,
+      primary: hexValue,
       primaryDark: darkMode ? lighten(0.12, value) : darken(0.12, value),
       primaryTransparent: transparentize(0.8, value),
    }))
@@ -241,9 +239,9 @@ const CreateTheme = ({ title, description, ...props }) => {
     grey200: darkMode ? palette[2].hex : palette[7].hex,
     grey100: darkMode ? palette[1].hex : palette[8].hex,
     grey0: darkMode ? palette[0].hex : palette[9].hex,
-    primary: 'rgb(235, 87, 87)',
-    tertiary: 'rgb(249,191,82)',
-    secondary: 'rgb(6, 156, 205)',
+    primary: chroma('rgb(235, 87, 87)').hex(),
+    tertiary: chroma('rgb(249,191,82)').hex(),
+    secondary: chroma('rgb(6, 156, 205)').hex(),
     primaryTransparent: transparentize(0.8, 'rgb(235, 87, 87)'),
     tertiaryTransparent: transparentize(0.8, 'rgb(249,191,82)'),
     secondaryTransparent: transparentize(0.8, 'rgb(6, 156, 205)'),
@@ -347,7 +345,17 @@ const CreateTheme = ({ title, description, ...props }) => {
             <CardColumn>
               <CardRow>
                 <FlexContainer>
-                  <SectionTitle>Neutrals</SectionTitle>
+                  <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center'
+                  }}>
+                    <SectionTitle>Neutrals</SectionTitle>
+                    <div style={{ marginRight: designTokens.space[2]}}/>
+                    <ContrastChecker
+                      foregroundColor={customTheme.grey900}
+                      backgroundColor={customTheme.grey0}
+                    />
+                  </div>
                   <Switch
                     isOn={darkMode}
                     handleToggle={() => changeDarkMode()}
@@ -439,11 +447,17 @@ const CreateTheme = ({ title, description, ...props }) => {
               <CardBody grid={'repeat(2, 1fr)'}>
                 <CardColumn>
                   <CardRow bottomBorder>
-                    <SectionTitle spacing="true">Primary</SectionTitle>
+                    <SectionTitle spacing="true">Primary {customTheme.primary}</SectionTitle>
                     <ColorPicker
                       color={customTheme.primary}
                       changeColor={changePrimary}
                     />
+                    <div style={{ marginTop: designTokens.space[2] }}>
+                      <ContrastChecker
+                        foregroundColor={customTheme.grey0}
+                        backgroundColor={customTheme.primary}
+                      />
+                    </div>
                   </CardRow>
                 </CardColumn>
                 <CardColumn>
@@ -453,6 +467,12 @@ const CreateTheme = ({ title, description, ...props }) => {
                       color={customTheme.secondary}
                       changeColor={changeSecondary}
                     />
+                    <div style={{ marginTop: designTokens.space[2] }}>
+                      <ContrastChecker
+                        foregroundColor={customTheme.grey0}
+                        backgroundColor={customTheme.secondary}
+                      />
+                    </div>
                   </CardRow>
                 </CardColumn>
                 <CardColumn>
@@ -462,6 +482,12 @@ const CreateTheme = ({ title, description, ...props }) => {
                       color={customTheme.tertiary}
                       changeColor={changeTertiary}
                     />
+                    <div style={{ marginTop: designTokens.space[2] }}>
+                      <ContrastChecker
+                        foregroundColor={customTheme.grey0}
+                        backgroundColor={customTheme.tertiary}
+                      />
+                    </div>
                   </CardRow>
                 </CardColumn>
                 <CardColumn>
@@ -538,11 +564,6 @@ const CreateTheme = ({ title, description, ...props }) => {
               Switching between light and dark mode does not update the theme right away. In the meantime, when switching between light/dark modes, alter one of the neutral sliders.
               <br/>
               <small>Currently trying to fix this issue with the refactoring of the initial state.</small>
-            </li>
-            <li>
-              The rendered theme could be inaccessible
-              <br/>
-              <small>WCAG guidelines are on my roadmap</small>
             </li>
           </ul>
         </div>
