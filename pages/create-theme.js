@@ -107,15 +107,15 @@ const CreateTheme = ({ title, description, ...props }) => {
   const input = {
     specs: {
       steps: 10,
-      hue_start: neutralHueStart,
-      hue_end: neutralHueEnd,
+      hue_start: parseInt(neutralHueStart),
+      hue_end: parseInt(neutralHueEnd),
       hue_curve: easing,
-      sat_start: neutralSatStart,
-      sat_end: neutralSatEnd,
+      sat_start: parseInt(neutralSatStart),
+      sat_end: parseInt(neutralSatEnd),
       sat_curve: easing,
       sat_rate: 100,
-      lum_start: neutralLumStart,
-      lum_end: neutralLumEnd,
+      lum_start: parseInt(neutralLumStart),
+      lum_end: parseInt(neutralLumEnd),
       lum_curve: easing,
       modifier: 10
     }
