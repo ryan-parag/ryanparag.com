@@ -93,12 +93,12 @@ const FlexContainer = styled.div`
 const CreateTheme = ({ title, description, ...props }) => {
 
   const [neutralHueStart, setNeutralHueStart] = useState(190)
-  const [neutralHueEnd, setNeutralHueEnd] = useState(210)
-  const [neutralSatStart, setNeutralSatStart] = useState(5)
-  const [neutralSatEnd, setNeutralSatEnd] = useState(15)
-  const [neutralLumStart, setNeutralLumStart] = useState(10)
-  const [neutralLumEnd, setNeutralLumEnd] = useState(90)
-  const [darkMode, setDarkMode] = useState(false)
+  const [neutralHueEnd, setNeutralHueEnd] = useState(280)
+  const [neutralSatStart, setNeutralSatStart] = useState(50)
+  const [neutralSatEnd, setNeutralSatEnd] = useState(10)
+  const [neutralLumStart, setNeutralLumStart] = useState(15)
+  const [neutralLumEnd, setNeutralLumEnd] = useState(80)
+  const [darkMode, setDarkMode] = useState(true)
   const [easing, setEasing] = useState('easeInQuad')
 
   const input = {
@@ -239,16 +239,16 @@ const CreateTheme = ({ title, description, ...props }) => {
     grey200: darkMode ? palette[2].hex : palette[7].hex,
     grey100: darkMode ? palette[1].hex : palette[8].hex,
     grey0: darkMode ? palette[0].hex : palette[9].hex,
-    primary: chroma('rgb(235, 87, 87)').hex(),
-    tertiary: chroma('rgb(249,191,82)').hex(),
-    secondary: chroma('rgb(6, 156, 205)').hex(),
-    primaryTransparent: transparentize(0.8, 'rgb(235, 87, 87)'),
-    tertiaryTransparent: transparentize(0.8, 'rgb(249,191,82)'),
-    secondaryTransparent: transparentize(0.8, 'rgb(6, 156, 205)'),
+    primary: chroma('rgb(172, 55, 255)').hex(),
+    tertiary: chroma('rgb(236,172,13)').hex(),
+    secondary: chroma('rgb(22, 214, 46)').hex(),
+    primaryTransparent: transparentize(0.8, 'rgb(172, 55, 255)'),
+    tertiaryTransparent: transparentize(0.8, 'rgb(236,172,13)'),
+    secondaryTransparent: transparentize(0.8, 'rgb(22, 214, 46)'),
     transparent: transparentize(0.25, palette[9].hex),
-    secondaryDark: darken(0.12,'rgb(6, 156, 205)'),
-    primaryDark: darken(0.12,'rgb(235, 87, 87)'),
-    tertiaryDark: darken(0.12,'rgb(249,191,82)')
+    secondaryDark: darken(0.12,'rgb(22, 214, 46)'),
+    primaryDark: darken(0.12,'rgb(172, 55, 255)'),
+    tertiaryDark: darken(0.12,'rgb(236,172,13)')
   }
 
   const [customTheme, setCustomTheme] = useState(theme)
