@@ -21,7 +21,7 @@ Neilsen Norman Group summarizes the difference between customization and persona
 
 ### Personalizing Experiences
 
-The basic goal of personalizing an experience is **to prevent users from struggling to find information/content/products**. How can we show our users things we think they might prefer from the sea of content that we host on our platform?
+The basic goal of personalizing an experience is **to prevent users from struggling to find information / content / products**. How can we show our users things we think they might prefer from the sea of content that we host on our platform?
 
 Experience personalization has greatly influenced the way we shop for things and consume content in the modern era. We're seeing how detailed metadata associated with individual products, movies, podcasts, music, etc. is being used to categorize things the way systems assume we, as individuals, prefer.
 
