@@ -153,26 +153,28 @@ const About = ({ title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={`${title} | About`} description={description}>
-        <ProfileImg>
-          <img src="/static/profile.png"/>
-        </ProfileImg>
-        <h2>Hello, I'm Ryan.👋</h2>
+        <article>
+          <ProfileImg>
+            <img src="/static/profile.png"/>
+          </ProfileImg>
+          <h2>Hello, I'm Ryan.👋</h2>
 
-        <p>
-        I'm a Digital Product Designer currently based in Tampa, Florida. I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
-        </p>
-        <p>
-          I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
-        </p>
-        <p>
-          Previously, I helped build a problem-solving platform for payments as the first product designer at <a href="https://ryanparag.com/work/chargebacks911">Chargebacks911</a>.
-        </p>
-        <p>
-          I’m driven to learn why people do what they do so I can create experiences that are intuitive and successful. I’ve helped rethink, prototype and design solutions to help bring empathy and simplicity into complex problems - which is a fancier way of saying I help things make sense.
-        </p>
-        <p>
-          If you'd like to see more of what I've been working on, take a look at my <a href="https://codepen.io/ryanparag">CodePen</a>, <a href="https://dribbble.com/ryanparag">Dribbble</a>, and <a href="https://github.com/ryan-parag">GitHub</a>. For a more in-depth look at my design process or if you have a project in mind, <a href="mailto:parag.ryan@gmail.com">let's chat - I'm available</a>.
-        </p>
+          <p>
+          I'm a Digital Product Designer currently based in Tampa, Florida. I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
+          </p>
+          <p>
+            I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
+          </p>
+          <p>
+            Previously, I helped build a problem-solving platform for payments as the first product designer at <a href="https://ryanparag.com/work/chargebacks911">Chargebacks911</a>.
+          </p>
+          <p>
+            I’m driven to learn why people do what they do so I can create experiences that are intuitive and successful. I’ve helped rethink, prototype and design solutions to help bring empathy and simplicity into complex problems - which is a fancier way of saying I help things make sense.
+          </p>
+          <p>
+            If you'd like to see more of what I've been working on, take a look at my <a href="https://codepen.io/ryanparag">CodePen</a>, <a href="https://dribbble.com/ryanparag">Dribbble</a>, and <a href="https://github.com/ryan-parag">GitHub</a>. For a more in-depth look at my design process or if you have a project in mind, <a href="mailto:parag.ryan@gmail.com">let's chat - I'm available</a>.
+          </p>
+        </article>
         <hr/>
         <svg width={designTokens.space[8]} viewBox="0 0 138 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M108 88C107.448 88 107 88.4477 107 89V91H105C104.448 91 104 91.4477 104 92C104 92.5523 104.448 93 105 93H107V95C107 95.5523 107.448 96 108 96C108.552 96 109 95.5523 109 95V93H111C111.552 93 112 92.5523 112 92C112 91.4477 111.552 91 111 91H109V89C109 88.4477 108.552 88 108 88Z" fill="var(--tertiary)"/>

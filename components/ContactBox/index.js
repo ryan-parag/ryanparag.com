@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 
-const ContactContainer = styled.div`
+const ContactContainer = styled.article`
   padding: ${designTokens.space[4]};
   display: flex;
   align-items: center;
