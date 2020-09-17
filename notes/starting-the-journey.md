@@ -6,7 +6,7 @@ date: '2020-07-07'
 hero_image: ../static/starting-the-journey.png
 ---
 
-_Illustration inspired by [Jay Fletcher](https://dribbble.com/shots/3947164-Inch-x-Inch)_
+**Illustration inspired by [Jay Fletcher](https://dribbble.com/shots/3947164-Inch-x-Inch)**
 
 For the past year, I've pondered whether to begin writing and sharing about the things I'm tinkering with - not only as a way to pull back the curtain a bit on desiging products, but also a way to begin tracking my progress on learning new things. I also want to share things I find interesting and maybe even spotlighting the designs of other products.
 

@@ -33,7 +33,7 @@ Netflix is also A/B testing on top of this, driving their deep learning platform
 
 ![Netflix personalization](../static/designing-for-personalization_2.png)
 
-In this example, we're seeing how **designing the system** to perform certain background tasks can help provide a more personalized experience. Even though Netflix's example is a _very_ complex model, I think the starting point of how to design around personalization begins with a few basic questions:
+In this example, we're seeing how _designing the system_ to perform certain background tasks can help provide a more personalized experience. Even though Netflix's example is a **very** complex model, I think the starting point of how to design around personalization begins with a few basic questions:
 
 - Who are our users?
 - What do we know about them?
@@ -100,22 +100,22 @@ if (window.matchMedia &&
 }
 ```
 
-Some apps take this to another level, giving users options in choosing pre-selected themes (kind of like this site). Todoist lets users select a theme and which type (light/dark) of neutral colors they prefer. They even let the users toggle if they would like to match per their OS preferences and make a more cohesive cross-platform experience by syncing:
+Some apps take this to another level, giving users options in choosing pre-selected themes (kind of like this site). Todoist lets users select a theme and which type (light/dark) of neutral colors they prefer. They even let the user toggle if they would like to match per their OS preferences and make a more cohesive cross-platform experience by syncing:
 
 ![Todoist Customization](../static/designing-for-personalization_7.png)
 
 ### A Step Further
 
-UI personalization and customization has made me curious on the limits to which we can go by giving users certain controls - and, more interestingly, when we don't have to. Most UI theming mechanisms provide a limited, strictly-defined amount of choices (as seen above). What if we could give users full control of the theme in an interface?
+UI personalization and customization has made me curious on the limits to which we can go by giving users certain controls - and, more interestingly, when we don't have to. Most UI theming mechanisms provide a limited, strictly-defined amount of choices (as seen above). _What if we could give users full control of the theme in an interface?_
 
 So I created a way for users to theme this site on their own. [Check it out!](../create-theme)
 
 ![Theme Creator](../static/designing-for-personalization_8.png)
 
-I've been experimenting with ways to which we could give users fluid customization abilities, but provide them enough rails as to not degrade their experience.
+I've been experimenting with ways to which we could give users **fluid customization abilities**, but provide them enough rails as to not degrade their experience.
 
 I'm still playing around with this idea and gathering feedback, but by using [Lyft Design's Colorbox tool](https://www.colorbox.io/) and the algorithm they've crafted, we can create palette's on-the-fly using a minimal inputs.
 
-To provide some rails for the user, I included a way for the user to gauge when their theme isn't matching certain WCAG requirements as well.
+To provide some rails for the user, I included a way to gauge when parts of the theme aren't matching certain WCAG requirements as well.
 
 I'd love to hear what you think, and if you have any feedback contact me using the details below!

@@ -6,7 +6,7 @@ date: '2020-09-10'
 hero_image: ../static/thoughts-on-design-tools.png
 ---
 
-_Illustrations from [Lattice's Simplified Wireframes](https://www.figma.com/community/file/821393507131833959/Simplified-Wireframes)_
+**Illustrations from [Lattice's Simplified Wireframes](https://www.figma.com/community/file/821393507131833959/Simplified-Wireframes)**
 
 If you've been keeping up with these posts chronologically, I've mostly been writing about the more pragmatic aspects of design. For this note, I thought to take a more introspective, cathartic take on things that I've been thinking about.
 
@@ -38,7 +38,7 @@ I think what might be the most important factor to consider is how your team wor
 
 Learning how we can better communicate our ideas through a design tool can help us align to what ends up as the shipped result. Balancing time and engineering constraints in this phase, along with talking through the unhappy paths can help us make our Sketch files look more like our end results.
 
-Maybe this means accounting for small front-end constraints _while_ we're dragging rectangles around? Maybe this means thinking about our timelines and roadmap _while_ we're working in Figma? I don't know, but I'm curious to figure out how we can use design tools to better align with our teams, and help us have a clearer picture of what will end up as the end result of our design.
+Maybe this means accounting for small front-end constraints **while** we're dragging rectangles around? Maybe this means thinking about our timelines and roadmap **while** we're working in Figma? I don't know, but I'm curious to figure out how we can use design tools to better align with our teams, and help us have a clearer picture of what will end up as the end result of our design.
 
 Maybe all of these concerns can be answered in learning when to use a particular tool:
 
@@ -50,7 +50,7 @@ This method also means we have to remain flexible in our skillsets.
 
 ### What works for me, currently
 
-I'm not sure I have the answers to the things I've been thinking about - but currently, tools that allow me to work faster and in shorter sprints, allow me to communicate and surface these "real world" issues sooner and more frequently. Even more helpful for aligning engineers on my current team is documenting and sharing the design doc of _why_ we're setting out to incorporate a new design - essentially a case study for each feature design.
+I'm not sure I have the answers to the things I've been thinking about - but currently, tools that allow me to work faster and in shorter sprints, allow me to communicate and surface these "real world" issues sooner and more frequently. Even more helpful for aligning engineers on my current team is documenting and sharing the design doc of **why** we're setting out to incorporate a new design - essentially a case study for each feature design.
 
 With the innovations in no-code tools, and even the development of accessible code (React, SwiftUI, Flutter), we're inching closer and closer to the day where design and engineering are closely speaking the same language - maybe we're already there on teams that have a high degree of fluidity and t-shapedness.
 

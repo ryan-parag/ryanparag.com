@@ -161,16 +161,19 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
   }
-  p {
-    a {
-      color: var(--primaryDark);
-      transition: all 120ms ease-out 0s;
-      &:hover, &:focus {
-        opacity: .8;
+  article {
+    p, li {
+      a {
+        color: var(--primaryDark);
+        box-shadow: 0px 1px 0px 0px currentColor;
+        transition: all 120ms ease-out 0s;
+        &:hover, &:focus {
+          opacity: .8;
+        }
       }
-    }
-    a:visited {
-      color: var(--secondaryDark);
+      a:visited {
+        color: var(--secondaryDark);
+      }
     }
   }
 
@@ -234,6 +237,15 @@ export const GlobalStyles = createGlobalStyle`
   strong {
     font-weight: ${designTokens.fontWeights.bold};
   }
+  em {
+    background: var(--primaryTransparent);
+    font-style: normal;
+    box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);
+    transform: skew(10deg);
+  }
+  del {
+    opacity: 0.6;
+  }
   pre, code {
     font-family: ${designTokens.fonts.monospace};
     margin-top:${designTokens.space[4]} !important;
@@ -246,15 +258,15 @@ export const GlobalStyles = createGlobalStyle`
   blockquote {
     margin-bottom: ${designTokens.space[5]};
     margin-top: ${designTokens.space[4]};
-    padding: ${designTokens.space[4]} 0 ${designTokens.space[1]} ${designTokens.space[4]};
+    padding: ${designTokens.space[4]} ${designTokens.space[2]} ${designTokens.space[1]} ${designTokens.space[4]};
     font-style: italic;
     margin-left: 0;
     margin-right: 0;
     position: relative;
-    font-size: ${designTokens.fontSizes[3]};
+    font-size: ${designTokens.fontSizes[2]};
     background: var(--primaryTransparent);
     p {
-      font-size: ${designTokens.fontSizes[3]};
+      font-size: ${designTokens.fontSizes[2]};
     }
     &:before {
       content: '';

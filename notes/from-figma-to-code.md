@@ -286,7 +286,7 @@ Here's what the markup for my layout looks like so far:
 </div>
 ```
 
-You might be wondering what all of those classes mean. Most of my styles are _utility classes_ and are prefixed with a letter using BEM. Utility classes are reusable, single-purpose style classes that I can add to web elements. For example, if I wanted to style text in our _MD_ size, I could create a class named `.u-text--md` and add it to the web element. Utility classes help me build things quickly, but feel free to craft these styles in a different way - and don't forget to have fun homie 😎.
+You might be wondering what all of those classes mean. Most of my styles are **utility classes** and are prefixed with a letter using BEM. Utility classes are reusable, single-purpose style classes that I can add to web elements. For example, if I wanted to style text in our _MD_ size, I could create a class named `.u-text--md` and add it to the web element. Utility classes help me build things quickly, but feel free to craft these styles in a different way - and don't forget to have fun homie 😎.
 
 I'm also organizing these styles with prefixes and BEM naming conventions:
 

@@ -13,9 +13,9 @@ Although the overall design might seem unchanged at a glance, I implemented/chan
 ## Tools
 
 If you're setting out to (re)build your portfolio, there are a few routes/tools you can choose from:
-- **Webflow**: low-code / _super_ popular
+- **Webflow**: low-code / **super** popular
 - **Squarespace**: WYSIWYG / easy-to-use / no-code
-- **Carrd**: Simple/cheap / no-code
+- **Carrd**: Simple / cheap / no-code
 - **Semplice**: no-code / WYSIWYG
 - **Adobe Portfolio**: free with Creative Suite / no code
 - **Code it yourself**: HTML, CSS, JS / Jekyll / Gatsby / Next / etc.
@@ -68,13 +68,13 @@ I switched to:
 
 **Why did I choose to change the typographic style?**
 
-Because 🤷‍♀️- but really, I wanted to implement a _bit_ more minimalism and not have the typography intrude on the designs I would be showcasing.
+Because 🤷‍♀️- but really, I wanted to implement a **bit** more minimalism and not have the typography intrude on the designs I would be showcasing.
 
 ---
 
 ## Colors and Dark Mode
 
-I _love_ when I see websites/apps give me the option to choose to use dark/night modes. When I was building out my previous portfolio, I _really_ wanted to implement the feature and give viewers the option to choose which to use.
+I **love** when I see websites/apps give me the option to choose to use dark/night modes. When I was building out my previous portfolio, I **really** wanted to implement the feature and give viewers the option to choose which to use.
 
 Old:
 ![Old Theme](../static/portfolio-redesign-theme-old.png)
@@ -168,7 +168,7 @@ I wanted to make the about page focus on the content more. Here are the things t
 
 Alot of tools (Webflow, Squarespace) let designers password-protect projects using their CMS platform. Even previously, I needed to figure out a way to simply password protect selected projects.
 
-Using a little JavaScript, I could hide routes and show users a password-protect screen on projects that required authorization. I also chose to add in some _custom lettering_ for a bit of flourish when users came upon this page:
+Using a little JavaScript, I could hide routes and show users a password-protect screen on projects that required authorization. I also chose to add in some **custom lettering** for a bit of flourish when users came upon this page:
 
 Old:
 ![Old Auth](../static/portfolio-redesign-auth-old.png)
