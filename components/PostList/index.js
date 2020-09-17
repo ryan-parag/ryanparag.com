@@ -14,6 +14,7 @@ const ListItem = styled.li`
   &:hover {
     background: var(--grey200);
     text-decoration: none;
+    transform: scale(1.03);
   }
   a {
     &:hover {
@@ -38,7 +39,7 @@ export default function PostList({ posts }) {
           sortedPosts.map((post) => {
             return (
               <ListItem key={post.slug}>
-                <ListLink href={{ pathname: `/notes/${post.slug}` }}>
+                <ListLink href={ `/notes/${post.slug}` }>
                   <a>
                     <div>
                       <h3 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
