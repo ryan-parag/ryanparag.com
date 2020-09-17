@@ -21,15 +21,15 @@ Neilsen Norman Group summarizes the difference between customization and persona
 
 ### Personalizing Experiences
 
-The basic goal of personalizing an experience is **to prevent users from struggling to find information/content/products**. How can we show them things we think they might prefer from the sea of content that we host on our platform.
+The basic goal of personalizing an experience is **to prevent users from struggling to find information/content/products**. How can we show our users things we think they might prefer from the sea of content that we host on our platform?
 
-Experience personalization has greatly influenced the way we shop for things and consume content in the modern era. We're seeing how detailed metadata associated with individual products, movies, podcasts, music is being used to categorize things the way systems assume we, as individuals, prefer.
+Experience personalization has greatly influenced the way we shop for things and consume content in the modern era. We're seeing how detailed metadata associated with individual products, movies, podcasts, music, etc. is being used to categorize things the way systems assume we, as individuals, prefer.
 
-Let's take a look at how Netflix shows us things based the things we've previously watched and our individual user profile:
+Let's take a look at how Netflix shows us things based on the things we've previously watched and our individual user profile:
 
 ![Netflix personalization](../static/designing-for-personalization_1.png)
 
-Netflix is also A/B testing on top of this, driving their deep learning platform and content designers to learn how and why certain users choose certain UI cards:
+Netflix is also A/B testing on top of this, driving their deep learning platform and content designers to learn how and why certain users choose perticular UI cards:
 
 ![Netflix personalization](../static/designing-for-personalization_2.png)
 
@@ -58,7 +58,7 @@ This is a _super_ interesting method of designing for a better experience, and c
 
 ### Customized Experiences
 
-Rather than let the system dicate on what a users see, is it possible for us to let the user's dictate their own experience on segments of a digital product experience?
+Rather than let the system dicate on what a user sees, is it possible for us to let the user dictate their own experience upon segments of a digital product experience?
 
 We see this in a ton of ways already - throughout our iOS settings, news feeds, theme pickers 😉, etc.
 
@@ -100,13 +100,13 @@ if (window.matchMedia &&
 }
 ```
 
-Some apps take this to another level, giving users options in choosing pre-selected themes (kind of like this site). Todoist lets users select a theme and which type (light/dark) of neutral colors they prefer. They even let the users toggle if they would like to match per their OS preferences:
+Some apps take this to another level, giving users options in choosing pre-selected themes (kind of like this site). Todoist lets users select a theme and which type (light/dark) of neutral colors they prefer. They even let the users toggle if they would like to match per their OS preferences and make a more cohesive cross-platform experience by syncing:
 
 ![Todoist Customization](../static/designing-for-personalization_7.png)
 
 ### A Step Further
 
-UI personalization and customization has made me curious on the limits to which we can go by giving users certain controls, and when we don't have. Most UI theming mechanism provide a limited, strictly-defined amount of choices (as seen above). What if we could give users full control of the theme in an interface.
+UI personalization and customization has made me curious on the limits to which we can go by giving users certain controls - and, more interestingly, when we don't have to. Most UI theming mechanisms provide a limited, strictly-defined amount of choices (as seen above). What if we could give users full control of the theme in an interface?
 
 So I created a way for users to theme this site on their own. [Check it out!](../create-theme)
 
