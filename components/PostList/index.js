@@ -4,21 +4,21 @@ import { designTokens } from '../Theme/designTokens'
 import { format } from 'timeago.js'
 
 const ListItem = styled.li`
-  background: var(--grey100);
-  border: 1px solid var(--grey200);
-  padding: ${designTokens.space[4]} ${designTokens.space[3]};
-  border-radius: ${designTokens.space[1]};
-  cursor: pointer;
-  margin-bottom: ${designTokens.space[3]};
-  transition: all 120ms ease-out 0s;
-  &:hover {
-    background: var(--grey200);
-    text-decoration: none;
-    transform: scale(1.03);
-  }
   a {
-    &:hover {
+    display: block;
+    background: var(--grey100);
+    border: 1px solid var(--grey200);
+    padding: ${designTokens.space[4]} ${designTokens.space[3]};
+    border-radius: ${designTokens.space[1]};
+    cursor: pointer;
+    margin-bottom: ${designTokens.space[3]};
+    box-shadow: none;
+    transition: all 120ms ease-out 0s;
+    &:hover, &:focus {
+      background: var(--grey200);
       text-decoration: none;
+      transform: scale(1.03);
+      box-shadow: 0px 1px 2px var(--grey200), 0px 4px 8px var(--grey100), 0px 8px 16px var(--grey100);
     }
   }
 `

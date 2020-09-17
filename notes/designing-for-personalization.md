@@ -1,7 +1,7 @@
 ---
 title: 'Desigining for Personalization'
 author: 'Ryan Parag'
-description: 'What are the different ways we can design more personal experiences for users?'
+description: 'What are the ways we can design more personal experiences for users?'
 date: '2020-09-17'
 hero_image: ../static/designing-for-personalization.png
 ---

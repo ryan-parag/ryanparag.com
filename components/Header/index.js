@@ -290,6 +290,7 @@ export default function Header({ toggleTheme, theme }) {
                 }}
               >
                 <ThemeItem
+                  tabIndex={isPickerOpen ? '0' : '-1'}
                   theme={theme}
                   clickHandle={() => handleThemeToggle(theme)}
                   active={activeTheme === theme ? true : false}
