@@ -1,7 +1,7 @@
 ---
 title: 'Desigining for Personalization'
 author: 'Ryan Parag'
-description: 'My collection of dark modes, light modes, and everything in between'
+description: 'What are the different ways we can design more personal experiences for users?'
 date: '2020-09-17'
 hero_image: ../static/designing-for-personalization.png
 ---
