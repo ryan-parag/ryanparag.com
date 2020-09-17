@@ -12,12 +12,18 @@ const ContrastInner = styled.small`
   align-items: center;
 `
 
-const SuccessState = styled.span`
-  color: var(--primaryDark);
+const StateLabel = styled.span`
+  padding: ${designTokens.space[1]} ${designTokens.space[2]};
+  border-radius: 999px;
 `
 
-const ErrorState = styled.span`
+const SuccessState = styled(StateLabel)`
+  color: var(--grey400);
+`
+
+const ErrorState = styled(StateLabel)`
   color: var(--secondaryDark);
+  background: var(--secondaryTransparent);
 `
 
 export default function ContrastChecker({foregroundColor, backgroundColor}){
