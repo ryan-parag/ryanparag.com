@@ -29,7 +29,7 @@ Let's take a look at how Netflix shows us things based on the things we've previ
 
 ![Netflix personalization](../static/designing-for-personalization_1.png)
 
-Netflix is also A/B testing on top of this, driving their deep learning platform and content designers to learn how and why certain users choose perticular UI cards:
+Netflix is also A/B testing on top of this, driving their deep learning platform and content designers to learn how and why certain users choose particular UI cards:
 
 ![Netflix personalization](../static/designing-for-personalization_2.png)
 
