@@ -58,7 +58,7 @@ This is a _super_ interesting method of designing for a better experience, and c
 
 ### Customized Experiences
 
-Rather than let the system dicate on what a user sees, is it possible for us to let the user dictate their own experience upon segments of a digital product experience?
+Rather than let the system dictate what a user sees, is it possible for us to let the user dictate their own experience upon segments of a digital product experience?
 
 We see this in a ton of ways already - throughout our iOS settings, news feeds, theme pickers 😉, etc.
 
@@ -114,7 +114,7 @@ So I created a way for users to theme this site on their own. [Check it out!](..
 
 I've been experimenting with ways to which we could give users fluid customization abilities, but provide them enough rails as to not degrade their experience.
 
-I'm still playing around with this idea and gathering feedback, but by using [Lyft Design's Colorbox tool](https://www.colorbox.io/) and alogrithm, we can create palette's on-the-fly using a few inputs.
+I'm still playing around with this idea and gathering feedback, but by using [Lyft Design's Colorbox tool](https://www.colorbox.io/) and the algorithm they've crafted, we can create palette's on-the-fly using a minimal inputs.
 
 To provide some rails for the user, I included a way for the user to gauge when their theme isn't matching certain WCAG requirements as well.
 
