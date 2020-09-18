@@ -240,7 +240,7 @@ export const GlobalStyles = createGlobalStyle`
   em {
     background: var(--primaryTransparent);
     font-style: normal;
-    box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);
+    box-shadow: 0px 0px 0px 3px var(--primaryTransparent);
     transform: skew(10deg);
   }
   del {

@@ -18,7 +18,7 @@ const StateLabel = styled.span`
 `
 
 const SuccessState = styled(StateLabel)`
-  color: var(--grey400);
+  color: var(--grey600);
 `
 
 const ErrorState = styled(StateLabel)`
