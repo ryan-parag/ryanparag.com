@@ -11,8 +11,8 @@ const CreateTheme = ({ title, description, ...props }) => {
     <>
       <Layout pageTitle={`${title} | Create a Theme`} description={description}>
         <h2>[WIP] Create a Theme 🎨</h2>
-        <p>If you've stumbled onto this website, you're most likely a designer - or probably very design minded 👍.</p>
-        <p>As designers, we're naturally curious and enjoy tinkering with things - so why not play around with creating a new theme for this website! <strong>Have fun!</strong></p>
+        <p>I like to believe design is a fluid skill and that <strong>everyone is a bit of a designer</strong> 👍 - we all have the ability to feel certain ways about things that are designed.</p>
+        <p>Many of us are also naturally curious and enjoy tinkering with things - so why not <strong>feed that curiousity</strong> and play around with creating a new theme for this website! <strong>Have fun!</strong></p>
         <ThemeCreator/>
         <div style={{
           textAlign: 'center',

@@ -23,7 +23,7 @@ const ButtonBase = css`
     text-decoration: none;
   }
   &:focus {
-    box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);
+    outline: ${designTokens.space[1]} solid var(--primaryTransparent);
   }
 `
 
@@ -49,6 +49,9 @@ const IconButtonBase = css`
   }
   &:hover, &:focus {
     border-color: var(--grey300);
+  }
+  &:focus {
+    outline: ${designTokens.space[1]} solid var(--primaryTransparent);
   }
 `
 

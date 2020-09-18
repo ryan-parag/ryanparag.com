@@ -30,6 +30,9 @@ const ThemeContainer = styled.button`
   &:hover, &:focus {
     transform: scale(1.03);
   }
+  &:focus {
+    outline: ${designTokens.space[1]} solid var(--primaryTransparent);
+  }
 `
 
 const SwatchItem = styled.div`
