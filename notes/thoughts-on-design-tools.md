@@ -34,7 +34,7 @@ Maybe the purpose of the design tool is to help our teams better communicate wha
 
 ### What is the best design tool?
 
-**In my opinion, I don't think it matters.** I think what we all want is to be able to design as close as we can to an end result - interactions, dynamic data, error states, statefulness, etc. - all to help communicate the experience we want to design to our stakeholders and teams. If this can be done in Figma - awesome! If this can be done on a sheet of paper and you're working within an established design system - also awesome! _Whichever tools helps align yout team most thoroughly and efficiently is probably the best tool for you._
+**In my opinion, I don't think it matters.** I think what we all want is to be able to design as close as we can to an end result - interactions, dynamic data, error states, statefulness, etc. - all to help communicate the experience we want to design to our stakeholders and teams. If this can be done in Figma - awesome! If this can be done on a sheet of paper and you're working within an established design system - also awesome! _Whichever tools helps align your team most thoroughly and efficiently is probably the best tool for you._
 
 I think what might be the most important factor to consider is how your team works and which tool helps us communicate over the designs for our product **most thoroughly**.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Desigining for Personalization'
+title: 'Designing for Personalization'
 author: 'Ryan Parag'
 description: 'What are the ways we can design more personal experiences for users?'
 date: '2020-09-17'
