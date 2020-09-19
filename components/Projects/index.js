@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/Link'
+import Link from 'next/link'
 import { BoxAnchorLink, BoxBaseLink } from '@components/Box'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
@@ -45,7 +45,7 @@ export default function Projects(){
       name: 'Theme Creator',
       description: 'Feed your curiousity by theming this website',
       image: '/static/icon-theme-creator.svg',
-      link:'/create-theme',
+      link:'/create-theme/',
       outbound: false
     }, {
       name: 'Figma',
