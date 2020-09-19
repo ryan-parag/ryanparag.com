@@ -5,6 +5,7 @@ import Logo from '@components/Logo'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import { ButtonLink, ButtonAnchorTag } from '@components/Button'
+import Projects from '@components/Projects'
 
 import getPosts from '@utils/getPosts'
 
@@ -64,6 +65,8 @@ const Index = ({ posts, title, description, ...props }) => {
               </Link>
             </ButtonLink>
           </div>
+          <h3>Work & Projects</h3>
+          <Projects/>
         </main>
       </Layout>
     </>

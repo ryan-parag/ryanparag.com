@@ -2,28 +2,12 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import { format } from 'timeago.js'
+import { BoxBaseLink } from '@components/Box'
 
 const ListItem = styled.li`
   a {
-    display: block;
-    background: var(--grey100);
-    border: 1px solid var(--grey200);
-    padding: ${designTokens.space[4]} ${designTokens.space[3]};
-    border-radius: ${designTokens.space[1]};
-    cursor: pointer;
-    margin-bottom: ${designTokens.space[3]};
-    box-shadow: none;
-    transition: all 120ms ease-out 0s;
-    &:hover, &:focus {
-      background: var(--grey200);
-      text-decoration: none;
-      transform: scale(1.03);
-      box-shadow: 0px 1px 2px var(--grey200), 0px 4px 8px var(--grey100), 0px 8px 16px var(--grey100);
-    }
+    ${BoxBaseLink}
   }
-`
-const ListLink = styled(Link)`
-  display: block;
 `
 
 export default function PostList({ posts }) {
@@ -39,7 +23,7 @@ export default function PostList({ posts }) {
           sortedPosts.map((post) => {
             return (
               <ListItem key={post.slug}>
-                <ListLink href={ `/notes/${post.slug}` }>
+                <Link href={ `/notes/${post.slug}` }>
                   <a>
                     <div>
                       <h3 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
@@ -58,7 +42,7 @@ export default function PostList({ posts }) {
                       </div>
                     </div>
                   </a>
-                </ListLink>
+                </Link>
               </ListItem>
             )
           })}

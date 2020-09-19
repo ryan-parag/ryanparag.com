@@ -35,13 +35,13 @@ const CreateTheme = ({ title, description, ...props }) => {
           <svg width="24px" height="24px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient x1="90.5486726%" y1="-18.7679634%" x2="29.4247788%" y2="84.8213047%" id="linearGradient-1">
-                <stop stop-color="#191445" offset="0%"></stop>
-                <stop stop-color="#645EE9" offset="27%"></stop>
-                <stop stop-color="#943FFF" offset="66%"></stop>
-                <stop stop-color="#FF01BE" offset="91%"></stop>
+                <stop stopColor="#191445" offset="0%"></stop>
+                <stop stopColor="#645EE9" offset="27%"></stop>
+                <stop stopColor="#943FFF" offset="66%"></stop>
+                <stop stopColor="#FF01BE" offset="91%"></stop>
               </linearGradient>
             </defs>
-            <g id="Artboard" stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
+            <g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <rect fill="#FFFFFF" x="0" y="0" width="29" height="29"></rect>
               <g id="Asset-1" transform="translate(1.000000, 1.000000)">
                 <polyline id="Path" stroke="#1A1445" strokeWidth="4.8467498" points="26.3144782 25.8848301 0.562415289 25.8848301 0.562415289 0.410267857"></polyline>
