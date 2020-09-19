@@ -38,8 +38,6 @@ export default function ContrastChecker({foregroundColor, backgroundColor}){
     }
   }
 
-  useEffect(() => console.log('rendered!'));
-
   return(
     <ContrastContainer>
       <ContrastInner>

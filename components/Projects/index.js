@@ -45,7 +45,7 @@ export default function Projects(){
       name: 'Theme Creator',
       description: 'Feed your curiousity by theming this website',
       image: '/static/icon-theme-creator.svg',
-      link:'/create-theme/',
+      link:'/create-theme',
       outbound: false
     }, {
       name: 'Figma',
@@ -72,10 +72,10 @@ export default function Projects(){
     <ProjectGrid>
       {
         projects.map(project => (
-          <>
+          <div key={project.name}>
             {
               project.outbound ? (
-                <BoxAnchorLink key={project.name} href={project.link}>
+                <BoxAnchorLink href={project.link}>
                   <ProjectInner>
                     <ProjectImage src={project.image} alt={project.name}/>
                     <div>
@@ -89,7 +89,7 @@ export default function Projects(){
               )
               :
               (
-                <ProjectLink key={project.name}>
+                <ProjectLink>
                   <Link href={project.link}>
                     <a>
                       <ProjectInner>
@@ -106,7 +106,7 @@ export default function Projects(){
                 </ProjectLink>
               )
             }
-          </>
+          </div>
         ))
       }
     </ProjectGrid>

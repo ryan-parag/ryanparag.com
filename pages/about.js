@@ -190,7 +190,7 @@ const About = ({ title, description, ...props }) => {
             <rect x="27" y="28" width="7" height="7" rx="1"/>
           </mask>
           <rect x="27" y="28" width="7" height="7" rx="1" stroke="var(--tertiary)" strokeWidth="4" mask="url(#path-8-inside-2)"/>
-          <path fillRule="evenodd" clip-Rule="evenodd" d="M14 43C13.4477 43 13 43.4477 13 44V46H11C10.4477 46 10 46.4477 10 47C10 47.5523 10.4477 48 11 48H13V50C13 50.5523 13.4477 51 14 51C14.5523 51 15 50.5523 15 50V48H17C17.5523 48 18 47.5523 18 47C18 46.4477 17.5523 46 17 46H15V44C15 43.4477 14.5523 43 14 43Z" fill="var(--tertiary)"/>
+          <path fillRule="evenodd" clipRule="evenodd" d="M14 43C13.4477 43 13 43.4477 13 44V46H11C10.4477 46 10 46.4477 10 47C10 47.5523 10.4477 48 11 48H13V50C13 50.5523 13.4477 51 14 51C14.5523 51 15 50.5523 15 50V48H17C17.5523 48 18 47.5523 18 47C18 46.4477 17.5523 46 17 46H15V44C15 43.4477 14.5523 43 14 43Z" fill="var(--tertiary)"/>
           <circle cx="92.5" cy="87.5" r="1.5" fill="var(--primaryDark)"/>
           <circle cx="114.5" cy="57.5" r="1.5" fill="var(--primaryDark)"/>
           <circle cx="136.5" cy="23.5" r="1.5" fill="var(--primaryDark)"/>
@@ -206,7 +206,7 @@ const About = ({ title, description, ...props }) => {
         </p>
         <LinkContainer>
           <ButtonLink>
-            <Link href="/create-theme/">
+            <Link href="/create-theme">
               <a>
                 <img
                   src="/static/theme.svg"
