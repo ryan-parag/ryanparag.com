@@ -178,16 +178,16 @@ const About = ({ title, description, ...props }) => {
           <h4>Writing</h4>
           <ul>
             <li>
-              <Link href="../thoughts-on-design-tools"><a>Thoughts on Design Tools</a></Link>
+              <Link href="../notes/thoughts-on-design-tools"><a>Thoughts on Design Tools</a></Link>
             </li>
             <li>
-              <Link href="../designing-for-personalization"><a>Designing for Personalization</a></Link>
+              <Link href="../notes/designing-for-personalization"><a>Designing for Personalization</a></Link>
             </li>
             <li>
-              <Link href="../from-figma-to-code"><a>From Figma to Code</a></Link>
+              <Link href="../notes/from-figma-to-code"><a>From Figma to Code</a></Link>
             </li>
             <li>
-              <Link href="../portfolio-redesign"><a>Portfolio Redesign</a></Link>
+              <Link href="../notes/portfolio-redesign"><a>Portfolio Redesign</a></Link>
             </li>
           </ul>
           <h4>About</h4>
