@@ -158,22 +158,60 @@ const About = ({ title, description, ...props }) => {
             <img src="/static/profile.png"/>
           </ProfileImg>
           <h2>Hello, I'm Ryan.👋</h2>
+          <p className="lead">I'm a Digital Product Designer based in Tampa, Florida.</p>
 
+          <h4>Projects</h4>
+          <ul>
+            <li>
+              <a href="https://ryanparag.com">Take a look at my portfolio and case studies</a>
+            </li>
+            <li>
+              <a href="https://slack-themes.now.sh/">Slack Themes</a>
+            </li>
+            <li>
+              <a href="https://tampabay.design/">Tampa Bay Design Community Finder</a>
+            </li>
+            <li>
+              <Link href="../create-theme"><a>Theme Creator</a></Link>
+            </li>
+          </ul>
+          <h4>Writing</h4>
+          <ul>
+            <li>
+              <Link href="../thoughts-on-design-tools"><a>Thoughts on Design Tools</a></Link>
+            </li>
+            <li>
+              <Link href="../designing-for-personalization"><a>Designing for Personalization</a></Link>
+            </li>
+            <li>
+              <Link href="../from-figma-to-code"><a>From Figma to Code</a></Link>
+            </li>
+            <li>
+              <Link href="../portfolio-redesign"><a>Portfolio Redesign</a></Link>
+            </li>
+          </ul>
+          <h4>About</h4>
           <p>
-          I'm a Digital Product Designer currently based in Tampa, Florida. I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
+            I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
           </p>
           <p>
             I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
           </p>
-          <p>
-            Previously, I helped build a problem-solving platform for payments as the first product designer at <a href="https://ryanparag.com/work/chargebacks911">Chargebacks911</a>.
-          </p>
-          <p>
-            I’m driven to learn why people do what they do so I can create experiences that are intuitive and successful. I’ve helped rethink, prototype and design solutions to help bring empathy and simplicity into complex problems - which is a fancier way of saying I help things make sense.
-          </p>
-          <p>
-            If you'd like to see more of what I've been working on, take a look at my <a href="https://codepen.io/ryanparag">CodePen</a>, <a href="https://dribbble.com/ryanparag">Dribbble</a>, and <a href="https://github.com/ryan-parag">GitHub</a>. For a more in-depth look at my design process or if you have a project in mind, <a href="mailto:parag.ryan@gmail.com">let's chat - I'm available</a>.
-          </p>
+          <h4>Get in touch</h4>
+          <ul>
+            <li>
+              <a href="https://dribbble.com/ryanparag">Dribbble</a>
+            </li>
+            <li>
+              <a href="https://codepen.io/ryanparag">CodePen</a>
+            </li>
+            <li>
+              <a href="https://github.com/ryan-parag">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:parag.ryan@gmail.com">Email me!</a>
+            </li>
+          </ul>
         </article>
         <hr/>
         <svg width={designTokens.space[8]} viewBox="0 0 138 100" fill="none" xmlns="http://www.w3.org/2000/svg">
