@@ -20,7 +20,7 @@ const Main = styled.main`
   padding: ${designTokens.space[9]} ${designTokens.space[3]} ${designTokens.space[6]};
 `
 
-export default function Layout({ children, pageTitle, description, ...props }) {
+export default function Layout({ children, pageTitle, description, ogImage ...props }) {
 
   if (typeof window !== "undefined") {
     ReactGA.initialize('UA-63443247-5')
