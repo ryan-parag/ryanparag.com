@@ -3,7 +3,7 @@ title: 'Portfolio Redesign'
 author: 'Ryan Parag'
 description: 'The design decisions I made when redesigning my portfolio'
 date: '2020-08-08'
-hero_image: ../static/portfolio-redesign.png
+hero_image: /static/portfolio-redesign.png
 ---
 
 A few months back, I began redesigning my portfolio - again 🤦‍♀️. I not only wanted to add a couple of the newer projects I was working on, but I also wanted to address larger design issues and experiment with building it in some newer technologies.

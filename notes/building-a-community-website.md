@@ -3,7 +3,7 @@ title: 'Building a Community Website'
 author: 'Ryan Parag'
 description: 'Aggregating Slack groups and events in my local design community'
 date: '2020-07-20'
-hero_image: ../static/building-a-community-website.png
+hero_image: /static/building-a-community-website.png
 ---
 
 A few weeks back (~ late June 2020), I was having trouble tracking down where I could join a few of the local design Slack communities in the Tampa Bay area. There wasn't a central location for me to see which communities were in the area and what events they had coming up.

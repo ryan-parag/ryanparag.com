@@ -3,7 +3,7 @@ title: 'Collecting Theme Toggles'
 author: 'Ryan Parag'
 description: 'My collection of dark modes, light modes, and everything in between'
 date: '2020-08-27'
-hero_image: ../static/collecting-theme-toggles.png
+hero_image: /static/collecting-theme-toggles.png
 ---
 
 For the past few years, I've been tinkering with designing dark/light modes and themes for the web - experimenting with CSS variables, different stylesheets, CSS-in-JS, etc. It's been awesome to be inspired by how other products, websites, and design portfolios are experimenting with dark/light modes - inspiring some of the recreations in code which you can find below.

@@ -3,7 +3,7 @@ title: 'Thoughts on Design Tools'
 author: 'Ryan Parag'
 description: 'As designers, what are we actually delivering? Mockups? Prototypes?'
 date: '2020-09-10'
-hero_image: ../static/thoughts-on-design-tools.png
+hero_image: /static/thoughts-on-design-tools.png
 ---
 
 **Illustrations from [Lattice's Simplified Wireframes](https://www.figma.com/community/file/821393507131833959/Simplified-Wireframes)**

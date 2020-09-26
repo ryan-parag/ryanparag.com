@@ -3,7 +3,7 @@ title: 'Starting the Journey'
 author: 'Ryan Parag'
 description: 'Kicking off designing things in the open and sharing the things I build'
 date: '2020-07-07'
-hero_image: ../static/starting-the-journey.png
+hero_image: /static/starting-the-journey.png
 ---
 
 **Illustration inspired by [Jay Fletcher](https://dribbble.com/shots/3947164-Inch-x-Inch)**

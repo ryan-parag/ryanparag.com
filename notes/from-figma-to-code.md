@@ -3,7 +3,7 @@ title: 'From Figma to Code'
 author: 'Ryan Parag'
 description: 'Designing a simple Bitcoin Tracker and translating to code'
 date: '2020-09-04'
-hero_image: ../static/from-figma-to-code.png
+hero_image: /static/from-figma-to-code.png
 ---
 
 In an effort to keep up with this site's ethos and show a bit more of how I design things, I thought I could share a Figma file and show the code used to produce what is contained in a Figma prototype.

@@ -3,7 +3,7 @@ title: 'Designing for Personalization'
 author: 'Ryan Parag'
 description: 'What are the ways we can design more personal experiences for users?'
 date: '2020-09-17'
-hero_image: ../static/designing-for-personalization.png
+hero_image: /static/designing-for-personalization.png
 ---
 
 As users, we expect our modern digital products to understand us more thoroughly - to help drive a more seamless, personalized experience per our individual preferences. We see this in a multitude of ways, across mobile apps, websites, and even (more so) in our content streaming experiences:
