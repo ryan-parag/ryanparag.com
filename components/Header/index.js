@@ -92,6 +92,8 @@ const Nav = styled.nav`
     &:hover {
       border-color: var(--grey300);
       background: transparent;
+      background: var(--grey800);
+      color: var(--grey0);
     }
     &:focus {
       box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);

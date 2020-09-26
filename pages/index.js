@@ -12,7 +12,7 @@ import getPosts from '@utils/getPosts'
 const Index = ({ posts, title, description, ...props }) => {
 
   const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
-  const latestPosts = sortedPosts.slice(0, 3)
+  const latestPosts = sortedPosts.slice(0, 5)
 
   return (
     <>
