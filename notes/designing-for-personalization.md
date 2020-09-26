@@ -85,7 +85,7 @@ In the example below, we can see a handful of example roles in a system and the 
 
 Rather than let the system dictate what a user sees, is it possible for us to let the user dictate their own experience upon segments of a digital product experience?
 
-We see this in a ton of ways already - throughout our iOS settings, news feeds, theme pickers 😉, etc. Personalizing an experience based on the user's set preference can allow the user to accomodate themselves to a product more effectively - they would be situating themselves to an environment more relevant to their types of engagement.
+We see this in a ton of ways already - throughout our iOS settings, news feeds, theme pickers 😉, etc. Personalizing an experience based on the user's set preference can allow the user to accommodate themselves to a product more effectively - they would be situating themselves to an environment more relevant to their types of engagement.
 
 Let's take a look at how some teams are tackling customization in a few unique and common ways. In GitHub for Mobile, we can see a wide range of ways they're allowing the user to customize based on their preferences - providing fixed options to modify certain settings:
 
