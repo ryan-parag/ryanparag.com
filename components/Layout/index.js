@@ -20,7 +20,7 @@ const Main = styled.main`
   padding: ${designTokens.space[9]} ${designTokens.space[3]} ${designTokens.space[6]};
 `
 
-export default function Layout({ children, pageTitle, description, ...props }) {
+export default function Layout({ children, pageTitle, description, ogImage, ...props }) {
 
   if (typeof window !== "undefined") {
     ReactGA.initialize('UA-63443247-5')
@@ -110,7 +110,7 @@ export default function Layout({ children, pageTitle, description, ...props }) {
             <meta property="og:type" content="website"></meta>
             <meta property="og:title" content={pageTitle}></meta>
             <meta property="og:description" content={description}></meta>
-            <meta property="og:image" content="/notes-social-media.png"></meta>
+            <meta property="og:image" content={ogImage}></meta>
             <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png"></link>
             <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png"></link>
             <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png"></link>

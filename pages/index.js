@@ -16,7 +16,7 @@ const Index = ({ posts, title, description, ...props }) => {
 
   return (
     <>
-      <Layout pageTitle={title} description={description}>
+      <Layout pageTitle={title} description={description} ogImage="/notes-social-media.png">
         <div style={{ width: '64px'}}>
           <Logo/>
         </div>

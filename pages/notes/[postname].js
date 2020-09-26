@@ -35,7 +35,7 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
 
   return (
     <>
-      <Layout pageTitle={`${frontmatter.title} | ${siteTitle}`}>
+      <Layout pageTitle={`${frontmatter.title} | ${siteTitle}`} description={frontmatter.description} ogImage={frontmatter.hero_image}>
         <div>
           <ButtonLink>
             <Link href="/notes">

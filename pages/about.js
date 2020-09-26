@@ -146,7 +146,7 @@ const About = ({ title, description, ...props }) => {
   
   return (
     <>
-      <Layout pageTitle={`${title} | About`} description={description}>
+      <Layout pageTitle={`${title} | About`} description={description} ogImage="/notes-social-media.png">
         <article>
           <ProfileImg>
             <img src="/static/profile.png"/>
