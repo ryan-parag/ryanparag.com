@@ -139,7 +139,7 @@ So I created a way for users to theme this site on their own. [Check it out!](..
 
 I've been experimenting with ways to which we could give users **fluid customization abilities**, but provide them enough rails as to not degrade their experience.
 
-I'm still playing around with this idea and gathering feedback, but by using [Lyft Design's Colorbox tool](https://www.colorbox.io/) and the algorithm they've crafted, we can create palette's on-the-fly using a minimal inputs.
+I'm still playing around with this idea and gathering feedback, but by using [Lyft Design's Colorbox tool](https://www.colorbox.io/) and the algorithm they've crafted, we can create palettes on-the-fly using minimal inputs.
 
 To provide some rails for the user, I included a way to gauge when parts of the theme aren't matching certain WCAG requirements as well.
 

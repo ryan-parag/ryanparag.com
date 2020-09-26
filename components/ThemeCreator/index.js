@@ -133,41 +133,43 @@ const ThemeCreator = () => {
 
   const changeColor = () => {
     let newNeutralTheme = []
-    palette.map(color => {
-      newNeutralTheme.push(color.hex)
-    })
-    if(darkMode) {
-      setCustomTheme(prevState => ({
-        ...prevState,
-        grey900: newNeutralTheme[9],
-        grey800: newNeutralTheme[8],
-        grey700: newNeutralTheme[7],
-        grey600: newNeutralTheme[6],
-        grey500: newNeutralTheme[5],
-        grey400: newNeutralTheme[4],
-        grey300: newNeutralTheme[3],
-        grey200: newNeutralTheme[2],
-        grey100: newNeutralTheme[1],
-        grey0: newNeutralTheme[0],
-        transparent: getTransparent(newNeutralTheme[0]),
-      }))
-    } else {
-      setCustomTheme(prevState => ({
-        ...prevState,
-        grey900: newNeutralTheme[0],
-        grey800: newNeutralTheme[1],
-        grey700: newNeutralTheme[2],
-        grey600: newNeutralTheme[3],
-        grey500: newNeutralTheme[4],
-        grey400: newNeutralTheme[5],
-        grey300: newNeutralTheme[6],
-        grey200: newNeutralTheme[7],
-        grey100: newNeutralTheme[8],
-        grey0: newNeutralTheme[9],
-        transparent: transparentize(0.25, newNeutralTheme[0]),
-      }))
-    }
-    return customTheme
+    setTimeout(() => {
+      palette.map(color => {
+        newNeutralTheme.push(color.hex)
+      })
+      if(darkMode) {
+        setCustomTheme(prevState => ({
+          ...prevState,
+          grey900: newNeutralTheme[9],
+          grey800: newNeutralTheme[8],
+          grey700: newNeutralTheme[7],
+          grey600: newNeutralTheme[6],
+          grey500: newNeutralTheme[5],
+          grey400: newNeutralTheme[4],
+          grey300: newNeutralTheme[3],
+          grey200: newNeutralTheme[2],
+          grey100: newNeutralTheme[1],
+          grey0: newNeutralTheme[0],
+          transparent: getTransparent(newNeutralTheme[0]),
+        }))
+      } else {
+        setCustomTheme(prevState => ({
+          ...prevState,
+          grey900: newNeutralTheme[0],
+          grey800: newNeutralTheme[1],
+          grey700: newNeutralTheme[2],
+          grey600: newNeutralTheme[3],
+          grey500: newNeutralTheme[4],
+          grey400: newNeutralTheme[5],
+          grey300: newNeutralTheme[6],
+          grey200: newNeutralTheme[7],
+          grey100: newNeutralTheme[8],
+          grey0: newNeutralTheme[9],
+          transparent: transparentize(0.25, newNeutralTheme[0]),
+        }))
+      }
+      return customTheme
+    },100)
   }
 
   const changeHueStart = (value) => {

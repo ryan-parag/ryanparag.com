@@ -10,7 +10,7 @@ const CreateTheme = ({ title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={`${title} | Create a Theme`} description={description}>
-        <h2>[WIP] Create a Theme 🎨</h2>
+        <h2>Create a Theme 🎨</h2>
         <p>I like to believe design is a fluid skill and that <strong>everyone is a bit of a designer</strong> 👍 - we all have the ability to feel certain ways about things that are designed.</p>
         <p>Many of us are also naturally curious and enjoy tinkering with things - so why not <strong>feed that curiousity</strong> and play around with creating a new theme for this website! <strong>Have fun!</strong></p>
         <ThemeCreator/>
@@ -56,21 +56,6 @@ const CreateTheme = ({ title, description, ...props }) => {
             <small>by Lyft Design</small>
           </span>
           </a>
-        </div>
-        <div style={{
-          padding: designTokens.space[3],
-          background: 'var(--secondaryTransparent)',
-          borderRadius: designTokens.space[2],
-          marginBottom: designTokens.space[4]
-        }}>
-          <h5>Logged Issues</h5>
-          <ul>
-            <li>
-              Switching between light and dark mode does not update the theme right away. In the meantime, when switching between light/dark modes, alter one of the neutral sliders.
-              <br/>
-              <small>Currently trying to fix this issue with the refactoring of the initial state.</small>
-            </li>
-          </ul>
         </div>
         <ContactBox/>
       </Layout>

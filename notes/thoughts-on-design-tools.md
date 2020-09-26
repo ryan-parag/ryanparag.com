@@ -20,6 +20,8 @@ We share mockups and prototypes often - in our portfolios, Dribbble, Twitter, Sl
 
 Many times, we even share designs that may be slightly different in actuality - due to something that may have popped up in QA or an error state that alters a bit of the user flow.
 
+> "What you deliver matters - you are what you ship"
+
 An analogy would be if we were to only evaluate an architect's sketches rather than the structure that was built. Shouldn't the same be true of product designers? Shouldn't we critique our shipped end result and not just the Figma prototype alone?
 
 ### So what is the purpose of a design tool for us?
