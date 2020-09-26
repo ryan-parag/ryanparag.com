@@ -280,6 +280,7 @@ const ThemeCreator = () => {
   }
 
   const toggleActiveSwatch = (name, value) => {
+    changeColor()
     setActiveSwatch(value)
     setActiveSwatchName(name)
   }

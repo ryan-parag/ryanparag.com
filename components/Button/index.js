@@ -20,6 +20,8 @@ const ButtonBase = css`
   transition: all 120ms ease-out 0s;
   &:hover {
     border-color: var(--grey300);
+    background: var(--grey800);
+    color: var(--grey0);
     text-decoration: none;
   }
   &:focus {
@@ -49,6 +51,8 @@ const IconButtonBase = css`
   }
   &:hover, &:focus {
     border-color: var(--grey300);
+    background: var(--grey800);
+    color: var(--grey0);
   }
   &:focus {
     outline: ${designTokens.space[1]} solid var(--primaryTransparent);
