@@ -213,6 +213,6 @@ Once we make any edits, we can click *Verify & Transfer* to move the submission 
 
 ## That's it, for now
 
-This is as far as I made it, but now that we have our data in Firestore, my next objective is to design an experience for an integrated Slack app - rather than copy/paste themes, we could give users the ability to get a theme directly from a */* command!
+This is as far as I've made it, but now that we have our data in Firestore, my next objective is to design an experience for an integrated Slack app - rather than copy/paste themes, we could give users the ability to get a theme directly from a */* command!
 
-*I didn't delve too much into the code or design here, but if you have questions, feel free to look at the [repo on GitHub](https://github.com/ryan-parag/slack-themes) or contact me using the details below!*
+I didn't delve too much into the code or design here, but if you have questions, feel free to look at the [repo on GitHub](https://github.com/ryan-parag/slack-themes) or contact me using the details below!
