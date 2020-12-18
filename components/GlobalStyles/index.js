@@ -278,9 +278,13 @@ export const GlobalStyles = createGlobalStyle`
       background: var(--primary);
     }
   }
-  
   ul {
     list-style: circle inside;
+  }
+  ol {
+    list-style-position: inside;
+  }
+  ul, ol {
     padding-left: 0;
     li {
       line-height: ${designTokens.lineHeights.body};
