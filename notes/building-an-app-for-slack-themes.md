@@ -74,6 +74,39 @@ After you've created a new project, we would need to enable Cloud Firestore as a
 
 ![Data inside Firestore](../static/designing-an-app-for-slack-themes_2.png)
 
+Firestore gives us a few functions to add/edit/delete themes (documents) that we'll use across our app.
+
+Example functions:
+```js
+// Add an item to a collection
+const addTheme = (Theme) => {
+  firebase.firestore()
+    .collection(YourCollection)
+    .doc(Theme.Id)
+    .set(Theme)
+}
+```
+
+```js
+// Delete an item from a collection
+const deleteTheme = (Theme) => {
+  firebase.firestore()
+    .collection(YourCollection)
+    .doc(Theme.Id)
+    .delete()
+}
+```
+
+```js
+// Update an item in a collection
+const updateTheme = (Theme) => {
+  firebase.firestore()
+    .collection(YourCollection)
+    .doc(Theme.Id)
+    .update(Theme)
+}
+```
+
 ## Designing the App
 
 Now that we have a place to store and grab our themes, we need to think about how we would design an easy-to-use interface for our stored themes.
