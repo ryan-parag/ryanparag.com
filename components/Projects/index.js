@@ -32,6 +32,46 @@ const ProjectImage = styled.img`
   margin-right: ${designTokens.space[3]};
 `
 
+export const ProjectItem = ({project}) => {
+  return(
+    <>
+      {
+        project.outbound ? (
+          <BoxAnchorLink href={project.link} target="_blank">
+            <ProjectInner>
+              <ProjectImage src={project.image} alt={project.name}/>
+              <div>
+                <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
+                <div>
+                  <small>{project.description}</small>
+                </div>
+              </div>
+            </ProjectInner>
+          </BoxAnchorLink>
+        )
+        :
+        (
+          <ProjectLink>
+            <Link href={project.link}>
+              <a>
+                <ProjectInner>
+                  <ProjectImage src={project.image} alt={project.name}/>
+                  <div>
+                    <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
+                    <div>
+                      <small>{project.description}</small>
+                    </div>
+                  </div>
+                </ProjectInner>
+              </a>
+            </Link>
+          </ProjectLink>
+        )
+      }
+    </>
+  )
+}
+
 export default function Projects(){
 
   const projects = [
@@ -73,39 +113,7 @@ export default function Projects(){
       {
         projects.map(project => (
           <div key={project.name}>
-            {
-              project.outbound ? (
-                <BoxAnchorLink href={project.link}>
-                  <ProjectInner>
-                    <ProjectImage src={project.image} alt={project.name}/>
-                    <div>
-                      <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
-                      <div>
-                        <small>{project.description}</small>
-                      </div>
-                    </div>
-                  </ProjectInner>
-                </BoxAnchorLink>
-              )
-              :
-              (
-                <ProjectLink>
-                  <Link href={project.link}>
-                    <a>
-                      <ProjectInner>
-                        <ProjectImage src={project.image} alt={project.name}/>
-                        <div>
-                          <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
-                          <div>
-                            <small>{project.description}</small>
-                          </div>
-                        </div>
-                      </ProjectInner>
-                    </a>
-                  </Link>
-                </ProjectLink>
-              )
-            }
+            <ProjectItem project={project}/>
           </div>
         ))
       }

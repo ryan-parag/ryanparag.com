@@ -126,6 +126,11 @@ export default function Footer() {
               Dribbble
             </a>
           </FooterListItem>
+          <FooterListItem>
+            <Link href="/rss">
+              RSS
+            </Link>
+          </FooterListItem>
         </FooterList>
         <small>Made with Next.js and Styled Components</small>
         <br/>
