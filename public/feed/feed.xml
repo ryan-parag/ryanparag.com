@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Ryan's Notes</title>
         <link>https://notes.ryanparag.com</link>
         <description>Hello, I'm Ryan Parag - these are my notes about designing in the open and building thoughtful products.</description>
-        <lastBuildDate>Fri, 01 Jan 2021 21:44:04 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 01 Jan 2021 22:28:17 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Next.js using Feed for Node.js</generator>
         <language>en</language>
@@ -19,54 +19,1183 @@
             <guid>https://notes.ryanparag.com/notes/building-a-community-website</guid>
             <pubDate>Mon, 20 Jul 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Aggregating Slack groups and events in my local design community]]></description>
+            <content:encoded><![CDATA[
+A few weeks back (~ late June 2020), I was having trouble tracking down where I could join a few of the local design Slack communities in the Tampa Bay area. There wasn't a central location for me to see which communities were in the area and what events they had coming up.
+
+So, I set out to quickly [build a website](https://tampabay.design) that would aggregate that data in a central location and help those in the area that were just starting out in design (or are not currently part of any of the communities) to join in on their discussions. 
+
+I've been playing with Next.js and Styled Components lately and thought it would be a fun way to experiment with a few modern web tools. In this post, I'll quickly go over how I built it. We needed a few basic functions on the website:
+
+- Show local design communities hosting events
+- Post links to join the various local Slack communities
+- Allow new, or not listed design communities, to submit their org to be listed
+- Allow communities to submit events
+
+Using `Next.js`, `Styled Components`, and Google Forms, I quickly spun up a small site that lists the major communities designers can join:
+
+![Tampabay.design](../static/building-a-community-website_2.png)
+
+Users can fill out the Google Form using the link to notify me about their organization to be listed,
+
+With my limited knowledge as a non-dev, I also needed a way for communities to submit events to a database, but not list them until I can verify them. Some orgs are using Meetup, some using Eventbrite, and some using another event hosting site du jour.
+
+I decided I would just grab all of the currently upcoming events and throw them in an Airtable doc:
+
+![Airtable](../static/building-a-community-website_3.png)
+
+By using Airtable, I could grab all upcoming events for all the communities in a single API call. After an event's date had passed, it would no longer be listed. I also included a column called `verified` to mark an event as verified and listed in the event list on the website.
+
+If an event was unverified, I would receive a notification and a message on the website, letting me know to verify the event in Airtable, either on Airtable's website or mobile app - case closed 👏.
+
+![Events](../static/building-a-community-website_4.png)
+
+Hopefully that was helpful in case you want to do the same for your community, or even if you want to help contribute on [this website](https://github.com/TampaBayDesigners/tampabaydesigners). I'll keep updating this site with more features that could be helpful to other designers in the area, but if you have an idea, ping me using the form below - I'd love to hear about your ideas.]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Designing an App for Slack Themes]]></title>
             <guid>https://notes.ryanparag.com/notes/building-an-app-for-slack-themes</guid>
             <pubDate>Thu, 17 Dec 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Learning how to scrap together a web app using React, Tailwind, and Firestore]]></description>
+            <content:encoded><![CDATA[
+Can we not only design a web app, but plan and build one as well? Sure we can!
+
+About a year and a half ago, I began to realize I had too many Slack workspaces and had a difficult time differentiating between them. So I set out to build a web app to help collect a bunch Slack Themes where users are able to copy and paste into Slack - [you can find it here](https://slack-themes.now.sh/)!
+
+*__Sidenote:__ I'm not going to delve too much into the code or design, but if you have questions, feel free to look at the [repo on GitHub](https://github.com/ryan-parag/slack-themes) or contact me!*
+
+Slack gives us a way to customize the theme of each workspace sidebar, and I thought this could be a neat way for others to help personalize and identify their different workspaces.
+
+![Slack's Theme Customizer](../static/designing-an-app-for-slack-themes_1.png)
+Slack's Theme Customizer
+
+*But, in order to change a theme, I had to go through multiple steps: open the menu, click preferences, change theme.*
+
+- How can we make the process of selecting themes simpler?
+- What if a user wanted to do this in less steps?
+- What if a user wanted access to more themes and options?
+
+**End Goal**
+
+*Let's set out to build a web application where users can find one of many curated themes to copy and paste quickly in their Slack workspaces*
+
+Although there was a v1 of this web application, I'm going to go through the high-level steps of how I set out to build v2 from the ground up.
+
+**What will we use to build it?**
+- Figma: to help design our idea
+- React & Next.js: to house all of our front-end logic and server-rendered pages
+- Tailwind: to help build styles super quickly (and a bit of Styled Components)
+- Firebase/Firestore: to help house all of our themes inside of a database
+
+There are a few other things, like __framer-motion__ and __PostCSS__, but they won't be necessary.
+
+## Getting Started with Data and Firestore
+
+The first thing we should probably do is start to think how we will store our themes and which types of data will be associated with each theme:
+- Theme name
+- Theme colors
+- Created by
+- Date created
+- Categories/groups
+- Likes
+
+Slack gives us the ability to customize 9 colors in a theme, all denoted by a label (eg. Active Item). Why don't we take a look at a data object of a theme that contains the items listed above:
+
+```js
+{
+  theme_name: 'Example Theme',
+  active_item: '#5469D4',
+  active_item_text: '#FFFFFF',
+  active_presence:'#4CAF50',
+  column_bg: '#191D27',
+  hover_item: '#283040',
+  mention_badge: '#F2453D',
+  text_color: '#DEE5EE',
+  top_nav_bg: '#000000',
+  top_nav_text: '#DEE5EE',
+  categories: ['dark', 'brand'],
+  likes: 0,
+  submittedBy: 'Ryan Parag',
+  created: 1608255573
+}
+```
+
+Now let's take a look on how to use and insert this data inside Google's Cloud Firestore. If you've never used Firebase/Firestore, you would first have to create a new project before setting up a database inside the project. [Here's a step-by-step tutorial on the setup](https://www.youtube.com/watch?v=3ZEz-iposj8)
+
+After you've created a new project, we would need to enable Cloud Firestore as a databse. Here's a quick glance at mine, along with the how we would structure our data (collections and documents):
+
+![Data inside Firestore](../static/designing-an-app-for-slack-themes_2.png)
+
+Firestore gives us a few functions to add/edit/delete themes (documents) that we'll use across our app.
+
+Example functions:
+```js
+// Add an item to a collection
+const addTheme = (Theme) => {
+  firebase.firestore()
+    .collection(YourCollection)
+    .doc(Theme.Id)
+    .set(Theme)
+}
+```
+
+```js
+// Delete an item from a collection
+const deleteTheme = (Theme) => {
+  firebase.firestore()
+    .collection(YourCollection)
+    .doc(Theme.Id)
+    .delete()
+}
+```
+
+```js
+// Update an item in a collection
+const updateTheme = (Theme) => {
+  firebase.firestore()
+    .collection(YourCollection)
+    .doc(Theme.Id)
+    .update(Theme)
+}
+```
+
+## Designing the App
+
+Now that we have a place to store and grab our themes, we need to think about how we would design an easy-to-use interface for our stored themes.
+
+What would each theme look like?
+
+![Theme Item](../static/designing-an-app-for-slack-themes_3.png)
+
+We can also let users copy the string of hex colors easily by clicking each theme card - where the user would subsequently paste into Slack and click the button that Slack generates to switch themes.
+
+### Filtering and Sorting
+
+How do we expect users to find themes that fits into their exploring criteria? Would they be searching for dark themes? Or purple themes? Would they be expecting to sort alphabetically or by which themes are most popular?
+
+Since each theme has a set of groups/categories, we can build sets of filters and sorting mechanisms to make the UI for theme browsing flexible.
+
+![Sorting](../static/designing-an-app-for-slack-themes_4.png)
+
+In order to get our group filtering to work with our data in Firestore, we'll need to build a few indexes - these will help get our complex data query really fast:
+
+![Firestore Indexes](../static/designing-an-app-for-slack-themes_5.png)
+
+### Designing for Low Data
+
+How do we design an app for users who may not have the fastest internet or may have a lesser-performing device?
+
+To help lessen the load from the browser and network connection, we can limit how much data we pull with our Firestore query. Here's what that query looks like in `React`:
+
+```js
+  const [loadedThemes, setLoadedThemes] = useState([]) // initial array of themes
+  const [sort, setSort] = useState('theme_name') // initial sorting (by theme_name or likes)
+  const [order, setOrder] = useState('asc') // initial sort order
+  const [queryAmount, setQueryAmount] = useState(27) // initial amount of themes
+
+  firebase.firestore().collection('themes').limit(queryAmount).orderBy(sort, order).onSnapshot(snapshot => {
+    const fetchedThemes = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+    setLoadedThemes(fetchedThemes)
+  })
+```
+
+We can let users look at the next set of data by creating a button that increments the query limit:
+
+![Update Query Limit](../static/designing-an-app-for-slack-themes_10.png)
+
+```js
+  const updateQueryAmount = () => {
+    setQueryAmount(prev => prev + 27)
+  }
+
+  ...
+
+  <button
+    onClick={updateQueryAmount}
+  >
+    Show me more
+  </button>
+```
+
+So we've finished our storage, design, and data transformation - let's take a look at what we have:
+
+![Exploring Themes](../static/designing-an-app-for-slack-themes_6.png)
+
+### Designing Options
+
+On top of letting users browse and copy Slack themes, I wanted to give users a way to fine tune the listed themes to better fit how they would like to visualize them:
+
+- Toggle the intrusive __Top Nav Bg__ color to help make each theme a bit more minimal
+- Toggle the __Theme Name__ in the copied theme (this would help label the theme when pasting to a thread)
+
+Let's design a space where users may toggle those settings:
+
+![Settings](../static/designing-an-app-for-slack-themes_7.png)
+
+### Collecting Submissions
+
+What if a user has a great idea for a theme and wants to add it to our list?
+
+Why don't we design a way for a user to easily submit a theme through our web app? We'll need to ask the user for a few things:
+
+- What colors are in your theme?
+- What do you want to call your theme?
+- Let us know who you are - to give you credit, of course
+
+![Theme Form](../static/designing-an-app-for-slack-themes_8.png)
+
+Once submitted, we can add this to another Firestore collection (called __submitted__) in order to await our verification (we'll go over that a bit later).
+
+### Building Engagement
+
+Besides giving users the ability to upvote themes, we can also list a few of the most recently submitted themes:
+
+![Success State](../static/designing-an-app-for-slack-themes_9.png)
+
+----------------------------
+> All done! or are we?
+
+## Behind the Scenes
+
+I don't want to have to manage theme submissions or editing through Firestore or by pushing new code. If we have all of our data in Firestore, we could design an easier way to update this data through our web app - all hidden behind some user authentication.
+
+### What would a scenario for this look like?
+
+1. User submits a new theme via our new theme submission form
+2. Theme gets added to our __submitted__ collection in Firestore
+3. I have to go into Firestore and manually move new theme from __submitted__ to __themes__ collection
+
+Rather than do this in Firestore and entering this theme into the __themes__ collection manually, we could setup a todo list of sorts in an Admin page on our website.
+
+To do this, I used:
+- Firebase Auth: authenticate our admin logins
+- Nookies: create authenticate tokens for server-side apps
+
+### Login Page
+
+We need a space for admins to login to the admin dashboard. Instead of walking through each step of setting up __firebase/auth__ and __nookies__, [here's a tutorial you can follow to do just that](https://www.youtube.com/watch?v=qBGAdenirbs).
+
+![Login](../static/designing-an-app-for-slack-themes_11.png)
+
+### Dashboard
+
+Once logged in, what do need to display and how do we display to build context around our scenario?
+
+We basically need a way to manage the different collections in our database, so why don't we build a simple navigation separating them?
+
+![Dashboard](../static/designing-an-app-for-slack-themes_12.png)
+
+From the image above, it seems as though there's a theme submission awaiting to be verified. We can view the submission as well as associate any groups we feel are suitable for the respective theme:
+
+![Theme Submission](../static/designing-an-app-for-slack-themes_13.png)
+
+Once we make any edits, we can click *Verify & Transfer* to move the submission from our __submitted__ collection to our __themes__ collection.
+
+-----------------
+
+## That's it, for now
+
+This is as far as I've made it, but now that we have our data in Firestore, my next objective is to design an experience for an integrated Slack app - rather than copy/paste themes, we could give users the ability to get a theme directly from a */* command!
+
+I didn't delve too much into the code or design here, but if you have questions, feel free to look at the [repo on GitHub](https://github.com/ryan-parag/slack-themes) or contact me using the details below!]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Collecting Theme Toggles]]></title>
             <guid>https://notes.ryanparag.com/notes/collecting-theme-toggles</guid>
             <pubDate>Thu, 27 Aug 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[My collection of dark modes, light modes, and everything in between]]></description>
+            <content:encoded><![CDATA[
+For the past few years, I've been tinkering with designing dark/light modes and themes for the web - experimenting with CSS variables, different stylesheets, CSS-in-JS, etc. It's been awesome to be inspired by how other products, websites, and design portfolios are experimenting with dark/light modes - inspiring some of the recreations in code which you can find below.
+
+One of my most complex experiments is actually the theme toggle on this website! (Play with it using the button in the top navigation)
+
+I'll try to keep this list updated as I add something new to CodePen or when I throw together a new design. Click an image to play with a toggle and check out the code.
+
+----
+
+## Themes in my Portfolio
+
+I've documented the theme toggles in my own portfolio (new and old), but here they are again:
+
+[![Theme toggle](../static/collecting-theme-toggles_new-p.png)]
+[View the toggle](https://ryanparag.com)
+
+[![Theme toggle](../static/collecting-theme-toggles_old-p.png)]
+[View the toggle](https://grapalab.com)
+
+----
+
+## More Theme Toggles
+
+Here are some code sketches in CodePen - click an image to play with a toggle and check out the code:
+
+[![Theme toggle](../static/collecting-theme-toggles_1.gif)](https://codepen.io/ryanparag/full/yGaZwr)
+[View the toggle](https://codepen.io/ryanparag/full/yGaZwr)
+
+[![Theme toggle](../static/collecting-theme-toggles_2.gif)](https://codepen.io/ryanparag/full/rqVoJw)
+[View the toggle](https://codepen.io/ryanparag/full/rqVoJw)
+
+[![Theme toggle](../static/collecting-theme-toggles_3.png)](https://codepen.io/ryanparag/full/XywVEQ)
+[View the toggle](https://codepen.io/ryanparag/full/XywVEQ)
+
+[![Theme toggle](../static/collecting-theme-toggles_4.png)](https://codepen.io/ryanparag/full/gZEbOq)
+[View the toggle](https://codepen.io/ryanparag/full/gZEbOq)
+
+[![Theme toggle](../static/collecting-theme-toggles_5.png)](https://codepen.io/ryanparag/full/Vgxrbx)
+[View the toggle](https://codepen.io/ryanparag/full/Vgxrbx)
+
+[![Theme toggle](../static/collecting-theme-toggles_6.png)](https://codepen.io/ryanparag/full/YmQmmJ)
+[View the toggle](https://codepen.io/ryanparag/full/YmQmmJ)
+
+[![Theme toggle](../static/collecting-theme-toggles_7.png)](https://codepen.io/ryanparag/full/RvxWzG)
+[View the toggle](https://codepen.io/ryanparag/full/RvxWzG)
+
+[![Theme toggle](../static/collecting-theme-toggles_8.png)](https://codepen.io/ryanparag/full/JVmmgv)
+[View the toggle](https://codepen.io/ryanparag/full/JVmmgv)
+
+[![Theme toggle](../static/collecting-theme-toggles_9.png)](https://codepen.io/ryanparag/full/PVvgdP)
+[View the toggle](https://codepen.io/ryanparag/full/PVvgdP)
+
+[![Theme toggle](../static/collecting-theme-toggles_10.png)](https://codepen.io/ryanparag/full/WBvdjR)
+[View the toggle](https://codepen.io/ryanparag/full/WBvdjR)
+
+[![Theme toggle](../static/collecting-theme-toggles_11.png)](https://codepen.io/ryanparag/full/ZNZzrb)
+[View the toggle](https://codepen.io/ryanparag/full/ZNZzrb)
+
+[![Theme toggle](../static/collecting-theme-toggles_12.png)](https://codepen.io/ryanparag/full/vPoGmJ)
+[View the toggle](https://codepen.io/ryanparag/full/vPoGmJ)
+
+[![Theme toggle](../static/collecting-theme-toggles_13.png)](https://codepen.io/ryanparag/full/OeNYVg)
+[View the toggle](https://codepen.io/ryanparag/full/OeNYVg)
+
+[![Theme toggle](../static/collecting-theme-toggles_14.png)](https://codepen.io/ryanparag/full/yLBvdWR)
+[View the toggle](https://codepen.io/ryanparag/full/yLBvdWR)
+
+[![Theme toggle](../static/collecting-theme-toggles_15.png)](https://codepen.io/ryanparag/full/eYObzOP)
+[View the toggle](https://codepen.io/ryanparag/full/eYObzOP)
+
+[![Theme toggle](../static/collecting-theme-toggles_16.png)](https://codepen.io/ryanparag/full/rXJgjE)
+[View the toggle](https://codepen.io/ryanparag/full/rXJgjE)
+
+[![Theme toggle](../static/collecting-theme-toggles_17.png)](https://codepen.io/ryanparag/full/LYPdpmw)
+[View the toggle](https://codepen.io/ryanparag/full/LYPdpmw)
+
+[![Theme toggle](../static/collecting-theme-toggles_18.png)](https://codepen.io/ryanparag/full/NWWRYro)
+[View the toggle](https://codepen.io/ryanparag/full/NWWRYro)
+
+[![Theme toggle](../static/collecting-theme-toggles_19.png)](https://codepen.io/ryanparag/full/QWyOVJe)
+[View the toggle](https://codepen.io/ryanparag/full/QWyOVJe)
+
+[![Theme toggle](../static/collecting-theme-toggles_20.png)](https://codepen.io/ryanparag/full/agKQaM)
+[View the toggle](https://codepen.io/ryanparag/full/agKQaM)
+
+[![Theme toggle](../static/collecting-theme-toggles_21.png)](https://codepen.io/ryanparag/full/VoZJrd)
+[View the toggle](https://codepen.io/ryanparag/full/VoZJrd)
+
+[![Theme toggle](../static/collecting-theme-toggles_22.png)](https://codepen.io/ryanparag/full/rNeybEe)
+[View the toggle](https://codepen.io/ryanparag/full/rNeybEe)
+
+[![Theme toggle](../static/collecting-theme-toggles_23.png)](https://codepen.io/ryanparag/full/gJXgYw)
+[View the toggle](https://codepen.io/ryanparag/full/gJXgYw)
+
+----
+
+Do you have a cool idea for a way to toggle themes? Let me know what you're playing around with using the form below.]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[A Figma Plugin for Design Tokens?]]></title>
             <guid>https://notes.ryanparag.com/notes/creating-a-design-token-plugin</guid>
             <pubDate>Tue, 29 Dec 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Creating a plugin to hand-off design tokens more flexibly and easily]]></description>
+            <content:encoded><![CDATA[
+I recently began exploring [Figma's developer API](https://www.figma.com/plugin-docs/api/api-overview/) to try and make a few processes a bit better at the day job. 
+
+It all started out with a problem we were facing when trying to make our *hand-off for design system components a bit easier between design and engineering* - so I started fumbling around with building a custom plugin to find a way to help ease that burden.
+
+I was first inspired to venture into building a plugin after browsing other indie plugins and reading about [Spotify's in-house plugins](https://www.figma.com/community/file/832911648132248625/Spotify-Ways-of-Working).
+
+### Resources
+
+If you're interested in building a plugin to fix a problem on your own projects, here are a few resources I used:
+- [Figplug](https://rsms.me/figplug/)
+- [Figma Plugin Helpers](https://github.com/figma-plugin-helper-functions/figma-plugin-helpers)
+- [Figma's Developer API Docs](https://www.figma.com/plugin-docs/api/api-overview/)
+- [Figma Plugins by Varun Vachhar](https://varun.ca/figma-plugins/)
+
+### What do I need to know?
+
+If you're familiar with some basic web development, and even if you're not, building Figma Plugins is really easy - it would be helpful to know:
+- HTML
+- CSS
+- JavaScript (Typescript helps!)
+- React (with Figplug)
+
+### Building the design token plugin
+
+Let's start off with the flow we want the plugin to solve:
+
+![Flow](../static/creating-a-design-token-plugin_1.png)
+
+> Working out some bugs, but I'll upload screenshots soon!]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Designing for Personalization]]></title>
             <guid>https://notes.ryanparag.com/notes/designing-for-personalization</guid>
             <pubDate>Thu, 17 Sep 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[What are the ways we can design more personal experiences for users?]]></description>
+            <content:encoded><![CDATA[
+As users, we expect our modern digital products to understand us more thoroughly - to help drive a more seamless, personalized experience per our individual preferences. We see this in a multitude of ways, across mobile apps, websites, and even (more so) in our content streaming experiences:
+
+- Custom app icons
+- Personalized ecommerce recommendations
+- Categorized TV shows and movies
+- Dark / Light modes
+
+Neilsen Norman Group summarizes the difference between customization and personalization fairly well:
+
+> Customization gives control to the user and personalization gives control to the site. Both can enhance users’ experience, but only when carefully implemented.
+
+[Customization vs. Personalization in the User Experience](https://www.nngroup.com/articles/customization-personalization/)
+
+### Personalizing Experiences
+
+The basic goal of personalizing an experience is **to prevent users from struggling to find information / content / products**. Personalization is a way for a product to identify an individual and help build relevancy to the things they see and the options they have. How can we show our users things we think they might prefer from the sea of content that we host on our platform?
+
+_What are the goals of building personalization in a product and why does it matter?_
+- Build loyalty from individuals in a user pool
+- Decrease content noise for users
+- Increase product engagement/retention
+- Increase upselling of similar goods
+
+Most goals around personalization revolve around **increasing conversion rates and retaining a more loyal user**. Experience personalization has greatly influenced the way we shop for things and consume content in the modern era. We're seeing how detailed metadata associated with individual products, movies, podcasts, music, etc. is being used to categorize things the way systems assume we, as individuals, prefer.
+
+_What kind of things can a product use to categorize individuals?_ We actually see quite a bit of personalization being used across the modern web:
+- Geolocation/geofencing
+- Profile information
+- Survey results
+- Referral links and campaign source
+
+Even by using these basic data points, systems can automatically sort users and gauge common content when paired with a machine-learning/big data platform. Some of these data points are given from an individual's self-identification, whereas some of the more complex forms of identification are based on what and how a user consumed particular content _(eg. I watched a sci-fi movie on Netflix, so the system recommends more sci-fi movies in my feed)_.
+
+We can take a quick look at how Duolingo is using a mix of identification data to help _build engagement_ through simple email updates:
+
+![Duolingo personalization](../static/designing-for-personalization_9.png)
+
+Let's take a look at how Netflix shows us things based on the things we've previously watched and our individual user profile:
+
+![Netflix personalization](../static/designing-for-personalization_1.png)
+
+Netflix is also A/B testing on top of this, driving their deep learning platform and content designers to learn how and why certain users choose particular UI cards:
+
+![Netflix personalization](../static/designing-for-personalization_2.png)
+
+In these examples, we're seeing how _designing the system_ to perform certain background tasks can help provide a more personalized experience. Even though Netflix's example is a **very** complex model, I think the starting point of how to design around personalization begins with a few basic questions:
+
+- Who are our users?
+- What do we know about them?
+- What and how can we learn about them?
+- What data can we sort for them based on what we know about each user?
+- How do we show them this sorted data?
+- How do we measure the success of "smarter" sorting?
+
+Let's take a look at how Spotify answers those questions and opts to show users recommended content:
+
+![Spotify personalization](../static/designing-for-personalization_3.png)
+
+Spotify also chooses to mix content together, showing us a variation of content we've consumed alongside content that matches a higher frequency of metadata - all pointing to a more seamless, personalized experience.
+
+![Spotify personalization](../static/designing-for-personalization_4.png)
+
+This is a _super_ interesting method of designing for a better experience, and can probably be expounded on greatly. Here are a few more resources digging into these details more thoroughly:
+
+- [UX Design for Personalization](https://www.uxmatters.com/mt/archives/2018/07/ux-design-for-personalization.php)
+- [Artwork Personalization at Netflix](https://netflixtechblog.com/artwork-personalization-c589f074ad76)
+- [Amazon’s User Experience: A Case Study](https://medium.com/@the_manifest/amazons-user-experience-a-case-study-fb567f79b51f)
+- [UX in the Age of Personalization](https://alistapart.com/article/emerging-ux-role-in-personalization/)
+
+We also see personalization across many of our products that enable the way we work - usually distributed across different roles/permissions contained in a system. For instance, admins on a platform may have more functionality in the things they are able to do, more so than normal users.
+
+In the example below, we can see a handful of example roles in a system and the different goals associated with each. Each goal can be mapped to drive a particular experience - whether that means surfacing particular actions or altering a view dependent on that role/goal.
+
+![Role personalization](../static/designing-for-personalization_10.png)
+
+### Customized Experiences
+
+Rather than let the system dictate what a user sees, is it possible for us to let the user dictate their own experience upon segments of a digital product experience?
+
+We see this in a ton of ways already - throughout our iOS settings, news feeds, theme pickers 😉, etc. Personalizing an experience based on the user's set preference can allow the user to accommodate themselves to a product more effectively - they would be situating themselves to an environment more relevant to their types of engagement.
+
+Let's take a look at how some teams are tackling customization in a few unique and common ways. In GitHub for Mobile, we can see a wide range of ways they're allowing the user to customize based on their preferences - providing fixed options to modify certain settings:
+
+![GitHub personalization](../static/designing-for-personalization_5.png)
+
+Some apps even let us choose the app icon we see in our view, before we jump into the app! Let's see how GitHub, PocketCasts, and Todoist gives users an array of app icon options:
+
+![App icon personalization](../static/designing-for-personalization_6.png)
+
+One of the most common ways digital products give to customize the UI and experience for individual users is through dark/light theming (and maybe a step further). Commonly dictated based on the user's OS settings, apps and browsers can grab and feed that preference to our digital products - building a sensible default and predicting a more seamless experience for the user.
+
+If you'd like to do this on the web, all it takes is a bit of CSS or JS. If you're opting to do this in CSS, we can accomplish this in a simple way in modern browsers:
+
+```css
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: black;
+    background: white;
+  }
+}
+```
+
+In JS, we can grab a user's OS theme with a simple function:
+
+```js
+if (window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.body.style.background = 'black';
+  document.body.style.color = 'white';
+}
+```
+
+Some apps take this to another level, giving users options in choosing pre-selected themes (kind of like this site). Todoist lets users select a theme and which type (light/dark) of neutral colors they prefer. They even let the user toggle if they would like to match per their OS preferences and make a more cohesive cross-platform experience by syncing:
+
+![Todoist Customization](../static/designing-for-personalization_7.png)
+
+### A Step Further
+
+UI personalization and customization has made me curious on the limits to which we can go by giving users certain controls - and, more interestingly, when we don't have to. Most UI theming mechanisms provide a limited, strictly-defined amount of choices (as seen above). _What if we could give users full control of the theme in an interface?_
+
+So I created a way for users to theme this site on their own. [Check it out!](../create-theme)
+
+![Theme Creator](../static/designing-for-personalization_8.png)
+
+I've been experimenting with ways to which we could give users **fluid customization abilities**, but provide them enough rails as to not degrade their experience.
+
+I'm still playing around with this idea and gathering feedback, but by using [Lyft Design's Colorbox tool](https://www.colorbox.io/) and the algorithm they've crafted, we can create palettes on-the-fly using minimal inputs.
+
+To provide some rails for the user, I included a way to gauge when parts of the theme aren't matching certain WCAG requirements as well.
+
+I'd love to hear what you think, and if you have any feedback contact me using the details below!]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[From Figma to Code]]></title>
             <guid>https://notes.ryanparag.com/notes/from-figma-to-code</guid>
             <pubDate>Fri, 04 Sep 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Designing a simple Bitcoin Tracker and translating to code]]></description>
+            <content:encoded><![CDATA[
+In an effort to keep up with this site's ethos and show a bit more of how I design things, I thought I could share a Figma file and show the code used to produce what is contained in a Figma prototype.
+
+------------------
+
+TLDR:
+
+[Click here for the Figma file](https://www.figma.com/community/file/883721353057504948/Bitcoin-Tracker)
+
+[Click here to go to the CodePen](https://codepen.io/ryanparag/pen/mdPMqmv)
+
+------------------
+
+### What tools would I need?
+
+Everything you need should be easily available 😀:
+- [Figma](https://figma.com) for quick static prototyping
+- A code editor or [CodePen](https://codepen.io) to build what we design
+
+_Optional_
+- Pen & paper for ~~doodling~~ quick ideating
+
+------------------
+
+### What are we going to build?
+
+Let's build a few simple cards to track the prices of Bitcoin. ~~That way, we can see how much money we lost when we bought in during the hype.~~
+
+We can also use [Coindesk's](https://coindesk.com) open API when moving to code 👍.
+
+Let's start with a use case:
+
+> A user wants to be able to see the current price of Bitcoin and a few recent price trends.
+
+For fun, we'll throw in a way to toggle between light and dark mode - for the night traders 🦉.
+
+Let's also start by reverse engineering what I did:
+
+[Click here for the Figma file](https://www.figma.com/community/file/883721353057504948/Bitcoin-Tracker)
+
+------------------
+
+### Design Tokens
+
+Let's get started by jumping into Figma. I think the most helpful takeaway from all of this, mostly for my own laziness, is to **stay organized**:
+
+- 👩‍🏫 Name your frames/groups/components ...or else you're stuck with a bunch of things called _Frame 107_ or _Group 69_
+- 🗂 Organize your pages - split components out of a prototype page and keep a separate page for research/documentation
+
+![Organized pages](../static/from-figma-to-code_9.png)
+
+Now that we've finished a bit of housekeeping, we can start building some of the base UI. Using Figma's method for creating text and color styles, I created a color palette (with shades and tints) and text styles (with multiple weights):
+
+![Color Styles](../static/from-figma-to-code_1.png)
+
+![Text Styles](../static/from-figma-to-code_2.png)
+
+------------------
+
+### Components
+
+Now that we have a few colors and text styles to use, we can start building components. Since we're incorporating a dark and light mode, we probably need two versions of a component to accomodate for each theme. We would start by building a _.base_ component - prefixed with a period to avoid publishing when we publish a library.
+
+Now that we have a _.base_, we would use that to build light/dark versions of the components:
+
+![Themed components](../static/from-figma-to-code_3.png)
+
+I'm designing using an [8pt grid](https://spec.fm/specifics/8-pt-grid) and am using multiples/fractionals of _8_ as spacing units. Let's take a look at a redline of a card component and see how we're using multiples of 8 as spacing values:
+
+![Redline](../static/from-figma-to-code_8.png)
+
+Once we finish building our components, we can start building the layout:
+
+![Layout](../static/from-figma-to-code_4.png)
+
+Since we have different versions of our components for light/dark mode, duplicating and switching out components should be easy:
+
+![Prototype](../static/from-figma-to-code_5.png)
+
+### Code
+
+Now that we have a functioning prototype in Figma, we can start crafting a bit of code. If you'd like to skip to the end:
+
+[Click here to go to the CodePen](https://codepen.io/ryanparag/pen/mdPMqmv)
+
+#### Inserting our Design Tokens
+
+By using CSS custom properties (variables) we can add in our color design tokens to help build out the light and dark theme of our UI.
+
+```css
+// colors from design tokens
+--sail-color-black: #000;
+--sail-color-white: #fff;
+--sail-color-gray-50: #f7fafc;
+--sail-color-gray-100: #e3e8ee;
+--sail-color-gray-200: #c1c9d2;
+--sail-color-gray-300: #a3acb9;
+--sail-color-gray-400: #8792a2;
+--sail-color-gray-500: #697386;
+--sail-color-gray-600: #4f566b;
+--sail-color-gray-700: #3c4257;
+--sail-color-gray-800: #2a2f45;
+--sail-color-gray-900: #1a1f36;
+--sail-color-blue-50: #f5fbff;
+--sail-color-blue-100: #d6ecff;
+--sail-color-blue-200: #a4cdfe;
+--sail-color-blue-300: #7dabf8;
+--sail-color-blue-400: #6c8eef;
+--sail-color-blue-500: #5469d4;
+--sail-color-blue-600: #3d4eac;
+--sail-color-blue-700: #2f3d89;
+--sail-color-blue-800: #212d63;
+--sail-color-blue-900: #131f41;
+--sail-color-cyan-50: #edfdfd;
+--sail-color-cyan-100: #c4f1f9;
+--sail-color-cyan-200: #7fd3ed;
+--sail-color-cyan-300: #4db7e8;
+--sail-color-cyan-400: #3a97d4;
+--sail-color-cyan-500: #067ab8;
+--sail-color-cyan-600: #075996;
+--sail-color-cyan-700: #06457a;
+--sail-color-cyan-800: #093353;
+--sail-color-cyan-900: #042235;
+--sail-color-green-50: #efffed;
+--sail-color-green-100: #cbf4c9;
+--sail-color-green-200: #85d996;
+--sail-color-green-300: #33c27f;
+--sail-color-green-400: #1ea672;
+--sail-color-green-500: #09825d;
+--sail-color-green-600: #0e6245;
+--sail-color-green-700: #0d4b3b;
+--sail-color-green-800: #0b3733;
+--sail-color-green-900: #082429;
+--sail-color-yellow-50: #fcf9e9;
+--sail-color-yellow-100: #f8e5b9;
+--sail-color-yellow-200: #efc078;
+--sail-color-yellow-300: #e5993e;
+--sail-color-yellow-400: #d97917;
+--sail-color-yellow-500: #bb5504;
+--sail-color-yellow-600: #983705;
+--sail-color-yellow-700: #762b0b;
+--sail-color-yellow-800: #571f0d;
+--sail-color-yellow-900: #3a1607;
+--sail-color-orange-50: #fffaee;
+--sail-color-orange-100: #fee3c0;
+--sail-color-orange-200: #f8b886;
+--sail-color-orange-300: #f5925e;
+--sail-color-orange-400: #e56f4a;
+--sail-color-orange-500: #c44c34;
+--sail-color-orange-600: #9e2f28;
+--sail-color-orange-700: #7e1e23;
+--sail-color-orange-800: #5d161b;
+--sail-color-orange-900: #420e11;
+--sail-color-red-50: #fff8f5;
+--sail-color-red-100: #fde2dd;
+--sail-color-red-200: #fbb5b2;
+--sail-color-red-300: #fa8389;
+--sail-color-red-400: #ed5f74;
+--sail-color-red-500: #cd3d64;
+--sail-color-red-600: #a41c4e;
+--sail-color-red-700: #80143f;
+--sail-color-red-800: #5e1039;
+--sail-color-red-900: #420828;
+--sail-color-purple-50: #fff8fe;
+--sail-color-purple-100: #fce0f6;
+--sail-color-purple-200: #f0b4e4;
+--sail-color-purple-300: #e28ddc;
+--sail-color-purple-400: #c96ed0;
+--sail-color-purple-500: #a450b5;
+--sail-color-purple-600: #7b3997;
+--sail-color-purple-700: #5b2b80;
+--sail-color-purple-800: #401d6a;
+--sail-color-purple-900: #2d0f55;
+--sail-color-violet-50: #f8f9fe;
+--sail-color-violet-100: #e6e6fc;
+--sail-color-violet-200: #c7c2ea;
+--sail-color-violet-300: #b0a1e1;
+--sail-color-violet-400: #9c82db;
+--sail-color-violet-500: #8260c3;
+--sail-color-violet-600: #61469b;
+--sail-color-violet-700: #4b3480;
+--sail-color-violet-800: #352465;
+--sail-color-violet-900: #1f184e;
+
+// light mode
+--bg: var(--sail-color-gray-50);
+--color: var(--sail-color-gray-900);
+--subtleColor: var(--sail-color-gray-400);
+--successBg: var(--sail-color-green-100);
+--successColor: var(--sail-color-green-500);
+--dangerBg: var(--sail-color-red-100);
+--dangerColor: var(--sail-color-red-500);
+--cardBg: var(--sail-color-white);
+--cardShadow: var(--sail-color-gray-100);
+--cardBgHover: var(--sail-color-white);
+--primary: var(--sail-color-blue-500);
+--primarySubtle: var(--sail-color-blue-100);
+--transparent: rgba(255,255,255,0);
+--transparentSubtle: rgba(255,255,255,.6);
+
+// dark mode - we can overwrite the utility variables by wrapping it in a class on the :root
+--bg: var(--sail-color-gray-900);
+--color: var(--sail-color-gray-100);
+--successBg: var(--sail-color-green-700);
+--successColor: var(--sail-color-green-200);
+--dangerBg: var(--sail-color-red-700);
+--dangerColor: var(--sail-color-red-200);
+--cardBg: var(--sail-color-gray-900);
+--cardShadow: var(--sail-color-gray-800);
+--cardBgHover: var(--sail-color-gray-800);
+--primarySubtle: var(--sail-color-blue-800);
+--transparent: rgba(26,31,54,0);
+--transparentSubtle: rgba(26,31,54,.6);
+```
+
+Now that we have our colors and themes, we need to add in our text styles and sizes that we defined in our text styles in Figma:
+
+```css
+--text-xxl: 2.8rem;
+--text-xl: 2.4rem;
+--text-lg: 1.8rem;
+--text-md: 1.6rem;
+--text-sm: 1.3rem;
+--text-xs: 1.1rem;
+
+--text-heavy: 900;
+--text-bold: 700;
+--text-normal: 400;
+```
+
+#### Switching Themes
+
+Now for the theme switching part - we need a function to trigger when a toggle button is clicked. We can make a simple function to check if the root element on the page contains the _dark mode_ class. Using a ternary operator, we can remove/add the class if that check returns as true/false:
+
+```js
+// Our toggle with id of button
+const themeButton = document.getElementById('themeButton')
+
+// theme switcher function
+const changeTheme = () => {
+  let themeState = document.documentElement.classList.contains('theme--dark')
+  themeState ? themeButton.classList.remove('c-theme--active') : themeButton.classList.add('c-theme--active')
+  document.documentElement.classList.toggle('theme--dark')
+}
+```
+
+And now we can add it to our toggle button:
+
+```html
+<button id="themeButton" onclick="changeTheme()">
+  <handle/>
+  <icon/>
+</button>
+```
+... and boom goes the dynamite 🧨
+![Theme switcher](../static/from-figma-to-code_7.png)
+
+#### Layout
+
+Here's what the markup for my layout looks like so far:
+
+```html
+<header class="l-header">
+  <div class="u-pb--16 u-pt--16 u-display--flex u-align-items--center u-justify--space-between l-header__body u-pr--16 u-pl--16">
+    <div class="u-text--left">
+      <div class="u-text--md u-text--bold u-mb--4">Title</div>
+      <div class="u-text--xs u-text--subtle">Subtitle</div>
+    </div>
+    <button class="c-theme u-text--xs" id="themeButton" onclick="changeTheme()">
+      <handle/>
+      <icon/>
+    </button>
+  </div>
+</header>
+<div class="l-wrapper u-pr--16 u-pl--16 u-pt--32" id="list">
+  <!--
+    This is where we can insert our Bitcoin card and table
+  -->
+</div>
+```
+
+You might be wondering what all of those classes mean. Most of my styles are **utility classes** and are prefixed with a letter using BEM. Utility classes are reusable, single-purpose style classes that I can add to web elements. For example, if I wanted to style text in our _MD_ size, I could create a class named `.u-text--md` and add it to the web element. Utility classes help me build things quickly, but feel free to craft these styles in a different way - and don't forget to have fun homie 😎.
+
+I'm also organizing these styles with prefixes and BEM naming conventions:
+
+- _l_ = layout
+- _u_ = utility
+- _c_ = component
+
+[Learn more about utility classes](https://css-tricks.com/combining-the-powers-of-sem-and-bio-for-improving-css/)
+
+[Learn more about BEM](https://css-tricks.com/bem-101/)
+
+#### Getting the Bitcoin Data
+
+We also need to call the data from Coindesk. Since the current price data and historical data are two different endpoints, we need to make multiple calls.
+
+By using [Axios](https://www.npmjs.com/package/axios), we're able to do this easily in javascript:
+
+```js
+axios.all([
+  axios.get(current_url),
+  axios.get(history_url)
+])
+.then(res => {
+  // do stuff with the data
+  // create and add HTML with data to the page
+})
+```
+
+After a little bit of styling and data transformation, we should have something close to this:
+
+![Prototype](../static/from-figma-to-code_6.png)
+
+### Conclusion
+
+I'd love to know if this helps you design things and if shedding a bit of light on my process helps. If you have any ideas that could make this small project better, send me a message!]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Portfolio Redesign]]></title>
             <guid>https://notes.ryanparag.com/notes/portfolio-redesign</guid>
             <pubDate>Sat, 08 Aug 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[The design decisions I made when redesigning my portfolio]]></description>
+            <content:encoded><![CDATA[
+A few months back, I began redesigning my portfolio - again 🤦‍♀️. I not only wanted to add a couple of the newer projects I was working on, but I also wanted to address larger design issues and experiment with building it in some newer technologies.
+
+Although the overall design might seem unchanged at a glance, I implemented/changed a ton of details in the design and under-the-hood.
+
+## Tools
+
+If you're setting out to (re)build your portfolio, there are a few routes/tools you can choose from:
+- **Webflow**: low-code / **super** popular
+- **Squarespace**: WYSIWYG / easy-to-use / no-code
+- **Carrd**: Simple / cheap / no-code
+- **Semplice**: no-code / WYSIWYG
+- **Adobe Portfolio**: free with Creative Suite / no code
+- **Code it yourself**: HTML, CSS, JS / Jekyll / Gatsby / Next / etc.
+
+I'm probably forgetting some, but I think that should cover what most designers use to build their portfolios.
+
+---
+
+> I chose to code my previous portfolio. I also chose to code my new portfolio, but with newer technologies.
+
+![Old Portfolio](../static/portfolio-redesign-old.png)
+
+👆[My old portfolio](https://grapalab.com) (~2016). Previously, I coded my portfolio using:
+- Sketch for ideating/designing
+- Pug
+- SCSS
+- JS, Jquery
+- Drag-and-drop FTP for deploying
+
+---
+
+![New Portfolio](../static/portfolio-redesign-new.png)
+
+👆[My new portfolio](https://ryanparag.com) ✨. This time, I chose some more modern technologies:
+- Figma for ideating/designing
+- React and Gatsby
+- Styled Components
+- MDX for markdown-ish pages
+- Vercel for deploying
+
+---
+
+## Typography
+
+Previously, I was using:
+
+**IBM Plex Sans**: a tall x-height sans-serif that comes in a wide range of weights
+
+![Old Typography](../static/portfolio-redesign-type-old.png)
+
+---
+
+I switched to:
+
+**Inter**: an open-source sans-serif made for more-legible UI
+
+![New Typography](../static/portfolio-redesign-type-new.png)
+
+---
+
+**Why did I choose to change the typographic style?**
+
+Because 🤷‍♀️- but really, I wanted to implement a **bit** more minimalism and not have the typography intrude on the designs I would be showcasing.
+
+---
+
+## Colors and Dark Mode
+
+I **love** when I see websites/apps give me the option to choose to use dark/night modes. When I was building out my previous portfolio, I **really** wanted to implement the feature and give viewers the option to choose which to use.
+
+Old:
+![Old Theme](../static/portfolio-redesign-theme-old.png)
+
+```css
+$grey-900: hsla(220, 24%, 7%, 1);
+$grey-800: hsla(220, 21%, 13%, 1);
+$grey-700: hsla(220, 18%, 21%, 1);
+$grey-600: hsla(220, 15%, 29%, 1);
+$grey-500: hsla(220, 12%, 37%, 1);
+$grey-400: hsla(220, 9%, 68%, 1);
+$grey-300: hsla(220, 6%, 76%, 1);
+$grey-200: hsla(220, 3%, 91%, 1);
+$grey-100: hsla(0, 0%, 96%, 1);
+
+$color-green: #00d1b2;
+$color-blue: #79cbca;
+$color-pink: #e684ae;
+```
+
+---
+
+New:
+![New Theme](../static/portfolio-redesign-theme-new.png)
+
+```js
+colors: {
+    base: {
+      grey900: 'hsla(220, 24%, 7%, 1)',
+      grey800: 'hsla(220, 21%, 13%, 1)',
+      grey700: 'hsla(220, 18%, 21%, 1)',
+      grey600: 'hsla(220, 15%, 29%, 1)',
+      grey500: 'hsla(220, 12%, 37%, 1)',
+      grey400: 'hsla(220, 9%, 68%, 1)',
+      grey300: 'hsla(220, 6%, 76%, 1)',
+      grey200: 'hsla(220, 3%, 91%, 1)',
+      grey100: 'hsla(0, 0%, 96%, 1)',
+      grey0: 'hsla(0, 0%, 100%, 1)',
+    },
+    states: {
+      green: 'hsla(171, 100%, 41%, 1)',
+      blue: 'hsla(179, 44%, 64%, 1)',
+      pink: 'hsla(334, 66%, 71%, 1)',
+      greenTransparent: 'hsla(171, 100%, 41%, .2)',
+      blueTransparent: 'hsla(179, 44%, 64%, .2)',
+      pinkTransparent: 'hsla(334, 66%, 71%, .2)',
+      visited: 'hsla(334, 86%, 43%, 1)',
+      greenDark: 'hsla(171, 100%, 35%, 1)',
+      blueDark: 'hsla(179, 44%, 40%, 1)',
+    }
+  }
+```
+
+---
+
+**Things I changed in the color theme:**
+- Higher-contrast
+- Transparency and variants
+
+---
+
+I also chose to change the UI for the toggle itself.
+
+> Could I make the theme toggle a simpler design?
+
+Old:
+![Old Toggle](../static/portfolio-redesign-toggle-old.png)
+
+---
+
+New:
+![New Toggle](../static/portfolio-redesign-toggle-new.png)
+
+---
+
+## About Page
+
+I wanted to make the about page focus on the content more. Here are the things that changed:
+
+- Condensed the grid
+- Focus on the content by building hierarchies
+- Add in Spotify items through Spotify's API
+- Add things I'm currently enjoying
+- Reduced number of social media/contact items
+
+![About page](../static/portfolio-redesign-about-page.png)
+
+---
+
+## Auth and Private Projects
+
+Alot of tools (Webflow, Squarespace) let designers password-protect projects using their CMS platform. Even previously, I needed to figure out a way to simply password protect selected projects.
+
+Using a little JavaScript, I could hide routes and show users a password-protect screen on projects that required authorization. I also chose to add in some **custom lettering** for a bit of flourish when users came upon this page:
+
+Old:
+![Old Auth](../static/portfolio-redesign-auth-old.png)
+
+---
+
+New:
+![New Auth](../static/portfolio-redesign-auth-new.png)
+
+---
+
+One of the most annoying things when looking at portfolios with password-protection is the fact that users must repeatedly input a password when entering password-protected projects.
+
+_What if I could make it so users only have to input the password once and saved a logged-in state?_
+
+In my new portfolio I have it so once users enter the password once, they no longer have to input a password again. A few other navigation items become available, as well as a nice little "+" next to the logo.
+
+---
+
+## Pages
+
+Layout was all over the place in my old portfolio. I wanted to change it so the layout was more Medium-like (single column) and was a less sporadic while scrolling through. On top of changing the page headers, I changed it so that each case study had defined sections:
+
+![New Auth](../static/portfolio-redesign-pages.png)
+
+---
+
+## Conclusion
+
+Hopefully some of that helps! I'm still making incremental changes, but if you have feedback or need help with your own portfolio, ping me using the form below.]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Starting the Journey]]></title>
             <guid>https://notes.ryanparag.com/notes/starting-the-journey</guid>
             <pubDate>Tue, 07 Jul 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Kicking off designing things in the open and sharing the things I build]]></description>
+            <content:encoded><![CDATA[
+**Illustration inspired by [Jay Fletcher](https://dribbble.com/shots/3947164-Inch-x-Inch)**
+
+For the past year, I've pondered whether to begin writing and sharing about the things I'm tinkering with - not only as a way to pull back the curtain a bit on desiging products, but also a way to begin tracking my progress on learning new things. I also want to share things I find interesting and maybe even spotlighting the designs of other products.
+
+ Expect to see sketches and ideas about some of the recent tools and ideas I've been playing with:
+
+- Figma plugins
+- Design token tooling
+- Prototyping
+- Design portfolios 😭
+- SwiftUI/Flutter
+- React, Next.js, Gatsby
+
+Besides design/development tools, I've also been thinking about how designers fit in teams and how cross-team collaboration works between different team structures (eg. solo designers to large design teams).
+
+I have alot of other thoughts and hobbies (☕️, 🚴‍♀️, 🚘), so maybe I'll sprinkle some of those in as well.
+
+If you have an idea or want to hear my take on something in particular, let me know by filling out the form below.
+
+Stay tuned!]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Thoughts on Design Tools]]></title>
             <guid>https://notes.ryanparag.com/notes/thoughts-on-design-tools</guid>
             <pubDate>Thu, 10 Sep 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[As designers, what are we actually delivering? Mockups? Prototypes?]]></description>
+            <content:encoded><![CDATA[
+**Illustrations from [Lattice's Simplified Wireframes](https://www.figma.com/community/file/821393507131833959/Simplified-Wireframes)**
+
+🔥 Hot take 🔥 - just kidding. I want to preface this post by saying that the opinions below are just my current thoughts and my main goal in this was to think out loud. **I mainly wanted to promote discussions about how others may feel about this** - especially from designers from various team structures.
+
+If you've been keeping up with these posts chronologically, I've mostly been writing about the more pragmatic aspects of design. For this note, I thought to take a more introspective, cathartic take on things that I've been thinking about.
+
+As designers, we've seen an era of innovation in our design tools recently - tools like Sketch, Figma, Adobe XD, Framer have transformed the way we share what we design. These innovations have also spurred debate in design communities around being "the best design tool" - sometimes where we tie ourselves to a particular tool, rather than why we're using a design tool.
+
+### Are we evaluating what was built?
+
+We share mockups and prototypes often - in our portfolios, Dribbble, Twitter, Slack workspaces, etc. But from those designs, _what are we actually shipping? What was the end result of that design after it goes through development and the gamut of unhappy paths that often happen?_
+
+Many times, we even share designs that may be slightly different in actuality - due to something that may have popped up in QA or an error state that alters a bit of the user flow.
+
+> "What you deliver matters - you are what you ship"
+
+An analogy would be if we were to only evaluate an architect's sketches rather than the structure that was built. Shouldn't the same be true of product designers? Shouldn't we critique our shipped end result and not just the Figma prototype alone?
+
+### So what is the purpose of a design tool for us?
+
+Don't get me wrong - I still think design tools like Sketch and Figma should be fundamental to our process. They allow us to iterate on workable solutions and share our ideas quicker for validation.
+
+Maybe the purpose of the design tool is to help our teams better communicate what we're setting out to build - helping surface things with the appropriate team members:
+
+- if we're on target for our business goals with our PM's
+- if we're meeting engineering constraints from developers
+- if our experience is meeting our design goals
+
+### What is the best design tool?
+
+**In my opinion, I don't think it matters.** I think what we all want is to be able to design as close as we can to an end result - interactions, dynamic data, error states, statefulness, etc. - all to help communicate the experience we want to design to our stakeholders and teams. If this can be done in Figma - awesome! If this can be done on a sheet of paper and you're working within an established design system - also awesome! _Whichever tools helps align your team most thoroughly and efficiently is probably the best tool for you._
+
+I think what might be the most important factor to consider is how your team works and which tool helps us communicate over the designs for our product **most thoroughly**.
+
+Learning how we can better communicate our ideas through a design tool can help us align to what ends up as the shipped result. Balancing time and engineering constraints in this phase, along with talking through the unhappy paths can help us make our Sketch files look more like our end results.
+
+Maybe this means accounting for small front-end constraints **while** we're dragging rectangles around? Maybe this means thinking about our timelines and roadmap **while** we're working in Figma? I don't know, but I'm curious to figure out how we can use design tools to better align with our teams, and help us have a clearer picture of what will end up as the end result of our design.
+
+Maybe all of these concerns can be answered in learning when to use a particular tool:
+
+- _I need to visualize a few layouts_ - "Sketch?"
+- _I need to test a certain user flow_ - "Figma?"
+- _I need to test an interaction_ - "Code?"
+
+This method also means we have to remain flexible in our skillsets.
+
+### What works for me, currently
+
+I'm not sure I have the answers to the things I've been thinking about - but currently, tools that allow me to **work faster / align in higher frequency / communicate more meaningfully**, help me surface these "real world" issues sooner and more frequently. Even more helpful for aligning engineers on my current team is documenting and sharing the design doc of **why** we're setting out to incorporate a new design - essentially a case study for each feature design.
+
+With the innovations in no-code tools, and even the development of accessible code (React, SwiftUI, Flutter), we're inching closer and closer to the day where design and engineering are closely speaking the same language - maybe we're already there on teams that have a high degree of fluidity and t-shapedness.
+
+To be honest, I feel we're still far away from the day where we can design an end result directly from a design tool - so _the problem we're left with is how we can better surface core problems from our users and communicate through ambiguity with the engineers/PM's on our teams. How can we learn to use our design tools to better communicate the "why" and "how" when we're in the build phase? How can we receive more thoughtful "buy in" from our team members and stakeholders?_
+
+I'm on a neverending journey on trying to figure this out for myself and how I work, so I'll probably revisit this note and make revisions. But I thought it would be helpful to at least share what was on my mind and what my process looks like from a high level. **I'd love to hear your thoughts on design tools and how you feel they're used best - send me a message!**]]></content:encoded>
         </item>
     </channel>
 </rss>

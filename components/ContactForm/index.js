@@ -5,6 +5,7 @@ import { useForm, ValidationError } from '@statickit/react';
 import Link from 'next/link'
 import { ButtonLink } from '@components/Button'
 import ContactBox from '@components/ContactBox'
+import Subscribe from '@components/Subscribe'
 
 const LinkContainer = styled.div`
   padding: ${designTokens.space[7]} 0 0;
@@ -102,6 +103,7 @@ export default function ContactForm() {
         </ButtonLink>
       </LinkContainer>
       <hr/>
+      <Subscribe/>
       <form onSubmit={handleSubmit}>
         <p>Do you have feedback about this post or want to suggest an idea you'd like to hear about in a future post? Send me a message!</p>
         <label htmlFor="message">

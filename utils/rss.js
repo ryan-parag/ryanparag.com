@@ -32,7 +32,8 @@ export const addPosts = (posts) => {
       id: url,
       date: new Date(post.frontmatter.date),
       author: post.frontmatter.author,
-      description: post.frontmatter.description
+      description: post.frontmatter.description,
+      content: post.markdownBody
     });
   });
 

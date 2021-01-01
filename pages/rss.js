@@ -5,6 +5,7 @@ import getPosts from '@utils/getPosts'
 import fs from 'fs'
 import { ButtonLink } from '@components/Button'
 import { ProjectItem } from '@components/Projects'
+import Subscribe from '@components/Subscribe'
 
 const Notes = ({ posts, title, description, ...props }) => {
 
@@ -13,6 +14,8 @@ const Notes = ({ posts, title, description, ...props }) => {
   const handleClick = () => {
     console.log(feed)
   }
+
+  console.log(posts)
 
   const netNewsWire = {
     name: 'NetNewsWire',
@@ -33,6 +36,7 @@ const Notes = ({ posts, title, description, ...props }) => {
           </Link>
         </ButtonLink>
         <hr/>
+        <Subscribe/>
         <p>Need an RSS reader? Here's what I use:</p>
         <ProjectItem project={netNewsWire}/>
       </Layout>

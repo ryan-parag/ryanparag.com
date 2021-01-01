@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 
-const ButtonBase = css`
+export const ButtonBase = css`
   padding: ${(props) => props.small ? designTokens.space[1] : designTokens.space[2]} ${(props) => props.small ? designTokens.space[2] : designTokens.space[3]};
   display: inline-flex;
   align-items:center;
