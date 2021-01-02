@@ -154,7 +154,13 @@ const About = ({ title, description, ...props }) => {
           </ProfileImg>
           <h2>Hello, I'm Ryan.👋</h2>
           <p className="lead">I'm a Digital Product Designer based in Tampa, Florida.</p>
-
+          <p>
+            I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
+          </p>
+          <p>
+            I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
+          </p>
+          <hr/>
           <h4>Projects</h4>
           <ul>
             <li>
@@ -188,13 +194,6 @@ const About = ({ title, description, ...props }) => {
               <Link href="../notes/"><a>Read more notes...</a></Link>
             </li>
           </ul>
-          <h4>About</h4>
-          <p>
-            I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
-          </p>
-          <p>
-            I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
-          </p>
           <h4>Get in touch</h4>
           <ul>
             <li>

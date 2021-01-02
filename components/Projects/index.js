@@ -6,9 +6,8 @@ import { designTokens } from '@components/Theme/designTokens'
 
 const ProjectGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: ${designTokens.space[3]};
-  grid-row-gap: ${designTokens.space[3]};
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: ${designTokens.space[2]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     grid-template-columns: 1fr;
   }
@@ -47,9 +46,9 @@ export const ProjectItem = ({project}) => {
               <ProjectImage src={project.image} alt={project.name}/>
               <ProjectContent>
                 <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
-                <div>
-                  <small>{project.description}</small>
-                </div>
+                <p style={{ marginBottom: '0' }}>
+                  {project.description}
+                </p>
               </ProjectContent>
             </ProjectInner>
           </BoxAnchorLink>
@@ -63,9 +62,9 @@ export const ProjectItem = ({project}) => {
                   <ProjectImage src={project.image} alt={project.name}/>
                   <ProjectContent>
                     <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
-                    <div>
-                      <small>{project.description}</small>
-                    </div>
+                    <p style={{ marginBottom: '0' }}>
+                      {project.description}
+                    </p>
                   </ProjectContent>
                 </ProjectInner>
               </a>

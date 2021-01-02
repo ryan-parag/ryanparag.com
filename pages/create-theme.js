@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactBox from '@components/ContactBox'
 import ThemeCreator from '@components/ThemeCreator'
+import ContactForm from '@components/ContactForm'
 
 const CreateTheme = ({ title, description, ...props }) => {
 
@@ -57,7 +58,9 @@ const CreateTheme = ({ title, description, ...props }) => {
           </span>
           </a>
         </div>
+        <hr/>
         <ContactBox/>
+        <ContactForm/>
       </Layout>
     </>
   )

@@ -8,6 +8,8 @@ import { designTokens } from '@components/Theme/designTokens'
 import ContactForm from '@components/ContactForm'
 import ImgZoom from '@components/ImgZoom'
 import { Button, ButtonLink } from '@components/Button'
+import ContactBox from '@components/ContactBox'
+import Subscribe from '@components/Subscribe'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
@@ -19,6 +21,12 @@ const ScrolledButton = styled(Button)`
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     display: none;
   }
+`
+
+const LinkContainer = styled.div`
+  padding: ${designTokens.space[6]} 0 0;
+  display: flex;
+  justify-content: center;
 `
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
@@ -36,7 +44,7 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   return (
     <>
       <Layout pageTitle={`${frontmatter.title} | ${siteTitle}`} description={frontmatter.description} ogImage={frontmatter.hero_image}>
-        <div>
+        <div style={{ marginBottom: designTokens.space[6]}}>
           <ButtonLink>
             <Link href="/notes">
               <a>←{' '}Back to Notes</a>
@@ -76,7 +84,27 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
           </div>
         </article>
         <hr/>
+        <ContactBox/>
         <ContactForm/>
+        <LinkContainer>
+          <ButtonLink>
+            <Link href="/notes/">
+              <a>
+                <img
+                  src="/static/note.svg"
+                  width="32"
+                  style={{
+                    marginRight: designTokens.space[2],
+                    transform: 'rotate(10deg) translateX(-4px)'
+                  }}
+                />
+                Read more notes
+              </a>
+            </Link>
+          </ButtonLink>
+        </LinkContainer>
+        <hr/>
+        <Subscribe/>
         <ScrolledButton
           onClick={() => scrollToTop()}
         >

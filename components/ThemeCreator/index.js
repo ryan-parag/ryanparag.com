@@ -30,6 +30,13 @@ const CardBody = styled.div`
   }
 `
 
+const ThemeContainer = styled.div`
+@media screen and (max-width: ${designTokens.breakpoints[4]}) {
+  display: flex;
+  justify-content: space-between;
+}
+`
+
 const CardColumn = styled.div`
   --borderColor: var(--grey200);
   background: ${(props) => props.tinted ? 'var(--grey100)' : 'transparent'};
@@ -329,9 +336,19 @@ const ThemeCreator = () => {
               <SectionTitle>Preview ✨</SectionTitle>
             </CardRow>
             <CardRow bottomBorder>
-              <ThemeItem
-                theme={customTheme}
-              />
+              <ThemeContainer>
+                <ThemeItem
+                  theme={customTheme}
+                />
+                <div style={{ marginTop: designTokens.space[3]}}>
+                  <Switch
+                    isOn={darkMode}
+                    handleToggle={() => changeDarkMode()}
+                    startLabel={'Light'}
+                    endLabel={'Dark'}
+                  />
+                </div>
+              </ThemeContainer>
             </CardRow>
             <CardRow>
               <SwatchGrid>
@@ -373,6 +390,69 @@ const ThemeCreator = () => {
             </CardRow>
           </CardColumn>
           <CardColumn>
+            <CardBody grid={'repeat(2, 1fr)'}>
+              <CardColumn>
+                <CardRow bottomBorder>
+                  <SectionTitle spacing="true">Primary</SectionTitle>
+                  <ColorPicker
+                    color={customTheme.primary}
+                    changeColor={changePrimary}
+                  />
+                  <div style={{ marginTop: designTokens.space[2] }}>
+                    <ContrastChecker
+                      foregroundColor={customTheme.grey0}
+                      backgroundColor={customTheme.primary}
+                    />
+                  </div>
+                </CardRow>
+              </CardColumn>
+              <CardColumn>
+                <CardRow bottomBorder>
+                  <SectionTitle spacing="true">Secondary</SectionTitle>
+                  <ColorPicker
+                    color={customTheme.secondary}
+                    changeColor={changeSecondary}
+                  />
+                  <div style={{ marginTop: designTokens.space[2] }}>
+                    <ContrastChecker
+                      foregroundColor={customTheme.grey0}
+                      backgroundColor={customTheme.secondary}
+                    />
+                  </div>
+                </CardRow>
+              </CardColumn>
+              <CardColumn>
+                <CardRow bottomBorder>
+                  <SectionTitle spacing="true">Tertiary</SectionTitle>
+                  <ColorPicker
+                    color={customTheme.tertiary}
+                    changeColor={changeTertiary}
+                  />
+                  <div style={{ marginTop: designTokens.space[2] }}>
+                    <ContrastChecker
+                      foregroundColor={customTheme.grey0}
+                      backgroundColor={customTheme.tertiary}
+                    />
+                  </div>
+                </CardRow>
+              </CardColumn>
+              <CardColumn>
+                <CardRow bottomBorder>
+                  <SectionTitle spacing="true">Color Easing</SectionTitle>
+                  <select
+                    value={easing}
+                    onChange={changeEasing}
+                    style={{ marginBottom: `calc(${designTokens.space[4]} + ${designTokens.space[2]} - 2px)` }}
+                  >
+                    {
+                      spacings.map(option => (
+                        <option key={option.name} value={option.value}>{option.name}</option>
+                      ))
+                    }
+                  </select>
+                </CardRow>
+              </CardColumn>
+            </CardBody>
             <CardRow>
               <FlexContainer>
                 <div style={{
@@ -386,12 +466,6 @@ const ThemeCreator = () => {
                     backgroundColor={customTheme.grey0}
                   />
                 </div>
-                <Switch
-                  isOn={darkMode}
-                  handleToggle={() => changeDarkMode()}
-                  startLabel={'Light'}
-                  endLabel={'Dark'}
-                />
               </FlexContainer>
             </CardRow>
             <CardBody grid={'repeat(2, 1fr)'}>
@@ -473,68 +547,6 @@ const ThemeCreator = () => {
                   changeFunction={changeLumEnd}
                 />
               </CardRow>
-            </CardBody>
-            <CardBody grid={'repeat(2, 1fr)'}>
-              <CardColumn>
-                <CardRow bottomBorder>
-                  <SectionTitle spacing="true">Primary</SectionTitle>
-                  <ColorPicker
-                    color={customTheme.primary}
-                    changeColor={changePrimary}
-                  />
-                  <div style={{ marginTop: designTokens.space[2] }}>
-                    <ContrastChecker
-                      foregroundColor={customTheme.grey0}
-                      backgroundColor={customTheme.primary}
-                    />
-                  </div>
-                </CardRow>
-              </CardColumn>
-              <CardColumn>
-                <CardRow bottomBorder>
-                  <SectionTitle spacing="true">Secondary</SectionTitle>
-                  <ColorPicker
-                    color={customTheme.secondary}
-                    changeColor={changeSecondary}
-                  />
-                  <div style={{ marginTop: designTokens.space[2] }}>
-                    <ContrastChecker
-                      foregroundColor={customTheme.grey0}
-                      backgroundColor={customTheme.secondary}
-                    />
-                  </div>
-                </CardRow>
-              </CardColumn>
-              <CardColumn>
-                <CardRow bottomBorder>
-                  <SectionTitle spacing="true">Tertiary</SectionTitle>
-                  <ColorPicker
-                    color={customTheme.tertiary}
-                    changeColor={changeTertiary}
-                  />
-                  <div style={{ marginTop: designTokens.space[2] }}>
-                    <ContrastChecker
-                      foregroundColor={customTheme.grey0}
-                      backgroundColor={customTheme.tertiary}
-                    />
-                  </div>
-                </CardRow>
-              </CardColumn>
-              <CardColumn>
-                <CardRow>
-                  <SectionTitle spacing="true">Color Easing</SectionTitle>
-                  <select
-                    value={easing}
-                    onChange={changeEasing}
-                  >
-                    {
-                      spacings.map(option => (
-                        <option key={option.name} value={option.value}>{option.name}</option>
-                      ))
-                    }
-                  </select>
-                </CardRow>
-              </CardColumn>
             </CardBody>
           </CardColumn>
         </CardBody>

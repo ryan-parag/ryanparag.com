@@ -15,26 +15,25 @@ const FooterInner = styled.div`
   width: 100%;
   max-width: ${designTokens.layoutWidth};
   margin: auto;
+`
+
+const FooterGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: ${designTokens.space[3]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    text-align: center;
+    grid-template-columns: repeat(2, 1fr);
   }
 `
 
 const FooterList = styled.ul`
   list-style-type: none;
-  margin: 0;
+  margin: 0 0 ${designTokens.space[3]};
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    justify-content: center;
-    padding: 0 ${designTokens.space[3]};
-  }
 `
 
 const FooterListItem = styled.li`
-  margin-bottom: ${designTokens.space[3]};
-  margin-right: ${designTokens.space[3]};
+  margin-bottom: ${designTokens.space[2]};
   a {
     font-size: ${designTokens.fontSizes[1]};
     color: var(--grey600);
@@ -68,6 +67,7 @@ const FooterBottom = styled.div`
   margin-top: ${designTokens.space[4]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     flex-direction: column;
+    align-items: flex-start;
   }
 `
 
@@ -90,48 +90,59 @@ export default function Footer() {
   return(
     <FooterContainer>
       <FooterInner>
-        <FooterList>
-        <FooterListItem>
-            <Link href="/">
-              Home
-            </Link>
-          </FooterListItem>
-          <FooterListItem>
-            <Link href="/notes">
-              Notes
-            </Link>
-          </FooterListItem>
-          <FooterListItem>
-            <Link href="/about">
-              About
-            </Link>
-          </FooterListItem>
-          <FooterListItem>
-            <a href="https://ryanparag.com">
-              Portfolio
-            </a>
-          </FooterListItem>
-          <FooterListItem>
-            <a href="https://codepen.io/ryanparag">
-              CodePen
-            </a>
-          </FooterListItem>
-          <FooterListItem>
-            <a href="https://github.com/ryan-parag">
-              GitHub
-            </a>
-          </FooterListItem>
-          <FooterListItem>
-            <a href="https://dribbble.com/ryanparag">
-              Dribbble
-            </a>
-          </FooterListItem>
-          <FooterListItem>
-            <Link href="/rss">
-              RSS
-            </Link>
-          </FooterListItem>
-        </FooterList>
+        <FooterGrid>
+          <FooterList>
+            <FooterListItem>
+              <Link href="/">
+                Home
+              </Link>
+            </FooterListItem>
+            <FooterListItem>
+              <Link href="/notes">
+                Notes/Writing
+              </Link>
+            </FooterListItem>
+            <FooterListItem>
+              <Link href="/about">
+                About
+              </Link>
+            </FooterListItem>
+          </FooterList>
+          <FooterList>
+            <FooterListItem>
+              <a href="https://ryanparag.com">
+                Portfolio/Work
+              </a>
+            </FooterListItem>
+            <FooterListItem>
+              <Link href="/create-theme">
+                Create a Theme
+              </Link>
+            </FooterListItem>
+            <FooterListItem>
+              <Link href="/rss">
+                RSS
+              </Link>
+            </FooterListItem>
+          </FooterList>
+          <FooterList>
+            <FooterListItem>
+              <a href="https://codepen.io/ryanparag">
+                CodePen
+              </a>
+            </FooterListItem>
+            <FooterListItem>
+              <a href="https://github.com/ryan-parag">
+                GitHub
+              </a>
+            </FooterListItem>
+            <FooterListItem>
+              <a href="https://dribbble.com/ryanparag">
+                Dribbble
+              </a>
+            </FooterListItem>
+          </FooterList>
+        </FooterGrid>
         <small>Made with Next.js and Styled Components</small>
         <br/>
         <FooterBottom>

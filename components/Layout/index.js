@@ -17,7 +17,10 @@ const LayoutContainer = styled.div`
 `
 
 const Main = styled.main`
-  padding: ${designTokens.space[9]} ${designTokens.space[3]} ${designTokens.space[6]};
+  padding: ${designTokens.space[7]} ${designTokens.space[3]} ${designTokens.space[6]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    padding-top: ${designTokens.space[9]};
+  }
 `
 
 export default function Layout({ children, pageTitle, description, ogImage, ...props }) {

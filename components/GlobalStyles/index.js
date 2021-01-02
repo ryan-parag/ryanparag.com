@@ -264,7 +264,7 @@ export const GlobalStyles = createGlobalStyle`
     margin-right: 0;
     position: relative;
     font-size: ${designTokens.fontSizes[2]};
-    background: var(--primaryTransparent);
+    color: var(--primaryDark);
     p {
       font-size: ${designTokens.fontSizes[2]};
     }
@@ -275,7 +275,7 @@ export const GlobalStyles = createGlobalStyle`
       bottom: 0;
       left: 0;
       width: ${designTokens.space[1]};
-      background: var(--primary);
+      background: var(--primaryTransparent);
     }
   }
   ul {

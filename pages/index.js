@@ -40,6 +40,7 @@ const Index = ({ posts, title, description, ...props }) => {
             <span className="icon">&rarr;</span>
           </ButtonAnchorTag>
         </div>
+        <hr/>
         <main>
           <h3>Latest Notes</h3>
           <PostList posts={latestPosts} />
