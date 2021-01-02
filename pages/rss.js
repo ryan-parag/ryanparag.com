@@ -9,14 +9,6 @@ import Subscribe from '@components/Subscribe'
 
 const Notes = ({ posts, title, description, ...props }) => {
 
-  const feed = addPosts(posts)
-
-  const handleClick = () => {
-    console.log(feed)
-  }
-
-  console.log(posts)
-
   const netNewsWire = {
     name: 'NetNewsWire',
     description: 'NetNewsWire is a free and open source RSS reader for Mac, iPhone, and iPad.',

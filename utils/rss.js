@@ -1,5 +1,5 @@
 import { Feed } from "feed";
-//import fs from 'fs'
+var markdown = require( "markdown" ).markdown;
 
 const baseUrl = "https://notes.ryanparag.com";
 
@@ -33,7 +33,7 @@ export const addPosts = (posts) => {
       date: new Date(post.frontmatter.date),
       author: post.frontmatter.author,
       description: post.frontmatter.description,
-      content: post.markdownBody
+      content: markdown.toHTML(post.markdownBody)
     });
   });
 
