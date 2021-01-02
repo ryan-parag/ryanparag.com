@@ -19,6 +19,11 @@ const ProjectInner = styled.div`
   align-items: center;
 `
 
+const ProjectContent = styled.div`
+  padding-left: ${designTokens.space[3]};
+  width: 100%;
+`
+
 const ProjectLink = styled.div`
   a {
     ${BoxBaseLink}
@@ -29,7 +34,7 @@ const ProjectLink = styled.div`
 const ProjectImage = styled.img`
   width: ${designTokens.space[7]};
   height: ${designTokens.space[7]};
-  margin-right: ${designTokens.space[3]};
+  display: block;
 `
 
 export const ProjectItem = ({project}) => {
@@ -40,12 +45,12 @@ export const ProjectItem = ({project}) => {
           <BoxAnchorLink href={project.link} target="_blank">
             <ProjectInner>
               <ProjectImage src={project.image} alt={project.name}/>
-              <div>
+              <ProjectContent>
                 <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
                 <div>
                   <small>{project.description}</small>
                 </div>
-              </div>
+              </ProjectContent>
             </ProjectInner>
           </BoxAnchorLink>
         )
@@ -56,12 +61,12 @@ export const ProjectItem = ({project}) => {
               <a>
                 <ProjectInner>
                   <ProjectImage src={project.image} alt={project.name}/>
-                  <div>
+                  <ProjectContent>
                     <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
                     <div>
                       <small>{project.description}</small>
                     </div>
-                  </div>
+                  </ProjectContent>
                 </ProjectInner>
               </a>
             </Link>

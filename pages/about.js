@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import Link from 'next/link'
 import { ButtonLink } from '@components/Button'
+import Subscribe from '@components/Subscribe'
 
 const ListItem = styled.li`
   display: flex;
@@ -303,6 +304,8 @@ const About = ({ title, description, ...props }) => {
             ))
           }
         </SwatchContainer>
+        <hr/>
+        <Subscribe/>
       </Layout>
     </>
   )

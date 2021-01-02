@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import { useForm, ValidationError } from '@statickit/react';
 import Link from 'next/link'
-import { ButtonLink } from '@components/Button'
+import { ButtonLink, ButtonMain, ButtonBlock } from '@components/Button'
 import ContactBox from '@components/ContactBox'
 import Subscribe from '@components/Subscribe'
 
@@ -13,25 +13,9 @@ const LinkContainer = styled.div`
   justify-content: center;
 `
 
-const Button = styled.button`
-  font-family: inherit;
-  border: 1px solid var(--primaryTransparent);
-  color: var(--primaryDark);
-  padding: ${designTokens.space[3]};
-  margin-top: ${designTokens.space[5]};
-  cursor: pointer;
-  transition: all 120ms ease-out 0s;
-  border-radius: ${designTokens.space[2]};
-  background: var(--primaryTransparent);
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
-  &:hover, &:focus {
-    border-color: var(--primary);
-  }
-`
-
-const ButtonBlock = styled(Button)`
-  display: block;
-  width: 100%;
+const SendButton = styled.button`
+  ${ButtonMain}
+  ${ButtonBlock}
 `
 
 const EmptyStateIcon = styled.div`
@@ -58,6 +42,7 @@ const TextArea = styled.textarea`
 
 const TextInput = styled.input`
   padding: ${designTokens.space[3]} ${designTokens.space[3]};
+  margin-bottom: ${designTokens.space[4]};
 `
 
 export default function ContactForm() {
@@ -77,7 +62,8 @@ export default function ContactForm() {
             }}/>
           </svg>
         </EmptyStateIcon>
-        <h4>Message Sent!</h4>
+        <h3 style={{ marginBottom: designTokens.space[2] }}>Thanks for the feedback!</h3>
+        <p>I'll do my best to reply quickly 👍.</p>
       </EmptyState>
     )
   }
@@ -134,9 +120,9 @@ export default function ContactForm() {
           name="email"
           placeholder="kimi.raikkonen@gmail.com"
         />
-        <ButtonBlock type="submit" disabled={state.submitting}>
+        <SendButton type="submit" disabled={state.submitting}>
           Send Message
-        </ButtonBlock>
+        </SendButton>
       </form>
     </>
   )

@@ -1,6 +1,7 @@
 import Layout from '@components/Layout/'
 import PostList from '@components/PostList'
 import getPosts from '@utils/getPosts'
+import Subscribe from '@components/Subscribe'
 
 const Notes = ({ posts, title, description, ...props }) => {
   return (
@@ -18,6 +19,8 @@ const Notes = ({ posts, title, description, ...props }) => {
             You've made it to the end
           </small>
         </p>
+        <hr/>
+        <Subscribe/>
       </Layout>
     </>
   )

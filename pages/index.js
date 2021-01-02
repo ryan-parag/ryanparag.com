@@ -2,10 +2,10 @@ import Link from 'next/link'
 import Layout from '@components/Layout/'
 import PostList from '@components/PostList/'
 import Logo from '@components/Logo'
-import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import { ButtonLink, ButtonAnchorTag } from '@components/Button'
 import Projects from '@components/Projects'
+import Subscribe from '@components/Subscribe'
 
 import getPosts from '@utils/getPosts'
 
@@ -67,6 +67,8 @@ const Index = ({ posts, title, description, ...props }) => {
           </div>
           <h3>Work & Projects</h3>
           <Projects/>
+          <hr/>
+          <Subscribe/>
         </main>
       </Layout>
     </>

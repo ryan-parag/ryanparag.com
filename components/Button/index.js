@@ -29,6 +29,21 @@ export const ButtonBase = css`
   }
 `
 
+export const ButtonBlock = css`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
+
+export const ButtonMain = css`
+  ${ButtonBase}
+  background: var(--primary);
+  color: var(--grey0);
+  &:hover, &:focus {
+    background: var(--primaryDark);
+  }
+`
+
 const IconButtonBase = css`
   padding: 0;
   color: var(--grey600);
