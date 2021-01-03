@@ -6,6 +6,7 @@ import { designTokens } from '../Theme/designTokens'
 import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '@components/Theme/'
 import ThemeItem from '@components/ThemeItem'
 import { IconButton, IconButtonPrimary, Button } from '@components/Button'
+import { motion } from 'framer-motion'
 
 const HeaderContainer = styled.div`
   position: relative;
@@ -128,13 +129,14 @@ const MobileNav = styled.header`
   align-items: center;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     display: flex;
+    flex-direction: column;
   }
 `
 
-const MobileNavList = styled.ul`
+const MobileNavList = styled(motion.ul)`
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: ${designTokens.space[2]} 0 0;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -239,6 +241,11 @@ export default function Header({ toggleTheme, theme }) {
   const [isPickerOpen, setPickerOpen] = React.useState(false)
   const [activeTheme, setActiveTheme] = useState(null);
   const toggle = () => setPickerOpen(!isPickerOpen);
+
+  const variants = {
+    visible: { height: 'auto' },
+    hidden: { height: 0 },
+  }
 
   const themes = [
     lightTheme,
@@ -348,24 +355,45 @@ export default function Header({ toggleTheme, theme }) {
       </ThemePicker>
       <NavContainer className={isExpanded ? 'isOpen' : null}>
         <MobileNav>
+          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+            <div style={{ display: 'inline-flex', alignItems: 'center'}}>
+              {
+                isExpanded ? (
+                  <IconButton onClick={closeMobile}>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><path d='M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z'/></svg>
+                  </IconButton>
+                )
+                :
+                (
+                  <IconButton onClick={() => setExpanded(true)}>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><line x1='88' y1='152' x2='424' y2='152' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='256' x2='424' y2='256' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='360' x2='424' y2='360' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/></svg>
+                  </IconButton>
+                )
+              }
+              <div style={{ paddingLeft: designTokens.space[3]}}>
+                <strong>
+                  <Link href="/">
+                    Ryan's Notes
+                  </Link>
+                </strong>
+              </div>
+            </div>
+            <ThemeBtn
+              handleClick={toggle}
+              state={isPickerOpen}
+            />
+          </div>
           {
             isExpanded ?
               (
                 <>
-                  <MobileNavList>
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      marginBottom: designTokens.space[2]
-                    }}>
-                      <IconButton onClick={closeMobile}>
-                        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><path d='M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z'/></svg>
-                      </IconButton>
-                      <ThemeBtn
-                        handleClick={toggle}
-                        state={isPickerOpen}
-                      />
-                    </div>
+                  <MobileNavList
+                    initial="hidden"
+                    animate="visible"
+                    variants={variants}
+                    exit={{ height: 0 }}
+                    transition={{ ease: "easeOut", duration: 0.3 }}
+                  >
                     <MobileNavItem>
                       <NavItem href="/">
                         <a>Home</a>
@@ -396,26 +424,7 @@ export default function Header({ toggleTheme, theme }) {
               )
               :
               (
-                <>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%'}}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center'}}>
-                      <IconButton onClick={() => setExpanded(true)}>
-                        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><line x1='88' y1='152' x2='424' y2='152' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='256' x2='424' y2='256' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='360' x2='424' y2='360' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/></svg>
-                      </IconButton>
-                      <div style={{ paddingLeft: designTokens.space[3]}}>
-                        <strong>
-                          <Link href="/">
-                            Ryan's Notes
-                          </Link>
-                        </strong>
-                      </div>
-                    </div>
-                    <ThemeBtn
-                      handleClick={toggle}
-                      state={isPickerOpen}
-                    />
-                  </div>
-                </>
+                null
               )
           }
         </MobileNav>
