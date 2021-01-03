@@ -139,6 +139,7 @@ const MobileNavList = styled(motion.ul)`
   padding: ${designTokens.space[2]} 0 0;
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
   width: 100%;
 `
 
@@ -392,7 +393,7 @@ export default function Header({ toggleTheme, theme }) {
                     animate="visible"
                     variants={variants}
                     exit={{ height: 0 }}
-                    transition={{ ease: "easeOut", duration: 0.3 }}
+                    transition={{ ease: "easeOut", duration: 0.3, delay: 0.05 }}
                   >
                     <MobileNavItem>
                       <NavItem href="/">
