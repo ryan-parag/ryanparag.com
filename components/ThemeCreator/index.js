@@ -4,7 +4,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import ColorPicker from '@components/ColorPicker'
 import ThemeItem from '@components/ThemeItem'
 import { transparentize, darken, lighten, saturate } from 'polished'
-import { Button, ButtonPrimary } from '@components/Button'
+import { Button, ButtonPrimary, ButtonBlock } from '@components/Button'
 import generate from '@utils/generate'
 import RangeSlider from '@components/RangeSlider'
 import Switch from '@components/Switch'
@@ -100,6 +100,16 @@ const FlexContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: ${designTokens.space[2]};
+`
+
+const MobileButton = styled(ButtonPrimary)`
+  ${ButtonBlock}
+`
+
+const MobileContainer = styled.div`
+  @media screen and (min-width: ${designTokens.breakpoints[4]}) {
+    display: none;
+  }
 `
 
 const ThemeCreator = () => {
@@ -326,7 +336,6 @@ const ThemeCreator = () => {
         <CardHeader>
           <LargeTitle>New Theme</LargeTitle>
           <div>
-            {/*<Button marginRight={designTokens.space[2]}>Test</Button>*/}
             <ButtonPrimary onClick={() => addAndSave()}>Save & Add</ButtonPrimary>
           </div>
         </CardHeader>
@@ -549,6 +558,13 @@ const ThemeCreator = () => {
               </CardRow>
             </CardBody>
           </CardColumn>
+          <MobileContainer>
+            <CardRow>
+              <div>
+                <MobileButton onClick={() => addAndSave()}>Save & Add</MobileButton>
+              </div>
+            </CardRow>
+          </MobileContainer>
         </CardBody>
       </Card>
     </>

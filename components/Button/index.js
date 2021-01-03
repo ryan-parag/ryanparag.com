@@ -109,7 +109,5 @@ export const IconButtonPrimary = styled.button`
 `
 
 export const ButtonPrimary = styled.button`
-  ${ButtonBase}
-  background: linear-gradient(to top, var(--primaryDark), var(--primary));
-  color: var(--grey0);
+  ${ButtonMain}
 `
