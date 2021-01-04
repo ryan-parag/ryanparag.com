@@ -152,7 +152,7 @@ const About = ({ title, description, ...props }) => {
           <ProfileImg>
             <img src="/static/profile.png"/>
           </ProfileImg>
-          <h2>Hello, I'm Ryan.👋</h2>
+          <h1>Hello, I'm Ryan.👋</h1>
           <p className="lead">I'm a Digital Product Designer based in Tampa, Florida.</p>
           <p>
             I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
