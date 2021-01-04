@@ -33,7 +33,7 @@ export const addPosts = (posts) => {
       date: new Date(post.frontmatter.date),
       author: post.frontmatter.author,
       description: post.frontmatter.description,
-      content: markdown.toHTML(post.markdownBody)
+      content: `<img src="${post.frontmatter.hero_image}"/>` + markdown.toHTML(post.markdownBody)
     });
   });
 

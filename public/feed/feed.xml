@@ -4,7 +4,7 @@
         <title>Ryan's Notes</title>
         <link>https://notes.ryanparag.com</link>
         <description>Hello, I'm Ryan Parag - these are my notes about designing in the open and building thoughtful products.</description>
-        <lastBuildDate>Mon, 04 Jan 2021 03:35:08 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 Jan 2021 23:37:42 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Next.js using Feed for Node.js</generator>
         <language>en</language>
@@ -19,7 +19,7 @@
             <guid>https://notes.ryanparag.com/notes/building-a-community-website</guid>
             <pubDate>Mon, 20 Jul 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Aggregating Slack groups and events in my local design community]]></description>
-            <content:encoded><![CDATA[<p>A few weeks back (~ late June 2020), I was having trouble tracking down where I could join a few of the local design Slack communities in the Tampa Bay area. There wasn&#39;t a central location for me to see which communities were in the area and what events they had coming up.</p>
+            <content:encoded><![CDATA[<img src="/static/building-a-community-website.png"/><p>A few weeks back (~ late June 2020), I was having trouble tracking down where I could join a few of the local design Slack communities in the Tampa Bay area. There wasn&#39;t a central location for me to see which communities were in the area and what events they had coming up.</p>
 
 <p>So, I set out to quickly <a href="https://tampabay.design">build a website</a> that would aggregate that data in a central location and help those in the area that were just starting out in design (or are not currently part of any of the communities) to join in on their discussions. </p>
 
@@ -52,7 +52,7 @@
             <guid>https://notes.ryanparag.com/notes/building-an-app-for-slack-themes</guid>
             <pubDate>Thu, 17 Dec 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Learning how to scrap together a web app using React, Tailwind, and Firestore]]></description>
-            <content:encoded><![CDATA[<p>Can we not only design a web app, but plan and build one as well? Sure we can!</p>
+            <content:encoded><![CDATA[<img src="/static/designing-an-app-for-slack-themes.png"/><p>Can we not only design a web app, but plan and build one as well? Sure we can!</p>
 
 <p>About a year and a half ago, I began to realize I had too many Slack workspaces and had a difficult time differentiating between them. So I set out to build a web app to help collect a bunch Slack Themes where users are able to copy and paste into Slack - <a href="https://slack-themes.now.sh/">you can find it here</a>!</p>
 
@@ -295,7 +295,7 @@ const updateTheme = (Theme) =&gt; {
             <guid>https://notes.ryanparag.com/notes/collecting-theme-toggles</guid>
             <pubDate>Thu, 27 Aug 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[My collection of dark modes, light modes, and everything in between]]></description>
-            <content:encoded><![CDATA[<p>For the past few years, I&#39;ve been tinkering with designing dark/light modes and themes for the web - experimenting with CSS variables, different stylesheets, CSS-in-JS, etc. It&#39;s been awesome to be inspired by how other products, websites, and design portfolios are experimenting with dark/light modes - inspiring some of the recreations in code which you can find below.</p>
+            <content:encoded><![CDATA[<img src="/static/collecting-theme-toggles.png"/><p>For the past few years, I&#39;ve been tinkering with designing dark/light modes and themes for the web - experimenting with CSS variables, different stylesheets, CSS-in-JS, etc. It&#39;s been awesome to be inspired by how other products, websites, and design portfolios are experimenting with dark/light modes - inspiring some of the recreations in code which you can find below.</p>
 
 <p>One of my most complex experiments is actually the theme toggle on this website! (Play with it using the button in the top navigation)</p>
 
@@ -397,7 +397,7 @@ const updateTheme = (Theme) =&gt; {
             <guid>https://notes.ryanparag.com/notes/creating-a-design-token-plugin</guid>
             <pubDate>Tue, 29 Dec 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Creating a plugin to hand-off design tokens more flexibly and easily]]></description>
-            <content:encoded><![CDATA[<p>I recently began exploring <a href="https://www.figma.com/plugin-docs/api/api-overview/">Figma&#39;s developer API</a> to try and make a few processes a bit better at the day job. </p>
+            <content:encoded><![CDATA[<img src="/static/creating-a-design-token-plugin.png"/><p>I recently began exploring <a href="https://www.figma.com/plugin-docs/api/api-overview/">Figma&#39;s developer API</a> to try and make a few processes a bit better at the day job. </p>
 
 <p>It all started out with a problem we were facing when trying to make our <em>hand-off for design system components a bit easier between design and engineering</em> - so I started fumbling around with building a custom plugin to find a way to help ease that burden.</p>
 
@@ -432,7 +432,7 @@ const updateTheme = (Theme) =&gt; {
             <guid>https://notes.ryanparag.com/notes/designing-for-personalization</guid>
             <pubDate>Thu, 17 Sep 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[What are the ways we can design more personal experiences for users?]]></description>
-            <content:encoded><![CDATA[<p>As users, we expect our modern digital products to understand us more thoroughly - to help drive a more seamless, personalized experience per our individual preferences. We see this in a multitude of ways, across mobile apps, websites, and even (more so) in our content streaming experiences:</p>
+            <content:encoded><![CDATA[<img src="/static/designing-for-personalization.png"/><p>As users, we expect our modern digital products to understand us more thoroughly - to help drive a more seamless, personalized experience per our individual preferences. We see this in a multitude of ways, across mobile apps, websites, and even (more so) in our content streaming experiences:</p>
 
 <ul><li>Custom app icons</li><li>Personalized ecommerce recommendations</li><li>Categorized TV shows and movies</li><li>Dark / Light modes</li></ul>
 
@@ -565,7 +565,7 @@ if (window.matchMedia &amp;&amp;
             <guid>https://notes.ryanparag.com/notes/from-figma-to-code</guid>
             <pubDate>Fri, 04 Sep 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Designing a simple Bitcoin Tracker and translating to code]]></description>
-            <content:encoded><![CDATA[<p>In an effort to keep up with this site&#39;s ethos and show a bit more of how I design things, I thought I could share a Figma file and show the code used to produce what is contained in a Figma prototype.</p>
+            <content:encoded><![CDATA[<img src="/static/from-figma-to-code.png"/><p>In an effort to keep up with this site&#39;s ethos and show a bit more of how I design things, I thought I could share a Figma file and show the code used to produce what is contained in a Figma prototype.</p>
 
 <hr/>
 
@@ -884,7 +884,7 @@ axios.all([
             <guid>https://notes.ryanparag.com/notes/looking-back-through-2020</guid>
             <pubDate>Sat, 02 Jan 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Reviewing the things I did and learned in 2020 and planning 2021]]></description>
-            <content:encoded><![CDATA[<blockquote><p>2020 - a year in which many of us reflected on who we are, how we spend our time, and what is our place in our communities.</p></blockquote>
+            <content:encoded><![CDATA[<img src="/static/looking-back-through-2020.png"/><blockquote><p>2020 - a year in which many of us reflected on who we are, how we spend our time, and what is our place in our communities.</p></blockquote>
 
 <p>One of the things I started this year was <a href="https://notes.ryanparag.com/notes">writing a bit</a> - so why not write a year-in-review for 2020.</p>
 
@@ -966,7 +966,7 @@ axios.all([
             <guid>https://notes.ryanparag.com/notes/portfolio-redesign</guid>
             <pubDate>Sat, 08 Aug 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[The design decisions I made when redesigning my portfolio]]></description>
-            <content:encoded><![CDATA[<p>A few months back, I began redesigning my portfolio - again 🤦‍♀️. I not only wanted to add a couple of the newer projects I was working on, but I also wanted to address larger design issues and experiment with building it in some newer technologies.</p>
+            <content:encoded><![CDATA[<img src="/static/portfolio-redesign.png"/><p>A few months back, I began redesigning my portfolio - again 🤦‍♀️. I not only wanted to add a couple of the newer projects I was working on, but I also wanted to address larger design issues and experiment with building it in some newer technologies.</p>
 
 <p>Although the overall design might seem unchanged at a glance, I implemented/changed a ton of details in the design and under-the-hood.</p>
 
@@ -1161,7 +1161,7 @@ colors: {
             <guid>https://notes.ryanparag.com/notes/starting-the-journey</guid>
             <pubDate>Tue, 07 Jul 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Kicking off designing things in the open and sharing the things I build]]></description>
-            <content:encoded><![CDATA[<p><strong>Illustration inspired by <a href="https://dribbble.com/shots/3947164-Inch-x-Inch">Jay Fletcher</a></strong></p>
+            <content:encoded><![CDATA[<img src="/static/starting-the-journey.png"/><p><strong>Illustration inspired by <a href="https://dribbble.com/shots/3947164-Inch-x-Inch">Jay Fletcher</a></strong></p>
 
 <p>For the past year, I&#39;ve pondered whether to begin writing and sharing about the things I&#39;m tinkering with - not only as a way to pull back the curtain a bit on desiging products, but also a way to begin tracking my progress on learning new things. I also want to share things I find interesting and maybe even spotlighting the designs of other products.</p>
 
@@ -1182,7 +1182,7 @@ colors: {
             <guid>https://notes.ryanparag.com/notes/thoughts-on-design-tools</guid>
             <pubDate>Thu, 10 Sep 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[As designers, what are we actually delivering? Mockups? Prototypes?]]></description>
-            <content:encoded><![CDATA[<p><strong>Illustrations from <a href="https://www.figma.com/community/file/821393507131833959/Simplified-Wireframes">Lattice&#39;s Simplified Wireframes</a></strong></p>
+            <content:encoded><![CDATA[<img src="/static/thoughts-on-design-tools.png"/><p><strong>Illustrations from <a href="https://www.figma.com/community/file/821393507131833959/Simplified-Wireframes">Lattice&#39;s Simplified Wireframes</a></strong></p>
 
 <p>🔥 Hot take 🔥 - just kidding. I want to preface this post by saying that the opinions below are just my current thoughts and my main goal in this was to think out loud. <strong>I mainly wanted to promote discussions about how others may feel about this</strong> - especially from designers from various team structures.</p>
 
