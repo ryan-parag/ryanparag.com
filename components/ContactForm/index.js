@@ -39,10 +39,16 @@ const EmptyState = styled.div`
 
 const TextArea = styled.textarea`
   padding: ${designTokens.space[3]} ${designTokens.space[3]};
+  margin-bottom: ${designTokens.space[4]};
+  background: var(--grey0);
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2), 0px 4px 12px -2px rgba(0,0,0,0.06);
 `
 
 const TextInput = styled.input`
   padding: ${designTokens.space[3]} ${designTokens.space[3]};
+  margin-bottom: ${designTokens.space[4]};
+  background: var(--grey0);
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2), 0px 4px 12px -2px rgba(0,0,0,0.06);
   margin-bottom: ${designTokens.space[4]};
 `
 

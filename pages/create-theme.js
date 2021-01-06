@@ -5,6 +5,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import ContactBox from '@components/ContactBox'
 import ThemeCreator from '@components/ThemeCreator'
 import ContactForm from '@components/ContactForm'
+import { ButtonAnchorTag } from '@components/Button'
 
 const CreateTheme = ({ title, description, ...props }) => {
 
@@ -21,16 +22,12 @@ const CreateTheme = ({ title, description, ...props }) => {
           padding: `${designTokens.space[3]} 0 ${designTokens.space[5]}`
         }}>
           <div style={{
-            marginBottom: designTokens.space[2],
+            marginBottom: designTokens.space[3],
             color: 'var(--grey400)'
           }}>
             <small>Powered by</small>
           </div>
-          <a
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center'
-            }}
+          <ButtonAnchorTag
             href="https://github.com/lyft/coloralgorithm"
             target="_blank"
           >
@@ -57,7 +54,7 @@ const CreateTheme = ({ title, description, ...props }) => {
             <strong>ColorBox</strong>{' '}
             <small>by Lyft Design</small>
           </span>
-          </a>
+          </ButtonAnchorTag>
         </div>
         <hr/>
         <ContactBox/>

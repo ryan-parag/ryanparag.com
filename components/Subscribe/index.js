@@ -17,9 +17,6 @@ const SubscribeContainer = styled.div`
     margin-bottom: ${designTokens.space[4]};
     background: var(--grey0);
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2), 0px 4px 12px -2px rgba(0,0,0,0.06);
-    @media screen and (min-width: ${designTokens.breakpoints[4]}) {
-      margin-right: ${designTokens.space[3]};
-    }
   }
   button {
     ${ButtonBlock}

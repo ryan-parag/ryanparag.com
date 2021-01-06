@@ -10,7 +10,7 @@ export const ButtonBase = css`
   font-size: ${(props) => props.small ? designTokens.fontSizes[0] : designTokens.fontSizes[1]};
   border-radius: ${designTokens.space[2]};
   border: 1px solid var(--grey200);
-  background: linear-gradient(to top, var(--grey100), var(--grey0));
+  background: var(--grey100);
   box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
   min-height: ${(props) => props.small ? designTokens.space[5] : designTokens.space[6]};
   margin-top: ${(props) => props.marginTop ? props.marginTop : '0'};
@@ -20,8 +20,8 @@ export const ButtonBase = css`
   transition: all 120ms ease-out 0s;
   &:hover {
     border-color: var(--grey300);
-    background: var(--grey800);
-    color: var(--grey0);
+    background: var(--grey200);
+    color: var(--grey800);
     text-decoration: none;
   }
   &:focus {
@@ -41,6 +41,7 @@ export const ButtonMain = css`
   color: var(--grey0);
   &:hover, &:focus {
     background: var(--primaryDark);
+    color: var(--grey0);
   }
 `
 
