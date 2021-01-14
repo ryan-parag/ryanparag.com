@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import Logo from '@components/Logo'
+import { Button } from '@components/Button'
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -43,21 +44,6 @@ const FooterListItem = styled.li`
       background: var(--primaryTransparent);
       box-shadow: 0 0 0 ${designTokens.space[2]} var(--primaryTransparent);
     }
-  }
-`
-const FooterButton = styled.button`
-  padding: ${designTokens.space[2]};
-  display: inline-block;
-  font-family: inherit;
-  font-size: ${designTokens.fontSizes[0]};
-  cursor: pointer;
-  border-radius: ${designTokens.space[1]};
-  border: 1px solid var(--grey200);
-  background: linear-gradient(to top, var(--grey100), var(--grey0));
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
-  transition: all 120ms ease-out 0s;
-  &:hover, &:focus {
-    border-color: var(--grey300);
   }
 `
 
@@ -159,7 +145,7 @@ export default function Footer() {
               </FooterLogo>
             </a>
           </Link>
-          <FooterButton onClick={clearStorage}>Reset Theme</FooterButton>
+          <Button small onClick={clearStorage}>Reset Theme</Button>
         </FooterBottom>
       </FooterInner>
     </FooterContainer>

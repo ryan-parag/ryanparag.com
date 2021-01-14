@@ -5,7 +5,7 @@ export const ButtonBase = css`
   padding: ${(props) => props.small ? designTokens.space[1] : designTokens.space[2]} ${(props) => props.small ? designTokens.space[2] : designTokens.space[3]};
   display: inline-flex;
   align-items:center;
-  font-weight: 700;
+  font-weight: ${(props) => props.small ? '400' : '700'};
   cursor: pointer;
   font-size: ${(props) => props.small ? designTokens.fontSizes[0] : designTokens.fontSizes[1]};
   border-radius: ${designTokens.space[2]};
