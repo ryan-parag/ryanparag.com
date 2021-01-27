@@ -66,7 +66,7 @@ const NavContainer = styled.header`
 `
 
 const HeaderInner = styled.div`
-  width: 100%;
+  width: ${designTokens.layoutWidth};
   max-width: 100%;
   margin: auto;
   display: flex;
@@ -79,25 +79,22 @@ const HeaderInner = styled.div`
 
 const Nav = styled.nav`
   a {
-    padding: ${designTokens.space[2]} ${designTokens.space[3]};
+    padding: ${designTokens.space[1]};
     font-size: ${designTokens.fontSizes[1]};
-    margin: 0 ${designTokens.space[1]} 0 0;
+    margin: 0;
     display: inline-flex;
+    border-bottom: 2px solid transparent;
+    color: var(--grey600);
     align-items: center;
-    border-radius: ${designTokens.space[2]};
-    border: 1px solid var(--grey100);
-    background: var(--grey100);
     transition: all 120ms ease-out 0s;
     &:hover {
-      border-color: var(--grey200);
-      background: var(--grey200);
-    }
-    &:focus {
-      box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);
+      color: var(--grey900);
+      border-color: var(--grey600);
+      text-decoration: none;
     }
     &.selected {
-      background: var(--grey900);
-      color: var(--grey0);
+      color: var(--grey900);
+      border-color: var(--primary);
     }
   }
 `
@@ -110,18 +107,18 @@ const NavList = styled.ul`
 `
 
 const NavListItem = styled.li`
-  margin-bottom: 0;
+  padding: ${designTokens.space[1]};
+  font-size: ${designTokens.fontSizes[1]};
+  margin: 0;
   &:not(:last-of-type) {
     margin-right: ${designTokens.space[1]};
   }
 `
 
 const OutboundNavLink = styled.a`
-  padding: ${designTokens.space[2]} ${designTokens.space[3]};
-  border-radius: ${designTokens.space[1]};
   display: inline-block;
   &:hover {
-    background: var(--grey100);
+    color: var(--grey900);
   }
 `
 const MobileNav = styled.header`
