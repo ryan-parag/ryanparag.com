@@ -13,14 +13,12 @@ const ListItem = styled.li`
 export default function PostList({ posts }) {
   if (posts === 'undefined') return null
 
-  const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
-
   return (
     <div>
       {!posts && <div>No posts!</div>}
       <ul style={{ listStyleType: 'none', padding: '0', margin: '0'}}>
-        {sortedPosts &&
-          sortedPosts.map((post) => {
+        {posts &&
+          posts.map((post) => {
             return (
               <ListItem key={post.slug}>
                 <Link href={ `/notes/${post.slug}` }>

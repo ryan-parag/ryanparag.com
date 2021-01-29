@@ -4,6 +4,9 @@ import getPosts from '@utils/getPosts'
 import Subscribe from '@components/Subscribe'
 
 const Notes = ({ posts, title, description, ...props }) => {
+
+  const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+
   return (
     <>
       <Layout pageTitle={`${title} | Notes`} description={description} ogImage="/notes-social-media.png">
@@ -11,7 +14,7 @@ const Notes = ({ posts, title, description, ...props }) => {
         <p className="lead">Designing in the open and sharing what/how I design digital products + other intersting things.</p>
         <p>These are my collection of notes and ideas - thanks for reading!</p>
         <hr/>
-        <PostList posts={posts} />
+        <PostList posts={sortedPosts} />
         <p>
           <small
             style={{
