@@ -2,7 +2,7 @@
 title: 'Scaling Engagement and Interactivity'
 author: 'Ryan Parag'
 description: 'Rebuilding and redesigning a site for a local community of designers'
-date: '2021-1-27'
+date: '2021-01-27'
 hero_image: /static/scaling-engagement-and-interactivity.png
 ---
 
