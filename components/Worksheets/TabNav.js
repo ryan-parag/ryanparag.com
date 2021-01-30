@@ -10,12 +10,16 @@ const TabBar = styled.nav`
   border: 1px solid var(--grey200);
   margin-bottom: ${designTokens.space[4]};
   box-shadow: 0px 1px 2px rgba(0,0,0,0.12);
+  overflow-x: scroll;
 `
 
 const TabItem = styled.div`
   text-align: center;
   width: 100%;
   font-size: ${designTokens.fontSizes[1]};
+  &:not(:last-of-type) {
+    margin-right: ${designTokens.space[1]};
+  }
   a {
     color: var(--grey700);
     display: block;
