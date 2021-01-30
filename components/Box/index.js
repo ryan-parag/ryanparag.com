@@ -8,13 +8,13 @@ export const BoxBase = css`
   border: 1px solid var(--grey200);
   padding: ${designTokens.space[4]} ${designTokens.space[3]};
   border-radius: ${designTokens.space[1]};
-  cursor: pointer;
   margin-bottom: ${designTokens.space[3]};
   box-shadow: none;
 `
 
 export const BoxBaseLink = css`
   ${BoxBase}
+  cursor: pointer;
   transition: all 120ms ease-out 0s;
   &:hover, &:focus {
     background: var(--grey200);

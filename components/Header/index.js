@@ -371,7 +371,7 @@ export default function Header({ toggleTheme, theme }) {
               <div style={{ paddingLeft: designTokens.space[3]}}>
                 <strong>
                   <Link href="/">
-                    Ryan's Notes
+                    <a>Ryan's Notes</a>
                   </Link>
                 </strong>
               </div>

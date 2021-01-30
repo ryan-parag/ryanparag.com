@@ -80,17 +80,17 @@ export default function Footer() {
           <FooterList>
             <FooterListItem>
               <Link href="/">
-                Home
+                <a>Home</a>
               </Link>
             </FooterListItem>
             <FooterListItem>
               <Link href="/notes">
-                Notes/Writing
+                <a>Notes/Writing</a>
               </Link>
             </FooterListItem>
             <FooterListItem>
               <Link href="/about">
-                About
+                <a>About</a>
               </Link>
             </FooterListItem>
           </FooterList>
@@ -102,12 +102,17 @@ export default function Footer() {
             </FooterListItem>
             <FooterListItem>
               <Link href="/create-theme">
-                Create a Theme
+                <a>Create a Theme</a>
+              </Link>
+            </FooterListItem>
+            <FooterListItem>
+              <Link href="/worksheets">
+                <a>Worksheets</a>
               </Link>
             </FooterListItem>
             <FooterListItem>
               <Link href="/rss">
-                RSS
+                <a>RSS</a>
               </Link>
             </FooterListItem>
           </FooterList>
