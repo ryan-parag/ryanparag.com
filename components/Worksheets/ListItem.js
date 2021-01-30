@@ -76,11 +76,11 @@ const ListItem = ({type, data, number}) => {
             </div>
             <FlexCol>
               <SmallText primary>{data.Questions}</SmallText>
-              <div style={{ paddingTop: designTokens.space[2] }}>
+              <div style={{ paddingTop: designTokens.space[3] }}>
                 <Label>Stakeholder:</Label>
                 <PrimaryChip>{data.Stakeholder}</PrimaryChip>
               </div>
-              <div style={{ paddingTop: designTokens.space[2] }}>
+              <div style={{ paddingTop: designTokens.space[3] }}>
                 <Label>Goals:</Label>
                 {
                   data.Goal.map((goal, i) => (
@@ -88,7 +88,7 @@ const ListItem = ({type, data, number}) => {
                   ))
                 }
               </div>
-              <div style={{ paddingTop: designTokens.space[2] }}>
+              <div style={{ paddingTop: designTokens.space[3] }}>
                 <Label>Stage:</Label>
                 <TertiaryChip>{data.Stage}</TertiaryChip>
               </div>
@@ -109,7 +109,7 @@ const ListItem = ({type, data, number}) => {
             <FlexCol>
               <SmallText bold primary>{data.Name}</SmallText>
               <SmallText space>{data.Notes}</SmallText>
-              <div style={{ paddingTop: designTokens.space[2] }}>
+              <div style={{ paddingTop: designTokens.space[3] }}>
                 <Label>Target Behavior:</Label>
                 {
                   data.Behavior.map((item, i) => (
@@ -117,8 +117,8 @@ const ListItem = ({type, data, number}) => {
                   ))
                 }
               </div>
-              <div style={{ paddingTop: designTokens.space[2] }}>
-                <Label>Examples:</Label>
+              <div style={{ paddingTop: designTokens.space[3] }}>
+                <Label>Examples</Label>
                 <SmallText space primary>{data.Examples}</SmallText>
               </div>
             </FlexCol>

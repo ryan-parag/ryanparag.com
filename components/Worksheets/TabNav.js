@@ -29,6 +29,8 @@ const TabItem = styled.div`
     transition: all 120ms ease-out;
     &:hover, &:focus {
       color: var(--grey900);
+      background: var(--grey200);
+      text-decoration: none;
     }
   }
   &.active {
@@ -37,6 +39,11 @@ const TabItem = styled.div`
     font-weight: ${designTokens.fontWeights.bold};
     a {
       color: var(--grey0);
+      &:hover, &:focus {
+        color: var(--grey0);
+        background: var(--primaryDark);
+        text-decoration: none;
+      }
     }
   }
 `

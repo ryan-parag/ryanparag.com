@@ -36,12 +36,17 @@ const Sheet = ({title, description, stuff, data}) => {
 
   const filtered = []
   data.forEach(item => filtered.push(item.fields))
-  
+
   return (
     <>
       <Layout pageTitle={title} description={description} ogImage="/notes-social-media.png">
         <h1>Worksheets</h1>
-        <p>Questions and framework resources you can use when planning for your UX research process.</p>
+        <article>
+          <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>
+          <p>
+            <small>Data collected from <a target="_blank" href="https://www.uxworksheets.com/">UX Worksheets</a>.</small>
+          </p>
+        </article>
         <TabNav
           items={categories}
           active={sheet}

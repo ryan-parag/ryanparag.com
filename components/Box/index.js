@@ -27,6 +27,7 @@ export const BoxBaseLink = css`
 
 export const Box = styled.div`
   ${BoxBase}
+  text-align: ${props => props.center ? 'center' : 'left'};
 `
 
 export const BoxLink = styled(Link)`

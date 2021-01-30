@@ -92,6 +92,12 @@ export default function Projects(){
       link:'/create-theme',
       outbound: false
     }, {
+      name: 'Worksheets',
+      description: 'Questions and resources to utilize in your UX process',
+      image: '/static/icon-worksheet.svg',
+      link:'/worksheets',
+      outbound: false
+    }, {
       name: 'Figma',
       description: 'Check out my files and plugins on Figma Community',
       image: '/static/icon-figma.svg',

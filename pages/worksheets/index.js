@@ -13,7 +13,7 @@ const Worksheets = ({title, description, ...props}) => {
 
   return (
     <Layout pageTitle={title} description={description} ogImage="/notes-social-media.png">
-      <Box>
+      <Box center>
         Loading
       </Box>
     </Layout>
