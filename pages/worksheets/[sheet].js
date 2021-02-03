@@ -39,7 +39,7 @@ const Sheet = ({title, description, stuff, data}) => {
 
   return (
     <>
-      <Layout pageTitle={title} description={description} ogImage="/notes-social-media.png">
+      <Layout pageTitle={title} description={description} ogImage="/worksheets-social-media.png">
         <h1>Worksheets</h1>
         <article>
           <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>
