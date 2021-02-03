@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
+import colorContrast from 'color-contrast'
 
 const TabBar = styled.nav`
   display: flex;
@@ -9,7 +10,7 @@ const TabBar = styled.nav`
   background: var(--grey100);
   border: 1px solid var(--grey200);
   margin-bottom: ${designTokens.space[4]};
-  box-shadow: 0px 1px 2px rgba(0,0,0,0.12);
+  box-shadow: inset 0px 0px 1px rgba(0,0,0,0.12), inset 0px 0px 4px rgba(0,0,0,0.2);
   overflow-x: scroll;
 `
 
@@ -23,8 +24,8 @@ const TabItem = styled.div`
   a {
     color: var(--grey700);
     display: block;
-    padding: ${designTokens.space[2]};
-    border-radius: ${designTokens.space[1]};
+    padding: calc(${designTokens.space[2]} + ${designTokens.space[1]}) ${designTokens.space[2]};
+    border-radius: ${designTokens.space[2]};
     width: 100%;
     transition: all 120ms ease-out;
     &:hover, &:focus {
@@ -34,14 +35,15 @@ const TabItem = styled.div`
     }
   }
   &.active {
-    border-radius: ${designTokens.space[1]};
+    border-radius: ${designTokens.space[2]};
     background: var(--primary);
     font-weight: ${designTokens.fontWeights.bold};
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.12), 0px 1px 2px rgba(0,0,0,0.08);
     a {
       color: var(--grey0);
       &:hover, &:focus {
         color: var(--grey0);
-        background: var(--primaryDark);
+        background: var(--primary);
         text-decoration: none;
       }
     }

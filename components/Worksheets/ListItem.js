@@ -1,6 +1,7 @@
 import { designTokens } from '@components/Theme/designTokens'
 import { Box } from '@components/Box'
 import styled from 'styled-components'
+import Chip, {PrimaryChip, TertiaryChip, SecondaryChip} from '@components/Chip'
 
 const SmallText = styled.div`
   font-size: ${designTokens.fontSizes[1]};
@@ -36,31 +37,6 @@ const Avatar = styled.div`
   background: var(--primaryTransparent);
   font-size: ${designTokens.fontSizes[1]};
   color: var(--primaryDark);
-`
-
-const Chip = styled.div`
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  padding: ${designTokens.space[1]} ${designTokens.space[2]};
-  border: 1px solid var(--grey500);
-  font-size: ${designTokens.fontSizes[0]};
-  margin-right: ${designTokens.space[1]};
-`
-
-const PrimaryChip = styled(Chip)`
-  color: var(--primaryDark);
-  border-color: var(--primary);
-`
-
-const SecondaryChip = styled(Chip)`
-  color: var(--secondaryDark);
-  border-color: var(--secondary);
-`
-
-const TertiaryChip = styled(Chip)`
-  color: var(--tertiaryDark);
-  border-color: var(--tertiary);
 `
 
 const ListItem = ({type, data, number}) => {
