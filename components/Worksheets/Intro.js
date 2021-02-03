@@ -24,6 +24,7 @@ const Intro = ({sheet}) => {
 
   return(
     <>
+      <h3>{sheet.charAt(0).toUpperCase() + sheet.slice(1)} Questions</h3>
       <p style={{ color: 'var(--grey700)'}}>
         <small>
           {getContent(sheet)}
