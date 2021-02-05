@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@statickit/react": "^2.1.1",
+    "airtable": "^0.10.1",
     "airtable-plus": "^1.0.4",
     "babel-plugin-styled-components": "^1.10.7",
     "bezier-easing": "^2.1.0",

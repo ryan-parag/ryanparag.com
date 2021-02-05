@@ -10,13 +10,13 @@ import Footer from '../Footer'
 import { StaticKitProvider } from '@statickit/react'
 import ReactGA from 'react-ga'
 
-const LayoutContainer = styled.div`
+export const LayoutContainer = styled.div`
   width: 100%;
   max-width: ${designTokens.layoutWidth};
   margin: auto;
 `
 
-const Main = styled.main`
+export const Main = styled.main`
   padding: ${designTokens.space[7]} ${designTokens.space[3]} ${designTokens.space[6]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     padding-top: ${designTokens.space[9]};
@@ -89,15 +89,6 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
   const toggleTheme = (theme) => {
     localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme))
     setTheme(theme)
-  }
-
-  const renderTheme = () => {
-    themeList.find(obj => {
-      if(obj.name !== 'undefined') {
-        return obj.name === theme
-      }
-      return lightTheme
-    })
   }
 
   const body = 

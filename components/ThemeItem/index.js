@@ -46,7 +46,7 @@ const SwatchItem = styled.div`
   margin: 0 ${designTokens.space[1]};
 `
 
-export default function ThemeItem({theme, clickHandle, active}) {
+export default function ThemeItem({theme, clickHandle, active, ...props}) {
   return(
     <ThemeContainer
       className={active ? 'active' : null}
@@ -58,7 +58,7 @@ export default function ThemeItem({theme, clickHandle, active}) {
         color: theme.grey900
       }}
     >
-      {theme.name}
+      {props.custom ? 'Custom Theme' : theme.name}
       <div style={{textAlign: 'center', marginTop: designTokens.space[2]}}>
         <SwatchItem
           color={theme.primary}

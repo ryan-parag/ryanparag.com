@@ -11,6 +11,7 @@ import Switch from '@components/Switch'
 import Router from 'next/router'
 import ContrastChecker from '@components/ContrastChecker'
 import chroma from 'chroma-js'
+import Airtable from 'airtable'
 
 const Card = styled.div`
   margin: ${(props) => props.marginTop ? props.marginTop : '0'} 0 ${(props) => props.marginBottom ? props.marginBottom : designTokens.space[3]};
@@ -124,6 +125,7 @@ const ThemeCreator = () => {
   const [easing, setEasing] = useState('easeInQuad')
   const [activeSwatch, setActiveSwatch] = useState(null)
   const [activeSwatchName, setActiveSwatchName] = useState(null)
+  const [sending, setSending] = useState(false)
 
   const input = {
     specs: {
@@ -288,11 +290,51 @@ const ThemeCreator = () => {
     setCustomTheme(prevState => customTheme);
   }, [customTheme])
 
+  const sendItem = () => {
+    const base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(process.env.AIRTABLE_BASE)
+
+    base('themes').create([
+      {
+        "fields": {
+          "grey900": customTheme.grey900,
+          "grey800": customTheme.grey800,
+          "grey700": customTheme.grey700,
+          "grey600": customTheme.grey600,
+          "grey500": customTheme.grey500,
+          "grey400": customTheme.grey400,
+          "grey300": customTheme.grey300,
+          "grey200": customTheme.grey200,
+          "grey100": customTheme.grey100,
+          "grey0": customTheme.grey0,
+          "primary": customTheme.primary,
+          "secondary": customTheme.secondary,
+          "tertiary": customTheme.tertiary,
+          "primaryDark": customTheme.primaryDark,
+          "secondaryDark": customTheme.secondaryDark,
+          "tertiaryDark": customTheme.tertiaryDark,
+          "primaryTransparent": customTheme.primaryTransparent,
+          "secondaryTransparent": customTheme.secondaryTransparent,
+          "tertiaryTransparent": customTheme.tertiaryTransparent,
+          "transparent": customTheme.transparent
+        }
+      }
+      ], function(err, records) {
+        if (err) {
+          console.error(err);
+          return;
+      }
+    });
+  }
+
   const addAndSave = () => {
     if (typeof window !== 'undefined') {
+      setSending(true)
       localStorage.setItem('customThemes', JSON.stringify(customTheme))
       localStorage.setItem('ryansNotesNewTheme', JSON.stringify(customTheme))
-      Router.reload(window.location.pathname)
+      sendItem()
+      setTimeout(() => {
+        Router.reload(window.location.pathname)
+      }, 1000)
     }
   }
 
@@ -332,241 +374,251 @@ const ThemeCreator = () => {
 
   return (
     <>
-      <Card>
-        <CardHeader>
-          <LargeTitle>New Theme</LargeTitle>
-          <div>
-            <ButtonPrimary onClick={() => addAndSave()}>Save & Add</ButtonPrimary>
-          </div>
-        </CardHeader>
-        <CardBody>
-          <CardColumn tinted>
-            <CardRow bottomBorder>
-              <SectionTitle>Preview ✨</SectionTitle>
-            </CardRow>
-            <CardRow bottomBorder>
-              <ThemeContainer>
-                <ThemeItem
-                  theme={customTheme}
-                />
-                <div style={{ marginTop: designTokens.space[3]}}>
-                  <Switch
-                    isOn={darkMode}
-                    handleToggle={() => changeDarkMode()}
-                    startLabel={'Light'}
-                    endLabel={'Dark'}
-                  />
-                </div>
-              </ThemeContainer>
-            </CardRow>
-            <CardRow>
-              <SwatchGrid>
-                <Swatch active={activeSwatch === customTheme.grey900 ? true : false} onClick={() => toggleActiveSwatch("Grey 900", customTheme.grey900)} title="Grey 900" style={{ background: customTheme.grey900 }}/>
-                <Swatch active={activeSwatch === customTheme.grey800 ? true : false} onClick={() => toggleActiveSwatch("Grey 800", customTheme.grey800)} title="Grey 900" style={{ background: customTheme.grey800 }}/>
-                <Swatch active={activeSwatch === customTheme.grey700 ? true : false} onClick={() => toggleActiveSwatch("Grey 700", customTheme.grey700)} title="Grey 800" style={{ background: customTheme.grey700 }}/>
-                <Swatch active={activeSwatch === customTheme.grey600 ? true : false} onClick={() => toggleActiveSwatch("Grey 600", customTheme.grey600)} title="Grey 600" style={{ background: customTheme.grey600 }}/>
-                <Swatch active={activeSwatch === customTheme.grey500 ? true : false} onClick={() => toggleActiveSwatch("Grey 500", customTheme.grey500)} title="Grey 500" style={{ background: customTheme.grey500 }}/>
-                <Swatch active={activeSwatch === customTheme.grey400 ? true : false} onClick={() => toggleActiveSwatch("Grey 400", customTheme.grey400)} title="Grey 400" style={{ background: customTheme.grey400 }}/>
-                <Swatch active={activeSwatch === customTheme.grey300 ? true : false} onClick={() => toggleActiveSwatch("Grey 300", customTheme.grey300)} title="Grey 300" style={{ background: customTheme.grey300 }}/>
-                <Swatch active={activeSwatch === customTheme.grey200 ? true : false} onClick={() => toggleActiveSwatch("Grey 200", customTheme.grey200)} title="Grey 200" style={{ background: customTheme.grey200 }}/>
-                <Swatch active={activeSwatch === customTheme.grey100 ? true : false} onClick={() => toggleActiveSwatch("Grey 100", customTheme.grey100)} title="Grey 100" style={{ background: customTheme.grey100 }}/>
-                <Swatch active={activeSwatch === customTheme.grey0 ? true : false} onClick={() => toggleActiveSwatch("Grey 0", customTheme.grey0)} title="Grey 0" style={{ background: customTheme.grey0 }}/>
-                <Swatch active={activeSwatch === customTheme.primary ? true : false} onClick={() => toggleActiveSwatch("Primary", customTheme.primary)} title="Primary" style={{ background: customTheme.primary }}/>
-                <Swatch active={activeSwatch === customTheme.primaryTransparent ? true : false} onClick={() => toggleActiveSwatch("Primary Transparent", customTheme.primaryTransparent)} title="Primary Transparent" style={{ background: customTheme.primaryTransparent }}/>
-                <Swatch active={activeSwatch === customTheme.primaryDark ? true : false} onClick={() => toggleActiveSwatch("Primary Dark", customTheme.primaryDark)} title="Primary Dark" style={{ background: customTheme.primaryDark }}/>
-                <Swatch active={activeSwatch === customTheme.secondary ? true : false} onClick={() => toggleActiveSwatch("Secondary", customTheme.secondary)} title="Secondary" style={{ background: customTheme.secondary }}/>
-                <Swatch active={activeSwatch === customTheme.secondaryTransparent ? true : false} onClick={() => toggleActiveSwatch("Secondary Transparent", customTheme.secondaryTransparent)} title="Secondary Transparent" style={{ background: customTheme.secondaryTransparent }}/>
-                <Swatch active={activeSwatch === customTheme.secondaryDark ? true : false} onClick={() => toggleActiveSwatch("Secondary Dark", customTheme.secondaryDark)} title="Secondary Dark" style={{ background: customTheme.secondaryDark }}/>
-                <Swatch active={activeSwatch === customTheme.tertiary ? true : false} onClick={() => toggleActiveSwatch("Tertiary", customTheme.tertiary)} title="Tertiary" style={{ background: customTheme.tertiary }}/>
-                <Swatch active={activeSwatch === customTheme.tertiaryTransparent ? true : false} onClick={() => toggleActiveSwatch("Tertiary Transparent", customTheme.tertiaryTransparent)} title="Tertiary Transparent" style={{ background: customTheme.tertiaryTransparent }}/>
-                <Swatch active={activeSwatch === customTheme.tertiaryDark ? true : false} onClick={() => toggleActiveSwatch("Tertiary Dark", customTheme.tertiaryDark)} title="Tertiary Dark" style={{ background: customTheme.tertiaryDark }}/>
-                <Swatch active={activeSwatch === customTheme.transparent ? true : false} onClick={() => toggleActiveSwatch("Transparent", customTheme.transparent)} title="Transparent" style={{ background: customTheme.transparent }}/>
-              </SwatchGrid>
-              {
-                activeSwatch !== null ?
-                (
-                  <div style={{ padding: `${designTokens.space[2]} 0` }}>
-                    <small>
-                      <strong>{activeSwatchName}</strong>
-                      <br/>
-                      {activeSwatch}
-                    </small>
-                  </div>
-                )
-                :
-                  null
-              }
-            </CardRow>
-          </CardColumn>
-          <CardColumn>
-            <CardBody grid={'repeat(2, 1fr)'}>
-              <CardColumn>
-                <CardRow bottomBorder>
-                  <SectionTitle spacing="true">Primary</SectionTitle>
-                  <ColorPicker
-                    color={customTheme.primary}
-                    changeColor={changePrimary}
-                  />
-                  <div style={{ marginTop: designTokens.space[2] }}>
-                    <ContrastChecker
-                      foregroundColor={customTheme.grey0}
-                      backgroundColor={customTheme.primary}
-                    />
-                  </div>
-                </CardRow>
-              </CardColumn>
-              <CardColumn>
-                <CardRow bottomBorder>
-                  <SectionTitle spacing="true">Secondary</SectionTitle>
-                  <ColorPicker
-                    color={customTheme.secondary}
-                    changeColor={changeSecondary}
-                  />
-                  <div style={{ marginTop: designTokens.space[2] }}>
-                    <ContrastChecker
-                      foregroundColor={customTheme.grey0}
-                      backgroundColor={customTheme.secondary}
-                    />
-                  </div>
-                </CardRow>
-              </CardColumn>
-              <CardColumn>
-                <CardRow bottomBorder>
-                  <SectionTitle spacing="true">Tertiary</SectionTitle>
-                  <ColorPicker
-                    color={customTheme.tertiary}
-                    changeColor={changeTertiary}
-                  />
-                  <div style={{ marginTop: designTokens.space[2] }}>
-                    <ContrastChecker
-                      foregroundColor={customTheme.grey0}
-                      backgroundColor={customTheme.tertiary}
-                    />
-                  </div>
-                </CardRow>
-              </CardColumn>
-              <CardColumn>
-                <CardRow bottomBorder>
-                  <SectionTitle spacing="true">Color Easing</SectionTitle>
-                  <select
-                    value={easing}
-                    onChange={changeEasing}
-                    style={{ marginBottom: `calc(${designTokens.space[4]} + ${designTokens.space[2]} - 2px)` }}
-                  >
-                    {
-                      spacings.map(option => (
-                        <option key={option.name} value={option.value}>{option.name}</option>
-                      ))
-                    }
-                  </select>
-                </CardRow>
-              </CardColumn>
-            </CardBody>
-            <CardRow>
-              <FlexContainer>
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center'
-                }}>
-                  <SectionTitle>Neutrals</SectionTitle>
-                  <div style={{ marginRight: designTokens.space[2]}}/>
-                  <ContrastChecker
-                    foregroundColor={customTheme.grey900}
-                    backgroundColor={customTheme.grey0}
-                  />
-                </div>
-              </FlexContainer>
-            </CardRow>
-            <CardBody grid={'repeat(2, 1fr)'}>
-              <CardRow>
-                <FlexContainer>
-                  <SectionSubtitle>Hue Start</SectionSubtitle>
-                  <small>{neutralHueStart}</small>
-                </FlexContainer>
-                <RangeSlider
-                  min={0}
-                  max={359}
-                  value={neutralHueStart}
-                  modifier={'hue'}
-                  changeFunction={changeHueStart}
-                />
-              </CardRow>
-              <CardRow>
-                <FlexContainer>
-                  <SectionSubtitle>Hue End</SectionSubtitle>
-                  <small>{neutralHueEnd}</small>
-                </FlexContainer>
-                <RangeSlider
-                  min={0}
-                  max={359}
-                  value={neutralHueEnd}
-                  modifier={'hue'}
-                  changeFunction={changeHueEnd}
-                />
-              </CardRow>
-              <CardRow>
-                <FlexContainer>
-                  <SectionSubtitle>Saturation Start</SectionSubtitle>
-                  <small>{neutralSatStart}%</small>
-                </FlexContainer>
-                <RangeSlider
-                  min={0}
-                  max={100}
-                  value={neutralSatStart}
-                  modifier={'saturation'}
-                  changeFunction={changeSatStart}
-                />
-              </CardRow>
-              <CardRow>
-                <FlexContainer>
-                  <SectionSubtitle>Saturation End</SectionSubtitle>
-                  <small>{neutralSatEnd}%</small>
-                </FlexContainer>
-                <RangeSlider
-                  min={0}
-                  max={100}
-                  value={neutralSatEnd}
-                  modifier={'saturation'}
-                  changeFunction={changeSatEnd}
-                />
-              </CardRow>
-              <CardRow bottomBorder>
-                <FlexContainer>
-                  <SectionSubtitle>Brightness Start</SectionSubtitle>
-                  <small>{neutralLumStart}%</small>
-                </FlexContainer>
-                <RangeSlider
-                  min={0}
-                  max={40}
-                  value={neutralLumStart}
-                  modifier={darkMode ? 'brightness-rev-start' : 'brightness-start'}
-                  changeFunction={changeLumStart}
-                />
-              </CardRow>
-              <CardRow bottomBorder>
-                <FlexContainer>
-                  <SectionSubtitle>Brightness End</SectionSubtitle>
-                  <small>{neutralLumEnd}%</small>
-                </FlexContainer>
-                <RangeSlider
-                  min={60}
-                  max={100}
-                  value={neutralLumEnd}
-                  modifier={darkMode ? 'brightness-rev-end' : 'brightness-end'}
-                  changeFunction={changeLumEnd}
-                />
-              </CardRow>
-            </CardBody>
-          </CardColumn>
-          <MobileContainer>
-            <CardRow>
+      {
+        !sending ? (
+          <Card>
+            <CardHeader>
+              <LargeTitle>New Theme</LargeTitle>
               <div>
-                <MobileButton onClick={() => addAndSave()}>Save & Add</MobileButton>
+                <ButtonPrimary onClick={() => addAndSave()}>Save & Add</ButtonPrimary>
               </div>
-            </CardRow>
-          </MobileContainer>
-        </CardBody>
-      </Card>
+            </CardHeader>
+            <CardBody>
+              <CardColumn tinted>
+                <CardRow bottomBorder>
+                  <SectionTitle>Preview ✨</SectionTitle>
+                </CardRow>
+                <CardRow bottomBorder>
+                  <ThemeContainer>
+                    <ThemeItem
+                      theme={customTheme}
+                    />
+                    <div style={{ marginTop: designTokens.space[3]}}>
+                      <Switch
+                        isOn={darkMode}
+                        handleToggle={() => changeDarkMode()}
+                        startLabel={'Light'}
+                        endLabel={'Dark'}
+                      />
+                    </div>
+                  </ThemeContainer>
+                </CardRow>
+                <CardRow>
+                  <SwatchGrid>
+                    <Swatch active={activeSwatch === customTheme.grey900 ? true : false} onClick={() => toggleActiveSwatch("Grey 900", customTheme.grey900)} title="Grey 900" style={{ background: customTheme.grey900 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey800 ? true : false} onClick={() => toggleActiveSwatch("Grey 800", customTheme.grey800)} title="Grey 900" style={{ background: customTheme.grey800 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey700 ? true : false} onClick={() => toggleActiveSwatch("Grey 700", customTheme.grey700)} title="Grey 800" style={{ background: customTheme.grey700 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey600 ? true : false} onClick={() => toggleActiveSwatch("Grey 600", customTheme.grey600)} title="Grey 600" style={{ background: customTheme.grey600 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey500 ? true : false} onClick={() => toggleActiveSwatch("Grey 500", customTheme.grey500)} title="Grey 500" style={{ background: customTheme.grey500 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey400 ? true : false} onClick={() => toggleActiveSwatch("Grey 400", customTheme.grey400)} title="Grey 400" style={{ background: customTheme.grey400 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey300 ? true : false} onClick={() => toggleActiveSwatch("Grey 300", customTheme.grey300)} title="Grey 300" style={{ background: customTheme.grey300 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey200 ? true : false} onClick={() => toggleActiveSwatch("Grey 200", customTheme.grey200)} title="Grey 200" style={{ background: customTheme.grey200 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey100 ? true : false} onClick={() => toggleActiveSwatch("Grey 100", customTheme.grey100)} title="Grey 100" style={{ background: customTheme.grey100 }}/>
+                    <Swatch active={activeSwatch === customTheme.grey0 ? true : false} onClick={() => toggleActiveSwatch("Grey 0", customTheme.grey0)} title="Grey 0" style={{ background: customTheme.grey0 }}/>
+                    <Swatch active={activeSwatch === customTheme.primary ? true : false} onClick={() => toggleActiveSwatch("Primary", customTheme.primary)} title="Primary" style={{ background: customTheme.primary }}/>
+                    <Swatch active={activeSwatch === customTheme.primaryTransparent ? true : false} onClick={() => toggleActiveSwatch("Primary Transparent", customTheme.primaryTransparent)} title="Primary Transparent" style={{ background: customTheme.primaryTransparent }}/>
+                    <Swatch active={activeSwatch === customTheme.primaryDark ? true : false} onClick={() => toggleActiveSwatch("Primary Dark", customTheme.primaryDark)} title="Primary Dark" style={{ background: customTheme.primaryDark }}/>
+                    <Swatch active={activeSwatch === customTheme.secondary ? true : false} onClick={() => toggleActiveSwatch("Secondary", customTheme.secondary)} title="Secondary" style={{ background: customTheme.secondary }}/>
+                    <Swatch active={activeSwatch === customTheme.secondaryTransparent ? true : false} onClick={() => toggleActiveSwatch("Secondary Transparent", customTheme.secondaryTransparent)} title="Secondary Transparent" style={{ background: customTheme.secondaryTransparent }}/>
+                    <Swatch active={activeSwatch === customTheme.secondaryDark ? true : false} onClick={() => toggleActiveSwatch("Secondary Dark", customTheme.secondaryDark)} title="Secondary Dark" style={{ background: customTheme.secondaryDark }}/>
+                    <Swatch active={activeSwatch === customTheme.tertiary ? true : false} onClick={() => toggleActiveSwatch("Tertiary", customTheme.tertiary)} title="Tertiary" style={{ background: customTheme.tertiary }}/>
+                    <Swatch active={activeSwatch === customTheme.tertiaryTransparent ? true : false} onClick={() => toggleActiveSwatch("Tertiary Transparent", customTheme.tertiaryTransparent)} title="Tertiary Transparent" style={{ background: customTheme.tertiaryTransparent }}/>
+                    <Swatch active={activeSwatch === customTheme.tertiaryDark ? true : false} onClick={() => toggleActiveSwatch("Tertiary Dark", customTheme.tertiaryDark)} title="Tertiary Dark" style={{ background: customTheme.tertiaryDark }}/>
+                    <Swatch active={activeSwatch === customTheme.transparent ? true : false} onClick={() => toggleActiveSwatch("Transparent", customTheme.transparent)} title="Transparent" style={{ background: customTheme.transparent }}/>
+                  </SwatchGrid>
+                  {
+                    activeSwatch !== null ?
+                    (
+                      <div style={{ padding: `${designTokens.space[2]} 0` }}>
+                        <small>
+                          <strong>{activeSwatchName}</strong>
+                          <br/>
+                          {activeSwatch}
+                        </small>
+                      </div>
+                    )
+                    :
+                      null
+                  }
+                </CardRow>
+              </CardColumn>
+              <CardColumn>
+                <CardBody grid={'repeat(2, 1fr)'}>
+                  <CardColumn>
+                    <CardRow bottomBorder>
+                      <SectionTitle spacing="true">Primary</SectionTitle>
+                      <ColorPicker
+                        color={customTheme.primary}
+                        changeColor={changePrimary}
+                      />
+                      <div style={{ marginTop: designTokens.space[2] }}>
+                        <ContrastChecker
+                          foregroundColor={customTheme.grey0}
+                          backgroundColor={customTheme.primary}
+                        />
+                      </div>
+                    </CardRow>
+                  </CardColumn>
+                  <CardColumn>
+                    <CardRow bottomBorder>
+                      <SectionTitle spacing="true">Secondary</SectionTitle>
+                      <ColorPicker
+                        color={customTheme.secondary}
+                        changeColor={changeSecondary}
+                      />
+                      <div style={{ marginTop: designTokens.space[2] }}>
+                        <ContrastChecker
+                          foregroundColor={customTheme.grey0}
+                          backgroundColor={customTheme.secondary}
+                        />
+                      </div>
+                    </CardRow>
+                  </CardColumn>
+                  <CardColumn>
+                    <CardRow bottomBorder>
+                      <SectionTitle spacing="true">Tertiary</SectionTitle>
+                      <ColorPicker
+                        color={customTheme.tertiary}
+                        changeColor={changeTertiary}
+                      />
+                      <div style={{ marginTop: designTokens.space[2] }}>
+                        <ContrastChecker
+                          foregroundColor={customTheme.grey0}
+                          backgroundColor={customTheme.tertiary}
+                        />
+                      </div>
+                    </CardRow>
+                  </CardColumn>
+                  <CardColumn>
+                    <CardRow bottomBorder>
+                      <SectionTitle spacing="true">Color Easing</SectionTitle>
+                      <select
+                        value={easing}
+                        onChange={changeEasing}
+                        style={{ marginBottom: `calc(${designTokens.space[4]} + ${designTokens.space[2]} - 2px)` }}
+                      >
+                        {
+                          spacings.map(option => (
+                            <option key={option.name} value={option.value}>{option.name}</option>
+                          ))
+                        }
+                      </select>
+                    </CardRow>
+                  </CardColumn>
+                </CardBody>
+                <CardRow>
+                  <FlexContainer>
+                    <div style={{
+                      display: 'inline-flex',
+                      alignItems: 'center'
+                    }}>
+                      <SectionTitle>Neutrals</SectionTitle>
+                      <div style={{ marginRight: designTokens.space[2]}}/>
+                      <ContrastChecker
+                        foregroundColor={customTheme.grey900}
+                        backgroundColor={customTheme.grey0}
+                      />
+                    </div>
+                  </FlexContainer>
+                </CardRow>
+                <CardBody grid={'repeat(2, 1fr)'}>
+                  <CardRow>
+                    <FlexContainer>
+                      <SectionSubtitle>Hue Start</SectionSubtitle>
+                      <small>{neutralHueStart}</small>
+                    </FlexContainer>
+                    <RangeSlider
+                      min={0}
+                      max={359}
+                      value={neutralHueStart}
+                      modifier={'hue'}
+                      changeFunction={changeHueStart}
+                    />
+                  </CardRow>
+                  <CardRow>
+                    <FlexContainer>
+                      <SectionSubtitle>Hue End</SectionSubtitle>
+                      <small>{neutralHueEnd}</small>
+                    </FlexContainer>
+                    <RangeSlider
+                      min={0}
+                      max={359}
+                      value={neutralHueEnd}
+                      modifier={'hue'}
+                      changeFunction={changeHueEnd}
+                    />
+                  </CardRow>
+                  <CardRow>
+                    <FlexContainer>
+                      <SectionSubtitle>Saturation Start</SectionSubtitle>
+                      <small>{neutralSatStart}%</small>
+                    </FlexContainer>
+                    <RangeSlider
+                      min={0}
+                      max={100}
+                      value={neutralSatStart}
+                      modifier={'saturation'}
+                      changeFunction={changeSatStart}
+                    />
+                  </CardRow>
+                  <CardRow>
+                    <FlexContainer>
+                      <SectionSubtitle>Saturation End</SectionSubtitle>
+                      <small>{neutralSatEnd}%</small>
+                    </FlexContainer>
+                    <RangeSlider
+                      min={0}
+                      max={100}
+                      value={neutralSatEnd}
+                      modifier={'saturation'}
+                      changeFunction={changeSatEnd}
+                    />
+                  </CardRow>
+                  <CardRow bottomBorder>
+                    <FlexContainer>
+                      <SectionSubtitle>Brightness Start</SectionSubtitle>
+                      <small>{neutralLumStart}%</small>
+                    </FlexContainer>
+                    <RangeSlider
+                      min={0}
+                      max={40}
+                      value={neutralLumStart}
+                      modifier={darkMode ? 'brightness-rev-start' : 'brightness-start'}
+                      changeFunction={changeLumStart}
+                    />
+                  </CardRow>
+                  <CardRow bottomBorder>
+                    <FlexContainer>
+                      <SectionSubtitle>Brightness End</SectionSubtitle>
+                      <small>{neutralLumEnd}%</small>
+                    </FlexContainer>
+                    <RangeSlider
+                      min={60}
+                      max={100}
+                      value={neutralLumEnd}
+                      modifier={darkMode ? 'brightness-rev-end' : 'brightness-end'}
+                      changeFunction={changeLumEnd}
+                    />
+                  </CardRow>
+                </CardBody>
+              </CardColumn>
+              <MobileContainer>
+                <CardRow>
+                  <div>
+                    <MobileButton onClick={() => addAndSave()}>Save & Add</MobileButton>
+                  </div>
+                </CardRow>
+              </MobileContainer>
+            </CardBody>
+          </Card>
+        )
+        :
+        <Card>
+          <div style={{ padding: designTokens.space[4], textAlign: 'center' }}>
+          Sending your theme and updating!
+          </div>
+        </Card>
+      }
     </>
   )
 }

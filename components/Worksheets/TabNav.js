@@ -14,7 +14,6 @@ const TabItem = styled.div`
   width: 100%;
   font-size: ${designTokens.fontSizes[1]};
   border-bottom: 2px solid var(--grey200);
-  transform: translateY(-2px);
   a {
     color: var(--grey600);
     display: block;
@@ -28,7 +27,7 @@ const TabItem = styled.div`
     }
   }
   &.active {
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 4px solid var(--primary);
     font-weight: ${designTokens.fontWeights.bold};
     a {
       color: var(--grey900);
