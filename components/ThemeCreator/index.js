@@ -113,7 +113,7 @@ const MobileContainer = styled.div`
   }
 `
 
-const ThemeCreator = () => {
+const ThemeCreator = ({toggleTheme}) => {
 
   const [neutralHueStart, setNeutralHueStart] = useState(287)
   const [neutralHueEnd, setNeutralHueEnd] = useState(173)
@@ -260,7 +260,7 @@ const ThemeCreator = () => {
   }
 
   const theme = {
-    name: 'Custom Theme',
+    name: 'Click to Preview',
     grey900: darkMode ? palette[9].hex : palette[0].hex,
     grey800: darkMode ? palette[8].hex : palette[1].hex,
     grey700: darkMode ? palette[7].hex : palette[2].hex,
@@ -392,6 +392,7 @@ const ThemeCreator = () => {
                   <ThemeContainer>
                     <ThemeItem
                       theme={customTheme}
+                      clickHandle={() => toggleTheme(customTheme)}
                     />
                     <div style={{ marginTop: designTokens.space[3]}}>
                       <Switch

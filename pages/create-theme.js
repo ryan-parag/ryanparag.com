@@ -30,7 +30,7 @@ const CreateTheme = ({ title, description, ...props }) => {
   const getRecentThemes = () => {
     const base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(process.env.AIRTABLE_BASE)
     base('themes').select({
-      maxRecords: 5,
+      maxRecords: 8,
       view: "Grid view",
       sort: [{field: "Date", direction: "desc"}]
     }).eachPage(function page(records, fetchNextPage) {
@@ -164,7 +164,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                   </ButtonAnchorTag>
                 </div>
                 <hr/>
-                <h4>Recently Created Themes (Last 10)</h4>
+                <h4>Recently Created Themes (Last 8)</h4>
                 {
                   recentThemes.map(item => (
                     <div style={{ marginBottom: designTokens.space[3], display: 'flex', alignItems: 'center' }}>
@@ -198,21 +198,10 @@ export default CreateTheme
 export async function getStaticProps() {
   const configData = await import(`../siteconfig.json`)
 
-  const airtable = new AirtablePlus({
-    baseID: process.env.AIRTABLE_BASE,
-    apiKey: process.env.AIRTABLE_API_KEY,
-    tableName: 'themes',
-    maxRecords: 5,
-    sort: [{field: 'Date', direction: 'desc'}]
-  });
-
-  const data = await airtable.read();
-
   return {
     props: {
       title: configData.default.title,
-      description: configData.default.description,
-      themes: data
+      description: configData.default.description
     },
   }
 }
