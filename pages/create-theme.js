@@ -17,6 +17,8 @@ import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, h
 import ThemeItem from '@components/ThemeItem'
 import { format } from 'timeago.js'
 import Airtable from 'airtable'
+import namer from 'color-namer'
+
 
 const CreateTheme = ({ title, description, ...props }) => {
 
@@ -73,6 +75,13 @@ const CreateTheme = ({ title, description, ...props }) => {
   const toggleTheme = (theme) => {
     localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme))
     setTheme(theme)
+  }
+
+  const getName = hex => {
+    const names = namer(hex)
+    const colorName = names.pantone[0].name
+    const capitalized = colorName.charAt(0).toUpperCase() + colorName.slice(1)
+    return capitalized
   }
 
   return (
@@ -165,21 +174,46 @@ const CreateTheme = ({ title, description, ...props }) => {
                 </div>
                 <hr/>
                 <h4>Recently Created Themes (Last 8)</h4>
+                <ul style={{
+                  boxShadow: '0px 1px 3px rgba(0,0,0,0.14)',
+                  background: 'var(--grey0)',
+                  border: '1px solid var(--grey200)',
+                  borderRadius: designTokens.space[2],
+                  paddingBottom: designTokens.space[2],
+                  paddingTop: designTokens.space[2],
+                }}>
                 {
-                  recentThemes.map(item => (
-                    <div style={{ marginBottom: designTokens.space[3], display: 'flex', alignItems: 'center' }}>
+                  recentThemes.map((item,i) => (
+                    <li
+                      style={{
+                        padding: `${designTokens.space[2]} ${designTokens.space[3]}`,
+                        marginBottom: '0',
+                        display: 'flex',
+                        alignItems: 'center',
+                        borderBottom: `1px solid ${i === recentThemes.length - 1 ? 'transparent' : 'var(--grey200)'}`
+                      }}
+                    >
                       <ThemeItem
                         theme={item.fields}
                         custom
                         clickHandle={() => toggleTheme(item.fields)}
                         key={theme.id}
                       />
-                      <div style={{ fontSize: designTokens.fontSizes[0], padding: designTokens.space[3] }}>
-                        {format(item.fields.Date)}
+                      <div style={{ padding: designTokens.space[3] }}>
+                        <strong>
+                          {getName(item.fields.primary)} and {getName(item.fields.grey200)}
+                        </strong>
+                        <br/>
+                        <span
+                          style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)' }}
+                        >
+                          Submitted <span style={{ color: 'var(--tertiaryDark)'}}>{format(item.fields.Date)}</span>
+                        </span>
                       </div>
-                    </div>
+                    </li>
                   ))
                 }
+                </ul>
                 <hr/>
                 <ContactBox/>
                 <ContactForm/>
