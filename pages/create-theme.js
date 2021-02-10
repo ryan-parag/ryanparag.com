@@ -11,6 +11,7 @@ import AirtablePlus from 'airtable-plus'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactBox from '@components/ContactBox'
 import ThemeCreator from '@components/ThemeCreator'
+import TestCreator from '@components/ThemeCreator/test'
 import ContactForm from '@components/ContactForm'
 import { ButtonAnchorTag } from '@components/Button'
 import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '@components/Theme/'
@@ -18,7 +19,7 @@ import ThemeItem from '@components/ThemeItem'
 import { format } from 'timeago.js'
 import Airtable from 'airtable'
 import namer from 'color-namer'
-
+import { Box } from '@components/Box'
 
 const CreateTheme = ({ title, description, ...props }) => {
 
@@ -129,10 +130,11 @@ const CreateTheme = ({ title, description, ...props }) => {
                 <p className="lead">Pick a few colors and build a new theme!</p>
                 <p>I like to believe design is a fluid skill and that <strong>everyone is a bit of a designer</strong> 👍 - we all have the ability to feel certain ways about things that are designed. <strong>Feed that curiousity</strong> and play around with creating a new theme for this website!</p>
                 <hr/>
-                <ThemeCreator
-                  toggleTheme={toggleTheme}
-                  intialTheme={theme}
-                />
+                <Box center>
+                  <h1>🚧</h1>
+                  <h4>Under Construction</h4>
+                  <p>Sorry! I'm going back under the hood of this feature, but it'll be back soon. Thanks for being patient!</p>
+                </Box>
                 <div style={{
                   textAlign: 'center',
                   padding: `${designTokens.space[3]} 0 ${designTokens.space[5]}`
