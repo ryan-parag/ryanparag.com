@@ -10,6 +10,7 @@ import ImgZoom from '@components/ImgZoom'
 import { Button, ButtonLink } from '@components/Button'
 import ContactBox from '@components/ContactBox'
 import Subscribe from '@components/Subscribe'
+import Chip from '@components/Chip'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
@@ -52,15 +53,15 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
           </ButtonLink>
         </div>
         <article>
-          <h1>{frontmatter.title}</h1>
+          <h2>{frontmatter.title}</h2>
           <div
             style={{
               marginBottom: designTokens.space[3]
             }}
           >
-            <small>
+            <Chip>
               Updated {format(frontmatter.date)}
-            </small>
+            </Chip>
           </div>
           {frontmatter.hero_image && (
             <img

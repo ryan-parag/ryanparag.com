@@ -238,10 +238,7 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: ${designTokens.fontWeights.bold};
   }
   em {
-    background: var(--primaryTransparent);
-    font-style: normal;
-    box-shadow: 0px 0px 0px 3px var(--primaryTransparent);
-    transform: skew(10deg);
+    font-style: italic;
   }
   del {
     opacity: 0.6;

@@ -26,4 +26,9 @@ export const TertiaryChip = styled(Chip)`
   border-color: var(--tertiary);
 `
 
+export const DefaultChip = styled(Chip)`
+  color: var(--grey500);
+  border-color: var(--grey500);
+`
+
 export default Chip
