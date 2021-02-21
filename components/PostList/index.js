@@ -13,6 +13,9 @@ const ListItem = styled.li`
 
 const PostContainer = styled.div`
   display: flex;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    flex-direction: column;
+  }
 `
 
 const ContentContainer = styled.div`
@@ -30,6 +33,9 @@ const PostHero = styled.div`
   background-repeat: no-repeat;
   background-image: url(${props => props.bg});
   box-shadow: 0px 2px 4px rgba(0,0,0, 0.12);
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    margin-bottom: ${designTokens.space[3]};
+  }
 `
 
 export default function PostList({ posts }) {

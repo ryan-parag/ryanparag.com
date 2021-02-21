@@ -4,7 +4,7 @@
         <title>Ryan's Notes</title>
         <link>https://notes.ryanparag.com</link>
         <description>Hello, I'm Ryan Parag - these are my notes about designing in the open and building thoughtful products.</description>
-        <lastBuildDate>Thu, 14 Jan 2021 03:50:18 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 21 Feb 2021 01:05:38 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Next.js using Feed for Node.js</generator>
         <language>en</language>
@@ -1155,6 +1155,85 @@ colors: {
 <h2>Conclusion</h2>
 
 <p>Hopefully some of that helps! I&#39;m still making incremental changes, but if you have feedback or need help with your own portfolio, ping me using the form below.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Scaling Engagement and Interactivity]]></title>
+            <guid>https://notes.ryanparag.com/notes/scaling-engagement-and-interactivity</guid>
+            <pubDate>Wed, 27 Jan 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Rebuilding and redesigning a site for a local community of designers]]></description>
+            <content:encoded><![CDATA[<img src="/static/scaling-engagement-and-interactivity.png"/><p>TLDR - <a href="https://tampabay.design">check out the new site</a></p>
+
+<p><a href="../notes/building-a-community-website">One of the first posts</a> I wrote about on this blog was about a community aggregate site for designers in the Tampa Bay area.</p>
+
+<p>I quickly spun up a fairly static site using <code>Next.js</code> and a bunch of custom styles, linking to Google Forms to collect any info or updates.</p>
+
+<p>Since the launch in Sprint 2020 → Jan 2021, I&#39;ve had over 400 visitors and 5,000 sessions. While there aren&#39;t a ton of designers in the area, I wanted to increase engagement between each other, rather than exponentiate on the number of visitors.</p>
+
+<p><em>My goal for the TampaBay.design</em> is:</p>
+
+<blockquote><p>Increase engagement between the designers in the area and provide a simple, aggregate method to find resources, local-ish job openings, interviews, and other designers.</p></blockquote>
+
+<p>Here&#39;s what it looked like before:</p>
+
+<p><img alt="The old TampaBay.design" src="../static/building-a-community-website_2.png"/></p>
+
+<p>Although the site was informative for finding groups in the area, it wasn&#39;t solving the problem designers (new and old) around the area were still experiencing.</p>
+
+<ul><li>Where can I find designers in the area?</li><li>What jobs are open for designers in Florida?</li><li>What resources are other local designers finding helpful?</li><li>Which design events are happening around me?</li></ul>
+
+<h3>Separating Data from Design</h3>
+
+<p>Before, I simply listed organizations and slack groups statically - as well as linking to a few Google Forms for receving input for new events, slack groups, or organizations.</p>
+
+<blockquote><p>Why don&#39;t I just throw all of the data in Airtable?</p></blockquote>
+
+<p>I was using Airtable to list events and thought to add all of this data (and more) in Airtable rather than render statically.</p>
+
+<p><img alt="Airtable data" src="../static/scaling-engagement-and-interactivity_2.png"/></p>
+
+<p>I created an Airtable <em>base</em> and added a few different tables to store the data:
+- events
+- slack groups
+- organizations
+- designers
+- and a few more</p>
+
+<p>I was also <em>really</em> enjoying using <a href="https://tailwindcss.com/">TailwindCSS</a> on another project and thought to rebuild this site with it as well.</p>
+
+<p>To design/build the new site, we&#39;re going to use:
+- Figma for ideating
+- Next.js for the front-end
+- TailwindCSS for styles
+- Feather for icons
+- Framer Motion for sweet animations
+- Airtable to store data
+- Netlify to deploy</p>
+
+<h3>Let&#39;s take a look at the new site</h3>
+
+<p><img alt="The new TampaBay.design" src="../static/scaling-engagement-and-interactivity_3.png"/></p>
+
+<p>So we rebuilt the site, and to help increase regular engagement, we added more contextually informative sections:</p>
+
+<ul><li><em>Submit your portfolio if you&#39;re looking for a job?</em></li><li><em>Are you looking to hire a designer?</em></li><li><em>Read our weekly newsletter for new design resources!</em></li></ul>
+
+<p>I also added a light and dark mode, based of the user&#39;s OS theme.</p>
+
+<p>Visually, I opted to create starker color contrast and spacing to allow for more breathing room for the increase in content.</p>
+
+<h3>On-site engagement</h3>
+
+<p>To help make the information updates more seamless, I converted the Google Form links to interactive forms that directly connected to Airtable:</p>
+
+<p><img alt="Event Form" src="../static/scaling-engagement-and-interactivity_4.png"/></p>
+
+<p>Using the same method, I wanted to provide a way for those on the job hunt to be added to a list and update their job search status:</p>
+
+<p><img alt="Job Form" src="../static/scaling-engagement-and-interactivity_5.png"/></p>
+
+<p>There&#39;s a ton more to go over, but rather than go through the detail of every change, <a href="https://tampabay.design">check out the new site</a>!</p>
+
+<p>Hopefully that was helpful in case you want to do the same for your community, or even if you want to help contribute on <a href="https://github.com/TampaBayDesigners/tampabaydesigners">this website</a>. I&#39;ll keep updating this site with more features that could be helpful to other designers in the area, but if you have an idea, ping me using the form below - I&#39;d love to hear about your ideas.</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Starting the Journey]]></title>
