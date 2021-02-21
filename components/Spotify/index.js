@@ -106,13 +106,26 @@ export const SpotifyLastPlayed = ({action}) => {
             />
           </svg>
           <ContentContainer>
-            <Content subtle>Something went wrong</Content>
+            <Content subtle>
+              <div>Something went wrong</div>
+              {
+                action ? (
+                  <InteriorButton
+                    onClick={action}
+                  >
+                    View Currently Playing
+                  </InteriorButton>
+                )
+                :
+                null
+              }
+            </Content>
           </ContentContainer>
         </SpotifyContainer>
       )
     }
     {
-      action ? (
+      data?.songUrl && action ? (
         <InteriorButton
           onClick={action}
         >
