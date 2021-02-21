@@ -72,7 +72,7 @@ const InteriorButton = styled.button`
 `
 
 export const SpotifyLastPlayed = ({action}) => {
-  const { data } = useSWR('/api/last-played', fetcher);
+  const { data } = useSWR('./api/last-played', fetcher);
 
   return (
     <>
@@ -140,7 +140,7 @@ export const SpotifyLastPlayed = ({action}) => {
 }
 
 export const SpotifyNowPlaying = ({action}) => {
-  const { data } = useSWR('/api/now-playing', fetcher);
+  const { data } = useSWR('./api/now-playing', fetcher);
 
   return (
     <>
