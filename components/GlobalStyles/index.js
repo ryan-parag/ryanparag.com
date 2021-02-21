@@ -82,7 +82,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[6]};
+      font-size: ${designTokens.fontSizesMobile[5]};
     }
   }
   h2 {
@@ -90,7 +90,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[5]};
+      font-size: ${designTokens.fontSizesMobile[4]};
     }
   }
   h3 {
@@ -98,7 +98,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[4]};
+      font-size: ${designTokens.fontSizesMobile[3]};
     }
   }
   h4 {
@@ -106,7 +106,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[3]};
+      font-size: ${designTokens.fontSizesMobile[2]};
     }
   }
   h5 {
@@ -114,7 +114,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[2]};
+      font-size: ${designTokens.fontSizesMobile[1]};
     }
   }
   h6 {
@@ -122,11 +122,11 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[1]};
+      font-size: ${designTokens.fontSizesMobile[0]};
     }
   }
   p {
-    font-size: ${designTokens.fontSizesMobile[2]};
+    font-size: ${designTokens.fontSizesMobile[1]};
     line-height: ${designTokens.lineHeights.body};
     margin-top: 0;
     margin-bottom: ${designTokens.space[4]};

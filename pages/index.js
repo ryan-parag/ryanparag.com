@@ -6,6 +6,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import { ButtonLink, ButtonAnchorTag } from '@components/Button'
 import Projects from '@components/Projects'
 import Subscribe from '@components/Subscribe'
+import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 
 import getPosts from '@utils/getPosts'
 
@@ -24,10 +25,10 @@ const Index = ({ posts, title, description, ...props }) => {
         <p className="lead">
           Hey, I'm Ryan and these are my notes about designing in the open and building thoughtful products. 
         </p>
-        <p>
-          ..also my playground for some expiremental UI ideas 🤔
+        <p style={{ color: 'var(--grey600)'}}>
+          It's also my playground for some expiremental UI ideas 🤔.
         </p>
-        <div>
+        <div style={{ marginBottom: designTokens.space[3]} }>
           <ButtonLink
             marginRight={designTokens.space[3]}
           >
@@ -40,6 +41,7 @@ const Index = ({ posts, title, description, ...props }) => {
             <span className="icon">&rarr;</span>
           </ButtonAnchorTag>
         </div>
+        <SpotifyCurrentlyPlaying previous />
         <hr/>
         <main>
           <h3>Latest Notes</h3>

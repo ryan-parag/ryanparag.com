@@ -53,7 +53,7 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
           </ButtonLink>
         </div>
         <article>
-          <h2>{frontmatter.title}</h2>
+          <h1>{frontmatter.title}</h1>
           <div
             style={{
               marginBottom: designTokens.space[3]

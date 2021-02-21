@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import Logo from '@components/Logo'
 import { Button } from '@components/Button'
+import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -134,7 +135,10 @@ export default function Footer() {
             </FooterListItem>
           </FooterList>
         </FooterGrid>
-        <small>Made with Next.js and Styled Components</small>
+        <SpotifyCurrentlyPlaying/>
+        <div style={{ marginTop: designTokens.space[2] }}>
+          <small>Made with Next.js and Styled Components</small>
+        </div>
         <br/>
         <FooterBottom>
           <Link href="/">

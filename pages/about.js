@@ -4,6 +4,8 @@ import { designTokens } from '@components/Theme/designTokens'
 import Link from 'next/link'
 import { ButtonLink } from '@components/Button'
 import Subscribe from '@components/Subscribe'
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
 
 const ListItem = styled.li`
   display: flex;
@@ -79,6 +81,10 @@ const About = ({ title, description, ...props }) => {
     let getColor = getComputedStyle(document.documentElement).getPropertyValue(color)
     return getColor
   }
+
+  const { data } = useSWR('/api/last-played', fetcher);
+
+  console.log(data)
 
   const neutrals = [
     {
