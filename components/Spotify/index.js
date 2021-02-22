@@ -42,7 +42,7 @@ const AlbumImage = styled.img`
   height: calc(${designTokens.space[5]} + ${designTokens.space[2]});
   border-radius: ${designTokens.space[1]};
   box-shadow: 0px 0px 0px 2px var(--grey200);
-  transition: all 120ms ease-out 30ms;
+  transition: all 120ms ease-out 0ms;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     display: none;
   }
