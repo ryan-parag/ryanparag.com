@@ -76,11 +76,6 @@ const ProfileImg = styled.div`
 
 const About = ({ title, description, ...props }) => {
 
-  const colorValue = (color) => {
-    let getColor = getComputedStyle(document.documentElement).getPropertyValue(color)
-    return getColor
-  }
-
   const neutrals = [
     {
       name: 'Neutral 900',
