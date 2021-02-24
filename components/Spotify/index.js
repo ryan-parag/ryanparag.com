@@ -200,6 +200,17 @@ export const SpotifyNowPlaying = ({action}) => {
         </SpotifyContainer>
       )
     }
+    {
+      data?.songUrl && action ? (
+        <InteriorButton
+          onClick={action}
+        >
+          View Last Played
+        </InteriorButton>
+      )
+      :
+      null
+    }
     </>
   );
 }
