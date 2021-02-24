@@ -91,7 +91,11 @@ export const SpotifyLastPlayed = ({action}) => {
           </svg>
           <ContentContainer>
             <Label>Recently played:</Label>
-            <Content><strong>{data.title}</strong> by {data.artist}</Content>
+            <Content>
+              <strong>{data.title}</strong>
+              <br/>
+              <small>by {data.artist}</small>
+            </Content>
           </ContentContainer>
           <AlbumImage src={data.albumImageUrl}/>
         </SpotifyLink>
@@ -159,7 +163,11 @@ export const SpotifyNowPlaying = ({action}) => {
           </svg>
           <ContentContainer>
             <Label>Currently Playing</Label>
-            <Content><strong>{data.title}</strong> by {data.artist}</Content>
+            <Content>
+              <strong>{data.title}</strong>
+              <br/>
+              <small>by {data.artist}</small>
+            </Content>
           </ContentContainer>
           <AlbumImage src={data.albumImageUrl}/>
         </SpotifyLink>
