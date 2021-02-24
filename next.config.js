@@ -8,6 +8,7 @@ module.exports = {
     SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN
   },
   target: 'serverless',
+  distDir: 'build',
   webpack: function (config) {
     config.module.rules.push({
       test: /\.md$/,
