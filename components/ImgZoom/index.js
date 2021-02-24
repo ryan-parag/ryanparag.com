@@ -1,13 +1,13 @@
 import React from 'react'
 import Zoom from 'react-medium-image-zoom'
 
-export default function({src,alt}) {
+const ImgZoom = ({src,alt}) => {
   return(
       <Zoom
-      overlayBgColorEnd={'var(--transparent)'}
-      overlayBgColorStart={'var(--transparent)'}
-      closeText={'Close'}
-      zoomMargin={40}
+        overlayBgColorEnd={'var(--transparent)'}
+        overlayBgColorStart={'var(--transparent)'}
+        closeText={'Close'}
+        zoomMargin={40}
       >
         <img
           src={src}
@@ -22,3 +22,5 @@ export default function({src,alt}) {
       </Zoom>
   )
 }
+
+export default ImgZoom
