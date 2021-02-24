@@ -4,7 +4,6 @@ import { designTokens } from '@components/Theme/designTokens'
 import Link from 'next/link'
 import { ButtonLink } from '@components/Button'
 import Subscribe from '@components/Subscribe'
-import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 
 const ListItem = styled.li`
   display: flex;
@@ -156,7 +155,6 @@ const About = ({ title, description, ...props }) => {
           <p>
             I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
           </p>
-          <SpotifyCurrentlyPlaying previous />
           <hr/>
           <h4>Projects</h4>
           <ul>

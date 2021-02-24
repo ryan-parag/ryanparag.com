@@ -6,7 +6,6 @@ import { designTokens } from '@components/Theme/designTokens'
 import { ButtonLink, ButtonAnchorTag } from '@components/Button'
 import Projects from '@components/Projects'
 import Subscribe from '@components/Subscribe'
-import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 
 import getPosts from '@utils/getPosts'
 
@@ -41,7 +40,6 @@ const Index = ({ posts, title, description, ...props }) => {
             <span className="icon">&rarr;</span>
           </ButtonAnchorTag>
         </div>
-        <SpotifyCurrentlyPlaying previous />
         <hr/>
         <main>
           <h3>Latest Notes</h3>
