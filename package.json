@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "export": "next export"
+    "postbuild": "next-export-api"
   },
   "dependencies": {
     "@statickit/react": "^2.1.1",
@@ -25,6 +25,7 @@
     "gray-matter": "^4.0.2",
     "markdown": "^0.5.0",
     "next": "10.0.5",
+    "next-export-api": "^0.1.11",
     "polished": "^3.6.5",
     "querystring": "^0.2.1",
     "raw-loader": "^4.0.1",
