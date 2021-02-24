@@ -1,4 +1,3 @@
 [build]
-  command = "yarn build"
+  command = "npm run build && npm run export"
   publish = "out"
-  functions = "out/api"
