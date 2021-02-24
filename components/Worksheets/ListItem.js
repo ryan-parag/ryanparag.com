@@ -32,11 +32,13 @@ const Avatar = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  height: ${designTokens.space[6]};
-  width: ${designTokens.space[6]};
-  background: var(--primaryTransparent);
-  font-size: ${designTokens.fontSizes[1]};
-  color: var(--primaryDark);
+  height: ${designTokens.space[5]};
+  width: ${designTokens.space[5]};
+  background: var(--grey200);
+  font-size: ${designTokens.fontSizes[0]};
+  font-weight: ${designTokens.fontWeights.bold};
+  color: var(--grey700);
+  box-shadow: 0px 0px 0px 1px var(--grey300), inset 0px 0px 4px var(--grey300);
 `
 
 const ListItem = ({type, data, number}) => {
@@ -51,7 +53,7 @@ const ListItem = ({type, data, number}) => {
               </Avatar>
             </div>
             <FlexCol>
-              <SmallText primary>{data.Questions}</SmallText>
+              <SmallText bold primary>{data.Questions}</SmallText>
               <div style={{ paddingTop: designTokens.space[3] }}>
                 <Label>Stakeholder:</Label>
                 <PrimaryChip>{data.Stakeholder}</PrimaryChip>
