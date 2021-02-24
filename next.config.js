@@ -7,7 +7,7 @@ module.exports = {
     SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
     SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN
   },
-  target: 'serverless',
+  //target: 'serverless',
   webpack: function (config) {
     config.module.rules.push({
       test: /\.md$/,
