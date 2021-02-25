@@ -112,3 +112,13 @@ export const IconButtonPrimary = styled.button`
 export const ButtonPrimary = styled.button`
   ${ButtonMain}
 `
+
+export const ButtonPrimaryLink = styled.span`
+  a {
+    ${ButtonMain}
+  }
+`
+
+export const ButtonPrimaryAnchorTag = styled.a`
+  ${ButtonMain}
+`

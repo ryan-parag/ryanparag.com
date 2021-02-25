@@ -3,7 +3,7 @@ import Layout from '@components/Layout/'
 import PostList from '@components/PostList/'
 import Logo from '@components/Logo'
 import { designTokens } from '@components/Theme/designTokens'
-import { ButtonLink, ButtonAnchorTag } from '@components/Button'
+import { ButtonLink, ButtonAnchorTag, ButtonPrimaryAnchorTag } from '@components/Button'
 import Projects from '@components/Projects'
 import Subscribe from '@components/Subscribe'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
@@ -36,11 +36,12 @@ const Index = ({ posts, title, description, ...props }) => {
               More about me
             </Link>
           </ButtonLink>
-          <ButtonAnchorTag href="https://ryanparag.com">
+          <ButtonPrimaryAnchorTag href="https://ryanparag.com">
             View my portfolio
             <span className="icon">&rarr;</span>
-          </ButtonAnchorTag>
+          </ButtonPrimaryAnchorTag>
         </div>
+        <hr/>
         <SpotifyCurrentlyPlaying previous />
         <hr/>
         <main>
