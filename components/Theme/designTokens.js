@@ -1,6 +1,8 @@
 export const designTokens = {
-  layoutWidth: '640px',
-  
+  layoutWidth: {
+    sm: '640px',
+    lg: '800px'
+  },
   breakpoints: [
     '1440px', // 0
     '1256px', // 1

@@ -12,8 +12,11 @@ import ReactGA from 'react-ga'
 
 export const LayoutContainer = styled.div`
   width: 100%;
-  max-width: ${designTokens.layoutWidth};
+  max-width: ${designTokens.layoutWidth.sm};
   margin: auto;
+  @media screen and (min-width: ${designTokens.breakpoints[0]}) {
+    max-width: ${designTokens.layoutWidth.lg};
+  }
 `
 
 export const Main = styled.main`

@@ -143,6 +143,14 @@ export const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+    &.link {
+      color: var(--primaryDark);
+      box-shadow: 0px 1px 0px 0px currentColor;
+      transition: all 120ms ease-out 0s;
+      &:hover, &:focus {
+        opacity: .8;
+      }
+    }
     &:focus {
       outline: none;
     }

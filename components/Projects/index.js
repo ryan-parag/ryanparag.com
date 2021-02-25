@@ -91,6 +91,12 @@ export default function Projects(){
       link:'https://ryanparag.com',
       outbound: true
     }, {
+      name: 'Recent Listens',
+      description: 'Take a look at my current music/podcast feed',
+      image: '/spotify.svg',
+      link:'/recent-listens',
+      outbound: false
+    }, {
       name: 'Theme Creator',
       description: 'Feed your curiousity by theming this website',
       image: '/static/icon-theme-creator.svg',
@@ -116,7 +122,7 @@ export default function Projects(){
       outbound: true
     }, {
       name: 'TampaBay.design',
-      description: 'How to get involved in one of the many local communities',
+      description: 'How to get involved in one of the many local design communities',
       image: '/static/icon-tampabay.svg',
       link:'https://tampabay.design',
       outbound: true

@@ -66,7 +66,7 @@ const NavContainer = styled.header`
 `
 
 const HeaderInner = styled.div`
-  width: ${designTokens.layoutWidth};
+  width: ${designTokens.layoutWidth.sm};
   max-width: 100%;
   margin: auto;
   display: flex;
@@ -74,6 +74,9 @@ const HeaderInner = styled.div`
   align-items: center;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     display: none;
+  }
+  @media screen and (min-width: ${designTokens.breakpoints[0]}) {
+    width: ${designTokens.layoutWidth.lg};
   }
 `
 

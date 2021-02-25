@@ -15,8 +15,11 @@ const FooterContainer = styled.footer`
 
 const FooterInner = styled.div`
   width: 100%;
-  max-width: ${designTokens.layoutWidth};
+  max-width: ${designTokens.layoutWidth.sm};
   margin: auto;
+  @media screen and (min-width: ${designTokens.breakpoints[0]}) {
+    max-width: ${designTokens.layoutWidth.lg};
+  }
 `
 
 const FooterGrid = styled.div`
@@ -92,6 +95,11 @@ export default function Footer() {
             <FooterListItem>
               <Link href="/about">
                 <a>About</a>
+              </Link>
+            </FooterListItem>
+            <FooterListItem>
+              <Link href="/recent-listens">
+                <a>Recent Listens</a>
               </Link>
             </FooterListItem>
           </FooterList>

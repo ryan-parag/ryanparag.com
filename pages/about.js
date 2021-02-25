@@ -156,7 +156,7 @@ const About = ({ title, description, ...props }) => {
             I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
           </p>
           <hr/>
-          <h4>Projects</h4>
+          <h3>Projects</h3>
           <ul>
             <li>
               <a href="https://ryanparag.com">Take a look at my portfolio and case studies</a>
@@ -171,7 +171,7 @@ const About = ({ title, description, ...props }) => {
               <Link href="../create-theme"><a>Theme Creator</a></Link>
             </li>
           </ul>
-          <h4>Writing</h4>
+          <h3>Writing</h3>
           <ul>
             <li>
               <Link href="../notes/thoughts-on-design-tools"><a>Thoughts on Design Tools</a></Link>
@@ -189,7 +189,7 @@ const About = ({ title, description, ...props }) => {
               <Link href="../notes/"><a>Read more notes...</a></Link>
             </li>
           </ul>
-          <h4>Get in touch</h4>
+          <h3>Get in touch</h3>
           <ul>
             <li>
               <a href="https://ryanparag.com/about/resume">Resumé</a>

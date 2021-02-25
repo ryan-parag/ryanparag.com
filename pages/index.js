@@ -26,7 +26,7 @@ const Index = ({ posts, title, description, ...props }) => {
           Hey, I'm Ryan and these are my notes about designing in the open and building thoughtful products. 
         </p>
         <p style={{ color: 'var(--grey600)'}}>
-          It's also my playground for some expiremental UI ideas 🤔.
+          I'm a designer currently based in Tampa and this is my playground for a few expiremental UI ideas 🤔.
         </p>
         <div style={{ marginBottom: designTokens.space[3]} }>
           <ButtonLink
