@@ -15,9 +15,6 @@ const ProjectGrid = styled.div`
 
 const ProjectInner = styled.div`
   display: flex;
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    flex-direction: column;
-  }
 `
 
 const ProjectContent = styled.div`
@@ -36,9 +33,6 @@ const ProjectImage = styled.img`
   height: ${designTokens.space[7]};
   display: block;
   margin-right: ${designTokens.space[3]};
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    margin-bottom: ${designTokens.space[3]};
-  }
 `
 
 export const ProjectItem = ({project}) => {
