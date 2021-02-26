@@ -46,6 +46,12 @@ const NewProjectStyles = css`
       }
     }
   }
+  p {
+    color: var(--grey600);
+    @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+      font-size: ${designTokens.fontSizes[0]};
+    }
+  }
 `
 
 const NewProjectAnchorTag = styled.a`
@@ -70,6 +76,9 @@ const NewProjectLabel = styled.div`
 
 const NewProjectContent = styled.div`
   color: ${props => props.subtle ? 'var(--grey400)' : 'inherit'};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    padding-right: ${designTokens.space[8]};
+  }
 `
 
 export const ProjectItem = ({project}) => {
