@@ -26,6 +26,7 @@ const FooterGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: ${designTokens.space[3]};
+  margin-bottom: ${designTokens.space[4]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -54,10 +55,10 @@ const FooterListItem = styled.li`
 const FooterBottom = styled.div`
   display: inline-flex;
   align-items: center;
-  margin-top: ${designTokens.space[4]};
+  width: 100%;
+  margin-top: ${designTokens.space[6]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
   }
 `
 
@@ -65,9 +66,6 @@ const FooterLogo = styled.div`
   display: inline-flex;
   align-items: center;
   margin-right: ${designTokens.space[4]};
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    margin-bottom: ${designTokens.space[2]};
-  }
 `
 
 export default function Footer() {
@@ -144,10 +142,6 @@ export default function Footer() {
           </FooterList>
         </FooterGrid>
         <SpotifyCurrentlyPlaying/>
-        <div style={{ marginTop: designTokens.space[2] }}>
-          <small>Made with Next.js and Styled Components</small>
-        </div>
-        <br/>
         <FooterBottom>
           <Link href="/">
             <a>
@@ -164,6 +158,9 @@ export default function Footer() {
           </Link>
           <Button small onClick={clearStorage}>Reset Theme</Button>
         </FooterBottom>
+        <div style={{ marginTop: designTokens.space[3], marginBottom: designTokens.space[3] }}>
+          <small>Made with Next.js and Styled Components</small>
+        </div>
       </FooterInner>
     </FooterContainer>
   )

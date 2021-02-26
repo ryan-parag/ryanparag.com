@@ -109,7 +109,7 @@ const SpotifyIcon = ({active}) => {
   )
 }
 
-export const SpotifyTrack = ({track, ...props}) => {
+export const SpotifyTrack = ({track}) => {
 
   return (
     <>
@@ -215,7 +215,7 @@ export const SpotifyNowPlaying = ({action}) => {
   return (
     <>
     {
-      data?.songUrl ? (
+      data?.isPlaying ? (
         <SpotifyLink
           href={data.songUrl}
           target="_blank"
@@ -281,8 +281,85 @@ export const SpotifyNowPlaying = ({action}) => {
   );
 }
 
-export const SpotifyCurrentlyPlaying = ({previous}) => {
-  const [toggle, setToggle] = useState(previous)
+export const SpotifyNowPlayingPodcast = ({action}) => {
+  const { data } = useSWR('/api/podcast-playing', fetcher);
+
+  return (
+    <>
+    {
+      data?.isPlaying ? (
+        <SpotifyLink
+          href={data.podcastUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <SpotifyIcon active/>
+          <ContentContainer>
+            <Label>Currently Playing</Label>
+            <Content>
+              <strong>{truncateString(data.episodeTitle, 56)}</strong>
+              <br/>
+              <small style={{ opacity: 0.5 }}>{truncateString(data.episodeDescription, 80)}</small>
+              <br/>
+              <small>{data.podcastName} by {data.publisher}</small>
+            </Content>
+          </ContentContainer>
+          <AlbumImage src={data.podcastImgUrl}/>
+        </SpotifyLink>
+      )
+      :
+      (
+        <SpotifyContainer>
+          <SpotifyIcon/>
+          <ContentContainer>
+            <Content subtle>
+              <div>Not currently playing</div>
+              {
+                action ? (
+                  <>
+                    <InteriorButton
+                      onClick={action}
+                    >
+                      View Last Played
+                    </InteriorButton>
+                    {' '}<small>or</small>{' '}
+                    <Link href="/recent-listens">
+                      <InteriorLink>
+                        View Recent Listens &rarr;
+                      </InteriorLink>
+                    </Link>
+                  </>
+                )
+                :
+                null
+              }
+            </Content>
+          </ContentContainer>
+        </SpotifyContainer>
+      )
+    }
+    {
+      data?.podcastUrl && action ? (
+        <>
+          <InteriorButton
+            onClick={action}
+          >
+            View Last Played
+          </InteriorButton>
+        </>
+      )
+      :
+      null
+    }
+    </>
+  );
+}
+
+export const SpotifyCurrentlyPlaying = ({playing}) => {
+
+  const { data } = useSWR('/api/now-playing', fetcher);
+
+  const [toggle, setToggle] = useState(playing)
 
   return (
     <motion.div
@@ -292,10 +369,22 @@ export const SpotifyCurrentlyPlaying = ({previous}) => {
       transition={{ duration: 0.3, delay: 0.2 }}
     >
       {
-        !toggle ? (
-          <SpotifyNowPlaying
-            action={() => setToggle(!toggle)}
-          />
+        toggle ? (
+          <>
+            {
+              data?.isPlaying ? (
+                <SpotifyNowPlaying
+                  action={() => setToggle(!toggle)}
+                />
+              )
+              :
+              (
+                <SpotifyNowPlayingPodcast
+                  action={() => setToggle(!toggle)}
+                />
+              )
+            }
+          </>
         )
         : (
           <SpotifyLastPlayed

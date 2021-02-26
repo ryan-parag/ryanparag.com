@@ -4,10 +4,15 @@ export default async (_, res) => {
   const response = await getNowPlaying();
 
   if (response.status === 204 || response.status > 400 || response.status === 500) {
-    return res.status(200).json({ isPlaying: false });
+    return res.status(200).json({ isPlaying: false, playing: null });
   }
 
   const song = await response.json();
+
+  if(song.context === null) {
+    return res.status(200).json({ isPlaying: false, playing: 'podcast' });
+  }
+
   const isPlaying = song.is_playing;
   const title = song.item.name;
   const artist = song.item.artists.map((_artist) => _artist.name).join(', ');
@@ -27,5 +32,5 @@ export default async (_, res) => {
     isPlaying,
     songUrl,
     title
-  });
+    });
 };

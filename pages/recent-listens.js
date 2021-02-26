@@ -1,6 +1,6 @@
 import Layout from '@components/Layout/'
 import { designTokens } from '@components/Theme/designTokens'
-import { SpotifyTrack, SpotifyLastPlayed } from '@components/Spotify'
+import { SpotifyTrack, SpotifyCurrentlyPlaying } from '@components/Spotify'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import styled from 'styled-components'
@@ -72,7 +72,7 @@ const RecentListens = ({ title, description, ...props }) => {
           </Box>
         </Title>
         <h3>Last Played</h3>
-        <SpotifyLastPlayed/>
+        <SpotifyCurrentlyPlaying/>
         <hr/>
         <h3>Recent Top Listens</h3>
         <List>

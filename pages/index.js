@@ -3,7 +3,7 @@ import Layout from '@components/Layout/'
 import PostList from '@components/PostList/'
 import Logo from '@components/Logo'
 import { designTokens } from '@components/Theme/designTokens'
-import { ButtonLink, ButtonAnchorTag, ButtonPrimaryAnchorTag } from '@components/Button'
+import { ButtonLink, ButtonPrimaryAnchorTag } from '@components/Button'
 import Projects from '@components/Projects'
 import Subscribe from '@components/Subscribe'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
@@ -44,7 +44,7 @@ const Index = ({ posts, title, description, ...props }) => {
             </ButtonPrimaryAnchorTag>
           </div>
         </Title>
-        <SpotifyCurrentlyPlaying previous />
+        <SpotifyCurrentlyPlaying playing />
         <hr/>
         <main>
           <h3>Latest Notes</h3>

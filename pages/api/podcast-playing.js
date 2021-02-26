@@ -4,10 +4,15 @@ export default async (_, res) => {
   const response = await getPodcastPlaying();
 
   if (response.status === 204 || response.status > 400 || response.status === 500) {
-    return res.status(200).json({ isPlaying: false });
+    return res.status(200).json({ isPlaying: false, playing: null });
   }
 
   const podcast = await response.json();
+
+  if(podcast.context.type !== 'show') {
+    return res.status(200).json({ isPlaying: false, playing: 'track' });
+  }
+
   const isPlaying = podcast.is_playing;
   const episodeTitle = podcast.item.name;
   const episodeDescription = podcast.item.description;
