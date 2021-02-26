@@ -2,78 +2,106 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import { format } from 'timeago.js'
-import { BoxBaseLink } from '@components/Box'
+import List, { ListItem } from '@components/List'
 import { DefaultChip } from '@components/Chip'
 
-const ListItem = styled.li`
-  a {
-    ${BoxBaseLink}
-  }
-`
-
-const PostContainer = styled.div`
-  display: flex;
-`
-
-const ContentContainer = styled.div`
-  flex: 1 1 0%;
-  p {
-    @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizes[0]};
-    }
-  }
-`
-
-const PostHero = styled.div`
+const NewImage = styled.div`
   width: ${designTokens.space[7]};
   height: ${designTokens.space[7]};
-  margin-right: ${designTokens.space[3]};
-  border-radius: 50%;
-  border: 2px solid var(--grey0);
+  border-radius: ${designTokens.space[1]};
+  box-shadow: 0px 0px 0px 2px var(--grey200);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url(${props => props.bg});
-  box-shadow: 0px 2px 4px rgba(0,0,0, 0.12);
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 120ms ease-out 0ms;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    display: none;
+  }
+`
+
+const NewPostContainer = styled.div`
+  a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: ${designTokens.space[3]} 0;
+    transition: all 120ms ease-out 0s;
+    color: var(--grey900);
+    position: relative;
+    overflow: hidden;
+    &:hover, &:focus {
+      padding-left: ${designTokens.space[3]};
+      text-decoration: none;
+      box-shadow: inset 4px 0px 0px var(--primary);
+      background: var(--grey100);
+      ${NewImage} {
+        transform: translateY(-50%) rotate(10deg);
+        box-shadow: 0px 4px 8px -1px var(--grey300);
+        width: calc(${designTokens.space[9]} + ${designTokens.space[7]});
+        height: calc(${designTokens.space[9]} + ${designTokens.space[7]});
+        right: -${designTokens.space[2]};
+      }
+    }
+    p {
+      color: var(--grey600);
+      @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+        font-size: ${designTokens.fontSizes[0]};
+      }
+    }
+  }
+`
+
+const Content = styled.div`
+  color: ${props => props.subtle ? 'var(--grey400)' : 'inherit'};
+`
+
+const NewContent = styled.div`
+  flex: 1 1 0%;
 `
 
 export default function PostList({ posts }) {
   if (posts === 'undefined') return null
 
   return (
-    <div>
-      {!posts && <div>No posts!</div>}
-      <ul style={{ listStyleType: 'none', padding: '0', margin: '0'}}>
-        {posts &&
-          posts.map((post) => {
-            return (
+    <>
+      <div>
+        {!posts && <div>No posts!</div>}
+        <List>
+          {
+            posts && posts.map(post => (
               <ListItem key={post.slug}>
-                <Link href={ `/notes/${post.slug}` }>
-                  <a>
-                    <PostContainer>
-                      <PostHero
-                        bg={post.frontmatter.hero_image}
-                      />
-                      <ContentContainer>
-                        <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
-                          {post?.frontmatter?.title}
-                        </h4>
-                        <p style={{ marginBottom: designTokens.space[2] }}>{post.frontmatter.description}</p>
-                        <div
-                          style={{ lineHeight: designTokens.lineHeights.bigHeading }}
-                        >
-                          <DefaultChip>
-                            Updated {format(post.frontmatter.date)}
-                          </DefaultChip>
-                        </div>
-                      </ContentContainer>
-                    </PostContainer>
-                  </a>
-                </Link>
+                <NewPostContainer>
+                  <Link href={`/notes/${post.slug}`}>
+                    <a>
+                      <NewContent>
+                        <Content>
+                          <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
+                            {post?.frontmatter?.title}
+                          </h4>
+                          <p style={{ marginBottom: designTokens.space[2] }}>{post.frontmatter.description}</p>
+                          <div
+                            style={{ lineHeight: designTokens.lineHeights.bigHeading }}
+                          >
+                            <DefaultChip>
+                              Updated {format(post.frontmatter.date)}
+                            </DefaultChip>
+                          </div>
+                        </Content>
+                      </NewContent>
+                      <NewImage bg={post.frontmatter.hero_image}/>
+                    </a>
+                  </Link>
+                </NewPostContainer>
               </ListItem>
-            )
-          })}
-      </ul>
-    </div>
+            ))
+          }
+        </List>
+      </div>
+    </>
   )
 }

@@ -6,6 +6,21 @@ import { designTokens } from '@components/Theme/designTokens'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
+const AlbumImage = styled.img`
+  width: ${designTokens.space[7]};
+  height: ${designTokens.space[7]};
+  border-radius: ${designTokens.space[1]};
+  box-shadow: 0px 0px 0px 2px var(--grey200);
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 120ms ease-out 0ms;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    display: none;
+  }
+`
+
 const SpotifyLink = styled.a`
   display: flex;
   align-items: center;
@@ -21,11 +36,11 @@ const SpotifyLink = styled.a`
     text-decoration: none;
     box-shadow: inset 4px 0px 0px var(--primary);
     background: var(--grey100);
-    img {
+    ${AlbumImage} {
       transform: translateY(-50%) rotate(10deg);
       box-shadow: 0px 4px 8px -1px var(--grey300);
-      width: calc(${designTokens.space[9]} + ${designTokens.space[4]});
-      height: calc(${designTokens.space[9]} + ${designTokens.space[4]});
+      width: calc(${designTokens.space[9]} + ${designTokens.space[7]});
+      height: calc(${designTokens.space[9]} + ${designTokens.space[7]});
       right: -${designTokens.space[2]};
     }
   }
@@ -42,21 +57,6 @@ const SpotifyContainer = styled.div`
 const ContentContainer = styled.div`
   flex: 1 1 0%;
   padding-left: ${designTokens.space[3]};
-`
-
-const AlbumImage = styled.img`
-  width: ${designTokens.space[6]};
-  height: ${designTokens.space[6]};
-  border-radius: ${designTokens.space[1]};
-  box-shadow: 0px 0px 0px 2px var(--grey200);
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: all 120ms ease-out 0ms;
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    display: none;
-  }
 `
 
 const Label = styled.div`
@@ -85,10 +85,12 @@ const SmallLink = css`
 
 const InteriorButton = styled.button`
   ${SmallLink}
+  margin-left: ${props => props.marginLeft ? '40px' : '0px'};
 `
 
 const InteriorLink = styled.a`
   ${SmallLink}
+  margin-left: ${props => props.marginLeft ? '40px' : '0px'};
 `
 
 const truncateString = (str, num) => {
@@ -197,6 +199,7 @@ export const SpotifyLastPlayed = ({action}) => {
     {
       data?.songUrl && action ? (
         <InteriorButton
+          marginLeft
           onClick={action}
         >
           View Currently Playing
@@ -268,6 +271,7 @@ export const SpotifyNowPlaying = ({action}) => {
       data?.songUrl && action ? (
         <>
           <InteriorButton
+            marginLeft
             onClick={action}
           >
             View Last Played
@@ -342,6 +346,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
       data?.podcastUrl && action ? (
         <>
           <InteriorButton
+            marginLeft
             onClick={action}
           >
             View Last Played
