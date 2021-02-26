@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import styled from 'styled-components'
 import { Box } from '@components/Box'
+import Title from '@components/Title'
 
 const ListItem = styled.li`
   display: block;
@@ -55,20 +56,21 @@ const RecentListens = ({ title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={`${title} | Top Tracks`} description={description} ogImage="/notes-social-media.png">
-        <HeaderIcon>
-          <img src="/spotify.svg"/>
-        </HeaderIcon>
-        <h1>Recent Listens</h1>
-        <p className="lead">Take a peek at what I've been listening to!</p>
-        <p>
-          I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
-        </p>
-        <Box center bg={'var(--primaryTransparent)'}>
-          <p style={{ marginBottom: '0', color: 'var(--primaryDark)' }}>
-            Blog post and Podcast data coming soon 🎉
+        <Title>
+          <HeaderIcon>
+            <img src="/spotify.svg"/>
+          </HeaderIcon>
+          <h1>Recent Listens</h1>
+          <p className="lead">Take a peek at what I've been listening to!</p>
+          <p>
+            I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
           </p>
-        </Box>
-        <hr/>
+          <Box center bg={'var(--primaryTransparent)'}>
+            <p style={{ marginBottom: '0', color: 'var(--primaryDark)' }}>
+              Blog post and Podcast data coming soon 🎉
+            </p>
+          </Box>
+        </Title>
         <h3>Last Played</h3>
         <SpotifyLastPlayed/>
         <hr/>

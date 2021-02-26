@@ -6,6 +6,16 @@ import { ButtonAnchorTag } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import ListItem from '@components/Worksheets/ListItem'
 import Intro from '@components/Worksheets/Intro'
+import Title from '@components/Title'
+import styled from 'styled-components'
+
+const HeaderIcon = styled.div`
+  width: ${designTokens.space[7]};
+  position: relative;
+  img {
+    display: block; width: 100%;
+  }
+`
 
 const Sheet = ({title, description, stuff, data}) => {
   const router = useRouter();
@@ -40,13 +50,16 @@ const Sheet = ({title, description, stuff, data}) => {
   return (
     <>
       <Layout pageTitle={title} description={description} ogImage="/worksheets-social-media.png">
-        <h1>Worksheets</h1>
-        <article>
+        <Title>
+          <HeaderIcon>
+            <img src="/static/icon-worksheet.svg"/>
+          </HeaderIcon>
+          <h1>Worksheets</h1>
           <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>
           <p>
-            <small>Data collected from <a target="_blank" href="https://www.uxworksheets.com/">UX Worksheets</a>.</small>
+            <small>Data collected from <a className="link" target="_blank" href="https://www.uxworksheets.com/">UX Worksheets</a>.</small>
           </p>
-        </article>
+        </Title>
         <TabNav
           items={categories}
           active={sheet}

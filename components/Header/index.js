@@ -3,10 +3,11 @@ import NavItem from '../NavItem/'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
-import { lightTheme, darkTheme, notionLight, notionDark, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '@components/Theme/'
 import ThemeItem from '@components/ThemeItem'
-import { IconButton, IconButtonPrimary, Button } from '@components/Button'
+import { IconButton, IconButtonPrimary } from '@components/Button'
 import { motion } from 'framer-motion'
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
 
 const HeaderContainer = styled.div`
   position: relative;
@@ -236,44 +237,43 @@ const ThemeBtn = ({handleClick, state}) => {
   )
 }
 
+const ThemeList = ({ handleThemeToggle, activeTheme }) => {
+  const { data } = useSWR('/api/themes', fetcher);
+  const [active, setActive] = useState()
+
+  if (!data) {
+    return null;
+  }
+
+  return data.themes.map((theme, index) => (
+    <div
+      key={index}
+      style={{
+        margin: `0 ${designTokens.space[3]}`,
+        display: 'inline-block'
+      }}
+    >
+      <ThemeItem
+        tabIndex={'0'}
+        theme={theme}
+        clickHandle={() => handleThemeToggle(theme)}
+        active={activeTheme === theme.name}
+      />
+    </div>
+  ));
+}
+
 export default function Header({ toggleTheme, theme }) {
 
   const [isExpanded, setExpanded] = React.useState(false)
   const [isPickerOpen, setPickerOpen] = React.useState(false)
-  const [activeTheme, setActiveTheme] = useState(null);
+  const [activeTheme, setActiveTheme] = useState(theme.name);
   const toggle = () => setPickerOpen(!isPickerOpen);
 
   const variants = {
     visible: { height: 'auto' },
     hidden: { height: 0 },
   }
-
-  const themes = [
-    lightTheme,
-    darkTheme,
-    notionLight,
-    notionDark,
-    hyrule,
-    zora,
-    gerudo,
-    hebra,
-    eldin,
-    sheikah,
-    korok,
-    yiga,
-  ]
-
-  const localCustomTheme = () => {
-    if (typeof window !== 'undefined') {
-      const localTheme = localStorage.getItem('customThemes');
-      if(localTheme !== null) {
-        let customTheme = JSON.parse(localTheme)
-        themes.unshift(customTheme)
-      }
-    }
-  }
-
-  localCustomTheme()
 
   const closeMobile = () => {
     setExpanded(false)
@@ -282,7 +282,7 @@ export default function Header({ toggleTheme, theme }) {
 
   const handleThemeToggle = (themeName) => {
     toggleTheme(themeName)
-    setActiveTheme(themeName)
+    setActiveTheme(themeName.name)
   }
 
   return (
@@ -313,24 +313,10 @@ export default function Header({ toggleTheme, theme }) {
           </CloseButton>
         </div>
         <ThemePickerBody>
-          {
-            themes.map(theme => (
-              <div
-                key={theme.name}
-                style={{
-                  margin: `0 ${designTokens.space[3]}`,
-                  display: 'inline-block'
-                }}
-              >
-                <ThemeItem
-                  tabIndex={isPickerOpen ? '0' : '-1'}
-                  theme={theme}
-                  clickHandle={() => handleThemeToggle(theme)}
-                  active={activeTheme === theme ? true : false}
-                />
-              </div>
-            ))
-          }
+          <ThemeList
+            handleThemeToggle={handleThemeToggle}
+            activeTheme={activeTheme}
+          />
           <div
             style={{
               margin: `0 ${designTokens.space[3]}`,

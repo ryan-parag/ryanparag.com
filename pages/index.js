@@ -7,6 +7,7 @@ import { ButtonLink, ButtonAnchorTag, ButtonPrimaryAnchorTag } from '@components
 import Projects from '@components/Projects'
 import Subscribe from '@components/Subscribe'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
+import Title from '@components/Title'
 
 import getPosts from '@utils/getPosts'
 
@@ -18,30 +19,31 @@ const Index = ({ posts, title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={title} description={description} ogImage="/notes-social-media.png">
-        <div style={{ width: '64px'}}>
-          <Logo/>
-        </div>
-        <h1>Ryan's Notes</h1>
-        <p className="lead">
-          Hey, I'm Ryan and these are my notes about designing in the open and building thoughtful products. 
-        </p>
-        <p style={{ color: 'var(--grey600)'}}>
-          I'm a designer currently based in Tampa and this is my playground for a few expiremental UI ideas 🤔.
-        </p>
-        <div style={{ marginBottom: designTokens.space[3]} }>
-          <ButtonLink
-            marginRight={designTokens.space[3]}
-          >
-            <Link href="/about">
-              More about me
-            </Link>
-          </ButtonLink>
-          <ButtonPrimaryAnchorTag href="https://ryanparag.com">
-            View my portfolio
-            <span className="icon">&rarr;</span>
-          </ButtonPrimaryAnchorTag>
-        </div>
-        <hr/>
+        <Title>
+          <div style={{ width: '64px'}}>
+            <Logo/>
+          </div>
+          <h1>Ryan's Notes</h1>
+          <p className="lead">
+            Hey, I'm Ryan and these are my notes about designing in the open and building thoughtful products. 
+          </p>
+          <p style={{ color: 'var(--grey600)'}}>
+            I'm a designer currently based in Tampa and this is my playground for a few expiremental UI ideas 🤔.
+          </p>
+          <div style={{ marginBottom: designTokens.space[3]} }>
+            <ButtonLink
+              marginRight={designTokens.space[3]}
+            >
+              <Link href="/about">
+                More about me
+              </Link>
+            </ButtonLink>
+            <ButtonPrimaryAnchorTag href="https://ryanparag.com">
+              View my portfolio
+              <span className="icon">&rarr;</span>
+            </ButtonPrimaryAnchorTag>
+          </div>
+        </Title>
         <SpotifyCurrentlyPlaying previous />
         <hr/>
         <main>

@@ -20,7 +20,7 @@ function distribute(value, rangeA, rangeB) {
   return result;
 }
 
-export default function({specs}) {
+function generate({specs}) {
 
   function generateNumberOfSteps(curve, steps) {
     var array = []
@@ -109,3 +109,5 @@ export default function({specs}) {
 
   return colorMap
 }
+
+export default generate

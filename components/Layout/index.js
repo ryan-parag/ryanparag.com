@@ -1,14 +1,16 @@
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
-import Header from '../Header/'
-import { GlobalStyles } from '../GlobalStyles/'
+import Header from '@components/Header/'
+import { GlobalStyles } from '@components/GlobalStyles/'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
-import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '../Theme/'
-import { designTokens } from '../Theme/designTokens'
-import Footer from '../Footer'
+import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '@components/Theme/'
+import { designTokens } from '@components/Theme/designTokens'
+import Footer from '@components/Footer'
 import { StaticKitProvider } from '@statickit/react'
 import ReactGA from 'react-ga'
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
 
 export const LayoutContainer = styled.div`
   width: 100%;
@@ -50,27 +52,7 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
     }
   }
 
-  const [mounted, setMounted] = React.useState(false)
-
-  React.useEffect(() => {
-    setMounted(true)
-    setDebugOutline(false)
-  }, [debugOutline])
-
-  const themeList = [
-    darkTheme,
-    notionLight,
-    notionDark,
-    hyrule,
-    zora,
-    gerudo,
-    eldin,
-    hebra,
-    sheikah,
-    korok,
-    yiga,
-    lightTheme
-  ]
+  const [mounted, setMounted] = useState(false)
 
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -87,7 +69,9 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
     if (typeof window !== 'undefined') {
       localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme));
     }
-  }, [theme]);
+    setMounted(true)
+    setDebugOutline(false)
+  }, [theme, debugOutline]);
 
   const toggleTheme = (theme) => {
     localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme))
