@@ -8,6 +8,8 @@ import ListItem from '@components/Worksheets/ListItem'
 import Intro from '@components/Worksheets/Intro'
 import Title from '@components/Title'
 import styled from 'styled-components'
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
 
 const HeaderIcon = styled.div`
   width: ${designTokens.space[7]};
@@ -17,7 +19,7 @@ const HeaderIcon = styled.div`
   }
 `
 
-const Sheet = ({title, description, stuff, data}) => {
+const Sheet = ({title, description}) => {
   const router = useRouter();
   const { sheet } = router.query;
   const categories = ['Research', 'Behavioral', 'Feedback', 'Testing', 'Critique']
@@ -44,8 +46,14 @@ const Sheet = ({title, description, stuff, data}) => {
     }
   }
 
+  const { data } = useSWR(`/api/worksheets/${sheet}`, fetcher);
+
+  if (!data) {
+    return null;
+  }
+
   const filtered = []
-  data.forEach(item => filtered.push(item.fields))
+  data.items.forEach(item => filtered.push(item.fields))
 
   return (
     <>
@@ -110,19 +118,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: {sheet} }) {
   const configData = await import(`../../siteconfig.json`)
 
-  const airtable = new AirtablePlus({
-    baseID: process.env.AIRTABLE_BASE,
-    apiKey: process.env.AIRTABLE_API_KEY,
-    tableName: sheet,
-  });
-
-  const data = await airtable.read();
-
   return {
     props: {
       title: configData.default.title,
       description: configData.default.description,
-      data: data
     },
   }
 }

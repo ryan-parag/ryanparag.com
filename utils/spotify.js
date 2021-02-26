@@ -5,7 +5,9 @@ const client_secret = process.env.SPOTIFY_CLIENT_SECRET
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
 
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
+const NOW_PLAYING_PODCAST_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing/?additional_types=episode`;
 const LAST_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`;
+const LAST_PLAYED_PODCAST_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played/?additional_types=episode`;
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
@@ -53,6 +55,26 @@ export const getTopTracks = async () => {
   return fetch(TOP_TRACKS_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`
+    }
+  });
+};
+
+export const getPodcastPlaying = async () => {
+  const { access_token } = await getAccessToken();
+
+  return fetch(NOW_PLAYING_PODCAST_ENDPOINT, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    }
+  });
+};
+
+export const getLastPlayedPodcast = async () => {
+  const { access_token } = await getAccessToken();
+
+  return fetch(LAST_PLAYED_PODCAST_ENDPOINT, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
     }
   });
 };
