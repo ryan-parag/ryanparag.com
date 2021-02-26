@@ -1,38 +1,75 @@
 import React from 'react'
 import Link from 'next/link'
 import { BoxAnchorLink, BoxBaseLink } from '@components/Box'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import List, { ListItem } from '@components/List'
 import { designTokens } from '@components/Theme/designTokens'
+import { truncateString } from '@utils/text'
 
-const ProjectGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-column-gap: ${designTokens.space[2]};
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    grid-template-columns: 1fr;
-  }
-`
-
-const ProjectInner = styled.div`
-  display: flex;
-`
-
-const ProjectContent = styled.div`
-  width: 100%;
-`
-
-const ProjectLink = styled.div`
-  a {
-    ${BoxBaseLink}
-  }
-`
-
-
-const ProjectImage = styled.img`
+const NewProjectImage = styled.img`
   width: ${designTokens.space[7]};
   height: ${designTokens.space[7]};
-  display: block;
-  margin-right: ${designTokens.space[3]};
+  border-radius: ${designTokens.space[1]};
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 120ms ease-out 0ms;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    width: ${designTokens.space[6]};
+    height: ${designTokens.space[6]};
+  }
+`
+
+const NewProjectStyles = css`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: ${designTokens.space[4]} 0;
+  transition: all 120ms ease-out 0s;
+  color: var(--grey900);
+  position: relative;
+  overflow: hidden;
+  &:hover, &:focus {
+    padding-left: ${designTokens.space[3]};
+    text-decoration: none;
+    box-shadow: inset 4px 0px 0px var(--primary);
+    background: var(--grey100);
+    ${NewProjectImage} {
+      transform: translateY(-50%) rotate(10deg);
+      width: calc(${designTokens.space[9]} + ${designTokens.space[7]});
+      height: calc(${designTokens.space[9]} + ${designTokens.space[7]});
+      right: -${designTokens.space[4]};
+      @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+        width: ${designTokens.space[7]};
+        height: ${designTokens.space[7]};
+      }
+    }
+  }
+`
+
+const NewProjectAnchorTag = styled.a`
+  ${NewProjectStyles}
+`
+
+const NewProjectLink = styled.div`
+  a {
+    ${NewProjectStyles}
+  }
+`
+
+const NewProjectContentContainer = styled.div`
+  flex: 1 1 0%;
+`
+
+const NewProjectLabel = styled.div`
+  font-size: ${designTokens.fontSizes[0]};
+  opacity: 50%;
+  margin-bottom: ${designTokens.space[1]};
+`
+
+const NewProjectContent = styled.div`
+  color: ${props => props.subtle ? 'var(--grey400)' : 'inherit'};
 `
 
 export const ProjectItem = ({project}) => {
@@ -40,35 +77,41 @@ export const ProjectItem = ({project}) => {
     <>
       {
         project.outbound ? (
-          <BoxAnchorLink href={project.link} target="_blank">
-            <ProjectInner>
-              <ProjectImage src={project.image} alt={project.name}/>
-              <ProjectContent>
-                <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
-                <p style={{ marginBottom: '0' }}>
-                  {project.description}
+          <NewProjectAnchorTag
+            href={project.link}
+          >
+            <NewProjectContentContainer>
+              <NewProjectContent>
+                <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
+                  {project.name}
+                </h4>
+                <p style={{ marginBottom: designTokens.space[2] }}>
+                  {truncateString(project.description, 72)}
                 </p>
-              </ProjectContent>
-            </ProjectInner>
-          </BoxAnchorLink>
+              </NewProjectContent>
+            </NewProjectContentContainer>
+            <NewProjectImage src={project.image} alt={project.name} />
+          </NewProjectAnchorTag>
         )
         :
         (
-          <ProjectLink>
+          <NewProjectLink>
             <Link href={project.link}>
               <a>
-                <ProjectInner>
-                  <ProjectImage src={project.image} alt={project.name}/>
-                  <ProjectContent>
-                    <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>{project.name}</h4>
-                    <p style={{ marginBottom: '0' }}>
-                      {project.description}
-                    </p>
-                  </ProjectContent>
-                </ProjectInner>
+                <NewProjectContentContainer>
+                  <NewProjectContent>
+                  <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
+                    {project.name}
+                  </h4>
+                  <p style={{ marginBottom: designTokens.space[2] }}>
+                    {truncateString(project.description, 72)}
+                  </p>
+                  </NewProjectContent>
+                </NewProjectContentContainer>
+                <NewProjectImage src={project.image} alt={project.name} />
               </a>
             </Link>
-          </ProjectLink>
+          </NewProjectLink>
         )
       }
     </>
@@ -124,14 +167,14 @@ export default function Projects(){
   ]
 
   return(
-    <ProjectGrid>
+    <List>
       {
         projects.map(project => (
-          <div key={project.name}>
+          <ListItem key={project.name}>
             <ProjectItem project={project}/>
-          </div>
+          </ListItem>
         ))
       }
-    </ProjectGrid>
+    </List>
   )
 }

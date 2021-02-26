@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import { format } from 'timeago.js'
 import List, { ListItem } from '@components/List'
-import { DefaultChip } from '@components/Chip'
+import { truncateString } from '@utils/text'
 
 const NewImage = styled.div`
   width: ${designTokens.space[7]};
@@ -64,6 +64,12 @@ const NewContent = styled.div`
   flex: 1 1 0%;
 `
 
+const Label = styled.div`
+  font-size: ${designTokens.fontSizes[0]};
+  opacity: 50%;
+  margin-bottom: ${designTokens.space[1]};
+`
+
 export default function PostList({ posts }) {
   if (posts === 'undefined') return null
 
@@ -80,17 +86,13 @@ export default function PostList({ posts }) {
                     <a>
                       <NewContent>
                         <Content>
+                          <Label>Updated {format(post.frontmatter.date)}</Label>
                           <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
                             {post?.frontmatter?.title}
                           </h4>
-                          <p style={{ marginBottom: designTokens.space[2] }}>{post.frontmatter.description}</p>
-                          <div
-                            style={{ lineHeight: designTokens.lineHeights.bigHeading }}
-                          >
-                            <DefaultChip>
-                              Updated {format(post.frontmatter.date)}
-                            </DefaultChip>
-                          </div>
+                          <p style={{ marginBottom: designTokens.space[2] }}>
+                            {truncateString(post.frontmatter.description, 72)}
+                          </p>
                         </Content>
                       </NewContent>
                       <NewImage bg={post.frontmatter.hero_image}/>

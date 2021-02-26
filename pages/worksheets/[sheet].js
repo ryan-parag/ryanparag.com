@@ -4,7 +4,7 @@ import Layout from '@components/Layout/'
 import TabNav from '@components/Worksheets/TabNav'
 import { ButtonAnchorTag } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
-import ListItem from '@components/Worksheets/ListItem'
+import ListCard from '@components/Worksheets/ListCard'
 import Intro from '@components/Worksheets/Intro'
 import Title from '@components/Title'
 import styled from 'styled-components'
@@ -92,7 +92,7 @@ const Sheet = ({title, description}) => {
         <div style={{ marginTop: designTokens.space[3] }}>
           {
             filtered.map((item, i) => (
-              <ListItem
+              <ListCard
                 type={sheet}
                 data={item}
                 number={i + 1}

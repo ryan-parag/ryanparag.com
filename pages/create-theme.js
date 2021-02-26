@@ -6,8 +6,6 @@ import { GlobalStyles } from '@components/GlobalStyles/'
 import { ThemeProvider } from 'styled-components'
 import Footer from '@components/Footer'
 import { StaticKitProvider } from '@statickit/react'
-import ReactGA from 'react-ga'
-import AirtablePlus from 'airtable-plus'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactBox from '@components/ContactBox'
 import ThemeCreator from '@components/ThemeCreator'
@@ -17,10 +15,58 @@ import { ButtonAnchorTag } from '@components/Button'
 import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '@components/Theme/'
 import ThemeItem from '@components/ThemeItem'
 import { format } from 'timeago.js'
-import Airtable from 'airtable'
 import namer from 'color-namer'
 import { Box } from '@components/Box'
 import Title from '@components/Title'
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
+import ReactGA from 'react-ga'
+
+const SubmittedThemeList = ({ toggleTheme }) => {
+  const { data } = useSWR('/api/themes/submitted', fetcher);
+  const [active, setActive] = useState()
+
+  if (!data) {
+    return null;
+  }
+
+  const getName = hex => {
+    const names = namer(hex)
+    const colorName = names.pantone[0].name
+    const capitalized = colorName.charAt(0).toUpperCase() + colorName.slice(1)
+    return capitalized
+  }
+
+  return data.items.map((item,i) => (
+    <li
+      key={item.id}
+      style={{
+        padding: `${designTokens.space[2]} ${designTokens.space[3]}`,
+        marginBottom: '0',
+        display: 'flex',
+        alignItems: 'center',
+        borderBottom: `1px solid ${i === data.items.length - 1 ? 'transparent' : 'var(--grey200)'}`
+      }}
+    >
+      <ThemeItem
+        theme={item.fields}
+        custom
+        clickHandle={() => toggleTheme(item.fields)}
+      />
+      <div style={{ padding: designTokens.space[3] }}>
+        <strong>
+          {getName(item.fields.primary)} and {getName(item.fields.grey200)}
+        </strong>
+        <br/>
+        <span
+          style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)' }}
+        >
+          Submitted <span style={{ color: 'var(--tertiaryDark)'}}>{format(item.fields.Date)}</span>
+        </span>
+      </div>
+    </li>
+  ))
+}
 
 const CreateTheme = ({ title, description, ...props }) => {
 
@@ -29,33 +75,11 @@ const CreateTheme = ({ title, description, ...props }) => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }
 
-  const [recentThemes, setRecentThemes] = useState([])
-
-  const getRecentThemes = () => {
-    const base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(process.env.AIRTABLE_BASE)
-    base('themes').select({
-      maxRecords: 8,
-      view: "Grid view",
-      sort: [{field: "Date", direction: "desc"}]
-    }).eachPage(function page(records, fetchNextPage) {
-        let retrieved = []
-        records.forEach(function(record) {
-          retrieved.push(record)
-        });
-        setRecentThemes(retrieved)
-        fetchNextPage();
-    
-    }, function done(err) {
-        if (err) { console.error(err); return; }
-    });
-  }
-
   const [mounted, setMounted] = React.useState(false)
 
   useEffect(() => {
-    getRecentThemes()
     setMounted(true)
-  }, [recentThemes])
+  }, [])
 
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -77,13 +101,6 @@ const CreateTheme = ({ title, description, ...props }) => {
   const toggleTheme = (theme) => {
     localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme))
     setTheme(theme)
-  }
-
-  const getName = hex => {
-    const names = namer(hex)
-    const colorName = names.pantone[0].name
-    const capitalized = colorName.charAt(0).toUpperCase() + colorName.slice(1)
-    return capitalized
   }
 
   return (
@@ -187,37 +204,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                   paddingBottom: designTokens.space[2],
                   paddingTop: designTokens.space[2],
                 }}>
-                {
-                  recentThemes.map((item,i) => (
-                    <li
-                      style={{
-                        padding: `${designTokens.space[2]} ${designTokens.space[3]}`,
-                        marginBottom: '0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        borderBottom: `1px solid ${i === recentThemes.length - 1 ? 'transparent' : 'var(--grey200)'}`
-                      }}
-                    >
-                      <ThemeItem
-                        theme={item.fields}
-                        custom
-                        clickHandle={() => toggleTheme(item.fields)}
-                        key={theme.id}
-                      />
-                      <div style={{ padding: designTokens.space[3] }}>
-                        <strong>
-                          {getName(item.fields.primary)} and {getName(item.fields.grey200)}
-                        </strong>
-                        <br/>
-                        <span
-                          style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)' }}
-                        >
-                          Submitted <span style={{ color: 'var(--tertiaryDark)'}}>{format(item.fields.Date)}</span>
-                        </span>
-                      </div>
-                    </li>
-                  ))
-                }
+                <SubmittedThemeList toggleTheme={toggleTheme}/>
                 </ul>
                 <hr/>
                 <ContactBox/>

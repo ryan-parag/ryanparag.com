@@ -9,8 +9,6 @@ import { designTokens } from '@components/Theme/designTokens'
 import Footer from '@components/Footer'
 import { StaticKitProvider } from '@statickit/react'
 import ReactGA from 'react-ga'
-import useSWR from 'swr';
-import fetcher from '@utils/fetcher';
 
 export const LayoutContainer = styled.div`
   width: 100%;

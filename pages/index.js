@@ -47,7 +47,7 @@ const Index = ({ posts, title, description, ...props }) => {
         <SpotifyCurrentlyPlaying playing />
         <hr/>
         <main>
-          <h3>Latest Notes</h3>
+          <h3>Latest Notes 📝</h3>
           <PostList posts={latestPosts} />
           <div
             style={{
@@ -71,7 +71,7 @@ const Index = ({ posts, title, description, ...props }) => {
               </Link>
             </ButtonLink>
           </div>
-          <h3>Work & Projects</h3>
+          <h3>Work & Projects 💯</h3>
           <Projects/>
           <hr/>
           <Subscribe/>

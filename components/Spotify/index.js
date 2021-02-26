@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { truncateString } from '@utils/text'
 
 const AlbumImage = styled.img`
   width: ${designTokens.space[7]};
@@ -92,13 +93,6 @@ const InteriorLink = styled.a`
   ${SmallLink}
   margin-left: ${props => props.marginLeft ? '40px' : '0px'};
 `
-
-const truncateString = (str, num) => {
-  if (str.length <= num) {
-    return str
-  }
-  return str.slice(0, num) + '...'
-}
 
 const SpotifyIcon = ({active}) => {
   return(

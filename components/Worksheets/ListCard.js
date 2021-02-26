@@ -1,7 +1,7 @@
 import { designTokens } from '@components/Theme/designTokens'
 import { Box } from '@components/Box'
 import styled from 'styled-components'
-import Chip, {PrimaryChip, TertiaryChip, SecondaryChip} from '@components/Chip'
+import {PrimaryChip, TertiaryChip, SecondaryChip} from '@components/Chip'
 
 const SmallText = styled.div`
   font-size: ${designTokens.fontSizes[1]};
@@ -41,7 +41,7 @@ const Avatar = styled.div`
   box-shadow: 0px 0px 0px 1px var(--grey300), inset 0px 0px 4px var(--grey300);
 `
 
-const ListItem = ({type, data, number}) => {
+const ListCard = ({type, data, number}) => {
   switch (type) {
     case 'research':
       return (
@@ -159,4 +159,4 @@ const ListItem = ({type, data, number}) => {
   }
 }
 
-export default ListItem
+export default ListCard
