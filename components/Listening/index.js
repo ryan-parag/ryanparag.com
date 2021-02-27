@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import List, { ListItem } from '@components/List'
 import { Box } from '@components/Box'
+import { designTokens } from '@components/Theme/designTokens'
 
 const Tracks = ({tracks}) => {
 
@@ -22,6 +23,20 @@ const Subscriptions = ({podcasts}) => {
   ));
 }
 
+const ListeningTitle = ({title}) => {
+  return(
+    <p
+      style={{
+        color: 'var(--grey600)',
+        fontSize: designTokens.fontSizes[1],
+        marginBottom: designTokens.space[2]
+      }}
+    >
+      {title}
+    </p>
+  )
+}
+
 
 export const ListeningMusic = () => {
 
@@ -37,7 +52,7 @@ export const ListeningMusic = () => {
 
   return(
     <>
-      <h3>Recent top tracks I've listened to:</h3>
+      <ListeningTitle title={`Recent top tracks I've listened to:`}/>
       <List>
         <Tracks tracks={data.tracks}/>
       </List>
@@ -58,7 +73,7 @@ export const ListeningPodcasts = () => {
   }
   return(
     <>
-      <h3>Recent podcasts I've been digging:</h3>
+      <ListeningTitle title={`Recent podcasts I've been digging:`}/>
       <List>
         <Subscriptions podcasts={data.podcasts}/>
       </List>

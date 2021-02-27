@@ -68,12 +68,6 @@ const NewProjectContentContainer = styled.div`
   flex: 1 1 0%;
 `
 
-const NewProjectLabel = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-bottom: ${designTokens.space[1]};
-`
-
 const NewProjectContent = styled.div`
   color: ${props => props.subtle ? 'var(--grey400)' : 'inherit'};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {

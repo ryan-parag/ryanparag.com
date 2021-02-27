@@ -160,7 +160,16 @@ export const SpotifyPodcast = ({podcast}) => {
               <Content>
                 <strong>{truncateString(podcast.name, 56)}</strong>
                 <br/>
-                <small style={{ opacity: 0.5 }}>{truncateString(podcast.description, 80)}</small>
+                <p
+                  style={{
+                    opacity: 0.5,
+                    fontSize: designTokens.fontSizes[0],
+                    lineHeight: designTokens.lineHeights.body,
+                    marginBottom: '0'
+                  }}
+                >
+                  {truncateString(podcast.description, 80)}
+                </p>
               </Content>
             </ContentContainer>
             <AlbumImage src={podcast.showImageUrl}/>
