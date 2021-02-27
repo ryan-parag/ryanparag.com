@@ -27,14 +27,14 @@ const ListenType = ({title, description}) => {
       <Layout pageTitle={title} description={description} ogImage="/worksheets-social-media.png">
         <Title>
           <HeaderIcon>
-            <img src="/spotify.svg"/>
+            <img src="/listens.svg"/>
           </HeaderIcon>
           <h1>Recent Listens</h1>
           <p className="lead">Take a peek at what I've been listening to!</p>
           <p>
             I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
           </p>
-          <SpotifyCurrentlyPlaying/>
+          <SpotifyCurrentlyPlaying playing/>
         </Title>
         <TabNav
           items={categories}

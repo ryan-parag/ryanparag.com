@@ -14,7 +14,9 @@ export const TabItem = styled.div`
   border-bottom: 2px solid var(--grey200);
   a {
     color: var(--grey600);
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: calc(${designTokens.space[2]} + ${designTokens.space[1]}) ${designTokens.space[2]};
     width: 100%;
     transition: all 120ms ease-out;

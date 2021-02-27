@@ -139,8 +139,8 @@ export default function Projects(){
     }, {
       name: 'Recent Listens',
       description: 'Take a look at my current music/podcast feed',
-      image: '/spotify.svg',
-      link:'/recent-listens',
+      image: '/listens.svg',
+      link:'/listening',
       outbound: false
     }, {
       name: 'Theme Creator',

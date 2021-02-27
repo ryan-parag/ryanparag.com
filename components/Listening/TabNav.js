@@ -1,7 +1,22 @@
 import Link from 'next/link'
 import { TabBar, TabItem } from '@components/Tabs'
+import { Mic, Music } from 'react-feather'
+import { designTokens } from '@components/Theme/designTokens'
 
 const TabNav = ({items, active}) => {
+
+  const getIcon = (type) => {
+    switch (type) {
+      case 'Music':
+        return <Music size={'16'}/>
+        break;
+      case 'Podcasts':
+        return <Mic size={'16'}/>
+        break;
+      default:
+        return null
+    }
+  }
 
   return(
     <>
@@ -15,7 +30,16 @@ const TabNav = ({items, active}) => {
               <Link
                 href={`/listening/${item.toLowerCase()}`}
               >
-                <a>{item}</a>
+                <a>
+                  <>
+                    <span style={{  
+                      marginRight: designTokens.space[2]
+                    }}>
+                      {item}
+                    </span>
+                    {getIcon(item)}
+                  </>
+                </a>
               </Link>
             </TabItem>
           ))
