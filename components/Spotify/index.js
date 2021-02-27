@@ -143,6 +143,45 @@ export const SpotifyTrack = ({track}) => {
   );
 }
 
+export const SpotifyPodcast = ({podcast}) => {
+
+  return (
+    <>
+      {
+        podcast && podcast.showUrl ? (
+          <SpotifyLink
+            href={podcast.showUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SpotifyIcon active/>
+            <ContentContainer>
+              <Label>{truncateString(podcast.publisher, 56)}</Label>
+              <Content>
+                <strong>{truncateString(podcast.name, 56)}</strong>
+                <br/>
+                <small style={{ opacity: 0.5 }}>{truncateString(podcast.description, 80)}</small>
+              </Content>
+            </ContentContainer>
+            <AlbumImage src={podcast.showImageUrl}/>
+          </SpotifyLink>
+        )
+        :
+        (
+          <SpotifyContainer>
+            <SpotifyIcon/>
+            <ContentContainer>
+              <Content subtle>
+                <div>Something went wrong</div>
+              </Content>
+            </ContentContainer>
+          </SpotifyContainer>
+        )
+      }
+    </>
+  );
+}
+
 export const SpotifyLastPlayed = ({action}) => {
   const { data } = useSWR('/api/last-played', fetcher);
 

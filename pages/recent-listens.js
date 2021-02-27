@@ -1,73 +1,50 @@
-import Layout from '@components/Layout/'
-import { designTokens } from '@components/Theme/designTokens'
-import { SpotifyTrack, SpotifyCurrentlyPlaying } from '@components/Spotify'
-import useSWR from 'swr';
-import fetcher from '@utils/fetcher';
-import styled from 'styled-components'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { Box } from '@components/Box'
-import Title from '@components/Title'
-import List, { ListItem } from '@components/List'
-import { ListeningMusic } from '@components/Listening'
+import Layout from '@components/Layout/'
+import { Loader } from 'react-feather'
+import styled from 'styled-components'
+import { designTokens } from '@components/Theme/designTokens'
 
-const HeaderIcon = styled.div`
-  width: ${designTokens.space[7]};
-  position: relative;
-  img {
-    display: block; width: 100%;
-  }
+const LoadingSpinner = styled(Loader)`
+  color: var(--primary);
+  animation: rotation 2s infinite linear;
 `
 
+const LoaderLabel = styled.div`
+  margin-top: ${designTokens.space[3]};
+  font-weight: ${designTokens.fontWeights.bold};
+`
 
-const Tracks = () => {
-  const { data } = useSWR('/api/top-tracks', fetcher);
+const Listening = ({title, description, ...props}) => {
 
-  if (!data) {
-    return null;
-  }
+  const router = useRouter()
 
-  return data.tracks.map((track, index) => (
-    <ListItem key={index}>
-      <SpotifyTrack track={track} mb={0} />
-    </ListItem>
-  ));
-}
-
-const RecentListens = ({ title, description, ...props }) => {
-
+  useEffect(() => {
+    router.push('/listening/music')
+  },[])
 
   return (
-    <>
-      <Layout pageTitle={`${title} | Top Tracks`} description={description} ogImage="/notes-social-media.png">
-        <Title>
-          <HeaderIcon>
-            <img src="/spotify.svg"/>
-          </HeaderIcon>
-          <h1>Recent Listens</h1>
-          <p className="lead">Take a peek at what I've been listening to!</p>
-          <p>
-            I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
-          </p>
-          <Box center bg={'var(--primaryTransparent)'}>
-            <p style={{ marginBottom: '0', color: 'var(--primaryDark)' }}>
-              Blog post and Podcast data coming soon 🎉
-            </p>
-          </Box>
-        </Title>
-        <ListeningMusic/>
-      </Layout>
-    </>
+    <Layout pageTitle={title} description={description} ogImage="/notes-social-media.png">
+      <Box center>
+        <LoadingSpinner
+         size={'40'}
+        />
+        <LoaderLabel>Loading...</LoaderLabel>
+      </Box>
+    </Layout>
   )
 }
 
-export default RecentListens
+export default Listening
 
 export async function getStaticProps() {
-  const configData = await import(`../siteconfig.json`)
+  const configData = await import(`../../siteconfig.json`)
 
   return {
     props: {
       title: configData.default.title,
-      description: configData.default.description,
+      description: configData.default.description
     },
   }
 }

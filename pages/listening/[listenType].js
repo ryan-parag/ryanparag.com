@@ -3,9 +3,10 @@ import Layout from '@components/Layout/'
 import { designTokens } from '@components/Theme/designTokens'
 import Title from '@components/Title'
 import styled from 'styled-components'
-import { ListeningMusic } from '@components/Listening'
+import { ListeningMusic, ListeningPodcasts} from '@components/Listening'
 import { capitalize } from '@utils/text'
 import TabNav from '@components/Listening/TabNav'
+import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 
 const HeaderIcon = styled.div`
   width: ${designTokens.space[7]};
@@ -33,6 +34,7 @@ const ListenType = ({title, description}) => {
           <p>
             I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
           </p>
+          <SpotifyCurrentlyPlaying/>
         </Title>
         <TabNav
           items={categories}
@@ -44,7 +46,7 @@ const ListenType = ({title, description}) => {
           )
           :
           (
-            <h4>Podcasts</h4>
+            <ListeningPodcasts/>
           )
         }
       </Layout>

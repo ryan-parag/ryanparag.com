@@ -1,5 +1,8 @@
 import querystring from 'querystring';
 
+// https://leerob.io/blog/spotify-api-nextjs
+// https://benwiz.com/blog/create-spotify-refresh-token/
+
 const client_id = process.env.SPOTIFY_CLIENT_ID
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
@@ -9,7 +12,7 @@ const NOW_PLAYING_PODCAST_ENDPOINT = `https://api.spotify.com/v1/me/player/curre
 const LAST_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`;
 const LAST_PLAYED_PODCAST_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played/?additional_types=episode`;
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
-const SHOWS_ENDPOINT = `https://api.spotify.com/v1/me/shows`;
+const SHOWS_ENDPOINT = `https://api.spotify.com/v1/me/shows?offset=5&limit=40`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
