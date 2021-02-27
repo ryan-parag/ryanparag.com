@@ -8,12 +8,15 @@ const Listening = ({title, description, ...props}) => {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/listening/music')
+    router.push('/')
   },[])
 
   return (
     <Layout pageTitle={title} description={description} ogImage="/listens-social-media.png">
-      <LoadingBox/>
+      <LoadingBox
+        title={`Hmm... this page doesn't exist`}
+        description={`Taking you back to the homepage`}
+      />
     </Layout>
   )
 }

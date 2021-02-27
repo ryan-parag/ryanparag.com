@@ -37,7 +37,7 @@ export const ListeningMusic = () => {
 
   return(
     <>
-      <h3>Recent Top Listens</h3>
+      <h3>Recent top tracks I've listened to:</h3>
       <List>
         <Tracks tracks={data.tracks}/>
       </List>
@@ -58,7 +58,7 @@ export const ListeningPodcasts = () => {
   }
   return(
     <>
-      <h3>Podcast Subscriptions</h3>
+      <h3>Recent podcasts I've been digging:</h3>
       <List>
         <Subscriptions podcasts={data.podcasts}/>
       </List>

@@ -1,20 +1,7 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { Box } from '@components/Box'
 import Layout from '@components/Layout/'
-import { Loader } from 'react-feather'
-import styled from 'styled-components'
-import { designTokens } from '@components/Theme/designTokens'
-
-const LoadingSpinner = styled(Loader)`
-  color: var(--primary);
-  animation: rotation 2s infinite linear;
-`
-
-const LoaderLabel = styled.div`
-  margin-top: ${designTokens.space[3]};
-  font-weight: ${designTokens.fontWeights.bold};
-`
+import LoadingBox from '@components/LoadingBox'
 
 const Listening = ({title, description, ...props}) => {
 
@@ -25,13 +12,8 @@ const Listening = ({title, description, ...props}) => {
   },[])
 
   return (
-    <Layout pageTitle={title} description={description} ogImage="/notes-social-media.png">
-      <Box center>
-        <LoadingSpinner
-         size={'40'}
-        />
-        <LoaderLabel>Loading...</LoaderLabel>
-      </Box>
+    <Layout pageTitle={title} description={description} ogImage="/listens-social-media.png">
+      <LoadingBox/>
     </Layout>
   )
 }

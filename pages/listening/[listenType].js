@@ -24,7 +24,7 @@ const ListenType = ({title, description}) => {
 
   return (
     <>
-      <Layout pageTitle={title} description={description} ogImage="/worksheets-social-media.png">
+      <Layout pageTitle={title} description={description} ogImage="/listens-social-media.png">
         <Title>
           <HeaderIcon>
             <img src="/listens.svg"/>

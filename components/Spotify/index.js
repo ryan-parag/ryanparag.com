@@ -275,7 +275,7 @@ export const SpotifyNowPlaying = ({action}) => {
           <SpotifyIcon/>
           <ContentContainer>
             <Content subtle>
-              <div>Not currently playing</div>
+              <div>Not currently listening</div>
               {
                 action ? (
                   <>
@@ -350,7 +350,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
           <SpotifyIcon/>
           <ContentContainer>
             <Content subtle>
-              <div>Not currently playing</div>
+              <div>Not currently listening</div>
               {
                 action ? (
                   <>
