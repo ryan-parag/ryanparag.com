@@ -64,7 +64,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: {listenType} }) {
-  const configData = await import(`../../siteconfig.json`)
+  const configData = await import('../../siteconfig.json')
 
   return {
     props: {
