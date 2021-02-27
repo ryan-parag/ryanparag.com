@@ -96,7 +96,7 @@ export default function Footer() {
               </Link>
             </FooterListItem>
             <FooterListItem>
-              <Link href="/recent-listens">
+              <Link href="/listening">
                 <a>Recent Listens</a>
               </Link>
             </FooterListItem>

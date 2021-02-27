@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { Box } from '@components/Box'
 import Title from '@components/Title'
 import List, { ListItem } from '@components/List'
+import { ListeningMusic } from '@components/Listening'
 
 const HeaderIcon = styled.div`
   width: ${designTokens.space[7]};
@@ -52,13 +53,7 @@ const RecentListens = ({ title, description, ...props }) => {
             </p>
           </Box>
         </Title>
-        <h3>Last Played</h3>
-        <SpotifyCurrentlyPlaying/>
-        <hr/>
-        <h3>Recent Top Listens</h3>
-        <List>
-          <Tracks/>
-        </List>
+        <ListeningMusic/>
       </Layout>
     </>
   )

@@ -13,7 +13,7 @@ const TabNav = ({items, active}) => {
               key={i}
             >
               <Link
-                href={`/worksheets/${item.toLowerCase()}`}
+                href={`/listening/${item.toLowerCase()}`}
               >
                 <a>{item}</a>
               </Link>
