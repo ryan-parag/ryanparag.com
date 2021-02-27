@@ -15,12 +15,13 @@ const NewImage = styled.div`
   background-repeat: no-repeat;
   background-image: url(${props => props.bg});
   position: absolute;
-  right: 16px;
+  right: ${designTokens.space[1]};
   top: 50%;
   transform: translateY(-50%);
   transition: all 120ms ease-out 0ms;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    display: none;
+    width: ${designTokens.space[6]};
+    height: ${designTokens.space[6]};
   }
 `
 
@@ -45,6 +46,10 @@ const NewPostContainer = styled.div`
         width: calc(${designTokens.space[9]} + ${designTokens.space[7]});
         height: calc(${designTokens.space[9]} + ${designTokens.space[7]});
         right: -${designTokens.space[2]};
+        @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+          width: ${designTokens.space[7]};
+          height: ${designTokens.space[7]};
+        }
       }
     }
     p {
@@ -58,6 +63,9 @@ const NewPostContainer = styled.div`
 
 const Content = styled.div`
   color: ${props => props.subtle ? 'var(--grey400)' : 'inherit'};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    padding-right: ${designTokens.space[7]};
+  }
 `
 
 const NewContent = styled.div`

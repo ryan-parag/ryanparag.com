@@ -5,6 +5,7 @@ import TabNav from '@components/Worksheets/TabNav'
 import { ButtonAnchorTag } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import ListCard from '@components/Worksheets/ListCard'
+import List, { ListItem } from '@components/List'
 import Intro from '@components/Worksheets/Intro'
 import Title from '@components/Title'
 import styled from 'styled-components'
@@ -65,7 +66,7 @@ const Sheet = ({title, description}) => {
           <h1>Worksheets</h1>
           <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>
           <p>
-            <small>Data collected from <a className="link" target="_blank" href="https://www.uxworksheets.com/">UX Worksheets</a>.</small>
+            <small>Data collected and Inspired from <a className="link" target="_blank" href="https://www.uxworksheets.com/">UX Worksheets</a> 🙌.</small>
           </p>
         </Title>
         <TabNav
@@ -89,18 +90,20 @@ const Sheet = ({title, description}) => {
           :
           null
         }
-        <div style={{ marginTop: designTokens.space[3] }}>
+        <List>
           {
             filtered.map((item, i) => (
-              <ListCard
-                type={sheet}
-                data={item}
-                number={i + 1}
-                key={i}
-              />
+              <ListItem key={i}>
+                <ListCard
+                  type={sheet}
+                  data={item}
+                  number={i + 1}
+                  key={i}
+                />
+              </ListItem>
             ))
           }
-        </div>
+        </List>
       </Layout>
     </>
   );

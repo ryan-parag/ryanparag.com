@@ -11,7 +11,7 @@ const NewProjectImage = styled.img`
   height: ${designTokens.space[7]};
   border-radius: ${designTokens.space[1]};
   position: absolute;
-  right: 16px;
+  right: ${designTokens.space[1]};
   top: 50%;
   transform: translateY(-50%);
   transition: all 120ms ease-out 0ms;

@@ -317,7 +317,12 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
   }
 
-  * {
-    outline: 1px dotted var(--debug-outline);
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
   }
 `;

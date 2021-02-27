@@ -9,6 +9,7 @@ const Chip = styled.div`
   border: 1px solid var(--grey500);
   font-size: ${designTokens.fontSizes[0]};
   margin-right: ${designTokens.space[1]};
+  line-height: 1;
 `
 
 export const PrimaryChip = styled(Chip)`

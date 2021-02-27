@@ -5,22 +5,19 @@ import Link from 'next/link'
 import { ButtonLink } from '@components/Button'
 import Subscribe from '@components/Subscribe'
 import Title from '@components/Title'
-
-const ListItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: ${designTokens.space[2]} ${designTokens.space[3]};
-  margin-bottom: 0;
-  &:not(:last-of-type) {
-    border-bottom: 1px solid var(--grey200);
-  }
-`
+import { SpotifyCurrentlyPlaying } from '@components/Spotify'
+import List, { ListItem } from '@components/List'
 
 const ListLabel = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  padding: ${designTokens.space[2]} 0;
+  line-height: ${designTokens.lineHeights.smallHeading};
+  font-size: ${designTokens.fontSizes[1]};
+`
+
+const ListContent = styled.div`
+  flex: 1 1 0%;
 `
 
 const Swatch = styled.div`
@@ -32,17 +29,9 @@ const Swatch = styled.div`
   margin-right: ${designTokens.space[3]};
 `
 
-const SwatchContainer = styled.ul`
-  margin: ${designTokens.space[3]} 0 ${designTokens.space[4]};
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border-radius: ${designTokens.space[2]};
-  border: 1px solid var(--grey200);
-  background: var(--grey0);
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
+const SwatchLabel = styled.div`
+  font-size: ${designTokens.fontSizes[0]};
+  color: var(--grey600);
 `
 
 const ProfileImg = styled.div`
@@ -79,7 +68,8 @@ const About = ({ title, description, ...props }) => {
   const neutrals = [
     {
       name: 'Neutral 900',
-      value: '--grey900'
+      value: '--grey900',
+      description: 'Main text color'
     }, {
       name: 'Neutral 800',
       value: '--grey800'
@@ -88,38 +78,46 @@ const About = ({ title, description, ...props }) => {
       value: '--grey700'
     }, {
       name: 'Neutral 600',
-      value: '--grey600'
+      value: '--grey600',
+      description: 'Subtle text color'
     }, {
       name: 'Neutral 500',
       value: '--grey500'
     }, {
       name: 'Neutral 400',
-      value: '--grey400'
+      value: '--grey400',
+      description: 'Disabled text'
     }, {
       name: 'Neutral 300',
       value: '--grey300'
     }, {
       name: 'Neutral 200',
-      value: '--grey200'
+      value: '--grey200',
+      description: 'Button borders'
     }, {
       name: 'Neutral 100',
-      value: '--grey100'
+      value: '--grey100',
+      description: 'Item hover, card background, button background, and borders'
     }, {
       name: 'Neutral 0',
-      value: '--grey0'
+      value: '--grey0',
+      description: 'Background'
     }
   ];
 
   const states = [
     {
       name: 'Primary',
-      value: '--primary'
+      value: '--primary',
+      description: 'Primary button background and hover/focus borders'
     }, {
       name: 'Primary Transparent',
-      value: '--primaryTransparent'
+      value: '--primaryTransparent',
+      description: 'Primary hover backgrounds'
     }, {
       name: 'Primary Dark',
-      value: '--primaryDark'
+      value: '--primaryDark',
+      description: 'Links and blockquotes'
     }, {
       name: 'Secondary',
       value: '--secondary'
@@ -128,10 +126,12 @@ const About = ({ title, description, ...props }) => {
       value: '--secondaryTransparent'
     }, {
       name: 'Secondary Dark',
-      value: '--secondaryDark'
+      value: '--secondaryDark',
+      description: 'Visited links'
     }, {
       name: 'Tertiary',
-      value: '--tertiary'
+      value: '--tertiary',
+      description: 'Visited links'
     }, {
       name: 'Tertiary Transparent',
       value: '--tertiaryTransparent'
@@ -157,6 +157,7 @@ const About = ({ title, description, ...props }) => {
             <p>
               I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
             </p>
+            <SpotifyCurrentlyPlaying/>
           </Title>
           <h3>Projects</h3>
           <ul>
@@ -262,7 +263,7 @@ const About = ({ title, description, ...props }) => {
         <p>
           View all of the colors in your selected theme below. Change the theme to see the updated colors in the palette!
         </p>
-        <SwatchContainer>
+        <List>
           <ListItem>
             <strong><small>Neutrals</small></strong>
           </ListItem>
@@ -275,13 +276,24 @@ const About = ({ title, description, ...props }) => {
                       background: `var(${color.value})`
                     }}
                   />
-                  <small>{color.name}</small>
+                  <ListContent>
+                    <strong>{color.name}</strong>
+                    {
+                      color.description ? (
+                        <>
+                          <SwatchLabel>Examples: {color.description}</SwatchLabel>
+                        </>
+                      )
+                      :
+                      null
+                    }
+                  </ListContent>
                 </ListLabel>
               </ListItem>
             ))
           }
-        </SwatchContainer>
-        <SwatchContainer>
+        </List>
+        <List>
           <ListItem>
             <strong><small>Primary / Secondary / Tertiary</small></strong>
           </ListItem>
@@ -294,12 +306,23 @@ const About = ({ title, description, ...props }) => {
                       background: `var(${color.value})`
                     }}
                   />
-                  <small>{color.name}</small>
+                  <ListContent>
+                    <strong>{color.name}</strong>
+                    {
+                      color.description ? (
+                        <>
+                          <SwatchLabel>Examples: {color.description}</SwatchLabel>
+                        </>
+                      )
+                      :
+                      null
+                    }
+                  </ListContent>
                 </ListLabel>
               </ListItem>
             ))
           }
-        </SwatchContainer>
+        </List>
         <hr/>
         <Subscribe/>
       </Layout>

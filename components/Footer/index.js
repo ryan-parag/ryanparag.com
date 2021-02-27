@@ -159,7 +159,7 @@ export default function Footer() {
           <Button small onClick={clearStorage}>Reset Theme</Button>
         </FooterBottom>
         <div style={{ marginTop: designTokens.space[3], marginBottom: designTokens.space[3] }}>
-          <small>Made with Next.js and Styled Components</small>
+          <small>Made with Next.js and Styled Components • <a className="link" href="https://github.com/ryan-parag">View on GitHub</a></small>
         </div>
       </FooterInner>
     </FooterContainer>
