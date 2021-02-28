@@ -30,12 +30,13 @@ const GradientBox = styled.div`
   height: ${designTokens.space[8]};
   background:linear-gradient(150deg, var(--primary), var(--tertiary), var(--secondary));
   position: absolute;
-  top: -${designTokens.space[4]};
-  left: -${designTokens.space[5]};
-  right: -${designTokens.space[5]};
+  top: -${designTokens.space[3]};
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: -1;
   filter: blur(${designTokens.space[6]});
-  opacity: 0.12;
+  opacity: 0.15;
 `
 
 export default function Layout({ children, pageTitle, description, ogImage, ...props }) {
