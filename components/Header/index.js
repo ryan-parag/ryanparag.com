@@ -300,7 +300,7 @@ const ThemeList = ({ handleThemeToggle, activeTheme }) => {
     <>
       <LatestTheme
         handleThemeToggle={handleThemeToggle}
-        active={activeTheme}
+        activeTheme={activeTheme}
       />
       {
         data.themes.map((theme, index) => (
