@@ -162,7 +162,7 @@ const About = ({ title, description, ...props }) => {
           <h3>Projects</h3>
           <ul>
             <li>
-              <a href="https://ryanparag.com">Take a look at my portfolio and case studies</a>
+              <a href="https://ryanparag.com">Portfolio/Work</a>
             </li>
             <li>
               <a href="https://slack-themes.now.sh/">Slack Themes</a>
@@ -172,6 +172,9 @@ const About = ({ title, description, ...props }) => {
             </li>
             <li>
               <Link href="../create-theme"><a>Theme Creator</a></Link>
+            </li>
+            <li>
+              <Link href="../worksheets"><a>UX Framework Resources</a></Link>
             </li>
           </ul>
           <h3>Writing</h3>

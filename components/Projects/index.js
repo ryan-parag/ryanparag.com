@@ -9,11 +9,12 @@ import { truncateString } from '@utils/text'
 const NewProjectImage = styled.img`
   width: ${designTokens.space[7]};
   height: ${designTokens.space[7]};
-  border-radius: ${designTokens.space[1]};
   position: absolute;
   right: ${designTokens.space[1]};
   top: 50%;
   transform: translateY(-50%);
+  border-radius: ${designTokens.space[1]};
+  box-shadow: 0px 0px 0px 2px var(--grey200);
   transition: all 120ms ease-out 0ms;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     width: ${designTokens.space[6]};
@@ -127,43 +128,43 @@ export default function Projects(){
     {
       name: 'Portfolio',
       description: 'Take a look through my case studies and larger projects',
-      image: '/static/icon-portfolio.svg',
+      image: '/static/projects/icon-portfolio.png',
       link:'https://ryanparag.com',
       outbound: true
     }, {
       name: 'Recent Listens',
       description: 'Take a look at my current music/podcast feed',
-      image: '/listens.svg',
+      image: '/static/projects/icon-listens.png',
       link:'/listening',
       outbound: false
     }, {
       name: 'Theme Creator',
       description: 'Feed your curiousity by theming this website',
-      image: '/static/icon-theme-creator.svg',
+      image: '/static/projects/icon-theme-creator.png',
       link:'/create-theme',
       outbound: false
     }, {
       name: 'Worksheets',
       description: 'Questions and resources to utilize in your UX process',
-      image: '/static/icon-worksheet.svg',
+      image: '/static/projects/icon-worksheets.png',
       link:'/worksheets',
       outbound: false
     }, {
       name: 'Figma',
       description: 'Check out my files and plugins on Figma Community',
-      image: '/static/icon-figma.svg',
+      image: '/static/projects/icon-figma.png',
       link:'https://figma.com/@ryanparag',
       outbound: true
     }, {
       name: 'Slack Themes',
       description: 'Having trouble keeping track of all of your Slack workspaces?',
-      image: '/static/icon-slack-themes.svg',
+      image: '/static/projects/icon-slack-themes.png',
       link:'https://slack-themes.now.sh/',
       outbound: true
     }, {
       name: 'TampaBay.design',
       description: 'How to get involved in one of the many local design communities',
-      image: '/static/icon-tampabay.svg',
+      image: '/static/projects/icon-tbd.png',
       link:'https://tampabay.design',
       outbound: true
     }
