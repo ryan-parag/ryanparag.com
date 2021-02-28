@@ -91,6 +91,7 @@ const LogoLink = () => {
         <FooterLogo>
           <div style={{
             width: '32px',
+            marginRight: designTokens.space[2]
           }}>
             <Logo/>
           </div>
@@ -178,15 +179,15 @@ export default function Footer() {
       <FooterInner>
         <FooterList>
           {
-            list1.map(item => (
-              <FooterLink link={item}/>
+            list1.map((item, i) => (
+              <FooterLink key={i} link={item}/>
             ))
           }
         </FooterList>
         <FooterList>
           {
-            list2.map(item => (
-              <FooterLink link={item}/>
+            list2.map((item, i) => (
+              <FooterLink key={i} link={item}/>
             ))
           }
         </FooterList>

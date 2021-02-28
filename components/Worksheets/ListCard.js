@@ -1,5 +1,4 @@
 import { designTokens } from '@components/Theme/designTokens'
-import { Box } from '@components/Box'
 import styled from 'styled-components'
 import {PrimaryChip, TertiaryChip, SecondaryChip} from '@components/Chip'
 

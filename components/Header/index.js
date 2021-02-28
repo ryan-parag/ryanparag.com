@@ -237,17 +237,42 @@ const ThemeBtn = ({handleClick, state}) => {
   )
 }
 
-const ThemeList = ({ handleThemeToggle, activeTheme }) => {
-  const { data } = useSWR('/api/themes', fetcher);
-  const [active, setActive] = useState()
+const LatestTheme = ({handleThemeToggle, activeTheme}) => {
+
+  const { data } = useSWR('/api/themes/submitted/latest', fetcher);
 
   if (!data) {
     return null;
   }
 
-  return data.themes.map((theme, index) => (
+  const latestTheme = data.latest
+
+  const theme = {
+    name: 'Latest Submitted',
+    grey900: latestTheme.grey900,
+    grey800: latestTheme.grey800,
+    grey700: latestTheme.grey700,
+    grey600: latestTheme.grey600,
+    grey500: latestTheme.grey500,
+    grey400: latestTheme.grey400,
+    grey300: latestTheme.grey300,
+    grey200: latestTheme.grey200,
+    grey100: latestTheme.grey100,
+    grey0: latestTheme.grey0,
+    primary: latestTheme.primary,
+    tertiary: latestTheme.tertiary,
+    secondary: latestTheme.secondary,
+    primaryTransparent: latestTheme.primaryTransparent,
+    tertiaryTransparent: latestTheme.tertiaryTransparent,
+    secondaryTransparent: latestTheme.secondaryTransparent,
+    transparent: latestTheme.transparent,
+    secondaryDark: latestTheme.secondaryDark,
+    primaryDark: latestTheme.primaryDark,
+    tertiaryDark: latestTheme.tertiaryDark,
+  }
+
+  return(
     <div
-      key={index}
       style={{
         margin: `0 ${designTokens.space[3]}`,
         display: 'inline-block'
@@ -260,7 +285,43 @@ const ThemeList = ({ handleThemeToggle, activeTheme }) => {
         active={activeTheme === theme.name}
       />
     </div>
-  ));
+  )
+}
+
+const ThemeList = ({ handleThemeToggle, activeTheme }) => {
+  const { data } = useSWR('/api/themes', fetcher);
+  const [active, setActive] = useState()
+
+  if (!data) {
+    return null;
+  }
+
+  return (
+    <>
+      <LatestTheme
+        handleThemeToggle={handleThemeToggle}
+        active={activeTheme}
+      />
+      {
+        data.themes.map((theme, index) => (
+          <div
+            key={index}
+            style={{
+              margin: `0 ${designTokens.space[3]}`,
+              display: 'inline-block'
+            }}
+          >
+            <ThemeItem
+              tabIndex={'0'}
+              theme={theme}
+              clickHandle={() => handleThemeToggle(theme)}
+              active={activeTheme === theme.name}
+            />
+          </div>
+        ))
+      }
+    </>
+  )
 }
 
 export default function Header({ toggleTheme, theme }) {

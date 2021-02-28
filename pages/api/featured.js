@@ -5,10 +5,17 @@ export default async (req, res) => {
   const airtable = new AirtablePlus({
     baseID: process.env.AIRTABLE_BASE,
     apiKey: process.env.AIRTABLE_API_KEY,
-    tableName: 'themes'
+    tableName: 'featured'
   });
 
-  const items = await airtable.read();
+  const featured = await airtable.read();
+
+  const items = featured.map((item) => ({
+    name: item.fields.Name,
+    description: item.fields.Description,
+    link: item.fields.Link,
+    outbound: true
+  }));
 
   res.setHeader(
     'Cache-Control',

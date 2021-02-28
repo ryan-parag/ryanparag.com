@@ -197,7 +197,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                   </ButtonAnchorTag>
                 </div>
                 <hr/>
-                <h3>Recently Created Themes (Last 8)</h3>
+                <h3>Recently Created Themes</h3>
                 <p>Want to see what others are creating? Take a look below!</p>
                 <ul style={{
                   boxShadow: '0px 1px 3px rgba(0,0,0,0.14)',

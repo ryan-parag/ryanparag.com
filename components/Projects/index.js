@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { BoxAnchorLink, BoxBaseLink } from '@components/Box'
 import styled, { css } from 'styled-components'
 import List, { ListItem } from '@components/List'
 import { designTokens } from '@components/Theme/designTokens'
@@ -89,12 +88,18 @@ export const ProjectItem = ({project}) => {
                 <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
                   {project.name}
                 </h4>
-                <p style={{ marginBottom: designTokens.space[2] }}>
+                <p style={{ marginBottom: '0' }}>
                   {truncateString(project.description, 72)}
                 </p>
               </NewProjectContent>
             </NewProjectContentContainer>
-            <NewProjectImage src={project.image} alt={project.name} />
+            {
+              project.image ? (
+                <NewProjectImage src={project.image} alt={project.name} />
+              )
+              :
+              null
+            }
           </NewProjectAnchorTag>
         )
         :
@@ -107,12 +112,18 @@ export const ProjectItem = ({project}) => {
                   <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
                     {project.name}
                   </h4>
-                  <p style={{ marginBottom: designTokens.space[2] }}>
+                  <p style={{ marginBottom: '0' }}>
                     {truncateString(project.description, 72)}
                   </p>
                   </NewProjectContent>
                 </NewProjectContentContainer>
-                <NewProjectImage src={project.image} alt={project.name} />
+                {
+                  project.image ? (
+                    <NewProjectImage src={project.image} alt={project.name} />
+                  )
+                  :
+                  null
+                }
               </a>
             </Link>
           </NewProjectLink>
