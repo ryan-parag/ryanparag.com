@@ -1,20 +1,12 @@
 import { useRouter } from "next/router";
 import Layout from '@components/Layout/'
 import { designTokens } from '@components/Theme/designTokens'
-import Title from '@components/Title'
+import Title, { TitleIcon } from '@components/Title'
 import styled from 'styled-components'
 import { ListeningMusic, ListeningPodcasts} from '@components/Listening'
 import { capitalize } from '@utils/text'
 import TabNav from '@components/Listening/TabNav'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
-
-const HeaderIcon = styled.div`
-  width: ${designTokens.space[7]};
-  position: relative;
-  img {
-    display: block; width: 100%;
-  }
-`
 
 const ListenType = ({title, description}) => {
   const router = useRouter();
@@ -24,11 +16,11 @@ const ListenType = ({title, description}) => {
 
   return (
     <>
-      <Layout pageTitle={title} description={description} ogImage="/listens-social-media.png">
+      <Layout pageTitle={`${title} | Recent Listens`} description={description} ogImage="/listens-social-media.png">
         <Title>
-          <HeaderIcon>
-            <img src="/listens.svg"/>
-          </HeaderIcon>
+          <TitleIcon>
+            <img src="/static/projects/icon-listens.png" alt={'Recent Listens'}/>
+          </TitleIcon>
           <h1>Recent Listens</h1>
           <p className="lead">Take a peek at what I've been listening to!</p>
           <p>

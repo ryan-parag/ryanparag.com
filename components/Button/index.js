@@ -5,6 +5,7 @@ export const ButtonBase = css`
   padding: ${(props) => props.small ? designTokens.space[1] : designTokens.space[2]} ${(props) => props.small ? designTokens.space[2] : designTokens.space[3]};
   display: inline-flex;
   align-items:center;
+  justify-content: center;
   font-weight: ${(props) => props.small ? '400' : '700'};
   cursor: pointer;
   font-size: ${(props) => props.small ? designTokens.fontSizes[0] : designTokens.fontSizes[1]};
@@ -41,6 +42,18 @@ export const ButtonMain = css`
   color: var(--grey0);
   &:hover, &:focus {
     background: var(--primaryDark);
+    color: var(--grey0);
+  }
+`
+
+export const ButtonSecondaryStyles = css`
+  ${ButtonBase}
+  background: var(--secondaryTransparent);
+  color: var(--secondaryDark);
+  border: 0;
+  box-shadow: none;
+  &:hover, &:focus {
+    background: var(--secondary);
     color: var(--grey0);
   }
 `
@@ -111,6 +124,10 @@ export const IconButtonPrimary = styled.button`
 
 export const ButtonPrimary = styled.button`
   ${ButtonMain}
+`
+
+export const ButtonSecondary = styled.button`
+  ${ButtonSecondaryStyles}
 `
 
 export const ButtonPrimaryLink = styled.span`

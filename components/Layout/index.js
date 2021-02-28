@@ -26,6 +26,18 @@ export const Main = styled.main`
   }
 `
 
+const GradientBox = styled.div`
+  height: ${designTokens.space[8]};
+  background:linear-gradient(150deg, var(--primary), var(--tertiary), var(--secondary));
+  position: absolute;
+  top: -${designTokens.space[4]};
+  left: -${designTokens.space[5]};
+  right: -${designTokens.space[5]};
+  z-index: -1;
+  filter: blur(${designTokens.space[6]});
+  opacity: 0.12;
+`
+
 export default function Layout({ children, pageTitle, description, ogImage, ...props }) {
 
   if (typeof window !== "undefined") {
@@ -114,6 +126,7 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
           </Head>
           <GlobalStyles/>
           <Header toggleTheme={toggleTheme} theme={theme} />
+          <GradientBox/>
           <section>
             <Main>
               <LayoutContainer>{children}</LayoutContainer>

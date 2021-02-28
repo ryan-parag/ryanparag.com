@@ -29,6 +29,7 @@ export const Box = styled.div`
   ${BoxBase}
   text-align: ${props => props.center ? 'center' : 'left'};
   background: ${props => props.bg ? props.bg : 'var(--grey100)'};
+  border-color: ${props => props.bg ? props.bg : 'var(--grey200)'};
 `
 
 export const BoxLink = styled(Link)`

@@ -17,7 +17,7 @@ import ThemeItem from '@components/ThemeItem'
 import { format } from 'timeago.js'
 import namer from 'color-namer'
 import { Box } from '@components/Box'
-import Title from '@components/Title'
+import Title, {TitleIcon} from '@components/Title'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import ReactGA from 'react-ga'
@@ -145,7 +145,10 @@ const CreateTheme = ({ title, description, ...props }) => {
             <Main>
               <LayoutContainer>
                 <Title>
-                  <h1>Create a Theme 🎨</h1>
+                  <TitleIcon>
+                    <img src="/static/projects/icon-theme-creator.png"/>
+                  </TitleIcon>
+                  <h1>Create a Theme</h1>
                   <p className="lead">Pick a few colors and build a new theme!</p>
                   <p>I like to believe design is a fluid skill and that <strong>everyone is a bit of a designer</strong> 👍 - we all have the ability to feel certain ways about things that are designed. <strong>Feed that curiousity</strong> and play around with creating a new theme for this website!</p>
                 </Title>

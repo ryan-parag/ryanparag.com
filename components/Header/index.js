@@ -45,7 +45,7 @@ const NavContainer = styled.header`
   width: 100%;
   border-bottom: 1px solid var(--grey100);
   box-shadow: 0px 1px 0px var(--grey100);
-  background: var(--grey0);
+  background: var(--transparent);
   position: relative;
   &:before {
     content: '';
