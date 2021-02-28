@@ -160,6 +160,10 @@ export default function Footer() {
       href: '/rss',
       outbound: false
     },{
+      name: 'Style Guide',
+      href: '/style-guide',
+      outbound: false
+    },{
       name: 'CodePen',
       href: 'https://codepen.io/ryanparag',
       outbound: true
