@@ -10,7 +10,9 @@ hero_image: /static/how-i-conduct-ux-research.png
 
 TLDR:
 
-[Abdul Salam](https://abdussalam.pk/) [collected a ton of great questions](https://www.uxworksheets.com/) to ask throughout a research process. I collected them in Airtable and threw it on this site - [find it here](/worksheets)
+[Abdul Salam](https://abdussalam.pk/) created a [series of UX questions](https://www.uxworksheets.com/).
+
+I collected them in Airtable as well and threw it on this site - [find it here](/worksheets).
 
 ----------------
 
@@ -20,9 +22,7 @@ Finding time to gather answers from stakeholders, interview users, roadmap conce
 
 Early on, I came across [GV's guide for a lean UX framework](https://library.gv.com/gv-guide-to-uxresearch-for-startups-b6d0c8ac81b3) and begin incrementally adding in portions into our process - hoping to validate what works for us and build a bridge towards a formal UX framework for our team (and in the long-term, our entire organization).
 
-[Abdul Salam](https://abdussalam.pk/) created a [series of UX questions](https://www.uxworksheets.com/).
-
-I collected them in Airtable as well and threw it on this site - [find it here](/worksheets).
+[Abdul Salam](https://abdussalam.pk/) [collected a ton of great questions](https://www.uxworksheets.com/) to ask throughout a research process. I collected them in Airtable and threw it on this site - [find it here](/worksheets)
 
 ### Before desinging
 
