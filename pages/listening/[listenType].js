@@ -7,6 +7,7 @@ import { ListeningMusic, ListeningPodcasts} from '@components/Listening'
 import { capitalize } from '@utils/text'
 import TabNav from '@components/Listening/TabNav'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
+import Image from 'next/image'
 
 const ListenType = ({title, description}) => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const ListenType = ({title, description}) => {
       <Layout pageTitle={`${title} | Recent Listens`} description={description} ogImage="/listens-social-media.png">
         <Title>
           <TitleIcon>
-            <img src="/static/projects/icon-listens.png" alt={'Recent Listens'}/>
+            <Image src="/static/projects/icon-listens.png" alt={'Recent Listens'}/>
           </TitleIcon>
           <h1>Recent Listens</h1>
           <p className="lead">Take a peek at what I've been listening to!</p>

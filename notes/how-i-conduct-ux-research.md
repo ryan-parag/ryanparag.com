@@ -28,7 +28,7 @@ Early on, I came across [GV's guide for a lean UX framework](https://library.gv.
 
 ### Before designing
 
-**Tip:** keep a running doc of issues + feedback snippets from a users (past feedback, Twitter, App Store, etc.) and see which ones bubble up most often to help build priority.
+> **Tip:** keep a running doc of issues + feedback snippets from a users (past feedback, Twitter, App Store, etc.) and see which ones bubble up most often to help build priority.
 
 **To help find and prioritize what we need to design:**
 - What data are we currently collecting (e.g. analytics, A/B, customer support, surveys, usability)?
