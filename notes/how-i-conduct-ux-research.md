@@ -24,14 +24,18 @@ Early on, I came across [GV's guide for a lean UX framework](https://library.gv.
 
 [Abdul Salam](https://abdussalam.pk/) [collected a ton of great questions](https://www.uxworksheets.com/) to ask throughout a research process. I collected them in Airtable and threw it on this site - [find it here](/worksheets)
 
-### Before desinging
+--------------------
+
+### Before designing
 
 **To help find and prioritize what we need to design:**
 - What data are we currently collecting (e.g. analytics, A/B, customer support, surveys, usability)?
 - What research is already available to us?
 - Who do we need to speak with to gather feedback on the current status of our product?
 
-### Past research
+--------------------
+
+### Past research 🕵️‍♂️
 
 **Most probably, you know a few things before you're going off into desigining something new:**
 - Who are our users?
@@ -39,14 +43,22 @@ Early on, I came across [GV's guide for a lean UX framework](https://library.gv.
 - What are the short-term goals of the product?
 - What are competitors doing to answer the problem we're trying to solve? What could they be doing better?
 
-### Aligning with stakeholders
+--------------------
+
+### Aligning with stakeholders 👯‍♀️
 
 At this point, we've probably bubbled up a few friction points from our users &mdash; now we can start to think about solutions to these problems with a few methods. **A few exercises we can try to figure out how to best answer a problem we're solving:**
 - Customer journey mapping to gauge and redesign product touchpoints
 - Mind mapping to help align user and business goals with stakeholders
 - Building user scenarios with PM's to pragmatically outline the new feature
 
-### Prepping for new research
+There are a ton of tools to help share/build these docs, but a few popular ones are: _Figma_, _Miro_, _Mural_, _Whimsical_, _Coda_, or a good old-fashioned whiteboard.
+
+--------------------
+
+### Designing and prepping 👨‍💻
+
+This is the stage where **we can finally begin building wireframes/prototypes** 🎉 based on the requirements, research, and assumptions we've gathered - we can put our heads down, open up Figma, Sketch, or whatever design tool of your choosing and begin designing a few iterations of this feature/product.
 
 **Before moving a feature into a development sprint, we try to frame what we need:**
 - Questions and assumptions of what we're designing
@@ -54,7 +66,9 @@ At this point, we've probably bubbled up a few friction points from our users &m
 - Qualitative research: 1-on-1 interviews (at least n=4)
 - A way to measure the success of this feature
 
-### Conducting new research
+--------------------
+
+### Conducting new research 👩‍🔬
 
 Now that we have our new designs, scheduled participants, and questions to ask, we can begin conducting user interviews to quickly test our assumptions.
 
@@ -66,6 +80,14 @@ Through these user interviews, we can find where friction points may exist, if t
 4. Tasks
 5. Quick debrief
 
-### After the interviews
+--------------------
 
-After we gather the data we received from the user interviews, we find what changes we have to make and either go back to the drawing board or begin handing off to the development team. **That's it!** Hopefully this helps your team, but I'd love to hear about how you manage working between researching and desigining - let me know through email or the form below.
+### After the interviews 🤠
+
+After we gather the data we received from the user interviews, we find what changes we have to make and either go back to the drawing board or begin handing off to the development team. **A few things to note:** in my current process, there's typically a bit of overlap within these phases, but your team and process could very well function differently.
+
+--------------------
+
+### That's it! 😩
+
+Hopefully this helps your team, but I'd love to hear about how you manage working between researching and desigining - let me know through email or the form below.

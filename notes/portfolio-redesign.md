@@ -39,7 +39,7 @@ I'm probably forgetting some, but I think that should cover what most designers 
 
 ![New Portfolio](../static/portfolio-redesign-new.png)
 
-👆[My new portfolio](https://ryanparag.com) ✨. This time, I chose some more modern technologies:
+👆[My new portfolio](https://ryanparag.com) ✨. This time, I chose to use a few newer tools so I can act like I'm cool 😎:
 - Figma for ideating/designing
 - React and Gatsby
 - Styled Components
