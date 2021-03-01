@@ -33,7 +33,7 @@ Early on, I came across [GV's guide for a lean UX framework](https://library.gv.
 - What research is already available to us?
 - Who do we need to speak with to gather feedback on the current status of our product?
 
-> Tip: keep a running doc of issues + feedback snippets from a users (past feedback, Twitter, App Store, etc.) and see which ones bubble up most often to help build priority.
+**Tip:** keep a running doc of issues + feedback snippets from a users (past feedback, Twitter, App Store, etc.) and see which ones bubble up most often to help build priority.
 
 --------------------
 
