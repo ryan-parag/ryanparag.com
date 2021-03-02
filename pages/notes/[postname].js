@@ -12,7 +12,6 @@ import ContactBox from '@components/ContactBox'
 import Subscribe from '@components/Subscribe'
 import Chip from '@components/Chip'
 import 'react-medium-image-zoom/dist/styles.css'
-import Image from 'next/image'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'

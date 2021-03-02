@@ -145,7 +145,10 @@ const CreateTheme = ({ title, description, ...props }) => {
           <section>
             <Main>
               <LayoutContainer>
-                <Title image={'/static/projects/icon-theme-creator.png'} alt={'Theme Creator'}>
+                <Title>
+                  <TitleIcon>
+                    <img src={'/static/projects/icon-theme-creator.png'} alt={'Theme Creator'}/>
+                  </TitleIcon>
                   <h1>Create a Theme</h1>
                   <p className="lead">Pick a few colors and build a new theme!</p>
                   <p>I like to believe design is a fluid skill and that <strong>everyone is a bit of a designer</strong> 👍 - we all have the ability to feel certain ways about things that are designed. <strong>Feed that curiousity</strong> and play around with creating a new theme for this website!</p>

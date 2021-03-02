@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Layout from '@components/Layout/'
-import Title from '@components/Title'
+import Title, { TitleIcon } from '@components/Title'
 import { ListeningMusic, ListeningPodcasts} from '@components/Listening'
 import TabNav from '@components/Listening/TabNav'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
@@ -14,7 +14,10 @@ const ListenType = ({title, description}) => {
   return (
     <>
       <Layout pageTitle={`${title} | Recent Listens`} description={description} ogImage="/listens-social-media.png">
-        <Title image={'/static/projects/icon-listens.png'} alt={'Recent Listens'}>
+        <Title>
+          <TitleIcon>
+            <img src={'/static/projects/icon-listens.png'} alt={'Recent Listens'}/>
+          </TitleIcon>
           <h1>Recent Listens</h1>
           <p className="lead">Take a peek at what I've been listening to!</p>
           <p>

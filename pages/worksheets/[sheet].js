@@ -5,7 +5,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import ListCard from '@components/Worksheets/ListCard'
 import List, { ListItem } from '@components/List'
 import Intro from '@components/Worksheets/Intro'
-import Title from '@components/Title'
+import Title, { TitleIcon } from '@components/Title'
 import styled from 'styled-components'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
@@ -47,7 +47,10 @@ const Sheet = ({title, description}) => {
   return (
     <>
       <Layout pageTitle={`${title} | UX Worksheets`} description={description} ogImage="/worksheets-social-media.png">
-        <Title image={'/static/projects/icon-worksheets.png'} alt={'Worksheets'}>
+        <Title>
+          <TitleIcon>
+            <img src={'/static/projects/icon-worksheets.png'} alt={'Worksheets'}/>
+          </TitleIcon>
           <h1>Worksheets</h1>
           <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>
           <p>

@@ -17,22 +17,13 @@ const TitleContainer = styled(motion.div)`
   position: relative;
 `
 
-const Title = ({ children, image, alt }) => {
+const Title = ({ children }) => {
   return(
     <TitleContainer
       initial={{ bottom: designTokens.space[2], opacity: 0 }}
       animate={{ bottom: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      {
-        image ? (
-          <TitleIcon>
-            <img src={image} alt={alt}/>
-          </TitleIcon>
-        )
-        :
-        null
-      }
       {children}
       <hr/>
     </TitleContainer>
