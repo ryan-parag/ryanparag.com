@@ -17,7 +17,7 @@ import ThemeItem from '@components/ThemeItem'
 import { format } from 'timeago.js'
 import namer from 'color-namer'
 import { Box } from '@components/Box'
-import Title from '@components/Title'
+import Title, { TitleIcon } from '@components/Title'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import ReactGA from 'react-ga'
