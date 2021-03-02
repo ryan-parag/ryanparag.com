@@ -8,7 +8,6 @@ import { IconButton, IconButtonPrimary } from '@components/Button'
 import { motion } from 'framer-motion'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
-import { X } from 'react-feather'
 
 const HeaderContainer = styled.div`
   position: relative;
@@ -214,7 +213,6 @@ const ThemeBtn = ({handleClick, state}) => {
   return(
     <IconButton
       onClick={handleClick}
-      aria-label={state ? 'Close Themes' : 'Open Themes'}
     >
       {
         state ?
@@ -239,42 +237,17 @@ const ThemeBtn = ({handleClick, state}) => {
   )
 }
 
-const LatestTheme = ({handleThemeToggle, activeTheme}) => {
-
-  const { data } = useSWR('/api/themes/submitted/latest', fetcher);
+const ThemeList = ({ handleThemeToggle, activeTheme }) => {
+  const { data } = useSWR('/api/themes', fetcher);
+  const [active, setActive] = useState()
 
   if (!data) {
     return null;
   }
 
-  const latestTheme = data.latest
-
-  const theme = {
-    name: 'Latest Submitted',
-    grey900: latestTheme.grey900,
-    grey800: latestTheme.grey800,
-    grey700: latestTheme.grey700,
-    grey600: latestTheme.grey600,
-    grey500: latestTheme.grey500,
-    grey400: latestTheme.grey400,
-    grey300: latestTheme.grey300,
-    grey200: latestTheme.grey200,
-    grey100: latestTheme.grey100,
-    grey0: latestTheme.grey0,
-    primary: latestTheme.primary,
-    tertiary: latestTheme.tertiary,
-    secondary: latestTheme.secondary,
-    primaryTransparent: latestTheme.primaryTransparent,
-    tertiaryTransparent: latestTheme.tertiaryTransparent,
-    secondaryTransparent: latestTheme.secondaryTransparent,
-    transparent: latestTheme.transparent,
-    secondaryDark: latestTheme.secondaryDark,
-    primaryDark: latestTheme.primaryDark,
-    tertiaryDark: latestTheme.tertiaryDark,
-  }
-
-  return(
+  return data.themes.map((theme, index) => (
     <div
+      key={index}
       style={{
         margin: `0 ${designTokens.space[3]}`,
         display: 'inline-block'
@@ -287,43 +260,7 @@ const LatestTheme = ({handleThemeToggle, activeTheme}) => {
         active={activeTheme === theme.name}
       />
     </div>
-  )
-}
-
-const ThemeList = ({ handleThemeToggle, activeTheme }) => {
-  const { data } = useSWR('/api/themes', fetcher);
-  const [active, setActive] = useState()
-
-  if (!data) {
-    return null;
-  }
-
-  return (
-    <>
-      <LatestTheme
-        handleThemeToggle={handleThemeToggle}
-        activeTheme={activeTheme}
-      />
-      {
-        data.themes.map((theme, index) => (
-          <div
-            key={index}
-            style={{
-              margin: `0 ${designTokens.space[3]}`,
-              display: 'inline-block'
-            }}
-          >
-            <ThemeItem
-              tabIndex={'0'}
-              theme={theme}
-              clickHandle={() => handleThemeToggle(theme)}
-              active={activeTheme === theme.name}
-            />
-          </div>
-        ))
-      }
-    </>
-  )
+  ));
 }
 
 export default function Header({ toggleTheme, theme }) {
@@ -372,7 +309,7 @@ export default function Header({ toggleTheme, theme }) {
           <CloseButton
            onClick={toggle}
           >
-            <X size={'16'}/>
+            &times;
           </CloseButton>
         </div>
         <ThemePickerBody>
@@ -393,7 +330,6 @@ export default function Header({ toggleTheme, theme }) {
                   style={{
                     transform: `translateY(${designTokens.space[3]})`
                   }}
-                  aria-label={'Create Theme'}
                 >
                   <svg width="16" height="16" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.7909 24.5781C13.6792 24.5781 14.3984 23.8449 14.3984 23.0129V14.1856H23C23.8602 14.1856 24.5935 13.4665 24.5935 12.5781C24.5935 11.7039 23.8602 10.9706 23 10.9706H14.3984V2.14334C14.3984 1.29728 13.6792 0.578125 12.7909 0.578125C11.9166 0.578125 11.1833 1.29728 11.1833 2.14334V10.9706H2.5817C1.74974 10.9706 0.988281 11.7039 0.988281 12.5781C0.988281 13.4665 1.74974 14.1856 2.5817 14.1856H11.1833V23.0129C11.1833 23.8449 11.9166 24.5781 12.7909 24.5781Z" fill="currentColor"/>
@@ -410,13 +346,13 @@ export default function Header({ toggleTheme, theme }) {
             <div style={{ display: 'inline-flex', alignItems: 'center'}}>
               {
                 isExpanded ? (
-                  <IconButton onClick={closeMobile} aria-label={'Close'}>
+                  <IconButton onClick={closeMobile}>
                     <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><path d='M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z'/></svg>
                   </IconButton>
                 )
                 :
                 (
-                  <IconButton onClick={() => setExpanded(true)} aria-label={'Open'}>
+                  <IconButton onClick={() => setExpanded(true)}>
                     <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><line x1='88' y1='152' x2='424' y2='152' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='256' x2='424' y2='256' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='360' x2='424' y2='360' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/></svg>
                   </IconButton>
                 )

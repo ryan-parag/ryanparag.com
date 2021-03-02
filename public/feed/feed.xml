@@ -4,7 +4,7 @@
         <title>Ryan's Notes</title>
         <link>https://notes.ryanparag.com</link>
         <description>Hello, I'm Ryan Parag - these are my notes about designing in the open and building thoughtful products.</description>
-        <lastBuildDate>Sun, 28 Feb 2021 20:16:59 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 27 Feb 2021 23:43:51 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Next.js using Feed for Node.js</generator>
         <language>en</language>
@@ -878,13 +878,6 @@ axios.all([
 <h3>Conclusion</h3>
 
 <p>I&#39;d love to know if this helps you design things and if shedding a bit of light on my process helps. If you have any ideas that could make this small project better, send me a message!</p>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[How I conduct UX research]]></title>
-            <guid>https://notes.ryanparag.com/notes/how-i-conduct-ux-research</guid>
-            <pubDate>Sun, 28 Feb 2021 05:00:00 GMT</pubDate>
-            <description><![CDATA[Using the Google Ventures UX approach to help our small team learn about our users]]></description>
-            <content:encoded><![CDATA[<img src="/static/how-i-conduct-ux-research.png"/><p><strong>Illustration from <a href="https://www.figma.com/community/file/890095002328610853/SALY---3D-Illustration-Pack">Alzea&#39;s Illustration Pack</a></strong></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Looking back through 2020]]></title>

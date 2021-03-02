@@ -17,11 +17,10 @@ import ThemeItem from '@components/ThemeItem'
 import { format } from 'timeago.js'
 import namer from 'color-namer'
 import { Box } from '@components/Box'
-import Title, { TitleIcon } from '@components/Title'
+import Title, {TitleIcon} from '@components/Title'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import ReactGA from 'react-ga'
-import Image from 'next/image'
 
 const SubmittedThemeList = ({ toggleTheme }) => {
   const { data } = useSWR('/api/themes/submitted', fetcher);
@@ -147,7 +146,7 @@ const CreateTheme = ({ title, description, ...props }) => {
               <LayoutContainer>
                 <Title>
                   <TitleIcon>
-                    <img src={'/static/projects/icon-theme-creator.png'} alt={'Theme Creator'}/>
+                    <img src="/static/projects/icon-theme-creator.png"/>
                   </TitleIcon>
                   <h1>Create a Theme</h1>
                   <p className="lead">Pick a few colors and build a new theme!</p>
@@ -198,7 +197,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                   </ButtonAnchorTag>
                 </div>
                 <hr/>
-                <h3>Recently Created Themes</h3>
+                <h3>Recently Created Themes (Last 8)</h3>
                 <p>Want to see what others are creating? Take a look below!</p>
                 <ul style={{
                   boxShadow: '0px 1px 3px rgba(0,0,0,0.14)',

@@ -8,7 +8,6 @@ import Projects from '@components/Projects'
 import Subscribe from '@components/Subscribe'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import Title from '@components/Title'
-import Featured from '@components/Featured'
 
 import getPosts from '@utils/getPosts'
 
@@ -74,9 +73,6 @@ const Index = ({ posts, title, description, ...props }) => {
           </div>
           <h3>Work & Projects 💯</h3>
           <Projects/>
-          <hr/>
-          <h3>Featured 👨‍🏫</h3>
-          <Featured/>
           <hr/>
           <Subscribe/>
         </main>

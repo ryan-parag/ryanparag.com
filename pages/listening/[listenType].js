@@ -1,7 +1,10 @@
 import { useRouter } from "next/router";
 import Layout from '@components/Layout/'
+import { designTokens } from '@components/Theme/designTokens'
 import Title, { TitleIcon } from '@components/Title'
+import styled from 'styled-components'
 import { ListeningMusic, ListeningPodcasts} from '@components/Listening'
+import { capitalize } from '@utils/text'
 import TabNav from '@components/Listening/TabNav'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 

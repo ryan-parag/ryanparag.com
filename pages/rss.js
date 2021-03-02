@@ -14,7 +14,7 @@ const Notes = ({ posts, title, description, ...props }) => {
   const netNewsWire = {
     name: 'NetNewsWire',
     description: 'NetNewsWire is a free and open source RSS reader for Mac, iPhone, and iPad.',
-    image: '/static/icon-nnw.png',
+    image: '/static/nnw_icon_256.png',
     link:'https://ranchero.com/netnewswire/',
     outbound: true
   }
