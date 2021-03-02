@@ -14,7 +14,7 @@ TLDR:
 **Grab your music and podcast info from Spotify using Next.js**
 - [Lee Robinson's Spotify & Next.js tutorial](https://leerob.io/blog/spotify-api-nextjs) 👍
 - [View this site's GitHub Repo to see how I did it](https://github.com/ryan-parag/notes.ryanparag.com) 👨‍💻
-- [View what I designed/built](/listening/music) 🎉
+- [View what I designed/built](https://notes.ryanparag.com/listening/music) 🎉
 
 ------------------
 
@@ -129,4 +129,4 @@ This component can account for each of the scenarios our API response may give u
 
 ![podcast subscriptions](../static/showing-my-listening-activity_2.png)
 
-I've been having some fun grabbing my recent top tracks and my recent podcast subscriptions - [check it out!](/listening/music) If you have feedback or ideas of what else could be a fun way to make this information more transparent and tangible, I'd love to know - let me know using the form below.
+I've been having some fun grabbing my recent top tracks and my recent podcast subscriptions - [check it out!](https://notes.ryanparag.com/listening/music)) If you have feedback or ideas of what else could be a fun way to make this information more transparent and tangible, I'd love to know - let me know using the form below.
