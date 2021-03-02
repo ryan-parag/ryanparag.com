@@ -5,15 +5,12 @@ import { ProjectItem } from '@components/Projects'
 
 const PostItem = ({post}) => {
 
-  const postRoute = `/notes/${post.slug}`
-  const dateLabel =  `Updated ${format(post.frontmatter.date)}`
-
   const item = {
     name: post?.frontmatter?.title,
     description: post.frontmatter.description,
     bgImage: post.frontmatter.hero_image,
-    link: postRoute,
-    label: dateLabel,
+    link: `/notes/${post.slug}`,
+    label: `Updated ${format(post.frontmatter.date)}`,
     outbound: false
   }
 
