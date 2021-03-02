@@ -17,7 +17,7 @@ const NewImage = styled.div`
   position: absolute;
   right: ${designTokens.space[1]};
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(1);
   transition: all 120ms ease-out 0ms;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     width: ${designTokens.space[6]};
@@ -41,14 +41,10 @@ const NewPostContainer = styled.div`
       box-shadow: inset 4px 0px 0px var(--primary);
       background: var(--grey100);
       ${NewImage} {
-        transform: translateY(-50%) rotate(10deg);
+        transform: translateY(-40%) translateX(-${designTokens.space[3]}) rotate(10deg) scale(2.5);
         box-shadow: 0px 4px 8px -1px var(--grey300);
-        width: calc(${designTokens.space[9]} + ${designTokens.space[7]});
-        height: calc(${designTokens.space[9]} + ${designTokens.space[7]});
-        right: -${designTokens.space[2]};
         @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-          width: ${designTokens.space[7]};
-          height: ${designTokens.space[7]};
+          transform: translateY(-50%) translateX(${designTokens.space[3]}) rotate(10deg) scale(1.5);
         }
       }
     }

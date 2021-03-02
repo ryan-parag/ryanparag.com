@@ -37,13 +37,10 @@ const NewProjectStyles = css`
     box-shadow: inset 4px 0px 0px var(--primary);
     background: var(--grey100);
     ${NewProjectImage} {
-      transform: translateY(-50%) rotate(10deg);
-      width: calc(${designTokens.space[9]} + ${designTokens.space[7]});
-      height: calc(${designTokens.space[9]} + ${designTokens.space[7]});
-      right: -${designTokens.space[4]};
+      transform: translateY(-40%) translateX(-${designTokens.space[3]}) rotate(10deg) scale(2.5);
+      box-shadow: 0px 4px 8px -1px var(--grey300);
       @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-        width: ${designTokens.space[7]};
-        height: ${designTokens.space[7]};
+        transform: translateY(-50%) translateX(${designTokens.space[3]}) rotate(10deg) scale(1.5);
       }
     }
   }
