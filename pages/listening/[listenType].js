@@ -16,7 +16,7 @@ const ListenType = ({title, description}) => {
       <Layout pageTitle={`${title} | Recent Listens`} description={description} ogImage="/listens-social-media.png">
         <Title>
           <TitleIcon>
-            <img src={'/static/projects/icon-listens.png'} alt={'Recent Listens'}/>
+            <img src="/static/projects/icon-listens.png" alt={'Recent Listens'}/>
           </TitleIcon>
           <h1>Recent Listens</h1>
           <p className="lead">Take a peek at what I've been listening to!</p>
