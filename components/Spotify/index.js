@@ -38,11 +38,11 @@ const SpotifyLink = styled.a`
     box-shadow: inset 4px 0px 0px var(--primary);
     background: var(--grey100);
     ${AlbumImage} {
-      transform: translateY(-50%) rotate(10deg);
+      transform: translateY(-50%) translateX(-${designTokens.space[6]}) rotate(10deg) scale(3);
       box-shadow: 0px 4px 8px -1px var(--grey300);
-      width: calc(${designTokens.space[9]} + ${designTokens.space[7]});
-      height: calc(${designTokens.space[9]} + ${designTokens.space[7]});
-      right: -${designTokens.space[2]};
+      @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+        transform: translateY(-50%) translateX(${designTokens.space[3]}) rotate(10deg) scale(1.5);
+      }
     }
   }
 `
