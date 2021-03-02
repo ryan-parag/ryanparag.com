@@ -49,7 +49,7 @@ const Sheet = ({title, description}) => {
       <Layout pageTitle={`${title} | UX Worksheets`} description={description} ogImage="/worksheets-social-media.png">
         <Title>
           <TitleIcon>
-            <img src="/static/projects/icon-worksheets.png" alt="Worksheets"/>
+            <img src={'/static/projects/icon-worksheets.png'} alt={'Worksheets'}/>
           </TitleIcon>
           <h1>Worksheets</h1>
           <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>

@@ -3,7 +3,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import { Loader } from 'react-feather'
 import { Box } from '@components/Box'
 
-const LoadingSpinner = styled(Loader)`
+export const LoadingSpinner = styled(Loader)`
   color: var(--primary);
   animation: rotation 2s infinite linear;
 `
