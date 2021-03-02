@@ -146,7 +146,7 @@ const CreateTheme = ({ title, description, ...props }) => {
               <LayoutContainer>
                 <Title>
                   <TitleIcon>
-                    <img src="/static/projects/icon-theme-creator.png"/>
+                    <img src="/static/projects/icon-theme-creator.png" alt="Theme Creator"/>
                   </TitleIcon>
                   <h1>Create a Theme</h1>
                   <p className="lead">Pick a few colors and build a new theme!</p>

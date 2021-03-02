@@ -178,15 +178,15 @@ export default function Footer() {
       <FooterInner>
         <FooterList>
           {
-            list1.map(item => (
-              <FooterLink link={item}/>
+            list1.map((item, i) => (
+              <FooterLink key={i} link={item}/>
             ))
           }
         </FooterList>
         <FooterList>
           {
-            list2.map(item => (
-              <FooterLink link={item}/>
+            list2.map((item,i) => (
+              <FooterLink key={i} link={item}/>
             ))
           }
         </FooterList>

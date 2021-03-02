@@ -4,7 +4,7 @@
         <title>Ryan's Notes</title>
         <link>https://notes.ryanparag.com</link>
         <description>Hello, I'm Ryan Parag - these are my notes about designing in the open and building thoughtful products.</description>
-        <lastBuildDate>Sat, 27 Feb 2021 23:43:51 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Mar 2021 13:39:16 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Next.js using Feed for Node.js</generator>
         <language>en</language>
@@ -880,6 +880,95 @@ axios.all([
 <p>I&#39;d love to know if this helps you design things and if shedding a bit of light on my process helps. If you have any ideas that could make this small project better, send me a message!</p>]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[How I conduct UX research]]></title>
+            <guid>https://notes.ryanparag.com/notes/how-i-conduct-ux-research</guid>
+            <pubDate>Sun, 28 Feb 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Using the Google Ventures UX approach to help our small team learn about our users]]></description>
+            <content:encoded><![CDATA[<img src="/static/how-i-conduct-ux-research.png"/><p><strong>Illustration from <a href="https://www.figma.com/community/file/890095002328610853/SALY---3D-Illustration-Pack">Alzea&#39;s Illustration Pack</a></strong></p>
+
+<p>TLDR:</p>
+
+<p><a href="https://abdussalam.pk/">Abdul Salam</a> created a <a href="https://www.uxworksheets.com/">series of UX questions</a>.</p>
+
+<p>I collected them in Airtable as well and threw it on this site - <a href="https://notes.ryanparag.com/worksheets">find it here</a>.</p>
+
+<hr/>
+
+<p>It&#39;s a bit difficult to find space for the planning, validating, and testing of new designs &amp;mdash; especially when you&#39;re the solo designer or on <em>very</em> lean teams.</p>
+
+<p>Finding time to gather answers from stakeholders, interview users, roadmap concepts can already be somewhat timestaking - inbetween actually keeping your head down and prototyping ideas. Figuring out how to build a process or framework for user research inside a rapid, agile, and lean team has been a goal of mine within my current team.</p>
+
+<p>Early on, I came across <a href="https://library.gv.com/gv-guide-to-uxresearch-for-startups-b6d0c8ac81b3">GV&#39;s guide for a lean UX framework</a> and begin incrementally adding in portions into our process - hoping to validate what works for us and build a bridge towards a formal UX framework for our team (and in the long-term, our entire organization).</p>
+
+<p><a href="https://abdussalam.pk/">Abdul Salam</a> <a href="https://www.uxworksheets.com/">collected a ton of great questions</a> to ask throughout a research process. I collected them in Airtable and threw it on this site - <a href="https://notes.ryanparag.com/worksheets">find it here</a></p>
+
+<hr/>
+
+<h3>Before designing</h3>
+
+<blockquote><p><strong>Tip:</strong> keep a running doc of issues + feedback snippets from a users (past feedback, Twitter, App Store, etc.) and see which ones bubble up most often to help build priority.</p></blockquote>
+
+<p><strong>To help find and prioritize what we need to design:</strong>
+- What data are we currently collecting (e.g. analytics, A/B, customer support, surveys, usability)?
+- What research is already available to us?
+- Who do we need to speak with to gather feedback on the current status of our product?</p>
+
+<hr/>
+
+<h3>Past research 🕵️‍♂️</h3>
+
+<p><strong>Most probably, you know a few things before you&#39;re going off into desigining something new:</strong>
+- Who are our users?
+- What is the general product roadmap? (maybe even company roadmap)
+- What are the short-term goals of the product?
+- What are competitors doing to answer the problem we&#39;re trying to solve? What could they be doing better?</p>
+
+<hr/>
+
+<h3>Aligning with stakeholders 👯‍♀️</h3>
+
+<p>At this point, we&#39;ve probably bubbled up a few friction points from our users &amp;mdash; now we can start to think about solutions to these problems with a few methods. <strong>A few exercises we can try to figure out how to best answer a problem we&#39;re solving:</strong>
+- Customer journey mapping to gauge and redesign product touchpoints
+- Mind mapping to help align user and business goals with stakeholders
+- Building user scenarios with PM&#39;s to pragmatically outline the new feature</p>
+
+<p>There are a ton of tools to help share/build these docs, but a few popular ones are: <em>Figma</em>, <em>Miro</em>, <em>Mural</em>, <em>Whimsical</em>, <em>Coda</em>, or a good old-fashioned whiteboard.</p>
+
+<hr/>
+
+<h3>Designing and prepping 👨‍💻</h3>
+
+<p>This is the stage where <strong>we can finally begin building wireframes/prototypes</strong> 🎉 based on the requirements, research, and assumptions we&#39;ve gathered - we can put our heads down, open up Figma, Sketch, or whatever design tool of your choosing and begin designing a few iterations of this feature/product.</p>
+
+<p><strong>Before moving a feature into a development sprint, we try to frame what we need:</strong>
+- Questions and assumptions of what we&#39;re designing
+- A clickable prototype (Figma, InVision, Sketch Cloud, Framer, scrappy code)
+- Qualitative research: 1-on-1 interviews (at least n=4)
+- A way to measure the success of this feature</p>
+
+<hr/>
+
+<h3>Conducting new research 👩‍🔬</h3>
+
+<p>Now that we have our new designs, scheduled participants, and questions to ask, we can begin conducting user interviews to quickly test our assumptions.</p>
+
+<p>Through these user interviews, we can find where friction points may exist, if the new feature makes sense, and any other questions we may want to ask the participant. Just like in the GV guide and <em><a href="thesprintbook.com">Jake Knapp&#39;s book, Sprint</a></em>, we outline our interviews as such:</p>
+
+<ol><li>Friendly welcome</li><li>Context questions</li><li>Introduction to the prototype</li><li>Tasks</li><li>Quick debrief</li></ol>
+
+<hr/>
+
+<h3>After the interviews 🤠</h3>
+
+<p>After we gather the data we received from the user interviews, we find what changes we have to make and either go back to the drawing board or begin handing off to the development team. <strong>A few things to note:</strong> in my current process, there&#39;s typically a bit of overlap within these phases, but your team and process could very well function differently.</p>
+
+<hr/>
+
+<h3>That&#39;s it! 😩</h3>
+
+<p>Hopefully this helps your team, but I&#39;d love to hear about how you manage working between researching and desigining - let me know through email or the form below.</p>]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[Looking back through 2020]]></title>
             <guid>https://notes.ryanparag.com/notes/looking-back-through-2020</guid>
             <pubDate>Sat, 02 Jan 2021 00:00:00 GMT</pubDate>
@@ -1234,6 +1323,136 @@ colors: {
 <p>There&#39;s a ton more to go over, but rather than go through the detail of every change, <a href="https://tampabay.design">check out the new site</a>!</p>
 
 <p>Hopefully that was helpful in case you want to do the same for your community, or even if you want to help contribute on <a href="https://github.com/TampaBayDesigners/tampabaydesigners">this website</a>. I&#39;ll keep updating this site with more features that could be helpful to other designers in the area, but if you have an idea, ping me using the form below - I&#39;d love to hear about your ideas.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Showing my listening activity]]></title>
+            <guid>https://notes.ryanparag.com/notes/showing-my-listening-activity</guid>
+            <pubDate>Mon, 01 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Reflecting my listening habits in realtime using the Spotify Web API and Next.js]]></description>
+            <content:encoded><![CDATA[<img src="/static/showing-my-listening-activity.png"/><p><strong>Spotify icon can be found in my <a href="https://www.figma.com/community/file/883736445420096182/Big-Sur-Icons">Figma Community file</a></strong> (as well as a bunch of other icons)</p>
+
+<hr/>
+
+<p>TLDR:
+<strong>Grab your music and podcast info from Spotify using Next.js</strong>
+- <a href="https://leerob.io/blog/spotify-api-nextjs">Lee Robinson&#39;s Spotify &amp; Next.js tutorial</a> 👍
+- <a href="https://github.com/ryan-parag/notes.ryanparag.com">View this site&#39;s GitHub Repo to see how I did it</a> 👨‍💻
+- <a href="/listening/music">View what I designed/built</a> 🎉</p>
+
+<hr/>
+
+<p>Sticking to this site&#39;s ethos - <em><strong>designing in the open</strong></em> - I thought I could share a few new things that I&#39;ve been finding a ton of fun.</p>
+
+<p>Either while I&#39;m driving, walking, sitting at my desk, or falling asleep, I&#39;m regularly listening to a song or podcast via Spotify. Using their <a href="https://developer.spotify.com/documentation/web-api/">Web API</a>, you&#39;re able to access:
+- Music (playlists, artists, songs, albums, etc.)
+- Podcasts (episodes, shows)
+- User metrics (currently listening, top listens)
+- ...and probably a ton more</p>
+
+<h3>How to build</h3>
+
+<p>After a quick search, I came across <a href="https://leerob.io/blog/spotify-api-nextjs">Lee Robinson&#39;s Spotify &amp; Next.js tutorial</a>. Using the Spotify Web API and Next.js v10+, I threw together a way to grab my own Spotify data and pull it into this site.</p>
+
+<p>Lee&#39;s tutorial is incredibly helpful in getting Spotify setup to show your own &quot;Top Tracks&quot;, but I also wanted to have a way to show:
+- if I&#39;m currently listening to something
+- if I&#39;m my currently playing item is a podcast or song
+- my last played song
+- my recently subscribed podcasts</p>
+
+<p>I also wanted to design this in a way that was compact and not overly informative. Let&#39;s start with a component that let&#39;s me see if I&#39;m currently listening to something, and whether that item is a song or podcast. We&#39;ll need 2 endpoints for this:</p>
+
+<p><code></code>`js
+// spotify.js</p>
+
+<p>const NOW<em>PLAYING</em>ENDPOINT = <code>https://api.spotify.com/v1/me/player/currently-playing</code>;
+const NOW<em>PLAYING</em>PODCAST_ENDPOINT = <code>https://api.spotify.com/v1/me/player/currently-playing/?additional_types=episode</code>;
+<code></code>`</p>
+
+<p>If you&#39;ve followed <a href="https://leerob.io/blog/spotify-api-nextjs">Lee&#39;s tutorial</a> and completed the token &amp; auth setup, we just have to add 2 more functions in order to fetch these endpoints:</p>
+
+<p><code></code>`js
+// spotify.js</p>
+
+<p>export const getNowPlaying = async () =&gt; {
+  const { access_token } = await getAccessToken();</p>
+
+<p>  return fetch(NOW<em>PLAYING</em>ENDPOINT, {
+    headers: {
+      Authorization: <code>Bearer ${access_token}</code>
+    }
+  });
+};</p>
+
+<p>export const getPodcastPlaying = async () =&gt; {
+  const { access_token } = await getAccessToken();</p>
+
+<p>  return fetch(NOW<em>PLAYING</em>PODCAST_ENDPOINT, {
+    headers: {
+      Authorization: <code>Bearer ${access_token}</code>,
+    }
+  });
+};
+<code></code>`</p>
+
+<p>After that, we just need two routes to grab&#39;s playing. I kept the song and podcast routes separate in case I need them later. Using the route for grabbing the currently playing song as an example, we can import one of our new functions to grab the response from Spotify:</p>
+
+<p><code></code>`js
+// /api/spotify/now-playing.js</p>
+
+<p>import { getNowPlaying } from &#39;@utils/spotify&#39;;</p>
+
+<p>export default async (_, res) =&gt; {
+  const response = await getNowPlaying();</p>
+
+<p>  if (response.status === 204 || response.status &gt; 400 || response.status === 500) {
+    return res.status(200).json({ isPlaying: false, playing: null });
+  }</p>
+
+<p>  const song = await response.json();</p>
+
+<p>  if(song.context === null) {
+    return res.status(200).json({ isPlaying: false, playing: &#39;podcast&#39; });
+  }</p>
+
+<p>  const isPlaying = song.is<em>playing;
+  const title = song.item.name;
+  const artist = song.item.artists.map((</em>artist) =&gt; <em>artist.name).join(&#39;, &#39;);
+  const album = song.item.album.name;
+  const albumImageUrl = song.item.album.images[0].url;
+  const songUrl = song.item.external</em>urls.spotify;</p>
+
+<p>  res.setHeader(
+    &#39;Cache-Control&#39;,
+    &#39;public, s-maxage=60, stale-while-revalidate=30&#39;
+  );</p>
+
+<p>  return res.status(200).json({
+    album,
+    albumImageUrl,
+    artist,
+    isPlaying,
+    songUrl,
+    title
+    });
+};
+<code></code>`</p>
+
+<p>We would repeat the same function for the currently playing podcast - making slight changes in the object we send back and the endpoint function we&#39;re referencing. The above function accounts for 3 scenarios:
+1. If a song is playing
+2. If a song isn&#39;t playing, but a podcast is playing
+3. If neither a song nor podcast is playing</p>
+
+<p>Let&#39;s see how we can design a single component to account for all 3 of these states:</p>
+
+<p><img alt="component states" src="../static/showing-my-listening-activity_1.png"/></p>
+
+<p>This component can account for each of the scenarios our API response may give us - helping us only surface the correct information in a way that is a bit more seamless to the user.</p>
+
+<h3>What&#39;s next?</h3>
+
+<p><img alt="podcast subscriptions" src="../static/showing-my-listening-activity_2.png"/></p>
+
+<p>I&#39;ve been having some fun grabbing my recent top tracks and my recent podcast subscriptions - <a href="/listening/music">check it out!</a> If you have feedback or ideas of what else could be a fun way to make this information more transparent and tangible, I&#39;d love to know - let me know using the form below.</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Starting the Journey]]></title>

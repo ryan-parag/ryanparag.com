@@ -7,17 +7,8 @@ import ListCard from '@components/Worksheets/ListCard'
 import List, { ListItem } from '@components/List'
 import Intro from '@components/Worksheets/Intro'
 import Title, { TitleIcon } from '@components/Title'
-import styled from 'styled-components'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
-
-const HeaderIcon = styled.div`
-  width: ${designTokens.space[7]};
-  position: relative;
-  img {
-    display: block; width: 100%;
-  }
-`
 
 const Sheet = ({title, description}) => {
   const router = useRouter();
