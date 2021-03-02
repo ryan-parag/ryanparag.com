@@ -50,7 +50,6 @@ const FooterListItem = styled.li`
 const FooterLogo = styled.div`
   display: inline-flex;
   align-items: center;
-  margin-right: ${designTokens.space[4]};
 `
 
 const FooterWide = styled.div`
@@ -90,7 +89,8 @@ const LogoLink = () => {
       <a>
         <FooterLogo>
           <div style={{
-            width: '32px',
+            width: designTokens.space[5],
+            marginRight: designTokens.space[2]
           }}>
             <Logo/>
           </div>
@@ -152,7 +152,7 @@ export default function Footer() {
   const list2 = [
     {
       name: 'Portfolio/Work',
-      href: 'htts://ryanparag.com',
+      href: 'https://ryanparag.com',
       outbound: true
     },{
       name: 'RSS',

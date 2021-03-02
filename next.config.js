@@ -5,8 +5,7 @@ module.exports = {
     AIRTABLE_BASE: process.env.AIRTABLE_BASE,
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
     SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
-    SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
-    SLACK_TOKEN: process.env.SLACK_TOKEN
+    SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN
   },
   target: 'serverless',
   webpack: function (config) {
