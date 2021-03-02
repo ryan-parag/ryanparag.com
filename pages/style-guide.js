@@ -117,9 +117,9 @@ const Notes = ({ title, description}) => {
         <hr/>
         <h3 id="tabs">Tabs</h3>
         <TabBar>
-          <TabItem className="active"><Link href="#tabs"><a>Active Tab</a></Link></TabItem>
-          <TabItem><Link href="#tabs"><a>Tab</a></Link></TabItem>
-          <TabItem><Link href="#tabs"><a>Tab</a></Link></TabItem>
+          <TabItem className="active"><a href="#tabs">Active Tab</a></TabItem>
+          <TabItem><a href="#tabs">Tab</a></TabItem>
+          <TabItem><a href="#tabs">Tab</a></TabItem>
         </TabBar>
       </Layout>
     </>
