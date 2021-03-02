@@ -21,26 +21,6 @@ const NewProjectImage = styled.img`
   }
 `
 
-const NewBgImage = styled.div`
-  width: ${designTokens.space[7]};
-  height: ${designTokens.space[7]};
-  border-radius: ${designTokens.space[1]};
-  box-shadow: 0px 0px 0px 2px var(--grey200);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(${props => props.bg});
-  position: absolute;
-  right: ${designTokens.space[1]};
-  top: 50%;
-  transform: translateY(-50%);
-  transition: all 120ms ease-out 0ms;
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    width: ${designTokens.space[6]};
-    height: ${designTokens.space[6]};
-  }
-`
-
 const NewProjectStyles = css`
   display: flex;
   align-items: center;
@@ -55,7 +35,7 @@ const NewProjectStyles = css`
     text-decoration: none;
     box-shadow: inset 4px 0px 0px var(--primary);
     background: var(--grey100);
-    ${NewProjectImage}, ${NewBgImage} {
+    ${NewProjectImage} {
       transform: translateY(-50%) rotate(10deg);
       width: calc(${designTokens.space[9]} + ${designTokens.space[7]});
       height: calc(${designTokens.space[9]} + ${designTokens.space[7]});
@@ -95,12 +75,6 @@ const NewProjectContent = styled.div`
   }
 `
 
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-bottom: ${designTokens.space[1]};
-`
-
 export const ProjectItem = ({project}) => {
   return(
     <>
@@ -111,9 +85,6 @@ export const ProjectItem = ({project}) => {
           >
             <NewProjectContentContainer>
               <NewProjectContent>
-                {
-                  project.label ? (<Label>{project.label}</Label>) : null
-                }
                 <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
                   {project.name}
                 </h4>
@@ -149,13 +120,6 @@ export const ProjectItem = ({project}) => {
                 {
                   project.image ? (
                     <NewProjectImage src={project.image} alt={project.name} />
-                  )
-                  :
-                  null
-                }
-                {
-                  project.bgImage ? (
-                    <NewBgImage bg={project.bgImage}/>
                   )
                   :
                   null
