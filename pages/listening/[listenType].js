@@ -19,7 +19,6 @@ const ListenType = ({title, description}) => {
             <img src="/static/projects/icon-listens.png" alt='Recent Listens'/>
           </TitleIcon>
           <h1>Recent Listens</h1>
-          <h3>{listenType}</h3>
           <p className="lead">Take a peek at what I've been listening to!</p>
           <p>
             I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
