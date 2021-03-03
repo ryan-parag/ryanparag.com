@@ -23,7 +23,7 @@ import fetcher from '@utils/fetcher';
 import ReactGA from 'react-ga'
 
 const SubmittedThemeList = ({ toggleTheme }) => {
-  const { data } = useSWR('/api/themes/submitted', fetcher);
+  const { data } = useSWR('/api/themes/submitted/', fetcher);
   const [active, setActive] = useState()
 
   if (!data) {

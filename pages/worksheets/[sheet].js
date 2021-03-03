@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Layout from '@components/Layout/'
 import TabNav from '@components/Worksheets/TabNav'
-import { ButtonAnchorTag } from '@components/Button'
+import { Button, ButtonAnchorTag } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import ListCard from '@components/Worksheets/ListCard'
 import List, { ListItem } from '@components/List'
@@ -9,6 +9,16 @@ import Intro from '@components/Worksheets/Intro'
 import Title, { TitleIcon } from '@components/Title'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
+import styled from 'styled-components'
+
+const ScrolledButton = styled(Button)`
+  position: fixed;
+  bottom: ${designTokens.space[3]};
+  right: ${designTokens.space[3]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    display: none;
+  }
+`
 
 const Sheet = ({title, description}) => {
   const router = useRouter();
@@ -34,6 +44,16 @@ const Sheet = ({title, description}) => {
         break;
       default:
         return ''
+    }
+  }
+
+  const scrollToTop = () => {
+    if(process.browser) {
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+      });
     }
   }
 
@@ -94,6 +114,11 @@ const Sheet = ({title, description}) => {
             ))
           }
         </List>
+        <ScrolledButton
+          onClick={() => scrollToTop()}
+        >
+          Scroll to Top
+        </ScrolledButton>
       </Layout>
     </>
   );

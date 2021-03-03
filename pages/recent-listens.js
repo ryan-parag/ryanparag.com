@@ -8,7 +8,7 @@ const Listening = ({title, description, ...props}) => {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/listening/music')
+    router.push('/listening/music', undefined, { shallow: true })
   },[])
 
   return (

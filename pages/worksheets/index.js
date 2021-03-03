@@ -8,7 +8,7 @@ const Worksheets = ({title, description, ...props}) => {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/worksheets/research')
+    router.push('/worksheets/research', undefined, { shallow: true })
   },[])
 
   return (

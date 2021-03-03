@@ -294,7 +294,7 @@ export const SpotifyNowPlaying = ({action}) => {
                       View Last Played
                     </InteriorButton>
                     {' '}<small>or</small>{' '}
-                    <Link href="/listening">
+                    <Link href="/listening" shallow>
                       <InteriorLink>
                         View Recent Listens &rarr;
                       </InteriorLink>
@@ -369,7 +369,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
                       View Last Played
                     </InteriorButton>
                     {' '}<small>or</small>{' '}
-                    <Link href="/listening">
+                    <Link href="/listening" shallow>
                       <InteriorLink>
                         View Recent Listens &rarr;
                       </InteriorLink>
@@ -414,6 +414,7 @@ export const SpotifyCurrentlyPlaying = ({playing}) => {
       initial={{ top: designTokens.space[4], opacity: 0 }}
       animate={{ top: 0, opacity: 1 }}
       transition={{ duration: 0.3, delay: 0.2 }}
+      ariaLive="polite"
     >
       {
         toggle ? (
