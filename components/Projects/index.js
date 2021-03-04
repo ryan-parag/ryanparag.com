@@ -91,7 +91,13 @@ export const ProjectItem = ({project}) => {
                 </p>
               </NewProjectContent>
             </NewProjectContentContainer>
-            <NewProjectImage src={project.image} alt={project.name} />
+            {
+              project.image ? (
+                <NewProjectImage src={project.image} alt={project.name} />
+              )
+              :
+              null
+            }
           </NewProjectAnchorTag>
         )
         :
@@ -109,7 +115,13 @@ export const ProjectItem = ({project}) => {
                   </p>
                   </NewProjectContent>
                 </NewProjectContentContainer>
-                <NewProjectImage src={project.image} alt={project.name} />
+                {
+                  project.image ? (
+                    <NewProjectImage src={project.image} alt={project.name} />
+                  )
+                  :
+                  null
+                }
               </a>
             </Link>
           </NewProjectLink>
