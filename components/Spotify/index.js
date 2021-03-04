@@ -18,7 +18,8 @@ const AlbumImage = styled.img`
   transform: translateY(-50%);
   transition: all 120ms ease-out 0ms;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    display: none;
+    width: ${designTokens.space[6]};
+    height: ${designTokens.space[6]};
   }
 `
 
@@ -58,6 +59,9 @@ const SpotifyContainer = styled.div`
 const ContentContainer = styled.div`
   flex: 1 1 0%;
   padding-left: ${designTokens.space[3]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    padding-right: ${designTokens.space[7]};
+  }
 `
 
 const Label = styled.div`
