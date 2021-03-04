@@ -13,7 +13,7 @@ const AlbumImage = styled.img`
   border-radius: ${designTokens.space[1]};
   box-shadow: 0px 0px 0px 2px var(--grey200);
   position: absolute;
-  right: 1px;
+  right: ${designTokens.space[1]};
   top: 50%;
   transform: translateY(-50%);
   transition: all 120ms ease-out 0ms;
