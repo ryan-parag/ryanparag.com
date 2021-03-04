@@ -300,7 +300,7 @@ export const SpotifyNowPlaying = ({action}) => {
                     {' '}<small>or</small>{' '}
                     <Link href="/listening" shallow>
                       <InteriorLink>
-                        View Recent Listens &rarr;
+                        View Recent Listens
                       </InteriorLink>
                     </Link>
                   </>
@@ -375,7 +375,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
                     {' '}<small>or</small>{' '}
                     <Link href="/listening" shallow>
                       <InteriorLink>
-                        View Recent Listens &rarr;
+                        View Recent Listens
                       </InteriorLink>
                     </Link>
                   </>
