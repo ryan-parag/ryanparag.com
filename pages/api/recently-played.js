@@ -10,7 +10,8 @@ export default async (_, res) => {
     songUrl: item.track.external_urls.spotify,
     title: item.track.name,
     albumImageUrl: item.track.album.images[0].url,
-    played: item.played_at
+    played: item.played_at,
+    explicit: item.track.explicit
   }));
 
   res.setHeader(
