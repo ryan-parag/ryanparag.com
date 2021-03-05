@@ -8,7 +8,8 @@ export default async (_, res) => {
     artist: track.artists.map((_artist) => _artist.name).join(', '),
     songUrl: track.external_urls.spotify,
     title: track.name,
-    albumImageUrl: track.album.images[0].url
+    albumImageUrl: track.album.images[0].url,
+    explicit: track.explicit
   }));
 
   res.setHeader(

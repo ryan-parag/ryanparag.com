@@ -4,8 +4,28 @@ import fetcher from '@utils/fetcher';
 import List, { ListItem } from '@components/List'
 import { Box } from '@components/Box'
 import { designTokens } from '@components/Theme/designTokens'
+import { format } from 'timeago.js'
 
-const Tracks = ({tracks}) => {
+const Tracks = () => {
+
+  const { data } = useSWR('/api/top-tracks', fetcher);
+
+  if (!data) {
+    return (
+      <Box center>
+        Something went wrong
+      </Box>
+    )
+  }
+
+  return data.tracks.map((track, index) => (
+    <ListItem key={index}>
+      <SpotifyTrack track={track} mb={0} />
+    </ListItem>
+  ));
+}
+
+const RecentlyPlayed = ({tracks}) => {
 
   return tracks.map((track, index) => (
     <ListItem key={index}>
@@ -25,22 +45,16 @@ const Subscriptions = ({podcasts}) => {
 
 const ListeningTitle = ({title}) => {
   return(
-    <p
-      style={{
-        color: 'var(--grey600)',
-        fontSize: designTokens.fontSizes[1],
-        marginBottom: designTokens.space[2]
-      }}
-    >
+    <h3>
       {title}
-    </p>
+    </h3>
   )
 }
 
 
 export const ListeningMusic = () => {
 
-  const { data } = useSWR('/api/top-tracks', fetcher);
+  const { data } = useSWR('/api/recently-played', fetcher);
 
   if (!data) {
     return (
@@ -52,9 +66,14 @@ export const ListeningMusic = () => {
 
   return(
     <>
-      <ListeningTitle title={`Recent top tracks I've listened to:`}/>
+      <ListeningTitle title={`Last listened tracks (${data.tracks.length}):`}/>
       <List>
-        <Tracks tracks={data.tracks}/>
+        <RecentlyPlayed tracks={data.tracks} />
+      </List>
+      <hr/>
+      <ListeningTitle title={`Most listened to tracks recently:`}/>
+      <List>
+        <Tracks/>
       </List>
     </>
   )

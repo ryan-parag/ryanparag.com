@@ -328,14 +328,14 @@ export const GlobalStyles = createGlobalStyle`
 
   @keyframes shadowBreathing {
     0% {
-      box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.12), 0px 4px 8px var(--grey200), 0px 8px 20px var(--grey200), -12px 0px 24px 4px var(--tertiaryTransparent), 12px -12px 24px 4px var(--primaryTransparent), 4px 12px 24px 4px var(--secondaryTransparent);
+      box-shadow: -16px 0px 32px 8px var(--tertiaryTransparent), 16px -16px 32px 8px var(--primaryTransparent), 8px 16px 32px 8px var(--secondaryTransparent);
       transform: rotate(0deg);
     }
     50% {
-      box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.12), 0px 1px 2px var(--grey200), 0px 2px 4px var(--grey200), 0px 0px 2px 0px var(--tertiaryTransparent), 0px 0px 2px 0px var(--primaryTransparent), 0px 0px 2px 0px var(--secondaryTransparent);
+      box-shadow: 0px 0px 2px 0px var(--tertiaryTransparent), 0px 0px 2px 0px var(--primaryTransparent), 0px 0px 2px 0px var(--secondaryTransparent);
     }
     100% {
-      box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.12), 0px 4px 8px var(--grey200), 0px 8px 20px var(--grey200), -12px 0px 24px 4px var(--tertiaryTransparent), 12px -12px 24px 4px var(--primaryTransparent), 4px 12px 24px 4px var(--secondaryTransparent);
+      box-shadow: -16px 0px 32px 8px var(--tertiaryTransparent), 16px -16px 32px 8px var(--primaryTransparent), 8px 16px 32px 8px var(--secondaryTransparent);
       transform: rotate(359deg);
     }
   }
