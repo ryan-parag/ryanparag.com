@@ -261,6 +261,13 @@ export const SpotifyLastPlayed = ({action}) => {
               <strong>{truncateString(data.title, 56)}</strong>
               <br/>
               <small>
+                {
+                    data.explicit ? (
+                      <ExplicitIcon/>
+                    )
+                    :
+                    null
+                }
                 by {data.artist}
                 {
                   data.played ? (
@@ -337,7 +344,16 @@ export const SpotifyNowPlaying = ({action}) => {
             <Content>
               <strong>{truncateString(data.title, 56)}</strong>
               <br/>
-              <small>by {data.artist}</small>
+              <small>
+                {
+                  data.explicit ? (
+                    <ExplicitIcon/>
+                  )
+                  :
+                  null
+                }
+                by {data.artist}
+              </small>
             </Content>
           </ContentContainer>
           <AlbumImage src={data.albumImageUrl}/>
@@ -410,7 +426,16 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
             <Content>
               <strong>{truncateString(data.episodeTitle, 56)}</strong>
               <br/>
-              <small style={{ opacity: 0.5 }}>{truncateString(data.episodeDescription, 80)}</small>
+              <small style={{ opacity: 0.5 }}>
+                {
+                  data.explicit ? (
+                    <ExplicitIcon/>
+                  )
+                  :
+                  null
+                }
+                {truncateString(data.episodeDescription, 80)}
+              </small>
               <br/>
               <small>{data.podcastName} by {data.publisher}</small>
             </Content>

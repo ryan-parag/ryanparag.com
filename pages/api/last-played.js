@@ -12,6 +12,7 @@ export default async (_, res) => {
   const albumImageUrl = lastPlayed.track.album.images[0].url;
   const songUrl = lastPlayed.track.external_urls.spotify;
   const played = lastPlayed.played_at;
+  const explicit = lastPlayed.track.explicit;
 
   res.setHeader(
     'Cache-Control',
@@ -24,6 +25,7 @@ export default async (_, res) => {
     album,
     albumImageUrl,
     songUrl,
-    played
+    played,
+    explicit
   });
 };

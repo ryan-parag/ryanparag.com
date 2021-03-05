@@ -20,6 +20,7 @@ export default async (_, res) => {
   const publisher = podcast.item.show.publisher;
   const podcastImgUrl = podcast.item.show.images[0].url;
   const podcastUrl = podcast.item.external_urls.spotify;
+  const explicit = podcast.item.explicit;
 
   res.setHeader(
     'Cache-Control',
@@ -33,6 +34,7 @@ export default async (_, res) => {
     episodeTitle,
     episodeDescription,
     podcastImgUrl,
-    podcastUrl
+    podcastUrl,
+    explicit
   });
 };
