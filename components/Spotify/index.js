@@ -428,7 +428,7 @@ export const SpotifyNowPlaying = ({action}) => {
           <SpotifyIcon/>
           <ContentContainer>
             <Content subtle>
-              <div>Not currently listening</div>
+              <div style={{ marginBottom: designTokens.space[2] }}>Not currently listening</div>
               {
                 action ? (
                   <>
@@ -440,7 +440,7 @@ export const SpotifyNowPlaying = ({action}) => {
                     {' '}<small>or</small>{' '}
                     <Link href="/listening" shallow>
                       <InteriorLink>
-                        View Recent Listens
+                        View More...
                       </InteriorLink>
                     </Link>
                   </>
@@ -512,7 +512,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
           <SpotifyIcon/>
           <ContentContainer>
             <Content subtle>
-              <div>Not currently listening</div>
+              <div style={{ marginBottom: designTokens.space[1] }}>Not currently listening</div>
               {
                 action ? (
                   <>
@@ -524,7 +524,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
                     {' '}<small>or</small>{' '}
                     <Link href="/listening" shallow>
                       <InteriorLink>
-                        View Recent Listens
+                        View More...
                       </InteriorLink>
                     </Link>
                   </>

@@ -7,6 +7,8 @@ import Subscribe from '@components/Subscribe'
 import Title from '@components/Title'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import List, { ListItem } from '@components/List'
+import Collapse from '@components/Collapse'
+import Randomizer from '@components/Randomizer'
 
 const ListLabel = styled.div`
   display: flex;
@@ -150,13 +152,22 @@ const About = ({ title, description, ...props }) => {
               <img src="/static/profile.png"/>
             </ProfileImg>
             <h1>Hello, I'm Ryan.👋</h1>
-            <p className="lead">I'm a Digital Product Designer based in Tampa, Florida.</p>
+            <p className="lead">I'm a Digital Product Designer and <Randomizer/>.</p>
             <p>
-              I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy.
+              I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy. In a previous life, I worked on the business-end of healthcare.
             </p>
             <p>
               I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
             </p>
+            <Collapse>
+              <p>
+              Previously, I helped build an enterprise problem-solving platform for payments as the first product designer at <a href="https://ryanparag.com/work/disputelab">Chargebacks911</a>.
+              </p>
+              <p>
+              Before that, I was a healthcare analyst working on the business side of pharmaceuticals (after studying Healthcare Informatics in college) - building pricing models against demographic data, calculating quant analyses on research cost to forecast growth, investigate business decisions to launch a pharma product to market, etc. 😴.
+              </p>
+            </Collapse>
+            <hr/>
             <SpotifyCurrentlyPlaying/>
           </Title>
           <h3>Projects</h3>
