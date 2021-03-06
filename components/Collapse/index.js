@@ -23,7 +23,7 @@ const Container = styled.div`
   }
 `
 
-const Collapse = ({children}) => {
+const Collapse = ({children, label, openLabel}) => {
 
   const [open, setOpen] = useState(false)
 
@@ -36,7 +36,7 @@ const Collapse = ({children}) => {
               {children}
             </Container>
             <div style={{ marginBottom: designTokens.space[3] }}>
-              <Button small onClick={() => setOpen(!open)}>Read More</Button>
+              <Button small onClick={() => setOpen(!open)}>{label ? label : 'View More'}</Button>
             </div>
           </>
         )
@@ -45,7 +45,7 @@ const Collapse = ({children}) => {
           <Container open>
             {children}
             <div style={{ marginBottom: designTokens.space[3] }}>
-              <Button small onClick={() => setOpen(!open)}>View Less</Button>
+              <Button small onClick={() => setOpen(!open)}>{openLabel ? openLabel : 'View Less'}</Button>
             </div>
           </Container>
         )

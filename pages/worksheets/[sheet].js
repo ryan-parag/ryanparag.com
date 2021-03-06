@@ -76,7 +76,7 @@ const Sheet = ({title, description}) => {
           <h1>Worksheets</h1>
           <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>
           <p>
-            <small>Data collected and Inspired from <a className="link" target="_blank" href="https://www.uxworksheets.com/">UX Worksheets</a> 🙌.</small>
+            <small>Data collected and inspired from <a className="link" target="_blank" href="https://www.uxworksheets.com/">UX Worksheets</a>, created by  <a className="link" href="https://abdussalam.pk/">Abdul Salam</a> 🙌.</small>
           </p>
         </Title>
         <TabNav

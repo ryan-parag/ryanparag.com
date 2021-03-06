@@ -154,7 +154,7 @@ const About = ({ title, description, ...props }) => {
             <h1>Hello, I'm Ryan.👋</h1>
             <p className="lead">I'm a Digital Product Designer and <Randomizer/>.</p>
             <p>
-              I help build digital products and solve tough problems — focusing on user research & testing, prototyping, visual design, front-end code, and product strategy. In a previous life, I worked on the business-end of healthcare.
+              I help build digital products and solve tough problems — focusing on UX research & testing, prototyping, visual/UI design, front-end code, and product strategy. In a previous life, I worked on the business-end of healthcare.
             </p>
             <p>
               I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
@@ -166,6 +166,10 @@ const About = ({ title, description, ...props }) => {
               <p>
               Before that, I was a healthcare analyst working on the business side of pharmaceuticals (after studying Healthcare Informatics in college) - building pricing models against demographic data, calculating quant analyses on research cost to forecast growth, investigate business decisions to launch a pharma product to market, etc. 😴.
               </p>
+              <p>
+                I thrive in fast-paced, collaborative environments and am commited to being transparent in my work and process by trying to <Link href="/notes/"><a>share</a></Link> how I think and design around small and large problems.
+              </p>
+              <p>You can find my work on the <a href="https://ryanparag.com/work/masonite">portfolio section</a> of my site, my open-source projects on <a href="https://github.com/ryan-parag">GitHub</a>, or even find my recent <Link href="/listening/music/"><a>listening activity</a></Link> on this site.</p>
             </Collapse>
             <hr/>
             <SpotifyCurrentlyPlaying/>

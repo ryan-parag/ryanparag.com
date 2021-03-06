@@ -34,7 +34,7 @@ const Randomizer = () => {
     { text: "inbox-zero person 📥" },
     { text: "Slack group hoarder"},
     { text: "constant tinkerer"},
-    { text: "meditate to cooking videos on youtube 👩‍🍳"},
+    { text: "enjoy meditating to cooking videos on youtube 👩‍🍳"},
     { text: "regularly bite off more than I can chew - literally and figuratively"},
     { text: "like this portfolio, a constant work in progress"},
     { text: "have strong opinions on movies 🎬"},

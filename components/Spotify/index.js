@@ -167,7 +167,7 @@ export const SpotifyTrack = ({track}) => {
                     :
                     null
                   }
-                  by {track.artist}
+                  by {truncateString(track.artist,56)}
                   {
                     track.played ? (
                       <span style={{
