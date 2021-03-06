@@ -1,15 +1,33 @@
 import { useRouter } from "next/router";
 import Layout from '@components/Layout/'
 import Title, { TitleIcon } from '@components/Title'
-import { ListeningMusic, ListeningPodcasts} from '@components/Listening'
+import { ListeningMusic, ListeningPodcasts, ListeningPlaylists} from '@components/Listening'
 import TabNav from '@components/Listening/TabNav'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
+import { ButtonAnchorTag } from '@components/Button'
+import { designTokens } from '@components/Theme/designTokens'
 
 const ListenType = ({title, description}) => {
   const router = useRouter();
   const { listenType } = router.query;
 
-  const categories = ['Music', 'Podcasts']
+  const categories = ['Music', 'Podcasts', 'Playlists']
+
+  const displayContent = (type) => {
+    switch (type) {
+      case 'music':
+        return <ListeningMusic/>
+        break;
+      case 'podcasts':
+        return <ListeningPodcasts/>
+        break;
+      case 'playlists':
+        return <ListeningPlaylists/>
+        break;
+      default:
+        return null
+    }
+  }
 
   return (
     <>
@@ -29,22 +47,31 @@ const ListenType = ({title, description}) => {
           items={categories}
           active={listenType}
         />
-        {
-          listenType === 'music' ? (
-            <ListeningMusic/>
-          )
-          :
-          (
-            <ListeningPodcasts/>
-          )
-        }
+        {displayContent(listenType)}
+        <div
+          style={{
+            textAlign: 'center',
+            padding: designTokens.space[3]
+          }}
+        >
+          <ButtonAnchorTag href={`mailto:parag.ryan@gmail.com?Subject=I have ${listenType === 'music' || listenType === 'playlists' ? 'dope music' : 'a podcast rec'}`}>
+            <img
+              src="/static/email.svg"
+              width="32"
+              style={{
+                transform: 'rotate(10deg) translateX(-4px)'
+              }}
+            />
+            Have a recommendation?
+          </ButtonAnchorTag>
+        </div>
       </Layout>
     </>
   );
 };
 
 export async function getStaticPaths() {
-  const categories = ['music', 'podcasts']
+  const categories = ['music', 'podcasts', 'playlists']
   const paths = categories.map((listenType) => ({
     params: { listenType }
   }))

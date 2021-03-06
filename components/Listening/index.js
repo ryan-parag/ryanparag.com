@@ -1,4 +1,4 @@
-import { SpotifyTrack, SpotifyPodcast } from '@components/Spotify'
+import { SpotifyTrack, SpotifyPodcast, SpotifyPlaylist } from '@components/Spotify'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import List, { ListItem } from '@components/List'
@@ -39,6 +39,15 @@ const Subscriptions = ({podcasts}) => {
   return podcasts.map((podcast, index) => (
     <ListItem key={index}>
       <SpotifyPodcast podcast={podcast} mb={0} />
+    </ListItem>
+  ));
+}
+
+const Playlists = ({playlists}) => {
+
+  return playlists.map((playlist, index) => (
+    <ListItem key={index}>
+      <SpotifyPlaylist playlist={playlist} mb={0} />
     </ListItem>
   ));
 }
@@ -95,6 +104,28 @@ export const ListeningPodcasts = () => {
       <ListeningTitle title={`Recent podcasts I've been digging:`}/>
       <List>
         <Subscriptions podcasts={data.podcasts}/>
+      </List>
+    </>
+  )
+}
+
+export const ListeningPlaylists = () => {
+
+  const { data } = useSWR('/api/playlists', fetcher);
+
+  if (!data) {
+    return (
+      <Box center>
+        Something went wrong
+      </Box>
+    )
+  }
+  return(
+    <>
+      <ListeningTitle title={`Playlists for focused work:`}/>
+      <p>I tend to listen to music in long strings of time while working. Here are a few playlists that keep me tuned into some heads down work while playing something constant in the background.</p>
+      <List>
+        <Playlists playlists={data.playlists}/>
       </List>
     </>
   )

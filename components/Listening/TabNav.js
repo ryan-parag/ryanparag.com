@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { TabBar, TabItem } from '@components/Tabs'
-import { Mic, Music } from 'react-feather'
+import { Mic, Music, List } from 'react-feather'
 import { designTokens } from '@components/Theme/designTokens'
 
 const TabNav = ({items, active}) => {
@@ -12,6 +12,9 @@ const TabNav = ({items, active}) => {
         break;
       case 'Podcasts':
         return <Mic size={'16'}/>
+        break;
+      case 'Playlists':
+        return <List size={'16'}/>
         break;
       default:
         return null

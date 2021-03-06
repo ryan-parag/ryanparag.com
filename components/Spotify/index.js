@@ -99,12 +99,12 @@ const InteriorLink = styled.a`
   margin-left: ${props => props.marginLeft ? '40px' : '0px'};
 `
 
-const Explicit = styled.div`
+const TypeIcon = styled.div`
   display: inline-flex;
   font-size: ${designTokens.fontSizes[0]};
-  background: var(--secondaryTransparent);
+  background: ${props => props.secondary ? 'var(--secondaryTransparent)' : 'var(--tertiaryTransparent)'};
   margin-right: ${designTokens.space[2]};
-  color: var(--secondaryDark);
+  color: ${props => props.secondary ? 'var(--secondaryDark)' : 'var(--tertiaryDark)'};;
   align-items: center;
   justify-content: center;
   width: ${designTokens.space[3]};
@@ -127,9 +127,17 @@ const SpotifyIcon = ({active}) => {
 
 const ExplicitIcon = () => {
   return (
-    <Explicit>
+    <TypeIcon secondary>
       E
-    </Explicit>
+    </TypeIcon>
+  )
+}
+
+const CollabIcon = () => {
+  return (
+    <TypeIcon>
+      C
+    </TypeIcon>
   )
 }
 
@@ -175,7 +183,7 @@ export const SpotifyTrack = ({track}) => {
                 </small>
               </Content>
             </ContentContainer>
-            <AlbumImage src={track.albumImageUrl}/>
+            <AlbumImage src={track.albumImageUrl} alt={track.artist}/>
           </SpotifyLink>
         )
         :
@@ -223,7 +231,62 @@ export const SpotifyPodcast = ({podcast}) => {
                 </p>
               </Content>
             </ContentContainer>
-            <AlbumImage src={podcast.showImageUrl}/>
+            <AlbumImage src={podcast.showImageUrl} alt={podcast.name}/>
+          </SpotifyLink>
+        )
+        :
+        (
+          <SpotifyContainer>
+            <SpotifyIcon/>
+            <ContentContainer>
+              <Content subtle>
+                <div>Something went wrong</div>
+              </Content>
+            </ContentContainer>
+          </SpotifyContainer>
+        )
+      }
+    </>
+  );
+}
+
+export const SpotifyPlaylist = ({playlist}) => {
+
+  return (
+    <>
+      {
+        playlist && playlist.playlistUrl ? (
+          <SpotifyLink
+            href={playlist.playlistUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SpotifyIcon active/>
+            <ContentContainer>
+              <Label>Playlist ({playlist.tracks} song{playlist.tracks !== 1 ? 's' : null})</Label>
+              <Content>
+                <strong>{truncateString(playlist.title, 56)}</strong>
+                <br/>
+                <p
+                  style={{
+                    opacity: 0.5,
+                    fontSize: designTokens.fontSizes[0],
+                    lineHeight: designTokens.lineHeights.body,
+                    marginBottom: '0'
+                  }}
+                >
+                  {
+                    playlist.collaborative ? (
+                      <CollabIcon/>
+                    )
+                    :
+                    null
+                  }
+                  {truncateString(playlist.description, 80)}
+                </p>
+              </Content>
+            </ContentContainer>
+            <AlbumImage src={playlist.playlistImageUrl} alt={playlist.title}/>
           </SpotifyLink>
         )
         :
@@ -284,7 +347,7 @@ export const SpotifyLastPlayed = ({action}) => {
               </small>
             </Content>
           </ContentContainer>
-          <AlbumImage src={data.albumImageUrl}/>
+          <AlbumImage src={data.albumImageUrl} alt={data.artist}/>
         </SpotifyLink>
       )
       :
@@ -356,7 +419,7 @@ export const SpotifyNowPlaying = ({action}) => {
               </small>
             </Content>
           </ContentContainer>
-          <AlbumImage src={data.albumImageUrl}/>
+          <AlbumImage src={data.albumImageUrl} alt={data.artist}/>
         </SpotifyLink>
       )
       :
@@ -440,7 +503,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
               <small>{data.podcastName} by {data.publisher}</small>
             </Content>
           </ContentContainer>
-          <AlbumImage src={data.podcastImgUrl}/>
+          <AlbumImage src={data.podcastImgUrl} alt={data.podcastName}/>
         </SpotifyLink>
       )
       :
