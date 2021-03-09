@@ -14,6 +14,9 @@ const ContactContainer = styled.a`
   position: relative;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.12);
   transition: all 120ms ease-out 0s;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    padding-top: ${designTokens.space[6]};
+  }
   &:hover, &:focus {
     text-decoration: none;
     img {
@@ -22,8 +25,7 @@ const ContactContainer = styled.a`
   }
 `
 
-const ContactTitle = styled.h2`
-  font-size: ${designTokens.fontSizes[4]};
+const ContactTitle = styled.h3`
   margin-top: 0;
   margin-bottom: ${designTokens.space[2]};
 `
@@ -62,6 +64,11 @@ const ImgContainer = styled.div`
   padding: ${designTokens.space[2]};
   border: ${designTokens.space[2]} solid var(--grey0);
   z-index: 2;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    width: ${designTokens.space[8]};
+    height: ${designTokens.space[8]};
+    top: -${designTokens.space[5]};
+  }
   img {
     position: absolute;
     z-index: 3;
@@ -69,6 +76,8 @@ const ImgContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 120ms ease-out 0s;
+    width: calc(${designTokens.space[7]} + ${designTokens.space[2]});
+    display: block;
   }
   &:after {
     content: '';
@@ -89,7 +98,7 @@ export default function ContactBox() {
   return(
     <ContactContainer href="mailto:parag.ryan@gmail.com">
       <ImgContainer>
-        <img width="72" src="/static/thanks.png"/>
+        <img src="/static/thanks.png"/>
       </ImgContainer>
       <ContactContent>
         <ContactTitle>
