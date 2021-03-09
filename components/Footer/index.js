@@ -4,6 +4,40 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import Logo from '@components/Logo'
 import { Button, ButtonAnchorTag } from '@components/Button'
+import { GitHub, Dribbble, Codepen, Send } from 'react-feather'
+
+const IconLink = styled.a`
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: ${designTokens.space[2]};
+  cursor: pointer;
+  display: inline-flex;
+  height: calc(${designTokens.space[5]} + ${designTokens.space[1]});
+  justify-content: center;
+  padding: 0;
+  transition: background-color .2s ease;
+  width: calc(${designTokens.space[5]} + ${designTokens.space[1]});
+  svg {
+    transition: all 120ms ease-out 60ms;
+  }
+  &:hover, &:focus {
+    background-color: var(--primaryTransparent);
+    color: var(--primaryDark);
+    svg {
+      transform: scale(1.2);
+    }
+  }
+`
+
+const IconBar = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: ${designTokens.space[3]};
+  a {
+    margin-left: ${designTokens.space[2]};
+  }
+`
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -53,10 +87,9 @@ const FooterLogo = styled.div`
 `
 
 const FooterWide = styled.div`
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-top: ${designTokens.space[5]};
 `
 
 const FooterLink = ({link}) => {
@@ -101,11 +134,51 @@ const LogoLink = () => {
   )
 }
 
-const DescriptionSection = ({children}) => {
+const DescriptionSection = () => {
+
+  const clearStorage = () => {
+    localStorage.removeItem('ryansNotesNewTheme')
+    localStorage.removeItem('customThemes')
+    window.location.reload()
+  }
+
+  const social = [
+    {
+      name: 'CodePen',
+      href: 'https://codepen.io/ryanparag',
+      outbound: true,
+      icon: <Codepen size={'16'}/>
+    },{
+      name: 'GitHub',
+      href: 'https://github.com/ryan-parag',
+      outbound: true,
+      icon: <GitHub size={'16'}/>
+    },{
+      name: 'Dribbble',
+      href: 'https://dribbble.com/ryanparag',
+      outbound: true,
+      icon: <Dribbble size={'16'}/>
+    },{
+      name: 'Email',
+      href: 'mailto:parag.ryam@gmail.com?subject=Hey Ryan!',
+      outbound: true,
+      icon: <Send size={'16'}/>
+    }
+  ]
+
   return(
     <FooterWide>
       <LogoLink/>
-      {children}
+      <IconBar>
+        <Button small onClick={clearStorage}>Reset Theme</Button>
+        {
+          social.map(item => (
+            <IconLink key={item.name} aria-label={item.name} href={item.href}>
+              {item.icon}
+            </IconLink>
+          ))
+        }
+      </IconBar>
       <div style={{ marginTop: designTokens.space[3], marginBottom: designTokens.space[3], fontSize: designTokens.fontSizes[1] }}>
         <small>Made with Next.js and Styled Components</small>
       </div>
@@ -114,12 +187,6 @@ const DescriptionSection = ({children}) => {
 }
 
 export default function Footer() {
-
-  const clearStorage = () => {
-    localStorage.removeItem('ryansNotesNewTheme')
-    localStorage.removeItem('customThemes')
-    window.location.reload()
-  }
 
   const list1 = [
     {
@@ -131,45 +198,37 @@ export default function Footer() {
       href: '/notes',
       outbound: false
     },{
-      name: 'Recent Listens',
-      href: '/listening',
-      outbound: false
-    },{
       name: 'Create a Theme',
       href: '/create-theme',
-      outbound: false
-    },{
-      name: 'Worksheets',
-      href: '/worksheets',
-      outbound: false
-    },{
-      name: 'About',
-      href: '/about',
       outbound: false
     }
   ]
 
   const list2 = [
     {
-      name: 'Portfolio/Work',
-      href: 'https://ryanparag.com',
-      outbound: true
+      name: 'Recent Listens',
+      href: '/listening',
+      outbound: false
+    },{
+      name: 'Worksheets',
+      href: '/worksheets',
+      outbound: false
     },{
       name: 'RSS',
       href: '/rss',
       outbound: false
-    },{
-      name: 'CodePen',
-      href: 'https://codepen.io/ryanparag',
+    }
+  ]
+
+  const list3 = [
+    {
+      name: 'Portfolio/Work',
+      href: 'https://ryanparag.com',
       outbound: true
     },{
-      name: 'GitHub',
-      href: 'https://github.com/ryan-parag',
-      outbound: true
-    },{
-      name: 'Dribbble',
-      href: 'https://dribbble.com/ryanparag',
-      outbound: true
+      name: 'About',
+      href: '/about',
+      outbound: false
     }
   ]
 
@@ -190,24 +249,14 @@ export default function Footer() {
             ))
           }
         </FooterList>
-        <DescriptionSection>
-          <div
-            style={{
-              marginTop: designTokens.space[3],
-              marginBottom: designTokens.space[3],
-              }}
-            >
-            <Button small onClick={clearStorage}>Reset Theme</Button>
-          </div>
-          <div
-            style={{
-              marginTop: designTokens.space[3],
-              marginBottom: designTokens.space[3],
-              }}
-            >
-            <ButtonAnchorTag small target="_blank" href="https://github.com/ryan-parag/notes.ryanparag.com">View on GitHub</ButtonAnchorTag>
-          </div>
-        </DescriptionSection>
+        <FooterList>
+          {
+            list3.map((item,i) => (
+              <FooterLink key={i} link={item}/>
+            ))
+          }
+        </FooterList>
+        <DescriptionSection/>
       </FooterInner>
     </FooterContainer>
   )

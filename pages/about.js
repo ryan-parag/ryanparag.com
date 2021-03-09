@@ -9,6 +9,7 @@ import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import List, { ListItem } from '@components/List'
 import Collapse from '@components/Collapse'
 import Randomizer from '@components/Randomizer'
+import ContactBox from '@components/ContactBox'
 
 const ListLabel = styled.div`
   display: flex;
@@ -342,6 +343,7 @@ const About = ({ title, description, ...props }) => {
           }
         </List>
         <hr/>
+        <ContactBox/>
         <Subscribe/>
       </Layout>
     </>
