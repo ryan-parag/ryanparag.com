@@ -45,8 +45,9 @@ const Index = ({ posts, title, description, ...props }) => {
               <Link href="/work/">
                 <a>
                   <img
-                    src="/static/note.svg"
+                    src="/static/work-icon.svg"
                     width="32"
+                    className="buttonIcon"
                     style={{
                       marginRight: designTokens.space[2],
                       transform: 'rotate(10deg) translateX(-4px)'
@@ -72,6 +73,7 @@ const Index = ({ posts, title, description, ...props }) => {
                   <img
                     src="/static/note.svg"
                     width="32"
+                    className="buttonIcon"
                     style={{
                       marginRight: designTokens.space[2],
                       transform: 'rotate(10deg) translateX(-4px)'

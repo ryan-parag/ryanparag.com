@@ -24,6 +24,10 @@ export const ButtonBase = css`
     background: var(--grey200);
     color: var(--grey800);
     text-decoration: none;
+    position: relative;
+    .buttonIcon {
+      transform: scale(1.2);
+    }
   }
   &:focus {
     outline: ${designTokens.space[1]} solid var(--primaryTransparent);
