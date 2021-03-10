@@ -16,9 +16,10 @@ const AccordionContainer = styled.div`
   ${ContainerStyles}
 `
 
-const AccordionControl = styled.div`
+const AccordionControl = styled.button`
   display: flex;
   align-items: center;
+  border: 0;
   justify-content: space-between;
   padding: ${designTokens.space[3]} ${designTokens.space[4]};
   font-size: ${designTokens.fontSizes[1]};
@@ -30,6 +31,9 @@ const AccordionControl = styled.div`
   transition: all 120ms ease-out 0s;
   &:hover, &:focus {
     color: var(--grey700);
+  }
+  &:focus {
+    outline: ${designTokens.space[2]} solid var(--primaryTransparent);
   }
   .icon {
     transition: all 200ms ease-out 0s;

@@ -93,7 +93,7 @@ const Nav = styled.nav`
     color: var(--grey600);
     align-items: center;
     transition: all 120ms ease-out 0s;
-    &:hover {
+    &:hover, &:focus {
       color: var(--grey900);
       border-color: var(--grey600);
       text-decoration: none;
