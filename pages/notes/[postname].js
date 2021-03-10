@@ -13,7 +13,7 @@ import Subscribe from '@components/Subscribe'
 import Chip from '@components/Chip'
 import 'react-medium-image-zoom/dist/styles.css'
 
-import Layout from '@components/Layout'
+import Layout, { Wrapper } from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
 
 const ScrolledButton = styled(Button)`
@@ -46,67 +46,69 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   return (
     <>
       <Layout pageTitle={`${frontmatter.title} | ${siteTitle}`} description={frontmatter.description} ogImage={frontmatter.hero_image}>
-        <div style={{ marginBottom: designTokens.space[6]}}>
-          <ButtonLink>
-            <Link href="/notes">
-              <a>←{' '}Back to Notes</a>
-            </Link>
-          </ButtonLink>
-        </div>
-        <article>
-          <h1>{frontmatter.title}</h1>
-          <div
-            style={{
-              marginBottom: designTokens.space[3]
-            }}
-          >
-            <Chip>
-              Updated {format(frontmatter.date)}
-            </Chip>
+        <Wrapper>
+          <div style={{ marginBottom: designTokens.space[6]}}>
+            <ButtonLink>
+              <Link href="/notes">
+                <a>←{' '}Back to Notes</a>
+              </Link>
+            </ButtonLink>
           </div>
-          {frontmatter.hero_image && (
-            <img
-              src={frontmatter.hero_image}
+          <article>
+            <h1>{frontmatter.title}</h1>
+            <div
               style={{
-                marginBottom: designTokens.space[3],
-                display: 'block',
-                width: '100%'
+                marginBottom: designTokens.space[3]
               }}
-              alt={frontmatter.title}
-            />
-          )}
-          <div>
-            <ReactMarkdown
-              source={markdownBody}
-              renderers={{
-                code: CodeBlock,
-                image: ImgZoom
-              }}
-            />
-          </div>
-        </article>
-        <hr/>
-        <ContactBox/>
-        <ContactForm/>
-        <LinkContainer>
-          <ButtonLink>
-            <Link href="/notes/">
-              <a>
-                <img
-                  src="/static/note.svg"
-                  width="32"
-                  style={{
-                    marginRight: designTokens.space[2],
-                    transform: 'rotate(10deg) translateX(-4px)'
-                  }}
-                />
-                Read more notes
-              </a>
-            </Link>
-          </ButtonLink>
-        </LinkContainer>
-        <hr/>
-        <Subscribe/>
+            >
+              <Chip>
+                Updated {format(frontmatter.date)}
+              </Chip>
+            </div>
+            {frontmatter.hero_image && (
+              <img
+                src={frontmatter.hero_image}
+                style={{
+                  marginBottom: designTokens.space[3],
+                  display: 'block',
+                  width: '100%'
+                }}
+                alt={frontmatter.title}
+              />
+            )}
+            <div>
+              <ReactMarkdown
+                source={markdownBody}
+                renderers={{
+                  code: CodeBlock,
+                  image: ImgZoom
+                }}
+              />
+            </div>
+          </article>
+          <hr/>
+          <ContactBox/>
+          <ContactForm/>
+          <LinkContainer>
+            <ButtonLink>
+              <Link href="/notes/">
+                <a>
+                  <img
+                    src="/static/note.svg"
+                    width="32"
+                    style={{
+                      marginRight: designTokens.space[2],
+                      transform: 'rotate(10deg) translateX(-4px)'
+                    }}
+                  />
+                  Read more notes
+                </a>
+              </Link>
+            </ButtonLink>
+          </LinkContainer>
+          <hr/>
+          <Subscribe/>
+        </Wrapper>
         <ScrolledButton
           onClick={() => scrollToTop()}
         >

@@ -1,4 +1,4 @@
-import {LayoutContainer, Main} from '@components/Layout/'
+import {LayoutContainer, Wrapper} from '@components/Layout/'
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import Header from '@components/Header/'
@@ -142,8 +142,8 @@ const CreateTheme = ({ title, description, ...props }) => {
           <GlobalStyles/>
           <Header toggleTheme={toggleTheme} theme={theme} />
           <section>
-            <Main>
-              <LayoutContainer>
+            <LayoutContainer>
+              <Wrapper>
                 <Title>
                   <TitleIcon>
                     <img src="/static/projects/icon-theme-creator.png" alt="Theme Creator"/>
@@ -212,8 +212,8 @@ const CreateTheme = ({ title, description, ...props }) => {
                 <hr/>
                 <ContactBox/>
                 <ContactForm/>
-              </LayoutContainer>
-            </Main>
+              </Wrapper>
+            </LayoutContainer>
           </section>
           <Footer/>
         </StaticKitProvider>

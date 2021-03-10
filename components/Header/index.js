@@ -10,6 +10,7 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import { X } from 'react-feather'
 import { LogoWithLabel } from '@components/Logo'
+import { Wrapper } from '@components/Layout/'
 
 const HeaderContainer = styled.div`
   position: relative;
@@ -43,7 +44,7 @@ const ThemePickerBody = styled.div`
 `
 
 const NavContainer = styled.header`
-  padding: ${designTokens.space[4]} ${designTokens.space[3]} ${designTokens.space[3]};
+  padding: ${designTokens.space[4]} 0 ${designTokens.space[3]};
   width: 100%;
   border-bottom: 1px solid var(--grey100);
   box-shadow: 0px 1px 0px var(--grey100);
@@ -69,17 +70,12 @@ const NavContainer = styled.header`
 `
 
 const HeaderInner = styled.div`
-  width: ${designTokens.layoutWidth.sm};
-  max-width: 100%;
-  margin: auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     display: none;
-  }
-  @media screen and (min-width: ${designTokens.breakpoints[0]}) {
-    width: ${designTokens.layoutWidth.lg};
   }
 `
 
@@ -407,30 +403,32 @@ export default function Header({ toggleTheme, theme }) {
       </ThemePicker>
       <NavContainer className={isExpanded ? 'isOpen' : null}>
         <MobileNav>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
-            <div style={{ display: 'inline-flex', alignItems: 'center'}}>
-              {
-                isExpanded ? (
-                  <IconButton onClick={closeMobile} aria-label={'Close'}>
-                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><path d='M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z'/></svg>
-                  </IconButton>
-                )
-                :
-                (
-                  <IconButton onClick={() => setExpanded(true)} aria-label={'Open'}>
-                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><line x1='88' y1='152' x2='424' y2='152' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='256' x2='424' y2='256' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='360' x2='424' y2='360' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/></svg>
-                  </IconButton>
-                )
-              }
-              <div style={{ paddingLeft: designTokens.space[3]}}>
-                <LogoWithLabel/>
+          <Wrapper>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
+              <div style={{ display: 'inline-flex', alignItems: 'center'}}>
+                {
+                  isExpanded ? (
+                    <IconButton onClick={closeMobile} aria-label={'Close'}>
+                      <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><path d='M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z'/></svg>
+                    </IconButton>
+                  )
+                  :
+                  (
+                    <IconButton onClick={() => setExpanded(true)} aria-label={'Open'}>
+                      <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><line x1='88' y1='152' x2='424' y2='152' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='256' x2='424' y2='256' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/><line x1='88' y1='360' x2='424' y2='360' fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="48px"/></svg>
+                    </IconButton>
+                  )
+                }
+                <div style={{ paddingLeft: designTokens.space[3]}}>
+                  <LogoWithLabel/>
+                </div>
               </div>
+              <ThemeBtn
+                handleClick={toggle}
+                state={isPickerOpen}
+              />
             </div>
-            <ThemeBtn
-              handleClick={toggle}
-              state={isPickerOpen}
-            />
-          </div>
+          </Wrapper>
           {
             isExpanded ?
               (
@@ -471,36 +469,38 @@ export default function Header({ toggleTheme, theme }) {
               )
           }
         </MobileNav>
-        <HeaderInner>
-          <Nav role="navigation" aria-label="main navigation">
-            <NavList>
-            <NavListItem>
-                <NavItem href="/">
-                  <a>Home</a>
-                </NavItem>
-              </NavListItem>
+        <Wrapper>
+          <HeaderInner>
+            <Nav role="navigation" aria-label="main navigation">
+              <NavList>
               <NavListItem>
-                <NavItem href="/work">
-                  <a>Work</a>
-                </NavItem>
-              </NavListItem>
-              <NavListItem>
-                <NavItem href="/notes">
-                  <a>Notes</a>
-                </NavItem>
-              </NavListItem>
-              <NavListItem>
-                <NavItem href="/about">
-                  <a>About</a>
-                </NavItem>
-              </NavListItem>
-            </NavList>
-          </Nav>
-          <ThemeBtn
-            handleClick={toggle}
-            state={isPickerOpen}
-          />
-        </HeaderInner>
+                  <NavItem href="/">
+                    <a>Home</a>
+                  </NavItem>
+                </NavListItem>
+                <NavListItem>
+                  <NavItem href="/work">
+                    <a>Work</a>
+                  </NavItem>
+                </NavListItem>
+                <NavListItem>
+                  <NavItem href="/notes">
+                    <a>Notes</a>
+                  </NavItem>
+                </NavListItem>
+                <NavListItem>
+                  <NavItem href="/about">
+                    <a>About</a>
+                  </NavItem>
+                </NavListItem>
+              </NavList>
+            </Nav>
+            <ThemeBtn
+              handleClick={toggle}
+              state={isPickerOpen}
+            />
+          </HeaderInner>
+        </Wrapper>
       </NavContainer>
     </HeaderContainer>
   )

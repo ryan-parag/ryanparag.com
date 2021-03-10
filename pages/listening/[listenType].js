@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Layout from '@components/Layout/'
+import Layout, { Wrapper } from '@components/Layout/'
 import Title, { TitleIcon } from '@components/Title'
 import { ListeningMusic, ListeningPodcasts, ListeningPlaylists} from '@components/Listening'
 import TabNav from '@components/Listening/TabNav'
@@ -32,39 +32,41 @@ const ListenType = ({title, description}) => {
   return (
     <>
       <Layout pageTitle={`${title} | Recent Listens`} description={description} ogImage="/listens-social-media.png">
-        <Title>
-          <TitleIcon>
-            <img src="/static/projects/icon-listens.png" alt='Recent Listens'/>
-          </TitleIcon>
-          <h1>Recent Listens</h1>
-          <p className="lead">Take a peek at what I've been listening to!</p>
-          <p>
-            I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
-          </p>
-          <SpotifyCurrentlyPlaying playing/>
-        </Title>
-        <TabNav
-          items={categories}
-          active={listenType}
-        />
-        {displayContent(listenType)}
-        <div
-          style={{
-            textAlign: 'center',
-            padding: designTokens.space[3]
-          }}
-        >
-          <ButtonAnchorTag href={`mailto:parag.ryan@gmail.com?Subject=I have ${listenType === 'music' || listenType === 'playlists' ? 'dope music' : 'a podcast rec'}`}>
-            <img
-              src="/static/email.svg"
-              width="32"
-              style={{
-                transform: 'rotate(10deg) translateX(-4px)'
-              }}
-            />
-            Have a recommendation?
-          </ButtonAnchorTag>
-        </div>
+        <Wrapper>
+          <Title>
+            <TitleIcon>
+              <img src="/static/projects/icon-listens.png" alt='Recent Listens'/>
+            </TitleIcon>
+            <h1>Recent Listens</h1>
+            <p className="lead">Take a peek at what I've been listening to!</p>
+            <p>
+              I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
+            </p>
+            <SpotifyCurrentlyPlaying playing/>
+          </Title>
+          <TabNav
+            items={categories}
+            active={listenType}
+          />
+          {displayContent(listenType)}
+          <div
+            style={{
+              textAlign: 'center',
+              padding: designTokens.space[3]
+            }}
+          >
+            <ButtonAnchorTag href={`mailto:parag.ryan@gmail.com?Subject=I have ${listenType === 'music' || listenType === 'playlists' ? 'dope music' : 'a podcast rec'}`}>
+              <img
+                src="/static/email.svg"
+                width="32"
+                style={{
+                  transform: 'rotate(10deg) translateX(-4px)'
+                }}
+              />
+              Have a recommendation?
+            </ButtonAnchorTag>
+          </div>
+        </Wrapper>
       </Layout>
     </>
   );

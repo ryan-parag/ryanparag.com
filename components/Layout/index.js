@@ -10,17 +10,18 @@ import Footer from '@components/Footer'
 import { StaticKitProvider } from '@statickit/react'
 import ReactGA from 'react-ga'
 
-export const LayoutContainer = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   max-width: ${designTokens.layoutWidth.sm};
   margin: auto;
+  padding: 0 ${designTokens.space[3]};
   @media screen and (min-width: ${designTokens.breakpoints[0]}) {
     max-width: ${designTokens.layoutWidth.lg};
   }
 `
 
-export const Main = styled.main`
-  padding: ${designTokens.space[7]} ${designTokens.space[3]} ${designTokens.space[6]};
+export const LayoutContainer = styled.main`
+  padding: ${designTokens.space[7]} 0 ${designTokens.space[6]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     padding-top: ${designTokens.space[9]};
   }
@@ -129,9 +130,7 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
           <Header toggleTheme={toggleTheme} theme={theme} />
           <GradientBox/>
           <section>
-            <Main>
-              <LayoutContainer>{children}</LayoutContainer>
-            </Main>
+            <LayoutContainer>{children}</LayoutContainer>
           </section>
           <Footer/>
         </StaticKitProvider>

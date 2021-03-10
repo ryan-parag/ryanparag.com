@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import LoadingBox from '@components/LoadingBox'
-import Layout from '@components/Layout/'
+import Layout, { Wrapper } from '@components/Layout/'
 
 const Listening = ({title, description, ...props}) => {
 
@@ -13,10 +13,12 @@ const Listening = ({title, description, ...props}) => {
 
   return (
     <Layout pageTitle={title} description={description} ogImage="/listens-social-media.png">
-      <LoadingBox
-        title={`Hmm... this page doesn't exist`}
-        description={`Taking you back to the homepage`}
-      />
+      <Wrapper>
+        <LoadingBox
+          title={`Hmm... this page doesn't exist`}
+          description={`Taking you back to the homepage`}
+        />
+      </Wrapper>
     </Layout>
   )
 }

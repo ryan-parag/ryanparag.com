@@ -5,6 +5,7 @@ import { designTokens } from '../Theme/designTokens'
 import { LogoWithLabel } from '@components/Logo'
 import { Button, ButtonAnchorTag } from '@components/Button'
 import { GitHub, Dribbble, Codepen, Send } from 'react-feather'
+import { Wrapper } from '@components/Layout/'
 
 export const IconLink = styled.a`
   align-items: center;
@@ -47,15 +48,9 @@ const FooterContainer = styled.footer`
 `
 
 const FooterInner = styled.div`
-  width: 100%;
-  max-width: ${designTokens.layoutWidth.sm};
-  margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: ${designTokens.space[4]};
-  @media screen and (min-width: ${designTokens.breakpoints[0]}) {
-    max-width: ${designTokens.layoutWidth.lg};
-  }
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -177,8 +172,8 @@ export default function Footer() {
       outbound: false
     },{
       name: 'Portfolio/Work',
-      href: 'https://ryanparag.com',
-      outbound: true
+      href: '/work',
+      outbound: false
     }
   ]
 
@@ -212,30 +207,32 @@ export default function Footer() {
 
   return(
     <FooterContainer>
-      <FooterInner>
-        <FooterList>
-          {
-            list1.map((item, i) => (
-              <FooterLink key={i} link={item}/>
-            ))
-          }
-        </FooterList>
-        <FooterList>
-          {
-            list2.map((item,i) => (
-              <FooterLink key={i} link={item}/>
-            ))
-          }
-        </FooterList>
-        <FooterList>
-          {
-            list3.map((item,i) => (
-              <FooterLink key={i} link={item}/>
-            ))
-          }
-        </FooterList>
-        <DescriptionSection/>
-      </FooterInner>
+      <Wrapper>
+        <FooterInner>
+          <FooterList>
+            {
+              list1.map((item, i) => (
+                <FooterLink key={i} link={item}/>
+              ))
+            }
+          </FooterList>
+          <FooterList>
+            {
+              list2.map((item,i) => (
+                <FooterLink key={i} link={item}/>
+              ))
+            }
+          </FooterList>
+          <FooterList>
+            {
+              list3.map((item,i) => (
+                <FooterLink key={i} link={item}/>
+              ))
+            }
+          </FooterList>
+          <DescriptionSection/>
+        </FooterInner>
+      </Wrapper>
     </FooterContainer>
   )
 }

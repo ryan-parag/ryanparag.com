@@ -1,4 +1,4 @@
-import Layout from '@components/Layout/'
+import Layout, { Wrapper } from '@components/Layout/'
 import { addPosts } from '@utils/rss'
 import Link from 'next/link'
 import getPosts from '@utils/getPosts'
@@ -22,21 +22,23 @@ const Notes = ({ posts, title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={`${title} | RSS`} description={description} ogImage="/notes-social-media.png">
-        <Title>
-          <h1>Follow with RSS</h1>
-          <p className="lead">Want to follow through an RSS feed? Copy the XML link and subscribe in your RSS reader.</p>
-          <ButtonLink>
-            <Link href="/feed/feed.xml">
-              <a>
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
-                <span style={{ marginLeft: designTokens.space[2] }}>Subscribe to the feed</span>
-              </a>
-            </Link>
-          </ButtonLink>
-        </Title>
-        <Subscribe/>
-        <p>Need an RSS reader? Here's what I use:</p>
-        <ProjectItem project={netNewsWire}/>
+        <Wrapper>
+          <Title>
+            <h1>Follow with RSS</h1>
+            <p className="lead">Want to follow through an RSS feed? Copy the XML link and subscribe in your RSS reader.</p>
+            <ButtonLink>
+              <Link href="/feed/feed.xml">
+                <a>
+                  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+                  <span style={{ marginLeft: designTokens.space[2] }}>Subscribe to the feed</span>
+                </a>
+              </Link>
+            </ButtonLink>
+          </Title>
+          <Subscribe/>
+          <p>Need an RSS reader? Here's what I use:</p>
+          <ProjectItem project={netNewsWire}/>
+        </Wrapper>
       </Layout>
     </>
   )

@@ -26,7 +26,7 @@ const AccordionControl = styled.button`
   cursor: pointer;
   width: 100%;
   appearance: none;
-  background: transparent;
+  background: ${props => props.state === 'open' ? 'var(--grey100)' : 'transparent'};
   font-weight: ${designTokens.fontWeights.bold};
   transition: all 120ms ease-out 0s;
   &:hover, &:focus {
@@ -60,7 +60,7 @@ const Accordion = ({children, label, open}) => {
 
   return(
     <AccordionContainer>
-      <AccordionControl role="button" onClick={() => setActive(!active)}>
+      <AccordionControl state={active ? 'open' : 'closed'} role="button" onClick={() => setActive(!active)}>
         {label}
         <ChevronDown size="20" className={active ? 'icon open' : 'icon closed'}/>
       </AccordionControl>
