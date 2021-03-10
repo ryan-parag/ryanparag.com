@@ -10,6 +10,7 @@ import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import Title from '@components/Title'
 import Featured from '@components/Featured'
 import ContactBox from '@components/ContactBox'
+import Randomizer from '@components/Randomizer'
 
 import getPosts from '@utils/getPosts'
 
@@ -25,32 +26,18 @@ const Index = ({ posts, title, description, ...props }) => {
           <div style={{ width: '64px'}}>
             <Logo/>
           </div>
-          <h1>Ryan's Notes</h1>
-          <p className="lead">
-            Hey, I'm Ryan and these are my notes about designing in the open and building thoughtful products. 
-          </p>
-          <p style={{ color: 'var(--grey600)'}}>
-            I'm a designer currently based in Tampa and this is my playground for a few expiremental UI ideas 🤔.
-          </p>
-          <div style={{ marginBottom: designTokens.space[3]} }>
-            <ButtonLink
-              marginRight={designTokens.space[3]}
-            >
-              <Link href="/about">
-                More about me
-              </Link>
-            </ButtonLink>
-            <ButtonPrimaryAnchorTag href="https://ryanparag.com">
-              View my portfolio
-              <span className="icon">&rarr;</span>
-            </ButtonPrimaryAnchorTag>
-          </div>
+          <h1>Hey, I'm Ryan!</h1>
+          <p className="lead">I'm a designer and <Randomizer/>.</p>
+          <p><Link href="/about"><a className="link">More about me<span className="icon">&rarr;</span></a></Link></p>
         </Title>
-        <SpotifyCurrentlyPlaying playing />
-        <hr/>
         <main>
-          <h3>Latest Notes 📝</h3>
+          <SpotifyCurrentlyPlaying playing />
+          <hr/>
+          <h3>Notes/Writing 📝</h3>
           <PostList posts={latestPosts} />
+          <hr/>
+          <h3>Other Projects 💯</h3>
+          <Projects/>
           <div
             style={{
               textAlign: 'center',
@@ -73,9 +60,6 @@ const Index = ({ posts, title, description, ...props }) => {
               </Link>
             </ButtonLink>
           </div>
-          <h3>Work & Projects 💯</h3>
-          <Projects/>
-          <hr/>
           <h3>Featured 👨‍🏫</h3>
           <Featured/>
           <hr/>

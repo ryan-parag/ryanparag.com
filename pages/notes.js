@@ -3,6 +3,8 @@ import PostList from '@components/PostList'
 import getPosts from '@utils/getPosts'
 import Subscribe from '@components/Subscribe'
 import Title from '@components/Title'
+import { NotesLogo } from '@components/Logo'
+import { designTokens } from '@components/Theme/designTokens'
 
 const Notes = ({ posts, title, description, ...props }) => {
 
@@ -12,6 +14,9 @@ const Notes = ({ posts, title, description, ...props }) => {
     <>
       <Layout pageTitle={`${title} | Notes`} description={description} ogImage="/notes-social-media.png">
         <Title>
+          <div style={{ width: '64px'}}>
+            <NotesLogo/>
+          </div>
           <h1>Notes</h1>
           <p className="lead">Designing in the open and sharing what/how I design digital products + other intersting things.</p>
           <p>These are my collection of notes and ideas - thanks for reading!</p>

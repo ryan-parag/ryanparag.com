@@ -76,16 +76,22 @@ const Content = styled.div`
 `
 
 const SmallLink = css`
-  border: 0;
-  background: transparent;
-  text-decoration: underline;
-  cursor: pointer;
   font-size: ${designTokens.fontSizes[0]};
-  color: var(--primaryDark);
-  padding: 0;
+  color: var(--grey900);
+  border: 0;
+  cursor: pointer;
+  appearance: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+  border-radius: ${designTokens.space[1]};
+  padding-left: ${designTokens.space[1]};
+  padding-right: ${designTokens.space[1]};
+  padding-top: ${designTokens.space[1]};
+  padding-bottom: ${designTokens.space[1]};
+  background: var(--grey200);
   transition: all 120ms ease-out 0s;
-  &:hover, &:focus {
-    text-decoration: underline;
+  &:hover,&:focus {
+    background: var(--primaryTransparent);
   }
 `
 
@@ -512,7 +518,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
           <SpotifyIcon/>
           <ContentContainer>
             <Content subtle>
-              <div style={{ marginBottom: designTokens.space[1] }}>Not currently listening</div>
+              <div style={{ marginBottom: designTokens.space[2] }}>Not currently listening</div>
               {
                 action ? (
                   <>

@@ -43,5 +43,6 @@
     "styled-normalize": "^8.0.7",
     "swr": "^0.4.2",
     "timeago.js": "^4.0.2"
-  }
+  },
+  "devDependencies": {}
 }

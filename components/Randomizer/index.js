@@ -48,7 +48,7 @@ const Randomizer = () => {
     { text: "in a phase of learning to play chess online ♟"},
     { text: "thinks lime Skittles are better than green apple Skittles (🙏 bring them back)"},
     { text: "an avid consumer of: news, plane tickets, sneakers, and HBO"},
-    { text: "former grade-school pianist 🎹 (classical and modern)"},
+    { text: "former grade-school pianist 🎹"},
     { text: "aspiring polyglot 🙋‍♂️"},
     { text: "not a fan of drinking milk 🥛"},
     { text: "lurker of other design portfolios 🤫"},
