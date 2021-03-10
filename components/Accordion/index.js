@@ -26,7 +26,6 @@ const AccordionControl = styled.div`
   width: 100%;
   appearance: none;
   background: transparent;
-  border-bottom: 1px solid var(--grey200);
   font-weight: ${designTokens.fontWeights.bold};
   transition: all 120ms ease-out 0s;
   &:hover, &:focus {
@@ -41,6 +40,7 @@ const AccordionControl = styled.div`
 `
 
 const AccordionBody = styled.div`
+  border-top: 1px solid var(--grey200);
   padding: ${designTokens.space[3]} ${designTokens.space[4]};
   color: var(--grey700);
   p {
