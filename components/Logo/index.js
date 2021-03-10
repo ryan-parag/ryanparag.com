@@ -32,6 +32,10 @@ const LogoIcon = styled.div`
   justify-content: center;
   position: relative;
   transform: rotate(-6deg);
+  svg {
+    display: block;
+    width: 100%;
+  }
   .shadow {
     position: relative;
     transform: translateY(10px);
