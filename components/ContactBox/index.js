@@ -1,19 +1,27 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import { Send } from 'react-feather'
 
-const ContactContainer = styled.a`
+export const ContainerStyles = css`
   padding-top: ${designTokens.space[5]};
   display: flex;
   flex-direction: column;
   align-items: start;
   border: 1px solid var(--grey200);
   border-radius: ${designTokens.space[2]};
-  margin-bottom: ${designTokens.space[6]};
+  margin-bottom: ${designTokens.space[4]};
   position: relative;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.12);
   transition: all 120ms ease-out 0s;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    padding-top: ${designTokens.space[6]};
+  }
+`
+
+const ContactContainerLink = styled.a`
+  ${ContainerStyles}
+  margin-bottom: ${designTokens.space[6]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     padding-top: ${designTokens.space[6]};
   }
@@ -25,9 +33,22 @@ const ContactContainer = styled.a`
   }
 `
 
-const ContactTitle = styled.h3`
+const ContactContainer = styled.div`
+  margin-top: ${designTokens.space[6]};
+  ${ContainerStyles}
+`
+
+const ContactH3 = styled.h3`
   margin-top: 0;
-  margin-bottom: ${designTokens.space[2]};
+  margin-bottom: ${designTokens.space[3]};
+`
+
+const ContactH2 = styled.h2`
+  margin-top: 0;
+`
+
+const ContactH1 = styled.h1`
+  margin-top: 0;
 `
 
 const ContactContent = styled.div`
@@ -94,16 +115,54 @@ const ImgContainer = styled.div`
   }
 `
 
-export default function ContactBox() {
+const ProfileImageFlares = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  user-select: none;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: -${designTokens.space[5]};
+    right: -${designTokens.space[2]};
+    width: ${designTokens.space[4]};
+    height: ${designTokens.space[4]};
+    display: block;
+    background: var(--secondaryTransparent);
+    border-radius: 50%;
+  }
+  &:after {
+    top: 0;
+    right: -${designTokens.space[4]};
+    width: ${designTokens.space[3]};
+    height: ${designTokens.space[3]};
+    background: var(--tertiaryTransparent);
+  }
+`
+const ContactLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  border-radius: calc(${designTokens.space[1]}/2);
+  transition: all 120ms ease-out 0s;
+  &:hover, &:focus {
+    background: var(--primaryTransparent);
+    box-shadow: 0px 0px 0px ${designTokens.space[2]} var(--primaryTransparent);
+  }
+`
+
+const ContactBox = () => {
   return(
-    <ContactContainer href="mailto:parag.ryan@gmail.com">
+    <ContactContainerLink href="mailto:parag.ryan@gmail.com">
       <ImgContainer>
         <img src="/static/thanks.png"/>
       </ImgContainer>
       <ContactContent>
-        <ContactTitle>
+        <ContactH3>
           Hey, I'm Ryan!
-        </ContactTitle>
+        </ContactH3>
         <p>
           I'm a product designer - currently based in Tampa, FL. If you're looking for help or would like to chat, reach out!
         </p>
@@ -112,6 +171,43 @@ export default function ContactBox() {
         <Send size="20"/>
         Send me an email!
       </ContentFooter>
+    </ContactContainerLink>
+  )
+}
+
+export const ContactAbout = ({img, title, children}) => {
+  return(
+    <ContactContainer>
+      {
+        img ? (
+          <ImgContainer>
+            <img src={img}/>
+            <ProfileImageFlares/>
+          </ImgContainer>
+        )
+        :
+        null
+      }
+      <ContactContent>
+        {
+          title ? (
+            <ContactH1>
+              {title}
+            </ContactH1>
+          )
+          :
+          null
+        }
+        {children}
+      </ContactContent>
+      <ContentFooter>
+       <ContactLink href="mailto:parag.ryan@gmail.com">
+        <Send size="20"/>
+          Send me an email!
+       </ContactLink>
+      </ContentFooter>
     </ContactContainer>
   )
 }
+
+export default ContactBox

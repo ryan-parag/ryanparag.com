@@ -2,11 +2,11 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
-import Logo from '@components/Logo'
+import { LogoWithLabel } from '@components/Logo'
 import { Button, ButtonAnchorTag } from '@components/Button'
 import { GitHub, Dribbble, Codepen, Send } from 'react-feather'
 
-const IconLink = styled.a`
+export const IconLink = styled.a`
   align-items: center;
   background: transparent;
   border: none;
@@ -72,18 +72,14 @@ const FooterListItem = styled.li`
   a {
     font-size: ${designTokens.fontSizes[1]};
     color: var(--grey600);
+    padding: ${designTokens.space[1]} ${designTokens.space[1]} ${designTokens.space[1]} 0;
     transition: all 120ms ease-out 0s;
     &:hover, &:focus {
-      color: var(--primaryDark);
-      background: var(--primaryTransparent);
-      box-shadow: 0 0 0 ${designTokens.space[2]} var(--primaryTransparent);
+      background: var(--grey100);
+      padding-left: ${designTokens.space[3]};
+      box-shadow: inset ${designTokens.space[1]} 0px 0px var(--primary);
     }
   }
-`
-
-const FooterLogo = styled.div`
-  display: inline-flex;
-  align-items: center;
 `
 
 const FooterWide = styled.div`
@@ -113,24 +109,6 @@ const FooterLink = ({link}) => {
         )
       }
     </>
-  )
-}
-
-const LogoLink = () => {
-  return(
-    <Link href="/">
-      <a>
-        <FooterLogo>
-          <div style={{
-            width: designTokens.space[5],
-            marginRight: designTokens.space[2]
-          }}>
-            <Logo/>
-          </div>
-          <strong>Ryan's Notes</strong>
-        </FooterLogo>
-      </a>
-    </Link>
   )
 }
 
@@ -168,7 +146,7 @@ const DescriptionSection = () => {
 
   return(
     <FooterWide>
-      <LogoLink/>
+      <LogoWithLabel logo/>
       <IconBar>
         <Button small onClick={clearStorage}>Reset Theme</Button>
         {
@@ -198,9 +176,9 @@ export default function Footer() {
       href: '/notes',
       outbound: false
     },{
-      name: 'Create a Theme',
-      href: '/create-theme',
-      outbound: false
+      name: 'Portfolio/Work',
+      href: 'https://ryanparag.com',
+      outbound: true
     }
   ]
 
@@ -214,20 +192,20 @@ export default function Footer() {
       href: '/worksheets',
       outbound: false
     },{
-      name: 'RSS',
-      href: '/rss',
+      name: 'Create a Theme',
+      href: '/create-theme',
       outbound: false
     }
   ]
 
   const list3 = [
     {
-      name: 'Portfolio/Work',
-      href: 'https://ryanparag.com',
-      outbound: true
-    },{
       name: 'About',
       href: '/about',
+      outbound: false
+    },{
+      name: 'RSS',
+      href: '/rss',
       outbound: false
     }
   ]

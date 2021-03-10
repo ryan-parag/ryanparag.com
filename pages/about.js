@@ -9,7 +9,10 @@ import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import List, { ListItem } from '@components/List'
 import Collapse from '@components/Collapse'
 import Randomizer from '@components/Randomizer'
-import ContactBox from '@components/ContactBox'
+import { ContactAbout } from '@components/ContactBox'
+import Accordion from '@components/Accordion'
+import getPosts from '@utils/getPosts'
+import PostList from '@components/PostList/'
 
 const ListLabel = styled.div`
   display: flex;
@@ -66,7 +69,10 @@ const ProfileImg = styled.div`
   }
 `
 
-const About = ({ title, description, ...props }) => {
+const About = ({ posts, title, description, ...props }) => {
+
+  const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+  const latestPosts = sortedPosts.slice(0, 3)
 
   const neutrals = [
     {
@@ -149,87 +155,71 @@ const About = ({ title, description, ...props }) => {
       <Layout pageTitle={`${title} | About`} description={description} ogImage="/notes-social-media.png">
         <article>
           <Title>
-            <ProfileImg>
-              <img src="/static/profile.png"/>
-            </ProfileImg>
-            <h1>Hello, I'm Ryan.👋</h1>
-            <p className="lead">I'm a Digital Product Designer and <Randomizer/>.</p>
-            <p>
-              I help build digital products and solve tough problems — focusing on UX research & testing, prototyping, visual/UI design, front-end code, and product strategy. In a previous life, I worked on the business-end of healthcare.
-            </p>
-            <p>
-              I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
-            </p>
-            <Collapse>
+            <ContactAbout
+              title={'Hello, I\'m Ryan.👋'}
+              img={'/static/profile.png'}
+            >
+              <p className="lead">I'm a designer and <Randomizer/>.</p>
+              <p>I help build digital products and solve tough problems — focusing on UX research & testing, prototyping, visual/UI design, front-end code, and product strategy. In a previous life, I worked in the business-end of healthcare.</p>
+            </ContactAbout>
+            <Accordion label="Who are you?">
               <p>
-              Previously, I helped build an enterprise problem-solving platform for payments as the first product designer at <a href="https://ryanparag.com/work/disputelab">Chargebacks911</a>.
+                <strong>Hey, I'm Ryan Parag!</strong> I currently reside in Tampa,FL, where I help simplify the home remodeling experience and help build connected, IoT experiences for homeowners at <a href="https://ryanparag.com/work/masonite">Masonite</a> - a global manufacturer of doors.
               </p>
               <p>
-              Before that, I was a healthcare analyst working on the business side of pharmaceuticals (after studying Healthcare Informatics in college) - building pricing models against demographic data, calculating quant analyses on research cost to forecast growth, investigate business decisions to launch a pharma product to market, etc. 😴.
+                Previously, I helped build an enterprise problem-solving platform for payments as the first product designer at <a href="https://ryanparag.com/work/disputelab">Chargebacks911</a>.
+              </p>
+              <p>
+                Before that, I was a healthcare analyst working in the business side of pharmaceuticals (after studying Healthcare Informatics in college) - building pricing models against demographic data, assessing risk through quant analyses on research cost, comparing swaths of data to help predict outcomes and test product goals, etc. 😴.
               </p>
               <p>
                 I thrive in fast-paced, collaborative environments and am commited to being transparent in my work and process by trying to <Link href="/notes/"><a>share</a></Link> how I think and design around small and large problems.
               </p>
-              <p>You can find my work on the <a href="https://ryanparag.com/work/masonite">portfolio section</a> of my site, my open-source projects on <a href="https://github.com/ryan-parag">GitHub</a>, or even find my recent <Link href="/listening/music/"><a>listening activity</a></Link> on this site.</p>
-            </Collapse>
-            <hr/>
-            <SpotifyCurrentlyPlaying/>
+              <p>Feel free to take a look at my work <Link href="/work/"><a>here</a></Link> &mdash; or <a href="mailto:parag.ryan@gmail.com">contact me</a> for a more in-depth look!</p>
+            </Accordion>
+            <Accordion label="What do you do in your free time?">
+              <p>
+                In my free time, you can find me <a href="https://github.com/ryan-parag">tinkering on a random project</a> (or even this site), learning how to race cars 🏎, traveling to a random spot on the globe 🧳, learning something new 👨‍🏫, or a bunch of other random things .
+              </p>
+              <p>
+                Take a look at some of my random projects:
+              </p>
+              <ul>
+                <li>
+                  <Link href="../listening/music"><a>Tracking my listening activity</a></Link>
+                </li>
+                <li>
+                  <a href="https://slack-themes.now.sh/">Slack Themes</a>
+                </li>
+                <li>
+                  <a href="https://tampabay.design/">Tampa Bay Design Community Finder</a>
+                </li>
+                <li>
+                  <Link href="../create-theme"><a>Theme Creator</a></Link>
+                </li>
+                <li>
+                  <Link href="../worksheets"><a>UX Framework Resources</a></Link>
+                </li>
+              </ul>
+            </Accordion>
+            <Accordion label="How do I contact you?">
+              <p>
+                I'd love to help out or chat &mdash; <strong><a href="mailto:parag.ryan@gmail.com">email me at parag.ryan@gmail.com!</a></strong> Feel free to contact me if you:
+              </p>
+              <ul>
+                <li>Are looking for a designer who codes?</li>
+                <li>Want to trade design feedback?</li>
+                <li>Want to collaborate on a cool project?</li>
+                <li>Have any cool movies/tv series to recommend?</li>
+                <li>Like to chat over coffee, tea, seltzer water, coke zero, whatever really ☕️</li>
+              </ul>
+            </Accordion>
           </Title>
-          <h3>Projects</h3>
-          <ul>
-            <li>
-              <a href="https://ryanparag.com">Portfolio/Work</a>
-            </li>
-            <li>
-              <a href="https://slack-themes.now.sh/">Slack Themes</a>
-            </li>
-            <li>
-              <a href="https://tampabay.design/">Tampa Bay Design Community Finder</a>
-            </li>
-            <li>
-              <Link href="../create-theme"><a>Theme Creator</a></Link>
-            </li>
-            <li>
-              <Link href="../worksheets"><a>UX Framework Resources</a></Link>
-            </li>
-          </ul>
-          <h3>Writing</h3>
-          <ul>
-            <li>
-              <Link href="../notes/thoughts-on-design-tools"><a>Thoughts on Design Tools</a></Link>
-            </li>
-            <li>
-              <Link href="../notes/designing-for-personalization"><a>Designing for Personalization</a></Link>
-            </li>
-            <li>
-              <Link href="../notes/from-figma-to-code"><a>From Figma to Code</a></Link>
-            </li>
-            <li>
-              <Link href="../notes/portfolio-redesign"><a>Portfolio Redesign</a></Link>
-            </li>
-            <li>
-              <Link href="../notes/"><a>Read more notes...</a></Link>
-            </li>
-          </ul>
-          <h3>Get in touch</h3>
-          <ul>
-            <li>
-              <a href="https://ryanparag.com/about/resume">Resumé</a>
-            </li>
-            <li>
-              <a href="https://dribbble.com/ryanparag">Dribbble</a>
-            </li>
-            <li>
-              <a href="https://codepen.io/ryanparag">CodePen</a>
-            </li>
-            <li>
-              <a href="https://github.com/ryan-parag">GitHub</a>
-            </li>
-            <li>
-              <a href="mailto:parag.ryan@gmail.com">Email me!</a>
-            </li>
-          </ul>
+          <SpotifyCurrentlyPlaying playing/>
         </article>
+        <hr/>
+        <h3>Latest Writing 📝</h3>
+        <PostList posts={latestPosts} />
         <hr/>
         <div
           style={{
@@ -282,68 +272,65 @@ const About = ({ title, description, ...props }) => {
         <p>
           View all of the colors in your selected theme below. Change the theme to see the updated colors in the palette!
         </p>
-        <List>
-          <ListItem>
-            <strong><small>Neutrals</small></strong>
-          </ListItem>
-          {
-            neutrals.map(color => (
-              <ListItem key={color.name}>
-                <ListLabel>
-                  <Swatch
-                    style={{
-                      background: `var(${color.value})`
-                    }}
-                  />
-                  <ListContent>
-                    <strong>{color.name}</strong>
-                    {
-                      color.description ? (
-                        <>
-                          <SwatchLabel>Examples: {color.description}</SwatchLabel>
-                        </>
-                      )
-                      :
-                      null
-                    }
-                  </ListContent>
-                </ListLabel>
-              </ListItem>
-            ))
-          }
-        </List>
-        <List>
-          <ListItem>
-            <strong><small>Primary / Secondary / Tertiary</small></strong>
-          </ListItem>
-          {
-            states.map(color => (
-              <ListItem key={color.name}>
-                <ListLabel>
-                  <Swatch
-                    style={{
-                      background: `var(${color.value})`
-                    }}
-                  />
-                  <ListContent>
-                    <strong>{color.name}</strong>
-                    {
-                      color.description ? (
-                        <>
-                          <SwatchLabel>Examples: {color.description}</SwatchLabel>
-                        </>
-                      )
-                      :
-                      null
-                    }
-                  </ListContent>
-                </ListLabel>
-              </ListItem>
-            ))
-          }
-        </List>
+        <Accordion label="Neutral Colors" open>
+          <List>
+            {
+              neutrals.map(color => (
+                <ListItem key={color.name}>
+                  <ListLabel>
+                    <Swatch
+                      style={{
+                        background: `var(${color.value})`
+                      }}
+                    />
+                    <ListContent>
+                      <strong>{color.name}</strong>
+                      {
+                        color.description ? (
+                          <>
+                            <SwatchLabel>Examples: {color.description}</SwatchLabel>
+                          </>
+                        )
+                        :
+                        null
+                      }
+                    </ListContent>
+                  </ListLabel>
+                </ListItem>
+              ))
+            }
+          </List>
+        </Accordion>
+        <Accordion label="Primary / Secondary / Tertiary Colors">
+          <List>
+            {
+              states.map(color => (
+                <ListItem key={color.name}>
+                  <ListLabel>
+                    <Swatch
+                      style={{
+                        background: `var(${color.value})`
+                      }}
+                    />
+                    <ListContent>
+                      <strong>{color.name}</strong>
+                      {
+                        color.description ? (
+                          <>
+                            <SwatchLabel>Examples: {color.description}</SwatchLabel>
+                          </>
+                        )
+                        :
+                        null
+                      }
+                    </ListContent>
+                  </ListLabel>
+                </ListItem>
+              ))
+            }
+          </List>
+        </Accordion>
         <hr/>
-        <ContactBox/>
         <Subscribe/>
       </Layout>
     </>
@@ -355,8 +342,13 @@ export default About
 export async function getStaticProps() {
   const configData = await import(`../siteconfig.json`)
 
+  const posts = ((context) => {
+    return getPosts(context)
+  })(require.context('../notes', true, /\.md$/))
+
   return {
     props: {
+      posts,
       title: configData.default.title,
       description: configData.default.description,
     },

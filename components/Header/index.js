@@ -9,6 +9,7 @@ import { motion } from 'framer-motion'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import { X } from 'react-feather'
+import { LogoWithLabel } from '@components/Logo'
 
 const HeaderContainer = styled.div`
   position: relative;
@@ -406,7 +407,7 @@ export default function Header({ toggleTheme, theme }) {
       </ThemePicker>
       <NavContainer className={isExpanded ? 'isOpen' : null}>
         <MobileNav>
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
             <div style={{ display: 'inline-flex', alignItems: 'center'}}>
               {
                 isExpanded ? (
@@ -422,11 +423,7 @@ export default function Header({ toggleTheme, theme }) {
                 )
               }
               <div style={{ paddingLeft: designTokens.space[3]}}>
-                <strong>
-                  <Link href="/">
-                    <a>Ryan's Notes</a>
-                  </Link>
-                </strong>
+                <LogoWithLabel/>
               </div>
             </div>
             <ThemeBtn
@@ -451,6 +448,11 @@ export default function Header({ toggleTheme, theme }) {
                       </NavItem>
                     </MobileNavItem>
                     <MobileNavItem>
+                      <NavItem href="/work">
+                        <a>Work</a>
+                      </NavItem>
+                    </MobileNavItem>
+                    <MobileNavItem>
                       <NavItem href="/notes">
                         <a>Notes</a>
                       </NavItem>
@@ -459,16 +461,6 @@ export default function Header({ toggleTheme, theme }) {
                       <NavItem href="/about">
                         <a>About</a>
                       </NavItem>
-                    </MobileNavItem>
-                    <MobileNavItem>
-                      <NavItem href="/create-theme">
-                        <a>Theme Creator</a>
-                      </NavItem>
-                    </MobileNavItem>
-                    <MobileNavItem>
-                      <a href="https://ryanparag.com">
-                        Portfolio &rarr;
-                      </a>
                     </MobileNavItem>
                   </MobileNavList>
                 </>
@@ -488,6 +480,11 @@ export default function Header({ toggleTheme, theme }) {
                 </NavItem>
               </NavListItem>
               <NavListItem>
+                <NavItem href="/work">
+                  <a>Work</a>
+                </NavItem>
+              </NavListItem>
+              <NavListItem>
                 <NavItem href="/notes">
                   <a>Notes</a>
                 </NavItem>
@@ -496,19 +493,6 @@ export default function Header({ toggleTheme, theme }) {
                 <NavItem href="/about">
                   <a>About</a>
                 </NavItem>
-              </NavListItem>
-              <NavListItem>
-                <NavItem href="/create-theme">
-                  <a>Theme Creator</a>
-                </NavItem>
-              </NavListItem>
-              <NavListItem>
-                <OutboundNavLink href="https://ryanparag.com">
-                  <div>
-                    Portfolio
-                    <span className="icon">&rarr;</span>
-                  </div>
-                  </OutboundNavLink>
               </NavListItem>
             </NavList>
           </Nav>

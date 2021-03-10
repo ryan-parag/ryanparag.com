@@ -144,11 +144,18 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
     &.link {
-      color: var(--primaryDark);
-      box-shadow: 0px 1px 0px 0px currentColor;
+      text-decoration: none;
+      overflow-wrap: break-word;
+      border-radius: ${designTokens.space[1]};
+      padding-left: ${designTokens.space[1]};
+      padding-right: ${designTokens.space[1]};
+      padding-top: ${designTokens.space[1]};
+      padding-bottom: ${designTokens.space[1]};
+      background: var(--grey200);
       transition: all 120ms ease-out 0s;
-      &:hover, &:focus {
-        opacity: .8;
+      &:hover,&:focus {
+        background: var(--primaryTransparent);
+        box-shadow: 0px 0px 0px 2px var(--primaryTransparent);
       }
     }
     &:focus {
@@ -162,7 +169,6 @@ export const GlobalStyles = createGlobalStyle`
       transition: all 120ms ease-out 0s;
     }
     &:hover, &:focus {
-      text-decoration: underline dotted;
       .icon {
         opacity: 1;
         transform: translateX(${designTokens.space[1]});
@@ -172,15 +178,19 @@ export const GlobalStyles = createGlobalStyle`
   article {
     p, li {
       a {
-        color: var(--primaryDark);
-        box-shadow: 0px 1px 0px 0px currentColor;
+        text-decoration: none;
+        overflow-wrap: break-word;
+        border-radius: ${designTokens.space[1]};
+        padding-left: ${designTokens.space[1]};
+        padding-right: ${designTokens.space[1]};
+        padding-top: ${designTokens.space[1]};
+        padding-bottom: ${designTokens.space[1]};
+        background: var(--grey200);
         transition: all 120ms ease-out 0s;
-        &:hover, &:focus {
-          opacity: .8;
+        &:hover,&:focus {
+          background: var(--primaryTransparent);
+          box-shadow: 0px 0px 0px 2px var(--primaryTransparent);
         }
-      }
-      a:visited {
-        color: var(--secondaryDark);
       }
     }
   }
