@@ -33,11 +33,33 @@ const Index = ({ posts, title, description, ...props }) => {
         <main>
           <SpotifyCurrentlyPlaying playing />
           <hr/>
+          <h3>Work 💯</h3>
+          <Projects/>
+          <div
+            style={{
+              textAlign: 'center',
+              padding: designTokens.space[3]
+            }}
+          >
+            <ButtonLink>
+              <Link href="/work/">
+                <a>
+                  <img
+                    src="/static/note.svg"
+                    width="32"
+                    style={{
+                      marginRight: designTokens.space[2],
+                      transform: 'rotate(10deg) translateX(-4px)'
+                    }}
+                  />
+                  View more work
+                </a>
+              </Link>
+            </ButtonLink>
+          </div>
+          <hr/>
           <h3>Notes/Writing 📝</h3>
           <PostList posts={latestPosts} />
-          <hr/>
-          <h3>Other Projects 💯</h3>
-          <Projects/>
           <div
             style={{
               textAlign: 'center',
@@ -60,6 +82,7 @@ const Index = ({ posts, title, description, ...props }) => {
               </Link>
             </ButtonLink>
           </div>
+          <hr/>
           <h3>Featured 👨‍🏫</h3>
           <Featured/>
           <hr/>
