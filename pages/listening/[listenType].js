@@ -59,9 +59,7 @@ const ListenType = ({title, description}) => {
               <img
                 src="/static/email.svg"
                 width="32"
-                style={{
-                  transform: 'rotate(10deg) translateX(-4px)'
-                }}
+                className="buttonIcon"
               />
               Have a recommendation?
             </ButtonAnchorTag>

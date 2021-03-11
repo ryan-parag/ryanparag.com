@@ -95,10 +95,7 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
                   <img
                     src="/static/note.svg"
                     width="32"
-                    style={{
-                      marginRight: designTokens.space[2],
-                      transform: 'rotate(10deg) translateX(-4px)'
-                    }}
+                    className="buttonIcon"
                   />
                   Read more notes
                 </a>

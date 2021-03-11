@@ -49,10 +49,6 @@ const Index = ({ posts, title, description, ...props }) => {
                       src="/static/note.svg"
                       width="32"
                       className="buttonIcon"
-                      style={{
-                        marginRight: designTokens.space[2],
-                        transform: 'rotate(10deg) translateX(-4px)'
-                      }}
                     />
                     Read more notes
                   </a>

@@ -10,8 +10,9 @@ export const ButtonBase = css`
   cursor: pointer;
   font-size: ${(props) => props.small ? designTokens.fontSizes[0] : designTokens.fontSizes[1]};
   border-radius: ${designTokens.space[2]};
-  border: 1px solid var(--grey200);
-  background: var(--grey100);
+  border: 1px solid var(--grey300);
+  color: var(--grey900);
+  background: transparent;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
   min-height: ${(props) => props.small ? designTokens.space[5] : designTokens.space[6]};
   margin-top: ${(props) => props.marginTop ? props.marginTop : '0'};
@@ -19,18 +20,25 @@ export const ButtonBase = css`
   margin-left: ${(props) => props.marginLeft ? props.marginLeft : '0'};
   margin-right: ${(props) => props.marginRight ? props.marginRight : '0'};
   transition: all 120ms ease-out 0s;
+  .buttonIcon {
+    transform: rotate(10deg) translateX(-4px);
+    margin-right: ${designTokens.space[2]};
+    transition: all 120ms ease-out 60ms;
+  }
   &:hover {
-    border-color: var(--grey300);
-    background: var(--grey200);
+    background: var(--grey100);
     color: var(--grey800);
     text-decoration: none;
     position: relative;
-    .buttonIcon {
-      transform: scale(1.2);
-    }
   }
   &:focus {
     outline: ${designTokens.space[1]} solid var(--primaryTransparent);
+  }
+  &:hover, &:focus {
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 5px rgba(0,0,0,0.12);
+    .buttonIcon {
+      transform: rotate(12deg) translateX(-4px) scale(1.1);
+    }
   }
 `
 

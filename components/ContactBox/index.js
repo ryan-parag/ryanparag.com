@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import { Send } from 'react-feather'
+import { ButtonAnchorTag } from '@components/Button'
 
 export const ContainerStyles = css`
   padding-top: ${designTokens.space[5]};
@@ -141,27 +142,13 @@ const ProfileImageFlares = styled.div`
     background: var(--tertiaryTransparent);
   }
 `
-const ContactLink = styled.a`
-  display: inline-flex;
-  align-items: center;
-  border-radius: calc(${designTokens.space[1]}/2);
-  transition: all 120ms ease-out 0s;
-  font-size: ${designTokens.fontSizes[1]};
-  svg {
-    margin-right: ${designTokens.space[3]};
-  }
-  &:hover, &:focus {
-    background: var(--primaryTransparent);
-    box-shadow: 0px 0px 0px ${designTokens.space[2]} var(--primaryTransparent);
-  }
-`
 
 export const EmailButton = () => {
   return(
-    <ContactLink href="mailto:parag.ryan@gmail.com">
-      <Send size="20"/>
+    <ButtonAnchorTag href="mailto:parag.ryan@gmail.com">
+      <Send size="20" className="buttonIcon" style={{ color: 'var(--primary)' }} />
       Send me an email!
-    </ContactLink>
+    </ButtonAnchorTag>
   )
 }
 
@@ -180,7 +167,7 @@ const ContactBox = () => {
         </p>
       </ContactContent>
       <ContentFooter>
-        <Send size="20"/>
+        <Send size="20" style={{ color: 'var(--primary)' }}/>
         Send me an email!
       </ContentFooter>
     </ContactContainerLink>
