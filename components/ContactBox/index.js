@@ -68,6 +68,9 @@ const ContentFooter = styled.div`
   border-top: 1px solid var(--grey200);
   padding: ${designTokens.space[3]} ${designTokens.space[4]};
   font-size: ${designTokens.fontSizes[1]};
+  svg {
+    margin-right: ${designTokens.space[3]};
+  }
 `
 
 const ImgContainer = styled.div`

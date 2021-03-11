@@ -9,7 +9,7 @@ import ContactForm from '@components/ContactForm'
 import ImgZoom from '@components/ImgZoom'
 import { Button, ButtonLink } from '@components/Button'
 import ContactBox from '@components/ContactBox'
-import Subscribe from '@components/Subscribe'
+import FAQ from '@components/FAQ'
 import Chip from '@components/Chip'
 import 'react-medium-image-zoom/dist/styles.css'
 
@@ -87,7 +87,6 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
             </div>
           </article>
           <hr/>
-          <ContactBox/>
           <ContactForm/>
           <LinkContainer>
             <ButtonLink>
@@ -107,8 +106,8 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
             </ButtonLink>
           </LinkContainer>
           <hr/>
-          <Subscribe/>
         </Wrapper>
+        <FAQ/>
         <ScrolledButton
           onClick={() => scrollToTop()}
         >
