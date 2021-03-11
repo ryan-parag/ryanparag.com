@@ -161,7 +161,7 @@ const InlineButton = styled.a`
 
 export const EmailButton = () => {
   return(
-    <ButtonAnchorTag href="mailto:parag.ryan@gmail.com">
+    <ButtonAnchorTag href="mailto:hello@ryanparag.com?subject=Hey Ryan!">
       <Send size="20" className="buttonIcon" style={{ color: 'var(--primary)' }} />
       Send me an email!
     </ButtonAnchorTag>
@@ -170,7 +170,7 @@ export const EmailButton = () => {
 
 export const EmailButtonInline = () => {
   return(
-    <InlineButton href="mailto:parag.ryan@gmail.com">
+    <InlineButton href="mailto:hello@ryanparag.com?subject=Hey Ryan!">
       <Send size="20" className="buttonIcon" style={{ color: 'var(--primary)' }} />
       Send me an email!
     </InlineButton>
@@ -179,7 +179,7 @@ export const EmailButtonInline = () => {
 
 const ContactBox = () => {
   return(
-    <ContactContainerLink href="mailto:parag.ryan@gmail.com">
+    <ContactContainerLink href="mailto:hello@ryanparag.com?subject=Hey Ryan!">
       <ImgContainer>
         <img src="/static/thanks.png"/>
       </ImgContainer>

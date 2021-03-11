@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { designTokens } from '@components/Theme/designTokens'
 import styled, { css } from 'styled-components'
 import { ChevronDown } from 'react-feather'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const ContainerStyles = css`
   border: 1px solid var(--grey200);
@@ -43,7 +44,7 @@ const AccordionControl = styled.button`
   }
 `
 
-const AccordionBody = styled.div`
+const AccordionBody = styled(motion.div)`
   border-top: 1px solid var(--grey200);
   padding: ${designTokens.space[3]} ${designTokens.space[4]};
   color: var(--grey700);
@@ -66,9 +67,16 @@ const Accordion = ({children, label, open}) => {
       </AccordionControl>
       {
         active ? (
-          <AccordionBody>
-            {children}
-          </AccordionBody>
+          <AnimatePresence>
+            <AccordionBody
+              initial={{ height: 0, overflow: 'hidden' }}
+              animate={{ height: 'auto', overflow: 'auto' }}
+              transition={{ duration: 0.2, }}
+              exit={{ height: 0 }}
+            >
+              {children}
+            </AccordionBody>
+          </AnimatePresence>
         )
         :
         null

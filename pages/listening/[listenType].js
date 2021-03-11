@@ -55,7 +55,7 @@ const ListenType = ({title, description}) => {
               padding: designTokens.space[3]
             }}
           >
-            <ButtonAnchorTag href={`mailto:parag.ryan@gmail.com?Subject=I have ${listenType === 'music' || listenType === 'playlists' ? 'dope music' : 'a podcast rec'}`}>
+            <ButtonAnchorTag href={`mailto:hello@ryanparag.com?Subject=I have ${listenType === 'music' || listenType === 'playlists' ? 'dope music' : 'a podcast rec'}`}>
               <img
                 src="/static/email.svg"
                 width="32"

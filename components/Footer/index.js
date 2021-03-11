@@ -133,7 +133,7 @@ const DescriptionSection = () => {
       icon: <Dribbble size={'16'}/>
     },{
       name: 'Email',
-      href: 'mailto:parag.ryam@gmail.com?subject=Hey Ryan!',
+      href: 'mailto:hello@ryanparag.com?subject=Hey Ryan!',
       outbound: true,
       icon: <Send size={'16'}/>
     }
