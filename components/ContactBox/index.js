@@ -142,6 +142,22 @@ const ProfileImageFlares = styled.div`
     background: var(--tertiaryTransparent);
   }
 `
+const InlineButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  color: var(--grey900);
+  border-radius: calc(${designTokens.space[1]}/2);
+  transition: all 120ms ease-out 0s;
+  font-weight: ${designTokens.fontWeights.bold};
+  font-size: ${designTokens.fontSizes[1]};
+  svg {
+    margin-right: ${designTokens.space[3]};
+  }
+  &:hover, &:focus {
+    background: var(--primaryTransparent);
+    box-shadow: 0px 0px 0px ${designTokens.space[2]} var(--primaryTransparent);
+  }
+`
 
 export const EmailButton = () => {
   return(
@@ -149,6 +165,15 @@ export const EmailButton = () => {
       <Send size="20" className="buttonIcon" style={{ color: 'var(--primary)' }} />
       Send me an email!
     </ButtonAnchorTag>
+  )
+}
+
+export const EmailButtonInline = () => {
+  return(
+    <InlineButton href="mailto:parag.ryan@gmail.com">
+      <Send size="20" className="buttonIcon" style={{ color: 'var(--primary)' }} />
+      Send me an email!
+    </InlineButton>
   )
 }
 
@@ -200,7 +225,7 @@ export const ContactAbout = ({img, title, children}) => {
         {children}
       </ContactContent>
       <ContentFooter>
-       <EmailButton/>
+       <EmailButtonInline/>
       </ContentFooter>
     </ContactContainer>
   )

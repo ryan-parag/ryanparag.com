@@ -9,7 +9,7 @@ import PostList from '@components/PostList/'
 import Subscribe from '@components/Subscribe'
 import Randomizer from '@components/Randomizer'
 import Accordion from '@components/Accordion'
-import { EmailButton } from '@components/ContactBox'
+import { EmailButtonInline } from '@components/ContactBox'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 
 const ProfileImg = styled.div`
@@ -83,7 +83,7 @@ const About = ({ posts, title, description, ...props }) => {
                   <li>Have any cool movies/tv series to recommend?</li>
                   <li>Like to chat over coffee, tea, seltzer water, coke zero, whatever really ☕️</li>
                 </ul>
-                <EmailButton/>
+                <EmailButtonInline/>
               </Accordion>
             </Title>
           </Wrapper>
@@ -104,10 +104,6 @@ const About = ({ posts, title, description, ...props }) => {
                     src="/static/note.svg"
                     width="32"
                     className="buttonIcon"
-                    style={{
-                      marginRight: designTokens.space[2],
-                      transform: 'rotate(10deg) translateX(-4px)'
-                    }}
                   />
                   Read more notes
                 </a>
