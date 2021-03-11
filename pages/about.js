@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import Layout, { Wrapper } from '@components/Layout/'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
@@ -12,14 +13,20 @@ import Accordion from '@components/Accordion'
 import { EmailButtonInline } from '@components/ContactBox'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 
-const ProfileImg = styled.div`
+const ProfileImg = styled.button`
+  appearance: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
   width: ${designTokens.space[9]};
   height: ${designTokens.space[9]};
   border-radius: 50%;
   background: var(--primaryTransparent);
   position: relative;
+  transition: all 120ms ease-out 0s;
   img {
     display: block; width: 100%;
+    transition: all 120ms ease-out 0s;
   }
   &:before, &:after {
     content: '';
@@ -31,6 +38,7 @@ const ProfileImg = styled.div`
     display: block;
     background: var(--secondaryTransparent);
     border-radius: 50%;
+    transition: all 120ms ease-out 0s;
   }
   &:after {
     top: ${designTokens.space[2]};
@@ -39,7 +47,58 @@ const ProfileImg = styled.div`
     height: ${designTokens.space[3]};
     background: var(--tertiaryTransparent);
   }
+  &:hover {
+    img {
+      transform: scale(.98);
+    }
+    &:before {
+      right: -${designTokens.space[3]};
+      transform: scale(1.2);
+    }
+    &:after {
+      right: -${designTokens.space[6]};
+      top: ${designTokens.space[4]};
+      transform: scale(1.2);
+    }
+  }
+  &:hover, &:focus {
+    box-shadow: 0px 0px 0px ${designTokens.space[2]} var(--primaryTransparent);
+    &:before {
+      background: var(--secondary);
+    }
+    &:after {
+      background: var(--tertiary);
+    }
+  }
 `
+
+const Memoji = () => {
+
+  const memojis = [
+    'memoji-thanks.png',
+    'memoji-nervous.png',
+    'memoji-peace.png',
+    'memoji-shocked.png',
+    'memoji-sleep.png',
+    'memoji-stars.png',
+    'memoji-surprise.png',
+    'memoji-thinking.png',
+    'memoji-eyeroll.png'
+  ]
+
+  const memojiRandom = () => {
+    let random = memojis[Math.floor(Math.random() * memojis.length)]
+    return random
+  }
+
+  const [isRandom, setIsRandom] = useState(memojiRandom())
+
+  return(
+    <ProfileImg onClick={() => setIsRandom(memojiRandom())}>
+      <img src={`/static/about/${isRandom}`}/>
+    </ProfileImg>
+  )
+}
 
 const About = ({ posts, title, description, ...props }) => {
 
@@ -52,9 +111,7 @@ const About = ({ posts, title, description, ...props }) => {
         <article>
           <Wrapper>
             <Title>
-              <ProfileImg>
-                <img src="/static/profile.png"/>
-              </ProfileImg>
+              <Memoji/>
               <h1>Hello, I'm Ryan.👋</h1>
               <p className="lead">I'm a designer and <Randomizer/>.</p>
               <p>
@@ -89,7 +146,7 @@ const About = ({ posts, title, description, ...props }) => {
           </Wrapper>
         </article>
         <Wrapper>
-          <h3>Recent Writing 📝</h3>
+          <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
           <PostList posts={latestPosts} />
           <div
             style={{

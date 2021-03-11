@@ -21,7 +21,7 @@ export const ButtonBase = css`
   margin-right: ${(props) => props.marginRight ? props.marginRight : '0'};
   transition: all 120ms ease-out 0s;
   .buttonIcon {
-    transform: rotate(10deg) translateX(-4px);
+    transform: rotate(6deg) translateX(-2px);
     margin-right: ${designTokens.space[2]};
     transition: all 120ms ease-out 60ms;
   }
@@ -37,7 +37,7 @@ export const ButtonBase = css`
   &:hover, &:focus {
     box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 5px rgba(0,0,0,0.12);
     .buttonIcon {
-      transform: rotate(12deg) translateX(-4px) scale(1.1);
+      transform: rotate(12deg) translateX(-2px) scale(1.1);
     }
   }
 `
