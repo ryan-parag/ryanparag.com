@@ -46,8 +46,8 @@ const ThemePickerBody = styled.div`
 const NavContainer = styled.header`
   padding: ${designTokens.space[4]} 0 ${designTokens.space[3]};
   width: 100%;
-  border-bottom: 1px solid var(--grey100);
-  box-shadow: 0px 1px 0px var(--grey100);
+  border-bottom: 1px solid var(--grey200);
+  box-shadow: 0px 1px 0px rgba(0,0,0,0.12);
   background: var(--transparent);
   position: relative;
   &:before {

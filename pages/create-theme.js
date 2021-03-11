@@ -21,6 +21,7 @@ import Title, {TitleIcon} from '@components/Title'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import ReactGA from 'react-ga'
+import CurrentTheme from '@components/Theme/CurrentTheme'
 
 const SubmittedThemeList = ({ toggleTheme }) => {
   const { data } = useSWR('/api/themes/submitted/', fetcher);
@@ -152,6 +153,7 @@ const CreateTheme = ({ title, description, ...props }) => {
                   <p className="lead">Pick a few colors and build a new theme!</p>
                   <p>I like to believe design is a fluid skill and that <strong>everyone is a bit of a designer</strong> 👍 - we all have the ability to feel certain ways about things that are designed. <strong>Feed that curiousity</strong> and play around with creating a new theme for this website!</p>
                 </Title>
+                <CurrentTheme/>
                 <Box center>
                   <h1>🚧</h1>
                   <h4>Under Construction</h4>

@@ -135,12 +135,6 @@ export default function Projects(){
 
   const projects = [
     {
-      name: 'Portfolio',
-      description: 'Take a look through my case studies and larger projects',
-      image: '/static/projects/icon-portfolio.png',
-      link:'https://ryanparag.com',
-      outbound: true
-    }, {
       name: 'Recent Listens',
       description: 'Take a look at my current music/podcast feed',
       image: '/static/projects/icon-listens.png',

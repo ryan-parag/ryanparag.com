@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 `
 
 export const LayoutContainer = styled.main`
-  padding: ${designTokens.space[7]} 0 ${designTokens.space[6]};
+  padding: ${designTokens.space[8]} 0 ${designTokens.space[6]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     padding-top: ${designTokens.space[9]};
   }

@@ -4,13 +4,12 @@ import PostList from '@components/PostList/'
 import Logo from '@components/Logo'
 import { designTokens } from '@components/Theme/designTokens'
 import { ButtonLink, ButtonPrimaryAnchorTag } from '@components/Button'
-import Projects from '@components/Projects'
-import Subscribe from '@components/Subscribe'
+import ProjectScroll from '@components/ProjectScroll'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import Title from '@components/Title'
 import Featured from '@components/Featured'
-import ContactBox from '@components/ContactBox'
 import Randomizer from '@components/Randomizer'
+import FAQ from '@components/FAQ'
 
 import getPosts from '@utils/getPosts'
 
@@ -34,39 +33,7 @@ const Index = ({ posts, title, description, ...props }) => {
         </Wrapper>
         <main>
           <Wrapper>
-            <SpotifyCurrentlyPlaying playing />
-            <hr/>
-          </Wrapper>
-          <Wrapper>
-            <h3>Work 💯</h3>
-            <Projects/>
-            <div
-              style={{
-                textAlign: 'center',
-                padding: designTokens.space[3]
-              }}
-            >
-              <ButtonLink>
-                <Link href="/work/">
-                  <a>
-                    <img
-                      src="/static/work-icon.svg"
-                      width="32"
-                      className="buttonIcon"
-                      style={{
-                        marginRight: designTokens.space[2],
-                        transform: 'rotate(10deg) translateX(-4px)'
-                      }}
-                    />
-                    View more work
-                  </a>
-                </Link>
-              </ButtonLink>
-            </div>
-          </Wrapper>
-          <Wrapper>
-            <hr/>
-            <h3>Notes/Writing 📝</h3>
+            <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
             <PostList posts={latestPosts} />
             <div
               style={{
@@ -94,12 +61,16 @@ const Index = ({ posts, title, description, ...props }) => {
             <hr/>
           </Wrapper>
           <Wrapper>
+            <h3><Link href="/listening/music"><a>Recent Listens 🎧</a></Link></h3>
+            <SpotifyCurrentlyPlaying playing />
+            <hr/>
+          </Wrapper>
+          <Wrapper>
             <h3>Featured 👨‍🏫</h3>
             <Featured/>
             <hr/>
-            <ContactBox/>
-            <Subscribe/>
           </Wrapper>
+          <FAQ/>
         </main>
       </Layout>
     </>

@@ -34,7 +34,6 @@ const ContactContainerLink = styled.a`
 `
 
 const ContactContainer = styled.div`
-  margin-top: ${designTokens.space[6]};
   ${ContainerStyles}
 `
 
@@ -69,9 +68,6 @@ const ContentFooter = styled.div`
   border-top: 1px solid var(--grey200);
   padding: ${designTokens.space[3]} ${designTokens.space[4]};
   font-size: ${designTokens.fontSizes[1]};
-  svg {
-    margin-right: ${designTokens.space[3]};
-  }
 `
 
 const ImgContainer = styled.div`
@@ -147,11 +143,24 @@ const ContactLink = styled.a`
   align-items: center;
   border-radius: calc(${designTokens.space[1]}/2);
   transition: all 120ms ease-out 0s;
+  font-size: ${designTokens.fontSizes[1]};
+  svg {
+    margin-right: ${designTokens.space[3]};
+  }
   &:hover, &:focus {
     background: var(--primaryTransparent);
     box-shadow: 0px 0px 0px ${designTokens.space[2]} var(--primaryTransparent);
   }
 `
+
+export const EmailButton = () => {
+  return(
+    <ContactLink href="mailto:parag.ryan@gmail.com">
+      <Send size="20"/>
+      Send me an email!
+    </ContactLink>
+  )
+}
 
 const ContactBox = () => {
   return(
@@ -191,9 +200,9 @@ export const ContactAbout = ({img, title, children}) => {
       <ContactContent>
         {
           title ? (
-            <ContactH1>
+            <ContactH3>
               {title}
-            </ContactH1>
+            </ContactH3>
           )
           :
           null
@@ -201,10 +210,7 @@ export const ContactAbout = ({img, title, children}) => {
         {children}
       </ContactContent>
       <ContentFooter>
-       <ContactLink href="mailto:parag.ryan@gmail.com">
-        <Send size="20"/>
-          Send me an email!
-       </ContactLink>
+       <EmailButton/>
       </ContentFooter>
     </ContactContainer>
   )

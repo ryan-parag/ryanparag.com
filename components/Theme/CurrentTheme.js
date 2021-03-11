@@ -1,6 +1,10 @@
 import List, { ListItem } from '@components/List'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
+import Link from 'next/link'
+import { ButtonLink } from '@components/Button'
+import Accordion from '@components/Accordion'
+
 
 const ListLabel = styled.div`
   display: flex;
@@ -108,14 +112,8 @@ const CurrentTheme = () => {
 
   return(
     <>
-      <h3 id="currentTheme">Current Theme:</h3>
-        <p>
-          View all of the colors in your selected theme below. Change the theme to see the updated colors in the palette!
-        </p>
+      <Accordion label="Neutral Colors">
         <List>
-          <ListItem>
-            <strong><small>Neutrals</small></strong>
-          </ListItem>
           {
             neutrals.map(color => (
               <ListItem key={color.name}>
@@ -142,10 +140,9 @@ const CurrentTheme = () => {
             ))
           }
         </List>
+      </Accordion>
+      <Accordion label="Primary / Secondary / Tertiary Colors">
         <List>
-          <ListItem>
-            <strong><small>Primary / Secondary / Tertiary</small></strong>
-          </ListItem>
           {
             states.map(color => (
               <ListItem key={color.name}>
@@ -172,6 +169,7 @@ const CurrentTheme = () => {
             ))
           }
         </List>
+      </Accordion>
     </>
   )
 }
