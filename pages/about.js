@@ -61,10 +61,10 @@ const About = ({ posts, title, description, ...props }) => {
                 I currently work from end-to-end on the digital innovation team at <a href="https://ryanparag.com/work/masonite">Masonite</a> in Tampa, FL &mdash; curious about how teams align and build thoughtful products. Most of our work is centered around emerging, early-phase growth channels &mdash; conceptualizing a simpler home remodeling experience and designing multiple smart-home experiences for homeowners, contractors, and internal teams.
               </p>
               <p>
-                Previously, I studied Healthcare Informatics and built pricing models as a healthcare analyst, before helping design a payment management platform for financial enterprises at <a href="https://ryanparag.com/work/disputelab">Chargebacks911</a>.
+                Previously, I studied Healthcare Informatics and forecasted pricing models as a healthcare analyst. After switching tracks full-time, I helped design a payments platform for banks and retailers at <a href="https://ryanparag.com/work/disputelab">Chargebacks911</a>.
               </p>
               <p>
-                I thrive in fast-paced, collaborative environments and am commited to being transparent in my work and process by trying to <Link href="/notes/"><a>share how I think and design</a></Link> around small and large problems.
+                I thrive in fast-paced, collaborative environments and am commited to being transparent in my work by trying to <Link href="/notes/"><a>share how I think and design</a></Link> about various problems.
               </p>
               <p>
                 In my free time, you can find me <a className="link" href="https://github.com/ryan-parag">tinkering on a random project</a>, learning how to race cars 🏎, traveling to a random spot on the globe 🧳, biking around town 🚴‍♂️, or a bunch of other random things.
@@ -76,7 +76,7 @@ const About = ({ posts, title, description, ...props }) => {
                 <p>
                   I'd love to help out or chat! Feel free to contact me if you:
                 </p>
-                <ul>
+                <ul style={{ marginBottom: designTokens.space[4] }}>
                   <li>Are looking for a designer who codes?</li>
                   <li>Want to trade design feedback?</li>
                   <li>Want to collaborate on a cool project?</li>

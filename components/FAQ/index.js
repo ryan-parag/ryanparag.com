@@ -23,6 +23,7 @@ const GridContainer = styled.section`
   margin: auto;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     flex-direction: column;
+    padding: ${designTokens.space[6]} ${designTokens.space[3]} ${designTokens.space[0]};
   }
 `
 

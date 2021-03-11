@@ -10,6 +10,7 @@ import Title from '@components/Title'
 import Featured from '@components/Featured'
 import Randomizer from '@components/Randomizer'
 import FAQ from '@components/FAQ'
+import { ArrowRight } from 'react-feather'
 
 import getPosts from '@utils/getPosts'
 

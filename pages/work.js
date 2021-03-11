@@ -3,6 +3,7 @@ import { ButtonPrimaryAnchorTag } from '@components/Button'
 import Title from '@components/Title'
 import { WorkLogo } from '@components/Logo'
 import Projects from '@components/Projects'
+import FAQ from '@components/FAQ'
 
 const Work = ({ title, description}) => {
 
@@ -24,7 +25,9 @@ const Work = ({ title, description}) => {
         <Wrapper>
           <h3>... or check out some side projects</h3>
           <Projects/>
+          <hr/>
         </Wrapper>
+        <FAQ/>
       </Layout>
     </>
   )

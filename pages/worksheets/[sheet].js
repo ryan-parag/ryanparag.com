@@ -10,6 +10,7 @@ import Title, { TitleIcon } from '@components/Title'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import styled from 'styled-components'
+import FAQ from '@components/FAQ'
 
 const ScrolledButton = styled(Button)`
   position: fixed;
@@ -115,6 +116,7 @@ const Sheet = ({title, description}) => {
               ))
             }
           </List>
+          <hr/>
         </Wrapper>
         <ScrolledButton
           onClick={() => scrollToTop()}
