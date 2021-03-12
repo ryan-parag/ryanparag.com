@@ -6,25 +6,6 @@ import Image from 'next/image'
 const SectionWrapper = styled.section`
   padding: ${designTokens.space[7]} 0;
   position: relative;
-  @media screen and (min-width: ${designTokens.breakpoints[4]}) {
-    &:before, &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: ${designTokens.space[9]};
-      background: linear-gradient(to right, var(--grey0), transparent);
-      user-select: none;
-      z-index:100;
-    }
-    &:before {
-      left: 0;
-    }
-    &:after {
-      right: 0;
-      background: linear-gradient(to left, var(--grey0), transparent);
-    }
-  }
 `
 
 const ScrollSection = styled.article`
@@ -98,15 +79,14 @@ const ImageSection = styled.div`
 const ItemImageContainer = styled.div`
   border-radius: ${designTokens.space[2]};
   display: inline-block;
-  width: 100%;
-  max-width: ${props => props.type === 'mobile' ? designTokens.space[10] : `calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[4]})`};
+  width: ${props => props.type === 'mobile' ? `calc(${designTokens.space[9]} + ${designTokens.space[7]})` : `calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[4]})`};
   overflow: hidden;
   padding: 0;
   margin-right: ${designTokens.space[5]};
   border: 1px solid var(--grey200);
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.12);
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.12), 0px 1px 3px var(--grey200);
   @media screen and (min-width: ${designTokens.breakpoints[4]}) {
-    max-width: ${props => props.type === 'mobile' ? `calc(${designTokens.space[10]} + ${designTokens.space[7]})` : `calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]})`};
+    width: ${props => props.type === 'mobile' ? `calc(${designTokens.space[10]} + ${designTokens.space[7]})` : `calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]})`};
   }
 `
 
