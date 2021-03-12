@@ -41,7 +41,7 @@ const Index = ({ posts, title, description, ...props }) => {
                 padding: designTokens.space[3]
               }}
             >
-              <h3>More work coming soon...</h3>
+              <p>More work coming soon, or <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</p>
               <ButtonLink>
                 <Link href="/work/">
                   <a>
