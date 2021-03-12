@@ -10,6 +10,11 @@ export const BoxBase = css`
   border-radius: ${designTokens.space[1]};
   margin-bottom: ${designTokens.space[3]};
   box-shadow: none;
+  p, ul {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 `
 
 export const BoxBaseLink = css`

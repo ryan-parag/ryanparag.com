@@ -41,6 +41,9 @@ const ThemePickerBody = styled.div`
   overflow-y: hidden;
   overflow-x: auto;
   text-align: center;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 const NavContainer = styled.header`

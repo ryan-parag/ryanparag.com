@@ -124,7 +124,7 @@ const About = ({ posts, title, description, ...props }) => {
                 I thrive in fast-paced, collaborative environments and am commited to being transparent in my work by trying to <Link href="/notes/"><a>share how I think and design</a></Link> about various problems.
               </p>
               <p>
-                In my free time, you can find me <a className="link" href="https://github.com/ryan-parag">tinkering on a random project</a>, learning how to race cars 🏎, traveling to a random spot on the globe 🧳, biking around town 🚴‍♂️, or a bunch of other random things.
+                In my free time, you can find me <a className="link" href="https://github.com/ryan-parag">tinkering on a random project</a>, traveling to a random spot on the globe 🧳, learning how to race cars 🏎, biking around town 🚴‍♂️, or a bunch of other random things.
               </p>
               <p>
                 <a href="/static/about/RyanParag-resume.pdf" target="_blank">View my resumé</a>, <Link href="/work/"><a className="link">view my work</a></Link>, or contact me for a more in-depth look.
@@ -137,7 +137,7 @@ const About = ({ posts, title, description, ...props }) => {
                   <li>Are looking for a designer who codes?</li>
                   <li>Want to trade design feedback?</li>
                   <li>Want to collaborate on a cool project?</li>
-                  <li>Have any cool movies/tv series to recommend?</li>
+                  <li>Have any cool movies, tv series, <Link href="/listening/podcasts"><a>music/podcasts</a></Link> to recommend?</li>
                   <li>Like to chat over coffee, tea, seltzer water, coke zero, whatever really ☕️</li>
                 </ul>
                 <EmailButtonInline/>

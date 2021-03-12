@@ -9,7 +9,8 @@ import Title from '@components/Title'
 import Featured from '@components/Featured'
 import Randomizer from '@components/Randomizer'
 import FAQ from '@components/FAQ'
-import { ArrowRight } from 'react-feather'
+import { Coffee } from 'react-feather'
+import { Box } from '@components/Box'
 
 import getPosts from '@utils/getPosts'
 
@@ -58,7 +59,14 @@ const Index = ({ posts, title, description, ...props }) => {
           </Wrapper>
           <Wrapper>
             <h3><Link href="/notes"><a>Selected Work 💼</a></Link></h3>
-          <p>I'm in the process of moving over my work, but before that happens, you can find my work <a className="link" href="https://ryanparag.com">here</a>, or you can <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look.</p>
+            <Box>
+              <Coffee size="24" style={{ marginBottom: designTokens.space[3] }} />
+              <p>I'm in the process of moving over my work to this site, but before that happens:</p>
+              <ul>
+                <li>you can find my work <a className="link" href="https://ryanparag.com">here</a></li>
+                <li>you can <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</li>
+              </ul>
+            </Box>
             <div
               style={{
                 textAlign: 'center',
@@ -70,7 +78,7 @@ const Index = ({ posts, title, description, ...props }) => {
                   <a>
                     <img
                       src="/static/work-icon.svg"
-                      width="32"
+                      width="28"
                       className="buttonIcon"
                     />
                     View more work
