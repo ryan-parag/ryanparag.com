@@ -26,10 +26,8 @@ export const GlobalStyles = createGlobalStyle`
     --tertiary: ${({ theme }) => theme.tertiary};
     --tertiaryDark: ${({ theme }) => theme.tertiaryDark};
     --tertiaryTransparent: ${({ theme }) => theme.tertiaryTransparent};
-    --debug-outline: transparent;
-    &.debug-outline {
-      --debug-outline: var(--secondary);
-    }
+    --pixel: 0px;
+    --unit: 8px;
   }
   html {
     box-sizing: border-box;
@@ -45,9 +43,15 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     font-size: ${designTokens.fontSizesMobile[2]};
-    background: var(--grey0);
+    background-color: var(--grey0);
     color: var(--grey900);
     font-family: ${designTokens.fonts.body};
+    background-size: var(--unit) var(--unit);
+    background-repeat: repeat;
+    background-position: calc(var(--unit)*-0.5) calc(var(--unit)*-0.5);
+    background-image: radial-gradient(var(--grey300) calc(var(--pixel)*2),transparent 0);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-x: none;
     @media screen and (max-width: ${designTokens.breakpoints[2]}) {
       font-size: ${designTokens.fontSizes[1]};
     }

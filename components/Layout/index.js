@@ -47,23 +47,6 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
     ReactGA.pageview(window.location.pathname + window.location.search)
   }
 
-  const [debugOutline, setDebugOutline] = React.useState(false)
-
-  const debugEvents = () => {
-    // press ALT-G to toggle grid
-    // press ALT-D to toggle debug visualization
-    if (typeof window !== 'undefined') {
-      document.addEventListener("keypress", ev => {
-        if (ev.altKey) {
-          if (ev.code == "KeyD") {
-            debugOutline ? document.querySelector('html').classList.remove('debug-outline') : document.querySelector('html').classList.add('debug-outline')
-            setDebugOutline(!debugOutline)
-          }
-        }
-      })
-    }
-  }
-
   const [mounted, setMounted] = useState(false)
 
   const [theme, setTheme] = useState(() => {
@@ -81,9 +64,9 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
     if (typeof window !== 'undefined') {
       localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme));
     }
+
     setMounted(true)
-    setDebugOutline(false)
-  }, [theme, debugOutline]);
+  }, [theme]);
 
   const toggleTheme = (theme) => {
     localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme))

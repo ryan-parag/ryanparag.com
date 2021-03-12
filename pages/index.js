@@ -4,7 +4,7 @@ import PostList from '@components/PostList/'
 import Logo from '@components/Logo'
 import { designTokens } from '@components/Theme/designTokens'
 import { ButtonLink, ButtonPrimaryAnchorTag } from '@components/Button'
-import ProjectScroll from '@components/ProjectScroll'
+import List from '@components/ProjectScroll/List'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import Title from '@components/Title'
 import Featured from '@components/Featured'
@@ -33,6 +33,30 @@ const Index = ({ posts, title, description, ...props }) => {
           </Title>
         </Wrapper>
         <main>
+          <List/>
+          <Wrapper>
+            <div
+              style={{
+                textAlign: 'center',
+                padding: designTokens.space[3]
+              }}
+            >
+              <h3>More work coming soon...</h3>
+              <ButtonLink>
+                <Link href="/work/">
+                  <a>
+                    <img
+                      src="/static/work-icon.svg"
+                      width="32"
+                      className="buttonIcon"
+                    />
+                    View more work
+                  </a>
+                </Link>
+              </ButtonLink>
+            </div>
+            <hr/>
+          </Wrapper>
           <Wrapper>
             <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
             <PostList posts={latestPosts} />
