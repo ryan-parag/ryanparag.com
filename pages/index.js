@@ -63,8 +63,8 @@ const Index = ({ posts, title, description, ...props }) => {
               <Coffee size="24" style={{ marginBottom: designTokens.space[3] }} />
               <p>I'm in the process of moving over my work to this site, but before that happens:</p>
               <ul>
-                <li>you can find my work <a className="link" href="https://ryanparag.com">here</a></li>
-                <li>you can <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</li>
+                <li>find my work <a className="link" href="https://ryanparag.com">here</a> for now</li>
+                <li><a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</li>
               </ul>
             </Box>
             <div
