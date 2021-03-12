@@ -4,7 +4,6 @@ import PostList from '@components/PostList/'
 import Logo from '@components/Logo'
 import { designTokens } from '@components/Theme/designTokens'
 import { ButtonLink, ButtonPrimaryAnchorTag } from '@components/Button'
-import List from '@components/ProjectScroll/List'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import Title from '@components/Title'
 import Featured from '@components/Featured'
@@ -33,30 +32,6 @@ const Index = ({ posts, title, description, ...props }) => {
           </Title>
         </Wrapper>
         <main>
-          <List/>
-          <Wrapper>
-            <div
-              style={{
-                textAlign: 'center',
-                padding: designTokens.space[3]
-              }}
-            >
-              <p>More work coming soon, or <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</p>
-              <ButtonLink>
-                <Link href="/work/">
-                  <a>
-                    <img
-                      src="/static/work-icon.svg"
-                      width="32"
-                      className="buttonIcon"
-                    />
-                    View more work
-                  </a>
-                </Link>
-              </ButtonLink>
-            </div>
-            <hr/>
-          </Wrapper>
           <Wrapper>
             <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
             <PostList posts={latestPosts} />
@@ -75,6 +50,30 @@ const Index = ({ posts, title, description, ...props }) => {
                       className="buttonIcon"
                     />
                     Read more notes
+                  </a>
+                </Link>
+              </ButtonLink>
+            </div>
+            <hr/>
+          </Wrapper>
+          <Wrapper>
+            <h3><Link href="/notes"><a>Selected Work 💼</a></Link></h3>
+          <p>I'm in the process of moving over my work, but before that happens, you can find my work <a className="link" href="https://ryanparag.com">here</a>, or you can <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look.</p>
+            <div
+              style={{
+                textAlign: 'center',
+                padding: designTokens.space[3],
+              }}
+            >
+              <ButtonLink>
+                <Link href="/work/">
+                  <a>
+                    <img
+                      src="/static/work-icon.svg"
+                      width="32"
+                      className="buttonIcon"
+                    />
+                    View more work
                   </a>
                 </Link>
               </ButtonLink>
