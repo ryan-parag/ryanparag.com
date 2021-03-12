@@ -30,6 +30,20 @@ const List = () => {
         '/static/projects/soleventure/web/view4.png',
         '/static/projects/soleventure/web/view5.png'
       ]
+    },
+    slackThemes: {
+      name: 'Slack Themes',
+      description: 'Beautiful, curated themes to use in your Slack workspace',
+      logo: '/static/projects/slack-themes/logo.svg',
+      link: '/work',
+      type: 'web',
+      preview: [
+        '/static/projects/slack-themes/view1.png',
+        '/static/projects/slack-themes/view2.png',
+        '/static/projects/slack-themes/view3.png',
+        '/static/projects/slack-themes/view4.png',
+        '/static/projects/slack-themes/view5.png'
+      ]
     }
   }
 
@@ -37,6 +51,7 @@ const List = () => {
     <>
       <ProjectScroll project={projects.masonite} />
       <ProjectScroll project={projects.soleventure} />
+      <ProjectScroll project={projects.slackThemes} />
     </>
   )
 }

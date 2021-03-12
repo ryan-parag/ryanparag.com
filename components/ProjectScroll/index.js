@@ -38,7 +38,7 @@ const ScrollSection = styled.article`
     flex-wrap: nowrap;
     overscroll-behavior-x: contain;
     overflow-x: scroll;
-    padding: ${designTokens.space[8]} ${designTokens.space[10]};
+    padding: ${designTokens.space[8]} 0 ${designTokens.space[8]} calc(${designTokens.space[9]} + ${designTokens.space[1]});
     scroll-padding: 0 1.6rem;
     -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
@@ -50,6 +50,12 @@ const ScrollSection = styled.article`
     ::-webkit-scrollbar {
       display: none;
     }
+  }
+  @media screen and (min-width: ${designTokens.breakpoints[2]}) {
+    padding: ${designTokens.space[8]} 0 ${designTokens.space[8]} calc(${designTokens.space[10]} + ${designTokens.space[3]});
+  }
+  @media screen and (min-width: ${designTokens.breakpoints[0]}) {
+    padding: ${designTokens.space[8]} 0 ${designTokens.space[8]} calc(${designTokens.space[10]} + ${designTokens.space[8]});
   }
 `
 
@@ -100,7 +106,7 @@ const ItemImageContainer = styled.div`
   border: 1px solid var(--grey200);
   box-shadow: 0px 1px 3px rgba(0,0,0,0.12);
   @media screen and (min-width: ${designTokens.breakpoints[4]}) {
-    max-width: ${props => props.type === 'mobile' ? `calc(${designTokens.space[10]} + ${designTokens.space[7]})` : `calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]})`};
+    max-width: ${props => props.type === 'mobile' ? `calc(${designTokens.space[10]} + ${designTokens.space[7]})` : `calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]})`};
   }
 `
 
