@@ -6,6 +6,7 @@ import { LogoWithLabel } from '@components/Logo'
 import { Button, ButtonAnchorTag } from '@components/Button'
 import { GitHub, Dribbble, Codepen, Send } from 'react-feather'
 import { Wrapper } from '@components/Layout/'
+import Switch from '@components/Switch'
 
 export const IconLink = styled.a`
   align-items: center;
@@ -36,7 +37,14 @@ const IconBar = styled.div`
   align-items: center;
   margin-top: ${designTokens.space[3]};
   a {
-    margin-left: ${designTokens.space[2]};
+    margin-right: ${designTokens.space[2]};
+  }
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    flex-direction: column;
+    align-items: flex-start;
+    .row {
+      padding-top: ${designTokens.space[3]};
+    }
   }
 `
 
@@ -107,7 +115,7 @@ const FooterLink = ({link}) => {
   )
 }
 
-const DescriptionSection = () => {
+const DescriptionSection = ({debug, debugGrid}) => {
 
   const clearStorage = () => {
     localStorage.removeItem('ryansNotesNewTheme')
@@ -143,14 +151,21 @@ const DescriptionSection = () => {
     <FooterWide>
       <LogoWithLabel logo/>
       <IconBar>
-        <Button small onClick={clearStorage}>Reset Theme</Button>
-        {
-          social.map(item => (
-            <IconLink key={item.name} aria-label={item.name} href={item.href}>
-              {item.icon}
-            </IconLink>
-          ))
-        }
+        <div style={{ display: 'flex', alignItems: 'center', marginRight: designTokens.space[2] }}>
+          <div style={{ marginRight: designTokens.space[3] }}>
+            <Switch isOn={debug} handleToggle={() => debugGrid()} startLabel={'Debug Grid'} />
+          </div>
+          <Button small onClick={clearStorage}>Reset Theme</Button>
+        </div>
+        <div className="row">
+          {
+            social.map(item => (
+              <IconLink key={item.name} aria-label={item.name} href={item.href}>
+                {item.icon}
+              </IconLink>
+            ))
+          }
+        </div>
       </IconBar>
       <div style={{ marginTop: designTokens.space[3], marginBottom: designTokens.space[3], fontSize: designTokens.fontSizes[1] }}>
         <small>Made with Next.js and Styled Components</small>
@@ -159,7 +174,7 @@ const DescriptionSection = () => {
   )
 }
 
-export default function Footer() {
+export default function Footer({debug, debugGrid}) {
 
   const list1 = [
     {
@@ -230,7 +245,7 @@ export default function Footer() {
               ))
             }
           </FooterList>
-          <DescriptionSection/>
+          <DescriptionSection debug={debug} debugGrid={debugGrid} />
         </FooterInner>
       </Wrapper>
     </FooterContainer>

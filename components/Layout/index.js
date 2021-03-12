@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import Header from '@components/Header/'
 import { GlobalStyles } from '@components/GlobalStyles/'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ThemeProvider } from 'styled-components'
 import { notionLight, notionDark, darkTheme, lightTheme, hyrule, zora, gerudo, hebra, eldin, sheikah, korok, yiga } from '@components/Theme/'
 import { designTokens } from '@components/Theme/designTokens'
@@ -20,7 +20,21 @@ export const Wrapper = styled.div`
   }
 `
 
+export const DebugStyles = css`
+  background-size: var(--unit) var(--unit);
+  background-repeat: repeat;
+  background-position: calc(var(--unit)*-0.5) calc(var(--unit)*-0.5);
+  background-image: radial-gradient(var(--grey400) calc(var(--pixel)*2),transparent 0);
+`
+
+const Debug = styled.div`
+  --pixel: ${props => props.debug};
+  --unit: 8px;
+  ${DebugStyles}
+`
+
 export const LayoutContainer = styled.main`
+  -webkit-font-smoothing: antialiased;
   padding: ${designTokens.space[8]} 0 ${designTokens.space[6]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     padding-top: ${designTokens.space[9]};
@@ -48,6 +62,7 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
   }
 
   const [mounted, setMounted] = useState(false)
+  const [debug, setDebug] = useState(false)
 
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -59,6 +74,10 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
     }
     return lightTheme
   })
+
+  const debugGrid = () => {
+    setDebug(!debug)
+  }
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -110,12 +129,16 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
             <title>{pageTitle}</title>
           </Head>
           <GlobalStyles/>
-          <Header toggleTheme={toggleTheme} theme={theme} />
-          <GradientBox/>
-          <section>
-            <LayoutContainer>{children}</LayoutContainer>
-          </section>
-          <Footer/>
+          <Debug debug={debug ? 'var(--debug)' : '0px'}>
+            <Header toggleTheme={toggleTheme} theme={theme} />
+            <GradientBox/>
+            <section>
+              <LayoutContainer>
+                {children}
+              </LayoutContainer>
+            </section>
+            <Footer debug={debug} debugGrid={debugGrid} />
+          </Debug>
         </StaticKitProvider>
       </ThemeProvider>
     </>
