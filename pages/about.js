@@ -13,11 +13,26 @@ import { EmailButton } from '@components/ContactBox'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import Memoji from '@components/Memoji'
 import { Send, ArrowRight } from 'react-feather'
+import { ChipLink } from '@components/Chip'
 
 const About = ({ posts, title, description, ...props }) => {
 
   const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
   const latestPosts = sortedPosts.slice(0, 3)
+
+  const resources = [
+    {name: 'Notion', href: 'https://www.notion.so/'},
+    {name: 'Figma', href: 'https://www.figma.com/'},
+    {name: 'React', href: 'https://reactjs.org/'},
+    {name: 'Next.js', href: 'https://nextjs.org/'},
+    {name: 'Styled Components', href: 'https://styled-components.com/'},
+    {name: 'Feathericons', href: 'https://feathericons.com/'},
+    {name: 'Inter typeface family', href: 'https://rsms.me/inter/'},
+    {name: 'Airtable', href: 'https://airtable.com/'},
+    {name: 'Spotify API', href: 'https://developer.spotify.com/documentation/web-api/'},
+    {name: 'Framer Motion', href: 'https://www.framer.com/api/motion/'},
+    {name: 'Feedback from many nice humans', href: 'https://www.tampabay.design/'}
+  ]
   
   return (
     <>
@@ -27,6 +42,7 @@ const About = ({ posts, title, description, ...props }) => {
             <Title>
               <Memoji/>
               <h1>Hello, I'm Ryan.👋</h1>
+              <ChipLink href="https://google.com">sup fool</ChipLink>
               <p className="lead">I'm a designer and <Randomizer/>.</p>
               <p>
                 Currently, I'm on the digital innovation team at <a href="https://ryanparag.com/work/masonite">Masonite</a> in Tampa, FL &mdash; curious about how we can design thoughtful products around open-ended problems. Most of our work is centered around emerging, early-phase growth channels &mdash; conceptualizing a simpler home remodeling experience and designing multiple smart-home experiences for homeowners, contractors, and internal teams.
@@ -80,6 +96,20 @@ const About = ({ posts, title, description, ...props }) => {
           <SpotifyCurrentlyPlaying playing />
           <hr/>
           <Subscribe/>
+          <hr/>
+          <h3>Site Colophon</h3>
+          <p>Like any designer, my portfolio is really never finished and is in a constant state of having the code reworked. This is the 5th iteration of my portfolio and I put this version together with help from the following resources:</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: designTokens.space[3] }}>
+            {
+              resources.map((item, i) => (
+                <ChipLink href={item.href} target="_blank" mr={designTokens.space[2]} mb={designTokens.space[2]} key={i}>{item.name}</ChipLink>
+              ))
+            }
+          </div>
+          <a className="link" href="https://github.com/ryan-parag/notes.ryanparag.com" target="_blank">
+            Follow in the open on GitHub
+            <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
+          </a>
         </Wrapper>
       </Layout>
     </>

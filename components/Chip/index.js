@@ -1,15 +1,29 @@
 import { designTokens } from '@components/Theme/designTokens'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const Chip = styled.div`
+const ChipStyles = css`
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   padding: ${designTokens.space[1]} ${designTokens.space[2]};
   border: 1px solid var(--grey500);
   font-size: ${designTokens.fontSizes[0]};
-  margin-right: ${designTokens.space[1]};
+  margin-bottom: ${props => props.mb ? props.mb : '0'};
+  margin-top: ${props => props.mt ? props.mt : '0'};
+  margin-right: ${props => props.mr ? props.mr : designTokens.space[1]};
+  margin-left: ${props => props.ml ? props.ml : '0'};
   line-height: 1;
+  transition: all 120ms ease-out 0s;
+`
+const Chip = styled.div`
+  ${ChipStyles}
+`
+
+export const ChipLink = styled.a`
+  ${ChipStyles}
+  &:hover, &:focus {
+    transform: scale(1.03);
+  }
 `
 
 export const PrimaryChip = styled(Chip)`
