@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
@@ -35,22 +35,15 @@ export const IconLink = styled.a`
 const IconBar = styled.div`
   display: flex;
   align-items: center;
-  margin-top: ${designTokens.space[3]};
+  margin: ${designTokens.space[3]} 0;
   a {
     margin-right: ${designTokens.space[2]};
-  }
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    flex-direction: column;
-    align-items: flex-start;
-    .row {
-      padding-top: ${designTokens.space[3]};
-    }
   }
 `
 
 const FooterContainer = styled.footer`
   width: 100%;
-  padding: ${designTokens.space[6]} ${designTokens.space[3]};
+  padding: ${designTokens.space[6]} ${designTokens.space[3]} ${designTokens.space[7]};
   border-top: 1px solid var(--grey100);
   color: var(--grey600);
 `
@@ -87,8 +80,25 @@ const FooterListItem = styled.li`
 
 const FooterWide = styled.div`
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
   margin-top: ${designTokens.space[5]};
+`
+
+const BottomContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`
+
+const BottomColumn = styled.div`
+  padding: ${designTokens.space[2]} 0;
+  display: inline-flex;
+  align-items: center;
 `
 
 const FooterLink = ({link}) => {
@@ -115,7 +125,7 @@ const FooterLink = ({link}) => {
   )
 }
 
-const DescriptionSection = ({debug, debugGrid}) => {
+const DescriptionSection = ({debug,debugGrid}) => {
 
   const clearStorage = () => {
     localStorage.removeItem('ryansNotesNewTheme')
@@ -151,13 +161,6 @@ const DescriptionSection = ({debug, debugGrid}) => {
     <FooterWide>
       <LogoWithLabel logo/>
       <IconBar>
-        <div style={{ display: 'flex', alignItems: 'center', marginRight: designTokens.space[2] }}>
-          <div style={{ marginRight: designTokens.space[3] }}>
-            <Switch isOn={debug} handleToggle={() => debugGrid()} startLabel={'Debug Grid'} />
-          </div>
-          <Button small onClick={clearStorage}>Reset Theme</Button>
-        </div>
-        <div className="row">
           {
             social.map(item => (
               <IconLink key={item.name} aria-label={item.name} href={item.href}>
@@ -165,11 +168,18 @@ const DescriptionSection = ({debug, debugGrid}) => {
               </IconLink>
             ))
           }
-        </div>
       </IconBar>
-      <div style={{ marginTop: designTokens.space[3], marginBottom: designTokens.space[3], fontSize: designTokens.fontSizes[1] }}>
+      <BottomContainer>
+      <BottomColumn>
         <small>Made with Next.js and Styled Components</small>
-      </div>
+      </BottomColumn>
+      <BottomColumn>
+        <div style={{ marginRight: designTokens.space[3] }}>
+          <Button small onClick={clearStorage}>Reset Theme</Button>
+        </div>
+        <Switch isOn={debug} handleToggle={() => debugGrid()} startLabel={'Debug Grid'} />
+      </BottomColumn>
+      </BottomContainer>
     </FooterWide>
   )
 }
@@ -221,33 +231,35 @@ export default function Footer({debug, debugGrid}) {
   ]
 
   return(
-    <FooterContainer>
-      <Wrapper>
-        <FooterInner>
-          <FooterList>
-            {
-              list1.map((item, i) => (
-                <FooterLink key={i} link={item}/>
-              ))
-            }
-          </FooterList>
-          <FooterList>
-            {
-              list2.map((item,i) => (
-                <FooterLink key={i} link={item}/>
-              ))
-            }
-          </FooterList>
-          <FooterList>
-            {
-              list3.map((item,i) => (
-                <FooterLink key={i} link={item}/>
-              ))
-            }
-          </FooterList>
-          <DescriptionSection debug={debug} debugGrid={debugGrid} />
-        </FooterInner>
-      </Wrapper>
-    </FooterContainer>
+    <>
+      <FooterContainer>
+        <Wrapper>
+          <FooterInner>
+            <FooterList>
+              {
+                list1.map((item, i) => (
+                  <FooterLink key={i} link={item}/>
+                ))
+              }
+            </FooterList>
+            <FooterList>
+              {
+                list2.map((item,i) => (
+                  <FooterLink key={i} link={item}/>
+                ))
+              }
+            </FooterList>
+            <FooterList>
+              {
+                list3.map((item,i) => (
+                  <FooterLink key={i} link={item}/>
+                ))
+              }
+            </FooterList>
+            <DescriptionSection debug={debug} debugGrid={debugGrid} />
+          </FooterInner>
+        </Wrapper>
+      </FooterContainer>
+    </>
   )
 }

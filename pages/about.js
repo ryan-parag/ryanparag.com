@@ -42,29 +42,28 @@ const About = ({ posts, title, description, ...props }) => {
               <p>
                 <a href="/static/about/RyanParag-resume.pdf" target="_blank">View my resumé</a>, <Link href="/work/"><a className="link">view my work</a></Link>, or contact me for a more in-depth look.
               </p>
-              <Accordion label="How do I contact you?">
-                <p>
-                  I'd love to help out or chat! Feel free to contact me if you:
-                </p>
-                <ul style={{ marginBottom: designTokens.space[4] }}>
-                  <li>Are looking for a designer who codes?</li>
-                  <li>Want to trade design feedback?</li>
-                  <li>Want to collaborate on a cool project?</li>
-                  <li>Have any cool movies, tv series, <Link href="/listening/podcasts"><a>music/podcasts</a></Link> to recommend?</li>
-                  <li>Like to chat over coffee, tea, seltzer water, coke zero, whatever really ☕️</li>
-                </ul>
-                <EmailButtonInline/>
-              </Accordion>
             </Title>
           </Wrapper>
         </article>
         <Wrapper>
+          <h3>How can I help?</h3>
+          <p>
+            I'd love to help out or chat! Feel free to contact me if you:
+          </p>
+          <ul style={{ marginBottom: designTokens.space[4] }}>
+            <li>Are looking for a designer who codes?</li>
+            <li>Want to trade design feedback?</li>
+            <li>Want to collaborate on a cool project?</li>
+            <li>Have any cool movies, tv series, <Link href="/listening/podcasts"><a>music/podcasts</a></Link> to recommend?</li>
+            <li>Like to chat over coffee, tea, seltzer water, coke zero, whatever really ☕️</li>
+          </ul>
+          <EmailButtonInline/>
+          <hr/>
           <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
           <PostList posts={latestPosts} />
           <div
             style={{
-              textAlign: 'center',
-              padding: designTokens.space[3]
+              padding: `${designTokens.space[3]} 0`
             }}
           >
             <ButtonLink>

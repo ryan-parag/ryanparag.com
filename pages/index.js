@@ -17,7 +17,7 @@ import getPosts from '@utils/getPosts'
 const Index = ({ posts, title, description, ...props }) => {
 
   const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
-  const latestPosts = sortedPosts.slice(0, 5)
+  const latestPosts = sortedPosts.slice(0, 3)
 
   return (
     <>
@@ -38,8 +38,7 @@ const Index = ({ posts, title, description, ...props }) => {
             <PostList posts={latestPosts} />
             <div
               style={{
-                textAlign: 'center',
-                padding: designTokens.space[3]
+                padding: `${designTokens.space[3]} 0`
               }}
             >
               <ButtonLink>
@@ -58,19 +57,15 @@ const Index = ({ posts, title, description, ...props }) => {
             <hr/>
           </Wrapper>
           <Wrapper>
-            <h3><Link href="/notes"><a>Selected Work 💼</a></Link></h3>
-            <Box>
-              <Coffee size="24" style={{ marginBottom: designTokens.space[3] }} />
-              <p>I'm in the process of moving over my work to this site, but before that happens:</p>
-              <ul>
-                <li>find my work <a className="link" href="https://ryanparag.com">here</a> for now</li>
-                <li><a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</li>
-              </ul>
-            </Box>
+            <h3><Link href="/work"><a>Selected Work 💼</a></Link></h3>
+            <p>I'm in the process of moving over my work to this site, but before that happens:</p>
+            <ul>
+              <li>find my work <a className="link" href="https://ryanparag.com">here</a> for now</li>
+              <li><a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</li>
+            </ul>
             <div
               style={{
-                textAlign: 'center',
-                padding: designTokens.space[3],
+                padding: `${designTokens.space[3]} 0`
               }}
             >
               <ButtonLink>

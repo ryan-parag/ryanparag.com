@@ -33,16 +33,22 @@ const Debug = styled.div`
   ${DebugStyles}
 `
 
-export const LayoutContainer = styled.main`
+export const LayoutContainer = styled.section`
   -webkit-font-smoothing: antialiased;
   padding: ${designTokens.space[8]} 0 ${designTokens.space[6]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     padding-top: ${designTokens.space[9]};
   }
 `
+const Container = styled.div`
+  flex-shrink: 0;
+  padding: 0 48px;
+  display: grid;
+  width: 100vw;
+`
 
 const GradientBox = styled.div`
-  height: ${designTokens.space[8]};
+  height: ${designTokens.space[9]};
   background:linear-gradient(150deg, var(--primary), var(--tertiary), var(--secondary));
   position: absolute;
   top: -${designTokens.space[3]};
@@ -54,6 +60,18 @@ const GradientBox = styled.div`
   opacity: 0.15;
 `
 
+const Sidebar = styled.div`
+  width: 100%; 
+  background: red;
+  max-width: 330px;
+  width: 330px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0;
+`
+
 export default function Layout({ children, pageTitle, description, ogImage, ...props }) {
 
   if (typeof window !== "undefined") {
@@ -63,6 +81,7 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
 
   const [mounted, setMounted] = useState(false)
   const [debug, setDebug] = useState(false)
+  const [open, setOpen] = useState(false)
 
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -132,11 +151,11 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
           <Debug debug={debug ? 'var(--debug)' : '0px'}>
             <Header toggleTheme={toggleTheme} theme={theme} />
             <GradientBox/>
-            <section>
+            <main>
               <LayoutContainer>
                 {children}
               </LayoutContainer>
-            </section>
+            </main>
             <Footer debug={debug} debugGrid={debugGrid} />
           </Debug>
         </StaticKitProvider>
