@@ -58,6 +58,9 @@ const About = ({ posts, title, description, ...props }) => {
               <p>
                 <a href="/static/about/RyanParag-resume.pdf" target="_blank">View my resumé</a>, <Link href="/work/"><a className="link">view my work</a></Link>, or <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a more in-depth look.
               </p>
+              <p>
+                or view what I'm up to <Link href="/now/"><a className="link">now</a></Link>!
+              </p>
             </Title>
           </Wrapper>
         </article>

@@ -88,7 +88,6 @@ const Page = ({ title, description, ...props }) => {
           </Title>
           <Content data={data}/>
           <Subscribe/>
-          <p>Need an RSS reader? Here's what I use:</p>
         </Wrapper>
       </Layout>
     </>
