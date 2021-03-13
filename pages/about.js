@@ -12,6 +12,7 @@ import Accordion from '@components/Accordion'
 import { EmailButton } from '@components/ContactBox'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import Memoji from '@components/Memoji'
+import { Send, ArrowRight } from 'react-feather'
 
 const About = ({ posts, title, description, ...props }) => {
 
@@ -54,31 +55,26 @@ const About = ({ posts, title, description, ...props }) => {
             <li>Are looking for a designer who codes?</li>
             <li>Want to trade design feedback?</li>
             <li>Want to collaborate on a cool project?</li>
-            <li>Have any cool movies, tv series, <Link href="/listening/podcasts"><a>music/podcasts</a></Link> to recommend?</li>
+            <li>Have any cool movies, tv series, <Link href="/listening/podcasts"><a className="link">music/podcasts</a></Link> to recommend?</li>
             <li>Like to chat over coffee, tea, seltzer water, coke zero, whatever really ☕️</li>
           </ul>
-          <EmailButton/>
+          <p>
+            <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">
+              Send me an email
+              <Send size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
+            </a>
+          </p>
           <hr/>
           <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
           <PostList posts={latestPosts} />
-          <div
-            style={{
-              padding: `${designTokens.space[3]} 0`
-            }}
-          >
-            <ButtonLink>
-              <Link href="/notes/">
-                <a>
-                  <img
-                    src="/static/note.svg"
-                    width="32"
-                    className="buttonIcon"
-                  />
-                  Read more notes
-                </a>
-              </Link>
-            </ButtonLink>
-          </div>
+          <p>
+            <Link href="/notes">
+              <a className="link">
+                Read more notes
+                <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
+              </a>
+            </Link>
+          </p>
           <hr/>
           <h3><Link href="/listening/music"><a>Recent Listens 🎧</a></Link></h3>
           <SpotifyCurrentlyPlaying playing />
