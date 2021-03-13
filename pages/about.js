@@ -42,7 +42,6 @@ const About = ({ posts, title, description, ...props }) => {
             <Title>
               <Memoji/>
               <h1>Hello, I'm Ryan.👋</h1>
-              <ChipLink href="https://google.com">sup fool</ChipLink>
               <p className="lead">I'm a designer and <Randomizer/>.</p>
               <p>
                 Currently, I'm on the digital innovation team at <a href="https://ryanparag.com/work/masonite">Masonite</a> in Tampa, FL &mdash; curious about how we can design thoughtful products around open-ended problems. Most of our work is centered around emerging, early-phase growth channels &mdash; conceptualizing a simpler home remodeling experience and designing multiple smart-home experiences for homeowners, contractors, and internal teams.
