@@ -172,10 +172,7 @@ const DescriptionSection = ({debug,debugGrid}) => {
         <small>Made with Next.js and Styled Components</small>
       </BottomColumn>
       <BottomColumn>
-        <div style={{ marginRight: designTokens.space[3] }}>
-          <Button small onClick={clearStorage}>Reset Theme</Button>
-        </div>
-        <Switch isOn={debug} handleToggle={() => debugGrid()} startLabel={'Debug Grid'} />
+        <Button small onClick={clearStorage}>Reset Theme</Button>
       </BottomColumn>
       </BottomContainer>
     </FooterWide>

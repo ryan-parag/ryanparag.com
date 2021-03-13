@@ -6,11 +6,11 @@ import { designTokens } from '@components/Theme/designTokens'
 import ListCard from '@components/Worksheets/ListCard'
 import List, { ListItem } from '@components/List'
 import Intro from '@components/Worksheets/Intro'
-import Title, { TitleIcon } from '@components/Title'
+import Title from '@components/Title'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import styled from 'styled-components'
-import FAQ from '@components/FAQ'
+import { WorksheetsIcon } from '@components/Logo'
 
 const ScrolledButton = styled(Button)`
   position: fixed;
@@ -72,9 +72,9 @@ const Sheet = ({title, description}) => {
       <Layout pageTitle={`${title} | UX Worksheets`} description={description} ogImage="/worksheets-social-media.png">
         <Wrapper>
           <Title>
-            <TitleIcon>
-              <img src="/static/projects/icon-worksheets.png" alt="Worksheets"/>
-            </TitleIcon>
+            <div style={{ width: '64px'}}>
+              <WorksheetsIcon/>
+            </div>
             <h1>Worksheets</h1>
             <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>
             <p>

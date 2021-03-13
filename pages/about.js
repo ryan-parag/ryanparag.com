@@ -56,7 +56,7 @@ const About = ({ posts, title, description, ...props }) => {
                 In my free time, you can find me <a className="link" href="https://github.com/ryan-parag">tinkering on a random project</a>, traveling to a random spot on the globe 🧳, learning how to race cars 🏎, biking around town 🚴‍♂️, or a bunch of other random things.
               </p>
               <p>
-                <a href="/static/about/RyanParag-resume.pdf" target="_blank">View my resumé</a>, <Link href="/work/"><a className="link">view my work</a></Link>, or contact me for a more in-depth look.
+                <a href="/static/about/RyanParag-resume.pdf" target="_blank">View my resumé</a>, <Link href="/work/"><a className="link">view my work</a></Link>, or <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a more in-depth look.
               </p>
             </Title>
           </Wrapper>
@@ -94,8 +94,6 @@ const About = ({ posts, title, description, ...props }) => {
           <h3><Link href="/listening/music"><a>Recent Listens 🎧</a></Link></h3>
           <SpotifyCurrentlyPlaying playing />
           <hr/>
-          <Subscribe/>
-          <hr/>
           <h3>Site Colophon</h3>
           <p>Like any designer, my portfolio is really never finished and is in a constant state of having the code reworked. This is the 5th iteration of my portfolio and I put this version together with help from the following resources:</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: designTokens.space[3] }}>
@@ -109,6 +107,8 @@ const About = ({ posts, title, description, ...props }) => {
             Follow in the open on GitHub
             <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
           </a>
+          <hr/>
+          <Subscribe/>
         </Wrapper>
       </Layout>
     </>

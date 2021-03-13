@@ -26,7 +26,7 @@ const Index = ({ posts, title, description, ...props }) => {
               <Logo/>
             </div>
             <h1>Hey, I'm Ryan!</h1>
-            <p className="lead">I'm a designer and <Randomizer/>.</p>
+            <p className="lead">I'm a designer and <Randomizer/>. Currently, designing early-phase products at <Link href="work"><a>Masonite</a></Link>, based in Tampa, FL.</p>
             <p>
               <Link href="/about">
                 <a className="link">
@@ -55,7 +55,7 @@ const Index = ({ posts, title, description, ...props }) => {
             <h3><Link href="/work"><a>Selected Work 💼</a></Link></h3>
             <p>I'm in the process of moving over my work to this site, but before that happens:</p>
             <ul>
-              <li>find my work <a className="link" href="https://ryanparag.com">here</a> for now</li>
+              <li>find my work <a className="link" href="https://work.ryanparag.com">here</a> for now</li>
               <li><a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</li>
             </ul>
             <br/>
