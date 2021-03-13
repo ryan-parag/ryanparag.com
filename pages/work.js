@@ -17,7 +17,7 @@ const Work = ({ title, description}) => {
             </div>
             <h1>Work</h1>
             <p className="lead">Oops - I'm slowly moving my work to this site, but you can find my current work using the link below</p>
-            <ButtonPrimaryAnchorTag href="https://ryanparag.com">
+            <ButtonPrimaryAnchorTag href="https://work.ryanparag.com">
               View my case studies!
             </ButtonPrimaryAnchorTag>
           </Title>

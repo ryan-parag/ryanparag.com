@@ -64,7 +64,7 @@ const About = ({ posts, title, description, ...props }) => {
         <Wrapper>
           <h3>How can I help?</h3>
           <p>
-            I'd love to help out or chat! Feel free to contact me if you:
+            Don't be a stranger &mdash; I'd love to help out or chat! Feel free to contact me if you:
           </p>
           <ul style={{ marginBottom: designTokens.space[4] }}>
             <li>Are looking for a designer who codes?</li>
