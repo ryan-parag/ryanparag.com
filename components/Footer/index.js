@@ -79,8 +79,6 @@ const FooterListItem = styled.li`
 `
 
 const FooterWide = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 4;
   margin-top: ${designTokens.space[5]};
 `
 
@@ -256,8 +254,8 @@ export default function Footer({debug, debugGrid}) {
                 ))
               }
             </FooterList>
-            <DescriptionSection debug={debug} debugGrid={debugGrid} />
           </FooterInner>
+          <DescriptionSection debug={debug} debugGrid={debugGrid} />
         </Wrapper>
       </FooterContainer>
     </>
