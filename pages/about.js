@@ -9,7 +9,7 @@ import PostList from '@components/PostList/'
 import Subscribe from '@components/Subscribe'
 import Randomizer from '@components/Randomizer'
 import Accordion from '@components/Accordion'
-import { EmailButtonInline } from '@components/ContactBox'
+import { EmailButton } from '@components/ContactBox'
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import Memoji from '@components/Memoji'
 
@@ -57,7 +57,7 @@ const About = ({ posts, title, description, ...props }) => {
             <li>Have any cool movies, tv series, <Link href="/listening/podcasts"><a>music/podcasts</a></Link> to recommend?</li>
             <li>Like to chat over coffee, tea, seltzer water, coke zero, whatever really ☕️</li>
           </ul>
-          <EmailButtonInline/>
+          <EmailButton/>
           <hr/>
           <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
           <PostList posts={latestPosts} />
