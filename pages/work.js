@@ -4,6 +4,9 @@ import Title from '@components/Title'
 import { WorkLogo } from '@components/Logo'
 import Projects from '@components/Projects'
 import FAQ from '@components/FAQ'
+import { Box } from '@components/Box'
+import Memoji from '@components/Memoji'
+import { designTokens } from '@components/Theme/designTokens'
 
 const Work = ({ title, description}) => {
 
@@ -16,14 +19,15 @@ const Work = ({ title, description}) => {
               <WorkLogo/>
             </div>
             <h1>Work</h1>
-            <p className="lead">Oops - I'm slowly moving my work to this site, but you can find my current work using the link below</p>
-            <ButtonPrimaryAnchorTag href="https://work.ryanparag.com">
-              View my case studies!
-            </ButtonPrimaryAnchorTag>
           </Title>
         </Wrapper>
         <Wrapper>
-          <h3>... or check out some side projects</h3>
+          <h3>Projects (coming soon)</h3>
+          <p>
+            I'm in the proceess of moving my work/case studies to this site, but you can <a className="link" href="https://work.ryanparag.com">find my current work here</a>.
+          </p>
+          <hr/>
+          <h3>... or take a look at a few of my side projects</h3>
           <Projects/>
           <hr/>
         </Wrapper>

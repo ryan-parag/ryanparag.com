@@ -49,7 +49,7 @@ const Container = styled.div`
 `
 
 const GradientBox = styled(motion.div)`
-  height: calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[8]});
+  height: calc(${designTokens.space[10]} + ${designTokens.space[10]});
   background:linear-gradient(150deg, var(--secondary), var(--tertiary), var(--primary), var(--primary));
   position: absolute;
   top: 0;
@@ -69,7 +69,7 @@ const GradientClip = styled.div`
   bottom: 0;
   z-index: 10;
   backdrop-filter: blur(4px) saturate(300%);
-  background: linear-gradient(${props => props.slant ? '-30deg, var(--grey0),var(--grey0), transparent' : 'to top, var(--grey0), transparent'});
+  background: linear-gradient(${props => props.slant ? '-12deg, var(--grey0),var(--grey0), transparent' : 'to top, var(--grey0), transparent'});
 `
 
 const Sidebar = styled.div`

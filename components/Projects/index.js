@@ -135,6 +135,18 @@ export default function Projects(){
 
   const projects = [
     {
+      name: 'Slack Themes',
+      description: 'Having trouble keeping track of all of your Slack workspaces?',
+      image: '/static/projects/icon-slack-themes.png',
+      link:'https://slack-themes.now.sh/',
+      outbound: true
+    }, {
+      name: 'TampaBay.design',
+      description: 'How to get involved in one of the many local design communities',
+      image: '/static/projects/icon-tbd.png',
+      link:'https://tampabay.design',
+      outbound: true
+    }, {
       name: 'Recent Listens',
       description: 'Take a look at my current music/podcast feed',
       image: '/static/projects/icon-listens.png',
@@ -157,18 +169,6 @@ export default function Projects(){
       description: 'Check out my files and plugins on Figma Community',
       image: '/static/projects/icon-figma.png',
       link:'https://figma.com/@ryanparag',
-      outbound: true
-    }, {
-      name: 'Slack Themes',
-      description: 'Having trouble keeping track of all of your Slack workspaces?',
-      image: '/static/projects/icon-slack-themes.png',
-      link:'https://slack-themes.now.sh/',
-      outbound: true
-    }, {
-      name: 'TampaBay.design',
-      description: 'How to get involved in one of the many local design communities',
-      image: '/static/projects/icon-tbd.png',
-      link:'https://tampabay.design',
       outbound: true
     }
   ]
