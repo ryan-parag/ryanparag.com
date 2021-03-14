@@ -46,6 +46,7 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--grey900);
     font-family: ${designTokens.fonts.body};
     overscroll-behavior-x: none;
+    overflow-x: hidden;
     @media screen and (max-width: ${designTokens.breakpoints[2]}) {
       font-size: ${designTokens.fontSizes[1]};
     }

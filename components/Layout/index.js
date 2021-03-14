@@ -53,16 +53,14 @@ const GradientBox = styled.div`
 	background-size: 100% 100%;
   position: absolute;
   top: -${designTokens.space[3]};
-  left: -${designTokens.space[10]};
-  right: -${designTokens.space[10]};
+  left: 0;
+  right: 0;
   width: 100%;
   z-index: -1;
   filter: blur(${designTokens.space[8]});
   transform: rotate(-12deg);
   opacity: 0.25;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    left: 0;
-    right: 0;
     top: -${designTokens.space[7]};
   }
 `
