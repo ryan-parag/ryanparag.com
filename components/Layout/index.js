@@ -9,6 +9,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import Footer from '@components/Footer'
 import { StaticKitProvider } from '@statickit/react'
 import ReactGA from 'react-ga'
+import { motion } from 'framer-motion'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -47,7 +48,7 @@ const Container = styled.div`
   width: 100vw;
 `
 
-const GradientBox = styled.div`
+const GradientBox = styled(motion.div)`
   height: calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[8]});
   background:linear-gradient(150deg, var(--secondary), var(--tertiary), var(--primary), var(--primary));
   position: absolute;
@@ -85,7 +86,11 @@ const Sidebar = styled.div`
 
 const GradientContainer = () => {
   return(
-    <GradientBox>
+    <GradientBox
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.2 }}
+      transition={{ duration: 1.4, delay: 0.2 }}
+    >
       <GradientClip slant/>
     </GradientBox>
   )
