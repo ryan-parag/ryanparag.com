@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '@components/CodeBlock'
-import { format } from 'timeago.js'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactForm from '@components/ContactForm'
 import ImgZoom from '@components/ImgZoom'
@@ -43,6 +42,12 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
     }
   }
 
+  const date = new Date(frontmatter.date).toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+
   return (
     <>
       <Layout pageTitle={`${frontmatter.title} | ${siteTitle}`} description={frontmatter.description} ogImage={frontmatter.hero_image}>
@@ -62,7 +67,7 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
               }}
             >
               <Chip>
-                Updated {format(frontmatter.date)}
+                {date}
               </Chip>
             </div>
             {frontmatter.hero_image && (

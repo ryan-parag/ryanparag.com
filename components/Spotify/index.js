@@ -1,5 +1,5 @@
-import useSWR from 'swr';
 import React, { useState } from 'react'
+import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import styled, { css } from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'

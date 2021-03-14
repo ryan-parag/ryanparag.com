@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
-import { format } from 'timeago.js'
 import List, { ListItem } from '@components/List'
 import { truncateString } from '@utils/text'
 
@@ -77,6 +76,15 @@ const Label = styled.div`
 export default function PostList({ posts }) {
   if (posts === 'undefined') return null
 
+  const getDate = (el) => {
+    const date = new Date(el).toLocaleDateString('en-us', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+    return date
+  }
+
   return (
     <>
       <div>
@@ -90,7 +98,7 @@ export default function PostList({ posts }) {
                     <a>
                       <NewContent>
                         <Content>
-                          <Label>Updated {format(post.frontmatter.date)}</Label>
+                          <Label>{getDate(post.frontmatter.date)}</Label>
                           <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
                             {post?.frontmatter?.title}
                           </h4>

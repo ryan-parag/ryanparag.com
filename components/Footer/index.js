@@ -6,7 +6,8 @@ import { LogoWithLabel } from '@components/Logo'
 import { Button, ButtonAnchorTag } from '@components/Button'
 import { GitHub, Dribbble, Codepen, Send } from 'react-feather'
 import { Wrapper } from '@components/Layout/'
-import Switch from '@components/Switch'
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
 
 export const IconLink = styled.a`
   align-items: center;
@@ -125,6 +126,17 @@ const FooterLink = ({link}) => {
 
 const DescriptionSection = ({debug,debugGrid}) => {
 
+  const { data } = useSWR('https://api.github.com/repos/ryan-parag/notes.ryanparag.com', fetcher);
+
+  const getDate = (el) => {
+    const date = new Date(el).toLocaleDateString('en-us', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+    return date
+  }
+
   const clearStorage = () => {
     localStorage.removeItem('ryansNotesNewTheme')
     localStorage.removeItem('customThemes')
@@ -169,7 +181,11 @@ const DescriptionSection = ({debug,debugGrid}) => {
       </IconBar>
       <BottomContainer>
       <BottomColumn>
-        <small>Made with Next.js and Styled Components</small>
+        {
+          data && (
+            <small><a className="link" href="https://github.com/ryan-parag/notes.ryanparag.com">View Source</a> • Last Updated {getDate(data.updated_at)}</small>
+          )
+        }
       </BottomColumn>
       <BottomColumn>
         <Button small onClick={clearStorage}>Reset Theme</Button>
