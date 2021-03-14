@@ -48,20 +48,30 @@ const Container = styled.div`
 `
 
 const GradientBox = styled.div`
-  height: ${designTokens.space[10]};
-  background: linear-gradient(-60deg, var(--primary), var(--tertiary), var(--secondary));
-	background-size: 100% 100%;
+  height: calc(${designTokens.space[10]} + ${designTokens.space[10]});
+  background:linear-gradient(150deg, var(--primary), var(--tertiary), var(--secondary));
+  background-position: center;
   position: absolute;
   top: -${designTokens.space[3]};
   left: 0;
   right: 0;
   width: 100%;
   z-index: -1;
-  filter: blur(${designTokens.space[8]});
-  transform: rotate(-12deg);
-  opacity: 0.25;
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    top: -${designTokens.space[7]};
+  filter: blur(${designTokens.space[7]});
+  opacity: 0.3;
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &:before {
+    background: linear-gradient(to top, var(--grey0), transparent);
+  }
+  &:after {
+    background: linear-gradient(-10deg, var(--grey0), transparent, transparent);
   }
 `
 
