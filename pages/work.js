@@ -9,7 +9,7 @@ const Work = ({ title, description}) => {
 
   return (
     <>
-      <Layout pageTitle={`${title} | Work`} description={description} ogImage="/notes-social-media.png">
+      <Layout pageTitle={`${title} | Work`} description={description} ogImage="/social-media.png">
         <Wrapper>
           <Title>
             <div style={{ width: '72px'}}>

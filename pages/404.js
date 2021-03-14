@@ -15,7 +15,7 @@ const Container = styled.div`
 const Listening = ({title, description, ...props}) => {
 
   return (
-    <Layout pageTitle={title} description={description} ogImage="/listens-social-media.png">
+    <Layout pageTitle={title} description={description} ogImage="/social-media.png">
       <Wrapper>
        <Container>
         <Memoji/>

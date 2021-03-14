@@ -21,7 +21,7 @@ const Notes = ({ posts, title, description, ...props }) => {
 
   return (
     <>
-      <Layout pageTitle={`${title} | RSS`} description={description} ogImage="/notes-social-media.png">
+      <Layout pageTitle={`${title} | RSS`} description={description} ogImage="/social-media.png">
         <Wrapper>
           <Title>
             <h1>Follow with RSS</h1>

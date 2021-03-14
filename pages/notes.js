@@ -12,7 +12,7 @@ const Notes = ({ posts, title, description, ...props }) => {
 
   return (
     <>
-      <Layout pageTitle={`${title} | Notes`} description={description} ogImage="/notes-social-media.png">
+      <Layout pageTitle={`${title} | Notes`} description={description} ogImage="/social-media.png">
         <Wrapper>
           <Title>
             <div style={{ width: '64px'}}>

@@ -19,7 +19,7 @@ const Index = ({ posts, title, description, ...props }) => {
 
   return (
     <>
-      <Layout pageTitle={title} description={description} ogImage="/notes-social-media.png">
+      <Layout pageTitle={title} description={description} ogImage="/social-media.png">
         <Wrapper>
           <Title>
             <div style={{ width: '64px'}}>

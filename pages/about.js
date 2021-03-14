@@ -36,7 +36,7 @@ const About = ({ posts, title, description, ...props }) => {
   
   return (
     <>
-      <Layout pageTitle={`${title} | About`} description={description} ogImage="/notes-social-media.png">
+      <Layout pageTitle={`${title} | About`} description={description} ogImage="/social-media.png">
         <article>
           <Wrapper>
             <Title>

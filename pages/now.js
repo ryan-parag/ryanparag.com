@@ -72,7 +72,7 @@ const Page = ({ title, description, ...props }) => {
 
   return (
     <>
-      <Layout pageTitle={`${title} | Now`} description={description} ogImage="/notes-social-media.png">
+      <Layout pageTitle={`${title} | Now`} description={description} ogImage="/social-media.png">
         <Wrapper>
           <Title>
             <div style={{ width: '72px'}}>

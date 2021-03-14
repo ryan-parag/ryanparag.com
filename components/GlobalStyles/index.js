@@ -59,6 +59,7 @@ export const GlobalStyles = createGlobalStyle`
   button, select, input, textarea {
     color: inherit;
     font-family: inherit;
+    touch-action: manipulation;
     &:active, &:focus {
       outline: 0;
       -webkit-tap-highlight-color: transparent;
