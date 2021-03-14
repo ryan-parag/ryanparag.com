@@ -49,7 +49,7 @@ const Container = styled.div`
 
 const GradientBox = styled.div`
   height: ${designTokens.space[10]};
-  background: linear-gradient(to bottom, var(--primary), var(--tertiary), var(--secondary));
+  background: linear-gradient(-60deg, var(--primary), var(--tertiary), var(--secondary));
 	background-size: 100% 100%;
   position: absolute;
   top: -${designTokens.space[3]};
@@ -64,7 +64,6 @@ const GradientBox = styled.div`
     left: 0;
     right: 0;
     top: -${designTokens.space[7]};
-    filter: blur(${designTokens.space[7]});
   }
 `
 
