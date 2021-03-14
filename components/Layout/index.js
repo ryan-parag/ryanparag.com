@@ -25,15 +25,6 @@ export const DebugStyles = css`
   background-repeat: repeat;
   background-position: calc(var(--unit)*-0.5) calc(var(--unit)*-0.5);
   background-image: radial-gradient(var(--grey400) calc(var(--pixel)*2),transparent 0);
-  transform: translateY(${props => props.open ? '0' : `calc(-${designTokens.space[9]} + -${designTokens.space[1]} + -${designTokens.space[3]})` });
-  transition: all 240ms ease-out 0s;
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    transform: translateY(${props => props.open ? '0' : `calc(-${designTokens.space[9]} + -${designTokens.space[3]})` });
-    padding-top: calc(${designTokens.space[9]} + ${designTokens.space[5]});
-  }
-  @media screen and (max-width: 530px) {
-    transform: translateY(${props => props.open ? '0' : `calc(-${designTokens.space[9]} + -${designTokens.space[3]} + -${designTokens.space[3]})` });
-  }
 `
 
 const Debug = styled.div`
@@ -115,10 +106,6 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
     setDebug(!debug)
   }
 
-  const openThemes = () => {
-    setOpen(!open)
-  }
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme));
@@ -158,8 +145,8 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
             <title>{pageTitle}</title>
           </Head>
           <GlobalStyles/>
-          <Debug debug={debug ? 'var(--debug)' : '0px'} open={open}>
-            <Header toggleTheme={toggleTheme} theme={theme} openState={open} openThemes={openThemes}/>
+          <Debug debug={debug ? 'var(--debug)' : '0px'}>
+            <Header toggleTheme={toggleTheme} theme={theme} />
             <GradientBox/>
             <main>
               <LayoutContainer>

@@ -30,7 +30,9 @@ const ThemePicker = styled.div`
   overflow: hidden;
   background: var(--grey100);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
-  max-height: 200px;
+  &.isOpen {
+    max-height: 200px;
+  }
 `
 
 const ThemePickerBody = styled.div`
@@ -324,11 +326,12 @@ const ThemeList = ({ handleThemeToggle, activeTheme }) => {
   )
 }
 
-export default function Header({ toggleTheme, theme, openThemes, openState }) {
+export default function Header({ toggleTheme, theme }) {
 
   const [isExpanded, setExpanded] = React.useState(false)
-  const [isPickerOpen, setPickerOpen] = React.useState(openState)
+  const [isPickerOpen, setPickerOpen] = React.useState(false)
   const [activeTheme, setActiveTheme] = useState(theme.name);
+  const toggle = () => setPickerOpen(!isPickerOpen);
 
   const variants = {
     visible: { height: 'auto' },
@@ -337,7 +340,7 @@ export default function Header({ toggleTheme, theme, openThemes, openState }) {
 
   const closeMobile = () => {
     setExpanded(false)
-    openThemes(false)
+    setPickerOpen(false)
   }
 
   const handleThemeToggle = (themeName) => {
@@ -347,7 +350,7 @@ export default function Header({ toggleTheme, theme, openThemes, openState }) {
 
   return (
     <HeaderContainer>
-      <ThemePicker>
+      <ThemePicker className={isPickerOpen ? 'isOpen' : null}>
         <div style={{
           textAlign: 'center',
           padding: `${designTokens.space[2]} ${designTokens.space[6]} ${designTokens.space[0]}`,
@@ -367,7 +370,7 @@ export default function Header({ toggleTheme, theme, openThemes, openState }) {
             </a>
           </small>
           <CloseButton
-           onClick={() => openThemes(false)}
+           onClick={toggle}
           >
             <X size={'16'}/>
           </CloseButton>
@@ -424,8 +427,8 @@ export default function Header({ toggleTheme, theme, openThemes, openState }) {
                 </div>
               </div>
               <ThemeBtn
-                handleClick={openThemes}
-                state={openState}
+                handleClick={toggle}
+                state={isPickerOpen}
               />
             </div>
           </Wrapper>
@@ -496,8 +499,8 @@ export default function Header({ toggleTheme, theme, openThemes, openState }) {
               </NavList>
             </Nav>
             <ThemeBtn
-              handleClick={() => openThemes(!isPickerOpen)}
-              state={openState}
+              handleClick={toggle}
+              state={isPickerOpen}
             />
           </HeaderInner>
         </Wrapper>
