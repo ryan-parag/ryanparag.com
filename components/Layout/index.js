@@ -48,38 +48,16 @@ const Container = styled.div`
 `
 
 const GradientBox = styled.div`
+  height: ${designTokens.space[9]};
+  background:linear-gradient(150deg, var(--primary), var(--tertiary), var(--secondary));
   position: absolute;
-  top: 0;
+  top: -${designTokens.space[3]};
   left: 0;
   right: 0;
-  height: calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]});
-  overflow-x: hidden;
+  width: 100%;
   z-index: -1;
-  user-select: none;
-  &:before, &:after {
-    content: '';
-    height: calc(${designTokens.space[6]} + ${designTokens.space[10]});
-    width: 100%;
-    background:linear-gradient(-135deg, var(--tertiary), var(--secondary), var(--primary));
-    position: absolute;
-    transform: rotate(-12deg);
-    top: -${designTokens.space[8]};
-    left: -${designTokens.space[10]};
-    right: 0;
-    z-index: -1;
-    filter: blur(${designTokens.space[9]});
-    opacity: 0.2;
-  }
-  &:after {
-    height: calc(${designTokens.space[7]} + ${designTokens.space[8]});
-    filter: blur(${designTokens.space[7]});
-    opacity: 0.4;
-  }
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    &:before, &:after {
-      top: -${designTokens.space[8]};
-      left: -${designTokens.space[8]};
-    }
+  filter: blur(${designTokens.space[7]});
+  opacity: 0.2;
 `
 
 const Sidebar = styled.div`
