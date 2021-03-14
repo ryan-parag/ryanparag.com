@@ -334,6 +334,15 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  @keyframes gradients {
+    0%   {background-position: 0 0;}
+    25% {background-position: 50% 0;}
+    50% {background-position: 90% 0;}
+    60% {background-position: 60%;}
+    75% {background-position: 40%;}
+    100%  {background-position: 0 0;}
+}
+
   @keyframes shadowBreathing {
     0% {
       box-shadow: -16px 0px 32px 8px var(--tertiaryTransparent), 16px -16px 32px 8px var(--primaryTransparent), 8px 16px 32px 8px var(--secondaryTransparent);

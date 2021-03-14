@@ -48,31 +48,27 @@ const Container = styled.div`
 `
 
 const GradientBox = styled.div`
-  height: calc(${designTokens.space[10]} + ${designTokens.space[10]});
-  background:linear-gradient(150deg, var(--primary), var(--tertiary), var(--secondary));
-  background-position: center;
+  height: calc(${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[10]} + ${designTokens.space[8]});
+  background:linear-gradient(150deg, var(--secondary), var(--tertiary), var(--primary), var(--primary));
   position: absolute;
-  top: -${designTokens.space[3]};
+  top: 0;
   left: 0;
   right: 0;
   width: 100%;
+  filter: blur(${designTokens.space[2]});
   z-index: -1;
-  filter: blur(${designTokens.space[7]});
-  opacity: 0.3;
-  &:after, &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-  &:before {
-    background: linear-gradient(to top, var(--grey0), transparent);
-  }
-  &:after {
-    background: linear-gradient(-10deg, var(--grey0), transparent, transparent);
-  }
+  opacity: 0.2;
+`
+
+const GradientClip = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  backdrop-filter: blur(4px) saturate(300%);
+  background: linear-gradient(${props => props.slant ? '-30deg, var(--grey0),var(--grey0), transparent' : 'to top, var(--grey0), transparent'});
 `
 
 const Sidebar = styled.div`
@@ -86,6 +82,14 @@ const Sidebar = styled.div`
   z-index: 100;
   flex-shrink: 0;
 `
+
+const GradientContainer = () => {
+  return(
+    <GradientBox>
+      <GradientClip slant/>
+    </GradientBox>
+  )
+}
 
 export default function Layout({ children, pageTitle, description, ogImage, ...props }) {
 
@@ -154,7 +158,7 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
           <GlobalStyles/>
           <Debug debug={debug ? 'var(--debug)' : '0px'}>
             <Header toggleTheme={toggleTheme} theme={theme} />
-            <GradientBox/>
+            <GradientContainer/>
             <main>
               <LayoutContainer>
                 {children}

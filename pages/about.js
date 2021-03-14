@@ -44,10 +44,10 @@ const About = ({ posts, title, description, ...props }) => {
               <h1>Hello, I'm Ryan.👋</h1>
               <p className="lead">I'm a designer and <Randomizer/>.</p>
               <p>
-                Currently, I'm on the digital innovation team at <a href="https://ryanparag.com/work/masonite">Masonite</a> in Tampa, FL &mdash; curious about how we can design thoughtful products around open-ended problems. Most of our work is centered around emerging, early-phase growth channels &mdash; conceptualizing a simpler home remodeling experience and designing multiple smart-home experiences for homeowners, contractors, and internal teams.
+                Currently, I'm on the digital innovation team at <a href="https://work.ryanparag.com/work/masonite">Masonite</a> in Tampa, FL &mdash; curious about how we can design thoughtful products around open-ended problems. Most of our work is centered around emerging, early-phase growth channels &mdash; conceptualizing a simpler home remodeling experience and designing multiple smart-home experiences for homeowners, contractors, and internal teams.
               </p>
               <p>
-                Previously, I studied Healthcare Informatics and forecasted pricing models as a healthcare analyst. After switching tracks full-time, I helped design a payments platform for banks and retailers at <a href="https://ryanparag.com/work/disputelab">Chargebacks911</a>.
+                Previously, I studied Healthcare Informatics and forecasted pricing models as a healthcare analyst. After switching tracks full-time, I helped design a payments platform for banks and retailers at <a href="https://work.ryanparag.com/work/disputelab">Chargebacks911</a>.
               </p>
               <p>
                 I thrive in fast-paced, collaborative environments and am commited to being transparent in my work by trying to <Link href="/notes/"><a>share how I think and design</a></Link> about various problems.

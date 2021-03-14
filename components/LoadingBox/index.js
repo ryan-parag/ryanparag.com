@@ -10,7 +10,10 @@ export const LoadingSpinner = styled(Loader)`
 
 const LoadingBox = ({title, description}) => {
   return(
-    <Box center>
+    <Box
+      center
+      bg={'transparent'}
+    >
       <LoadingSpinner
         size={'40'}
       />
