@@ -48,15 +48,17 @@ const Container = styled.div`
 `
 
 const GradientBox = styled.div`
-  height: ${designTokens.space[9]};
-  background:linear-gradient(150deg, var(--primary), var(--tertiary), var(--secondary));
+  height: ${designTokens.space[10]};
+  background: linear-gradient(to bottom, var(--primary), var(--tertiary), var(--secondary));
+	background-size: 100% 100%;
   position: absolute;
   top: -${designTokens.space[3]};
-  left: 0;
-  right: 0;
+  left: -${designTokens.space[10]};
+  right: -${designTokens.space[10]};
   width: 100%;
   z-index: -1;
-  filter: blur(${designTokens.space[7]});
+  filter: blur(${designTokens.space[8]});
+  transform: rotate(-12deg);
   opacity: 0.2;
 `
 
