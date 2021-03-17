@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components'
 import List, { ListItem } from '@components/List'
 import { designTokens } from '@components/Theme/designTokens'
 import { truncateString } from '@utils/text'
+import Chip from '@components/Chip'
 
 const NewProjectImage = styled.img`
   width: ${designTokens.space[7]};
@@ -83,20 +84,25 @@ export const ProjectItem = ({project}) => {
           >
             <NewProjectContentContainer>
               <NewProjectContent>
-                <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
-                  {project.name}
-                </h4>
+                <div style={{ display: 'flex', alignItems: 'center',  marginBottom: designTokens.space[2]}}>
+                  <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[3] }}>
+                    {project.name}
+                  </h4>
+                  {
+                    project.time && (
+                      <Chip>{project.time}</Chip>
+                    )
+                  }
+                </div>
                 <p style={{ marginBottom: designTokens.space[2] }}>
                   {truncateString(project.description, 72)}
                 </p>
               </NewProjectContent>
             </NewProjectContentContainer>
             {
-              project.image ? (
+              project.image && (
                 <NewProjectImage src={project.image} alt={project.name} />
               )
-              :
-              null
             }
           </NewProjectAnchorTag>
         )
@@ -107,20 +113,30 @@ export const ProjectItem = ({project}) => {
               <a>
                 <NewProjectContentContainer>
                   <NewProjectContent>
-                  <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
-                    {project.name}
-                  </h4>
+                  <div style={{ display: 'flex', alignItems: 'center',  marginBottom: designTokens.space[2]}}>
+                    <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[2] }}>
+                      {project.name}
+                    </h4>
+                    {
+                      project.time && (
+                        <Chip>{project.time}</Chip>
+                      )
+                    }
+                  </div>
                   <p style={{ marginBottom: designTokens.space[2] }}>
                     {truncateString(project.description, 72)}
                   </p>
+                  {
+                    project.time && (
+                      <Chip>{project.time}</Chip>
+                    )
+                  }
                   </NewProjectContent>
                 </NewProjectContentContainer>
                 {
-                  project.image ? (
+                  project.image && (
                     <NewProjectImage src={project.image} alt={project.name} />
                   )
-                  :
-                  null
                 }
               </a>
             </Link>
@@ -128,6 +144,51 @@ export const ProjectItem = ({project}) => {
         )
       }
     </>
+  )
+}
+
+export const WorkList = () => {
+  const work = [
+    {
+      name: 'Masonite',
+      description: 'Connecting doors to the cloud and simplifying the home-remodeling experience?',
+      image: '/static/projects/icon-masonite.png',
+      link:'https://work.ryanparag.com/work/masonite',
+      outbound: true,
+      time: '2019 - Present'
+    }, {
+      name: 'DisputeLab',
+      description: 'Enabling financial enterprises to filter, optimize, and submit thousands of disputes',
+      image: '/static/projects/icon-disputelab.png',
+      link:'https://work.ryanparag.com/work/disputelab',
+      outbound: true,
+      time: '2017 - 2019'
+    }, {
+      name: 'Chargebacks911',
+      description: 'Helping online merchants optimize profitability by intelligently managing payment disputes',
+      image: '/static/projects/icon-cb911.png',
+      link:'https://work.ryanparag.com/work/chargebacks911/',
+      outbound: true,
+      time: '2016 - 2019'
+    }, {
+      name: 'SoleVenture',
+      description: 'Giving freelancers the security of steady income and traditional benefits',
+      image: '/static/projects/icon-sv.png',
+      link:'https://work.ryanparag.com/work/soleventure',
+      outbound: true,
+      time: '2019 - 2020'
+    }
+  ]
+  return(
+    <List>
+      {
+        work.map(project => (
+          <ListItem key={project.name}>
+            <ProjectItem project={project}/>
+          </ListItem>
+        ))
+      }
+    </List>
   )
 }
 

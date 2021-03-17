@@ -7,6 +7,7 @@ import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import { ButtonAnchorTag } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import { ListensIcon } from '@components/Logo'
+import Link from 'next/link'
 
 const ListenType = ({title, description}) => {
   const router = useRouter();
@@ -41,7 +42,7 @@ const ListenType = ({title, description}) => {
             <h1>Recent Listens</h1>
             <p className="lead">Take a peek at what I've been listening to!</p>
             <p>
-              I'm planning to write about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
+              I <Link href="/notes/showing-my-listening-activity"><a className="link">wrote</a></Link> about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
             </p>
             <SpotifyCurrentlyPlaying playing/>
           </Title>
