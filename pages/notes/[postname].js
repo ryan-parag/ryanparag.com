@@ -30,6 +30,13 @@ const LinkContainer = styled.div`
   justify-content: center;
 `
 
+const Label = styled.div`
+  font-size: ${designTokens.fontSizes[0]};
+  opacity: 50%;
+  margin-bottom: ${designTokens.space[1]};
+  width: 100%;
+`
+
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>
   const scrollToTop = () => {
@@ -60,16 +67,10 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
             </ButtonLink>
           </div>
           <article>
-            <h1>{frontmatter.title}</h1>
-            <div
-              style={{
-                marginBottom: designTokens.space[3]
-              }}
-            >
-              <Chip>
+            <Label>
                 {date}
-              </Chip>
-            </div>
+            </Label>
+            <h1>{frontmatter.title}</h1>
             {frontmatter.hero_image && (
               <img
                 src={frontmatter.hero_image}

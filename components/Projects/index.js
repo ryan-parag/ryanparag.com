@@ -84,10 +84,16 @@ export const ProjectItem = ({project}) => {
           >
             <NewProjectContentContainer>
               <NewProjectContent>
-                <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[3] }}>
-                  {project.name}
-                </h4>
-                <Chip>{project.time}</Chip>
+                <div style={{ display: 'flex', alignItems: 'center',  marginBottom: designTokens.space[2]}}>
+                  <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[3] }}>
+                    {project.name}
+                  </h4>
+                  {
+                    project.time && (
+                      <Chip>{project.time}</Chip>
+                    )
+                  }
+                </div>
                 <p style={{ marginBottom: designTokens.space[2] }}>
                   {truncateString(project.description, 72)}
                 </p>
