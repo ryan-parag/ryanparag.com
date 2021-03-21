@@ -244,7 +244,6 @@ export default function Footer({debug, debugGrid}) {
   return(
     <>
       <FooterContainer>
-        <Wrapper>
           <FooterInner>
             <FooterList>
               {
@@ -269,7 +268,6 @@ export default function Footer({debug, debugGrid}) {
             </FooterList>
           </FooterInner>
           <DescriptionSection debug={debug} debugGrid={debugGrid} />
-        </Wrapper>
       </FooterContainer>
     </>
   )
