@@ -44,7 +44,7 @@ const IconBar = styled.div`
 
 const FooterContainer = styled.footer`
   width: 100%;
-  padding: ${designTokens.space[6]} ${designTokens.space[3]} ${designTokens.space[7]};
+  padding: ${designTokens.space[6]} 0 ${designTokens.space[7]};
   border-top: 1px solid var(--grey100);
   color: var(--grey600);
 `
@@ -244,6 +244,7 @@ export default function Footer({debug, debugGrid}) {
   return(
     <>
       <FooterContainer>
+        <Wrapper>
           <FooterInner>
             <FooterList>
               {
@@ -268,6 +269,7 @@ export default function Footer({debug, debugGrid}) {
             </FooterList>
           </FooterInner>
           <DescriptionSection debug={debug} debugGrid={debugGrid} />
+        </Wrapper>
       </FooterContainer>
     </>
   )
