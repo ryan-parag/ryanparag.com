@@ -9,7 +9,8 @@ export default async (req, res) => {
   });
 
   const items = await airtable.read({
-    sort: [{field: 'Date', direction: 'desc'}]
+    sort: [{field: 'Date', direction: 'desc'}],
+    maxRecords: 8
   });
 
   res.setHeader(

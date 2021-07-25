@@ -9,6 +9,7 @@ import Featured from '@components/Featured'
 import Randomizer from '@components/Randomizer'
 import FAQ from '@components/FAQ'
 import { ArrowRight } from 'react-feather'
+import { WorkHistory } from '@components/Projects'
 
 import getPosts from '@utils/getPosts'
 
@@ -39,19 +40,6 @@ const Index = ({ posts, title, description, ...props }) => {
         </Wrapper>
         <main>
           <Wrapper>
-            <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
-            <PostList posts={latestPosts} />
-            <p>
-              <Link href="/notes">
-                <a className="link">
-                  Read more notes
-                  <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
-                </a>
-              </Link>
-            </p>
-            <hr/>
-          </Wrapper>
-          <Wrapper>
             <h3><Link href="/work"><a>Selected Work 💼</a></Link></h3>
             <p>I'm in the process of moving over my work to this site, but before that happens:</p>
             <ul>
@@ -63,6 +51,19 @@ const Index = ({ posts, title, description, ...props }) => {
               <Link href="/work">
                 <a className="link">
                   View more work
+                  <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
+                </a>
+              </Link>
+            </p>
+            <hr/>
+          </Wrapper>
+          <Wrapper>
+            <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
+            <PostList posts={latestPosts} />
+            <p>
+              <Link href="/notes">
+                <a className="link">
+                  Read more notes
                   <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
                 </a>
               </Link>
