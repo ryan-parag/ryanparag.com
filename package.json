@@ -9,6 +9,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@notionhq/client": "^0.2.3",
     "@statickit/react": "^2.1.1",
     "airtable": "^0.10.1",
     "airtable-plus": "^1.0.4",

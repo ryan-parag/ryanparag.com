@@ -12,8 +12,12 @@ export const TabItem = styled.div`
   width: 100%;
   font-size: ${designTokens.fontSizes[1]};
   border-bottom: 2px solid var(--grey200);
-  a {
+  a, button {
     color: var(--grey600);
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-weight: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +33,7 @@ export const TabItem = styled.div`
   &.active {
     border-bottom: 4px solid var(--primary);
     font-weight: ${designTokens.fontWeights.bold};
-    a {
+    a, button {
       color: var(--grey900);
     }
   }

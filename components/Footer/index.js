@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import { LogoWithLabel } from '@components/Logo'
 import { Button, ButtonAnchorTag } from '@components/Button'
-import { GitHub, Dribbble, Codepen, Send } from 'react-feather'
+import { GitHub, Dribbble, Codepen, Send, Linkedin } from 'react-feather'
 import { Wrapper } from '@components/Layout/'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
@@ -160,6 +160,11 @@ const DescriptionSection = ({debug,debugGrid}) => {
       outbound: true,
       icon: <Dribbble size={'16'}/>
     },{
+      name: 'Linkedin',
+      href: 'https://linkedin.com/in/ryan-parag',
+      outbound: true,
+      icon: <Linkedin size={'16'}/>
+    },{
       name: 'Email',
       href: 'mailto:hello@ryanparag.com?subject=Hey Ryan!',
       outbound: true,
@@ -237,6 +242,10 @@ export default function Footer({debug, debugGrid}) {
     },{
       name: 'RSS',
       href: '/rss',
+      outbound: false
+    },{
+      name: 'Now',
+      href: '/now',
       outbound: false
     }
   ]

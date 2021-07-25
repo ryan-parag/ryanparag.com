@@ -147,6 +147,114 @@ export const ProjectItem = ({project}) => {
   )
 }
 
+export const WorkItem = ({project}) => {
+  return(
+    <>
+      {
+        project.outbound ? (
+          <NewProjectAnchorTag
+            href={project.link}
+          >
+            <NewProjectContentContainer>
+              <NewProjectContent>
+                <h5 style={{ marginTop: '0', marginBottom: designTokens.space[2], marginRight: designTokens.space[3] }}>
+                  {project.description}
+                </h5>
+                <p style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)', marginBottom: designTokens.space[2] }}>
+                  {project.name} • {project.time}
+                </p>
+              </NewProjectContent>
+            </NewProjectContentContainer>
+            {
+              project.image && (
+                <NewProjectImage src={project.image} alt={project.name} />
+              )
+            }
+          </NewProjectAnchorTag>
+        )
+        :
+        (
+          <NewProjectLink>
+            <Link href={project.link}>
+              <a>
+                <NewProjectContentContainer>
+                  <NewProjectContent>
+                    <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2], marginRight: designTokens.space[3] }}>
+                      {project.description}
+                    </h4>
+                    <p style={{ marginBottom: designTokens.space[2] }}>
+                      {project.name} • {project.time}
+                    </p>
+                  </NewProjectContent>
+                </NewProjectContentContainer>
+                {
+                  project.image && (
+                    <NewProjectImage src={project.image} alt={project.name} />
+                  )
+                }
+              </a>
+            </Link>
+          </NewProjectLink>
+        )
+      }
+    </>
+  )
+}
+
+export const WorkHistory = () => {
+
+  const work = [
+    {
+      name: 'TrustLayer',
+      description: 'Senior Product Designer',
+      image: '/static/projects/icon-tl.png',
+      link:'https://trustlayer.io',
+      outbound: true,
+      time: '2021 - Present'
+    }, {
+      name: 'Masonite',
+      description: 'Senior Product Designer',
+      image: '/static/projects/icon-masonite.png',
+      link:'https://masonite.com',
+      outbound: true,
+      time: '2019 - Present'
+    }, {
+      name: 'DisputeLab',
+      description: 'Product Designer',
+      image: '/static/projects/icon-disputelab.png',
+      link:'https://f1911.com',
+      outbound: true,
+      time: '2017 - 2019'
+    }, {
+      name: 'Chargebacks911',
+      description: 'Product Designer',
+      image: '/static/projects/icon-cb911.png',
+      link:'https://chargebacks911.com',
+      outbound: true,
+      time: '2016 - 2019'
+    }, {
+      name: 'SoleVenture',
+      description: 'Design Consultant',
+      image: '/static/projects/icon-sv.png',
+      link:'https://soleventure.com',
+      outbound: true,
+      time: '2019 - 2020'
+    }
+  ]
+
+  return(
+    <List>
+      {
+        work.map(item => (
+          <ListItem key={item.name}>
+            <WorkItem project={item}/>
+          </ListItem>
+        ))
+      }
+    </List>
+  )
+}
+
 export const WorkList = () => {
   const work = [
     {

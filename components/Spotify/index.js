@@ -365,11 +365,19 @@ export const SpotifyLastPlayed = ({action}) => {
               <div>Something went wrong</div>
               {
                 action ? (
-                  <InteriorButton
-                    onClick={action}
-                  >
-                    View Currently Playing
-                  </InteriorButton>
+                  <>
+                    <InteriorButton
+                      onClick={action}
+                    >
+                      View Currently Playing
+                    </InteriorButton>
+                    {' '}<small>or</small>{' '}
+                    <Link href="/listening" shallow>
+                      <InteriorLink>
+                        View More...
+                      </InteriorLink>
+                    </Link>
+                  </>
                 )
                 :
                 null
@@ -381,12 +389,20 @@ export const SpotifyLastPlayed = ({action}) => {
     }
     {
       data?.songUrl && action ? (
-        <InteriorButton
-          marginLeft
-          onClick={action}
-        >
-          View Currently Playing
-        </InteriorButton>
+        <>
+          <InteriorButton
+            marginLeft
+            onClick={action}
+          >
+            View Currently Playing
+          </InteriorButton>
+          {' '}<small>or</small>{' '}
+          <Link href="/listening" shallow>
+            <InteriorLink>
+              View More...
+            </InteriorLink>
+          </Link>
+        </>
       )
       :
       null
@@ -463,7 +479,6 @@ export const SpotifyNowPlaying = ({action}) => {
       data?.songUrl && action ? (
         <>
           <InteriorButton
-            marginLeft
             onClick={action}
           >
             View Last Played
