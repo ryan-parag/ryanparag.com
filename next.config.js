@@ -6,7 +6,9 @@ module.exports = {
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
     SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
     SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
-    SPOTIFY_USER_ID: process.env.SPOTIFY_USER_ID
+    SPOTIFY_USER_ID: process.env.SPOTIFY_USER_ID,
+    NOTION_API_KEY: process.env.NOTION_API_KEY,
+    NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID
   },
   target: 'serverless',
   webpack: function (config) {

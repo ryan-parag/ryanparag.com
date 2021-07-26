@@ -479,6 +479,7 @@ export const SpotifyNowPlaying = ({action}) => {
       data?.songUrl && action ? (
         <>
           <InteriorButton
+            marginLeft
             onClick={action}
           >
             View Last Played
