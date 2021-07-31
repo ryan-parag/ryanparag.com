@@ -5,15 +5,15 @@ const SVG_CURSOR_OFFSET_X = 8
 const SVG_CURSOR_OFFSET_Y = -2
 
 const COLORS = [
-  'var(--secondaryDark)',
-  'var(--primaryDark)',
-  'var(--tertiaryDark)'
+  'var(--secondary)',
+  'var(--tertiary)',
+  'var(--primary)'
 ]
 
 const BORDERS = [
-  'var(--secondaryTransparent)',
-  'var(--primaryTransparent)',
-  'var(--tertiaryTransparent)'
+  'var(--secondaryDark)',
+  'var(--tertiaryDark)',
+  'var(--primaryDark)'
 ]
 
 export function Cursor({ connectionId, x, y }) {
