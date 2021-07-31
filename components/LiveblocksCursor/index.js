@@ -97,6 +97,7 @@ const Canvas = ({children}) => {
           key={connectionId}
           x={x}
           y={y}
+          connectionId={connectionId}
         />
       ))}
     </div>
