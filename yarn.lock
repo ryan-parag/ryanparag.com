@@ -241,6 +241,23 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
+"@liveblocks/client@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@liveblocks/client/-/client-0.11.0.tgz#f5e05efd7c12dec4a6a81c0e3713830dc690fb9a"
+  integrity sha512-5zQlSZaVMeCUVbmHGoW80zGH1/XVk3fSDPvdCuJwqWomxATGU11YcYwbandNKDlaLHamXG0r0HUXlB2ervwZvQ==
+
+"@liveblocks/node@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@liveblocks/node/-/node-0.3.0.tgz#f22ff0c3415502af2baf22250431852e198b12e0"
+  integrity sha512-3IJ6uN3QU71z6WXiDM97wW17fVVvrG9zMy4G4PY3zYzmeRfMnA+KBSBT1uPvlfgWm2D3d6/HNIXWxhwyv7bkfw==
+  dependencies:
+    node-fetch "^2.6.1"
+
+"@liveblocks/react@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@liveblocks/react/-/react-0.11.0.tgz#88e6a971c19857be7e4f16a492c40e031afc93af"
+  integrity sha512-6VzbvGMAVAmPvmVexppNx84LvxvNlKc75Cw/PBF4wwFauM3O6cB3zIdR1sqOx8iKMVnfGNhIAaLwyVLEPTQcYA==
+
 "@next/env@10.0.5":
   version "10.0.5"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.0.5.tgz#446e59ee7a8d05061be784b24732c369653038ab"

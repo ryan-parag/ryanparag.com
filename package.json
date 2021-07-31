@@ -9,6 +9,9 @@
     "export": "next export"
   },
   "dependencies": {
+    "@liveblocks/client": "^0.11.0",
+    "@liveblocks/node": "^0.3.0",
+    "@liveblocks/react": "^0.11.0",
     "@notionhq/client": "^0.2.3",
     "@statickit/react": "^2.1.1",
     "airtable": "^0.10.1",
