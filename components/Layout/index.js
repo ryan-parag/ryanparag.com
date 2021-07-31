@@ -173,7 +173,7 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
   const { pathname } = router
 
   return (
-    <LiveblocksCursor room={`v4`}>
+    <LiveblocksCursor room={`${pathname}-v4`}>
       <Demo
         pageTitle={pageTitle}
         description={description}
