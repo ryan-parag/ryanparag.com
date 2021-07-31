@@ -29,6 +29,7 @@ const About = ({ posts, title, description, ...props }) => {
     {name: 'Airtable', href: 'https://airtable.com/'},
     {name: 'Spotify API', href: 'https://developer.spotify.com/documentation/web-api/'},
     {name: 'Framer Motion', href: 'https://www.framer.com/api/motion/'},
+    {name: 'Liveblocks', href: 'https://liveblocks.io/'},
     {name: 'Feedback from many nice humans', href: 'https://www.tampabay.design/'}
   ]
 
