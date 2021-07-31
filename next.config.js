@@ -8,7 +8,8 @@ module.exports = {
     SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
     SPOTIFY_USER_ID: process.env.SPOTIFY_USER_ID,
     NOTION_API_KEY: process.env.NOTION_API_KEY,
-    NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID
+    NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
+    LIVEBLOCKS_API_KEY: process.env.LIVEBLOCKS_API_KEY
   },
   target: 'serverless',
   webpack: function (config) {

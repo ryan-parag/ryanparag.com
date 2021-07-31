@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import Header from '@components/Header/'
 import { GlobalStyles } from '@components/GlobalStyles/'
@@ -10,6 +11,7 @@ import Footer from '@components/Footer'
 import { StaticKitProvider } from '@statickit/react'
 import ReactGA from 'react-ga'
 import { motion } from 'framer-motion'
+import LiveblocksCursor from '@components/LiveblocksCursor'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -41,12 +43,6 @@ export const LayoutContainer = styled.section`
     padding-top: ${designTokens.space[9]};
   }
 `
-const Container = styled.div`
-  flex-shrink: 0;
-  padding: 0 48px;
-  display: grid;
-  width: 100vw;
-`
 
 const GradientBox = styled(motion.div)`
   height: calc(${designTokens.space[10]} + ${designTokens.space[10]});
@@ -72,18 +68,6 @@ const GradientClip = styled.div`
   background: linear-gradient(${props => props.slant ? '-12deg, var(--grey0),var(--grey0), transparent' : 'to top, var(--grey0), transparent'});
 `
 
-const Sidebar = styled.div`
-  width: 100%; 
-  background: red;
-  max-width: 330px;
-  width: 330px;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  flex-shrink: 0;
-`
-
 const GradientContainer = () => {
   return(
     <GradientBox
@@ -96,7 +80,7 @@ const GradientContainer = () => {
   )
 }
 
-export default function Layout({ children, pageTitle, description, ogImage, ...props }) {
+function Demo({ children, pageTitle, description, ogImage, ...props }) {
 
   if (typeof window !== "undefined") {
     ReactGA.initialize('UA-63443247-5')
@@ -181,4 +165,22 @@ export default function Layout({ children, pageTitle, description, ogImage, ...p
   }
 
   return body
+}
+
+export default function Layout({ children, pageTitle, description, ogImage, ...props }) {
+
+  const router = useRouter()
+  const { pathname } = router
+
+  return (
+    <LiveblocksCursor room={`v4`}>
+      <Demo
+        pageTitle={pageTitle}
+        description={description}
+        ogImage={ogImage}
+      >
+        {children}
+      </Demo>
+    </LiveblocksCursor>
+);
 }
