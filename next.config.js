@@ -9,6 +9,8 @@ module.exports = {
     SPOTIFY_USER_ID: process.env.SPOTIFY_USER_ID,
     NOTION_API_KEY: process.env.NOTION_API_KEY,
     NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
+    NOTION_AMA_DATABASE_ID: process.env.NOTION_AMA_DATABASE_ID,
+    NOTION_ROLE_DATABASE_ID: process.env.NOTION_ROLE_DATABASE_ID,
     LIVEBLOCKS_API_KEY: process.env.LIVEBLOCKS_API_KEY
   },
   target: 'serverless',

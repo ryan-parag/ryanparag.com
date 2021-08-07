@@ -101,6 +101,30 @@ const IconButtonBase = css`
   }
 `
 
+const SmallButtonStyles = css`
+  text-decoration: none;
+  overflow-wrap: break-word;
+  border-radius: ${designTokens.space[1]};
+  padding-left: ${designTokens.space[1]};
+  padding-right: ${designTokens.space[1]};
+  padding-top: ${designTokens.space[1]};
+  padding-bottom: ${designTokens.space[1]};
+  background: var(--grey200);
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all 120ms ease-out 0s;
+  &:hover,&:focus {
+    background: var(--primaryTransparent);
+    box-shadow: 0px 0px 0px 2px var(--primaryTransparent);
+  }
+`
+
+export const SmallButton = styled.button`
+  ${SmallButtonStyles}
+`
+
 export const ButtonLink = styled.span`
   a {
     ${ButtonBase}
