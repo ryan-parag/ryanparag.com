@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Layout, { Wrapper } from '@components/Layout/'
 import { designTokens } from '@components/Theme/designTokens'
 import Link from 'next/link'
-import { ButtonLink } from '@components/Button'
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
 import Title from '@components/Title'
 import getPosts from '@utils/getPosts'
 import Subscribe from '@components/Subscribe'
@@ -32,6 +33,9 @@ const About = ({ posts, title, description, ...props }) => {
     {name: 'Liveblocks', href: 'https://liveblocks.io/'},
     {name: 'Feedback from many nice humans', href: 'https://www.tampabay.design/'}
   ]
+
+  const { data } = useSWR('/api/profile/roles/', fetcher);
+  console.log(data)
 
   const work = [
     {
@@ -92,19 +96,23 @@ const About = ({ posts, title, description, ...props }) => {
                 </h5>
                 <List>
                   {
-                    work.map((item, i) => (
-                      <ListItem key={i}>
-                        <div style={{ display: 'flex', alignItems: 'center', paddingTop: designTokens.space[2], paddingBottom: designTokens.space[3] }}>
-                          <img src={item.image} style={{ border: '1px solid var(--grey200)', width: `calc(${designTokens.space[5]} + ${designTokens.space[2]})`, borderRadius: designTokens.space[2] }}/>
-                          <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: designTokens.space[3] }}>
-                            <strong style={{ fontSize: designTokens.fontSizes[1] }}>{item.description}</strong>
-                            <small style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)', display: 'block' }}>
-                              <span>{item.name}</span> • <span>{item.time}</span>
-                            </small>
+                    data ? (
+                      data.roles.verified.map((item) => (
+                        <ListItem key={item.id}>
+                          <div style={{ display: 'flex', alignItems: 'center', paddingTop: designTokens.space[2], paddingBottom: designTokens.space[3] }}>
+                            <img src={item.logo} style={{ border: '1px solid var(--grey200)', width: `calc(${designTokens.space[5]} + ${designTokens.space[2]})`, borderRadius: designTokens.space[2] }}/>
+                            <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: designTokens.space[3] }}>
+                              <strong style={{ fontSize: designTokens.fontSizes[1] }}>{item.company}</strong>
+                              <small style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)', display: 'block' }}>
+                                <span>{item.role}</span> • <span>{item.date}</span>
+                              </small>
+                            </div>
                           </div>
-                        </div>
-                      </ListItem>
-                    ))
+                        </ListItem>
+                      ))
+                    )
+                    :
+                    null
                   }
                 </List>
               </div>
