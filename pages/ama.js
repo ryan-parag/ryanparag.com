@@ -11,7 +11,7 @@ const AMA = ({ posts, title, description, ...props }) => {
   const { data } = useSWR('/api/ama/questions/', fetcher);
   return (
     <>
-      <Layout pageTitle={`${title} | AMA`} description={description} ogImage="/social-media.png">
+      <Layout pageTitle={`${title} | AMA`} description={description} ogImage="/ama-social-media.png">
         <Wrapper>
           <Title>
             <div style={{ width: '64px'}}>
