@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import Layout, { Wrapper } from '@components/Layout/'
 import Subscribe from '@components/Subscribe'
 import Title from '@components/Title'
@@ -9,7 +10,8 @@ import fetcher from '@utils/fetcher';
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import { format } from 'timeago.js'
 import List, { ListItem } from '@components/List'
-import { ButtonAnchorTag } from '@components/Button'
+import { ButtonAnchorTag, SmallButton } from '@components/Button'
+import { CreateItem } from '@components/Now'
 
 const Label = styled.div`
   font-size: ${designTokens.fontSizes[0]};
@@ -55,31 +57,105 @@ const NotionLogo = () => {
   )
 }
 
+const LineItem = ({ token, item }) => {
+  const [edit, setEdit] = useState(false)
+  const [title, setTitle] = useState(item.title)
+  const [description, setDescription] = useState(item.description)
+  const [deleteItem, setDelete] = useState(false)
 
-const Section = ({title, data}) => {
+  const handleClick = async () => {
+
+    const message = {
+      title: title,
+      description: description,
+      id: item.id,
+      deleteItem: deleteItem
+    }
+
+    setEdit(false)
+    
+    const response = await fetch('api/profile/now-edit', {
+      method: 'POST',
+      body: JSON.stringify({ message }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = await response.json()
+  }
+
+  const deleteLineItem = () => {
+    setDelete(true)
+    handleClick()
+  }
+
+  return(
+    <>
+      {
+        !edit ? (
+          <ListItem key={item.id}>
+            <ListInner>
+              <strong>{title}</strong>
+              <br/>
+              {description}
+              <Label>Updated {format(item.last_edited)}</Label>
+              {
+                token === "loggedIn" ? (<SmallButton onClick={() => setEdit(true)}>Edit</SmallButton>) : null
+              }
+            </ListInner>
+          </ListItem>
+        )
+        :
+        (
+          <div
+            style={{
+              borderLeft: `${designTokens.space[1]} solid var(--primary)`,
+              padding: `${designTokens.space[3]} 0 ${designTokens.space[3]} ${designTokens.space[3]}`
+            }}
+          >
+            <Label>Title</Label>
+            <input
+              type="text"
+              placeholder="Enter the primary value..."
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+            <Label>Description</Label>
+            <textarea
+              placeholder="Enter a description..."
+              value={description}
+              style={{ height: designTokens.space[8] }}
+              onChange={e => setDescription(e.target.value)}
+            />
+            <SmallButton onClick={() => deleteLineItem()}>Delete</SmallButton>
+            &nbsp;&nbsp;
+            <SmallButton onClick={() => handleClick()}>Save</SmallButton>
+          </div>
+        )
+      }
+    </>
+  )
+}
+
+
+const Section = ({token, title, type, data}) => {
   return(
     <>
       <h3>{title}</h3>
       <List>
         {
-          data.map((item, i) => (
-            <ListItem key={i}>
-              <ListInner>
-                <strong>{item.title}</strong>
-                <br/>
-                {item.description}
-                <Label>Updated {format(item.last_edited)}</Label>
-              </ListInner>
-            </ListItem>
+          data.map((item) => (
+            <LineItem token={token} key={item.id} item={item}/>
           ))
         }
+        { token === "loggedIn" ? (<CreateItem type={type}/>) : null }
       </List>
       <hr/>
     </>
   )
 }
 
-const Content = ({data}) => {
+const Content = ({token, data}) => {
 
   return(
     <>
@@ -88,12 +164,12 @@ const Content = ({data}) => {
           <>
             {
               data.now.working.length > 0 && (
-                <Section title={'Working 💼'} data={data.now.working}/>
+                <Section token={token} type={'Working'} title={'Working 💼'} data={data.now.working}/>
               )
             }
             {
               data.now.building.length > 0 && (
-                <Section title={'Building 🛠'} data={data.now.building}/>
+                <Section token={token} type={'Building'} title={'Building 🛠'} data={data.now.building}/>
               )
             }
             <h3>Listening 🎧</h3>
@@ -101,12 +177,12 @@ const Content = ({data}) => {
             <hr/>
             {
               data.now.playing.length > 0 && (
-                <Section title={'Playing 🎉'} data={data.now.playing}/>
+                <Section token={token} type={'Playing'} title={'Playing 🎉'} data={data.now.playing}/>
               )
             }
             {
               data.now.reading.length > 0 && (
-                <Section title={'Reading 📚'} data={data.now.reading}/>
+                <Section token={token} type={'Reading'} title={'Reading 📚'} data={data.now.reading}/>
               )
             }
           </>
@@ -116,7 +192,7 @@ const Content = ({data}) => {
   )
 }
 
-const Page = ({ title, description, ...props }) => {
+const Page = ({ token, title, description, ...props }) => {
 
   const { data } = useSWR('/api/profile/now', fetcher);
 
@@ -132,7 +208,7 @@ const Page = ({ title, description, ...props }) => {
             <p className="lead">Here's a quick summary of what I'm doing and another addition to the <a href="https://nownownow.com/" target="_blank" className="link">NowNowNow Project</a>.</p>
             <NotionLogo/>
           </Title>
-          <Content data={data}/>
+          <Content token={token} data={data}/>
           <Subscribe/>
         </Wrapper>
       </Layout>
@@ -142,13 +218,14 @@ const Page = ({ title, description, ...props }) => {
 
 export default Page
 
-export async function getStaticProps() {
+export async function getServerSideProps({ req, res}) {
   const configData = await import(`../../siteconfig.json`)
 
   return {
     props: {
       title: configData.default.title,
       description: configData.default.description,
-    }
+      token: req.cookies.token || ""
+    },
   }
 }
