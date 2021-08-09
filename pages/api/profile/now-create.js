@@ -7,20 +7,31 @@ export default async (req,res) => {
 
     const response = await notion.pages.create({
       parent: {
-        database_id: process.env.NOTION_AMA_DATABASE_ID,
+        database_id: process.env.NOTION_DATABASE_ID,
       },
       properties: {
-        Question: {
+        Name: {
           title: [
             {
               text: {
-                content: req.body.message.text,
+                content: req.body.message.title,
               },
             },
           ],
         },
-        Likes: {
-          number: 0,
+        Description: {
+          rich_text: [
+            {
+              text: {
+                content: req.body.message.description,
+              },
+            },
+          ],
+        },
+        Tags: {
+          select: {
+            name: req.body.message.type
+          }
         },
       }
     })

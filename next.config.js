@@ -11,7 +11,9 @@ module.exports = {
     NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
     NOTION_AMA_DATABASE_ID: process.env.NOTION_AMA_DATABASE_ID,
     NOTION_ROLE_DATABASE_ID: process.env.NOTION_ROLE_DATABASE_ID,
-    LIVEBLOCKS_API_KEY: process.env.LIVEBLOCKS_API_KEY
+    NOTION_AUTH_DATABASE_ID: process.env.NOTION_AUTH_DATABASE_ID,
+    LIVEBLOCKS_API_KEY: process.env.LIVEBLOCKS_API_KEY,
+    AUTH_STRING: process.env.AUTH_STRING
   },
   target: 'serverless',
   webpack: function (config) {
