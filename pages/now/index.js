@@ -61,7 +61,6 @@ const LineItem = ({ token, item }) => {
   const [edit, setEdit] = useState(false)
   const [title, setTitle] = useState(item.title)
   const [description, setDescription] = useState(item.description)
-  const [deleteItem, setDelete] = useState(false)
 
   const handleClick = async () => {
 
@@ -69,7 +68,7 @@ const LineItem = ({ token, item }) => {
       title: title,
       description: description,
       id: item.id,
-      deleteItem: deleteItem
+      deleteItem: false
     }
 
     setEdit(false)
@@ -84,9 +83,25 @@ const LineItem = ({ token, item }) => {
     const data = await response.json()
   }
 
-  const deleteLineItem = () => {
-    setDelete(true)
-    handleClick()
+  const deleteLineItem = async () => {
+
+    const message = {
+      title: title,
+      description: description,
+      id: item.id,
+      deleteItem: true
+    }
+
+    setEdit(false)
+    
+    const response = await fetch('api/profile/now-edit', {
+      method: 'POST',
+      body: JSON.stringify({ message }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = await response.json()
   }
 
   return(
@@ -128,11 +143,11 @@ const LineItem = ({ token, item }) => {
               onChange={e => setDescription(e.target.value)}
             />
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <SmallButtonDanger onClick={() => deleteLineItem()}>Delete</SmallButtonDanger>
+              <SmallButtonDanger onClick={deleteLineItem}>Delete</SmallButtonDanger>
               <div>
                 <SmallButton onClick={() => setEdit(false)}>Cancel</SmallButton>
                 &nbsp;&nbsp;
-                <SmallButton onClick={() => handleClick()}>Save</SmallButton>
+                <SmallButton onClick={handleClick}>Save</SmallButton>
               </div>
             </div>
           </div>

@@ -122,8 +122,8 @@ export const Question = ({id, editable, question, answer, likes, edited, created
     e.preventDefault()
 
     const message = {
-      title: editableQuestion,
-      description: editableAnswer,
+      title: '',
+      description: '',
       id: id,
       likes: likes,
       delete: true
