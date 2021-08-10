@@ -9,17 +9,14 @@ export default async (req, res) => {
     database_id: process.env.NOTION_AUTH_DATABASE_ID,
   });
 
-  const sites = []
+  const sites = response.results.find(function(item, index) {
+    if(item.properties.Site.title[0].text.content === 'ryanparag.com')
+      return true
+  });
 
-  response.results.map(item => {
-    if(item.properties.Site.title[0].plain_text === 'ryanparag.com') {
-      sites.push({
-        pass: item.properties.Pass.rich_text[0].plain_text
-      })
-    }
-  })
+  const pass = sites.properties.Pass.rich_text[0].text.content
 
-  if(req.body.token === sites[0].pass) {
+  if(req.body.token === pass) {
     res.setHeader("Set-Cookie", cookie.serialize("token", process.env.AUTH_STRING, {
       httpOnly: true,
       secure: process.env.NODE_ENV !== "development",

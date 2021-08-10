@@ -125,6 +125,16 @@ export const SmallButton = styled.button`
   ${SmallButtonStyles}
 `
 
+export const SmallButtonDanger = styled.button`
+  ${SmallButtonStyles}
+  background: var(--secondaryTransparent);
+  color: var(--secondaryDark);
+  &:hover,&:focus {
+    background: var(--secondaryTransparent);
+    box-shadow: 0px 0px 0px 2px var(--secondaryTransparent);
+  }
+`
+
 export const ButtonLink = styled.span`
   a {
     ${ButtonBase}

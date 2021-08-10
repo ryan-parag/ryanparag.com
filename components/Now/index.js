@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import { ListItem } from '@components/List'
-import { SmallButton } from '@components/Button'
+import { SmallButton, SmallButtonDanger } from '@components/Button'
 
 const Label = styled.div`
   font-size: ${designTokens.fontSizes[0]};
@@ -77,15 +77,17 @@ export const CreateItem = ({ type }) => {
               style={{ height: designTokens.space[8] }}
               onChange={e => setDescription(e.target.value)}
             />
-            <SmallButton onClick={() => cancelClick()}>Cancel</SmallButton>
-            &nbsp;&nbsp;
-            {
-              title.length > 0 && description.length > 0 ? (
-                <SmallButton onClick={() => handleClick()}>Add Item</SmallButton>
-              )
-              :
-              null
-            }
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <SmallButton onClick={() => cancelClick()}>Cancel</SmallButton>
+              &nbsp;&nbsp;
+              {
+                title.length > 0 && description.length > 0 ? (
+                  <SmallButton onClick={() => handleClick()}>Add Item</SmallButton>
+                )
+                :
+                null
+              }
+            </div>
           </div>
         )
       }

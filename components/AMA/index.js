@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { format } from 'timeago.js'
 import styled from 'styled-components'
-import { SmallButton, ButtonPrimary, Button } from '@components/Button'
+import { SmallButton, ButtonPrimary, Button, SmallButtonDanger } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
-import { MessageCircle, Heart, Edit2, Clock } from 'react-feather'
+import { MessageCircle, Edit2 } from 'react-feather'
 import List, { ListItem } from '@components/List'
 import LoadingBox from '@components/LoadingBox'
 
@@ -88,18 +88,65 @@ const Like = ({ id, likes }) => {
   )
 }
 
-export const Question = ({id, question, answer, likes, edited, created }) => {
+export const Question = ({id, editable, question, answer, likes, edited, created }) => {
 
   const [edit, setEdit] = useState(false)
-  const [editableAnswer, setAnswer] = useState(answer === null ? '' : answer)
+  const [editableAnswer, setAnswer] = useState(answer)
   const [editableQuestion, setQuestion] = useState(question)
+
+  const handleClick = async (e) => {
+    e.preventDefault()
+
+    const message = {
+      title: editableQuestion,
+      description: editableAnswer,
+      id: id,
+      likes: likes,
+      delete: false
+    }
+
+    setEdit(false)
+    
+    const response = await fetch('api/ama/question-update', {
+      method: 'POST',
+      body: JSON.stringify({ message }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = await response.json()
+
+  }
+
+  const handleDelete = async (e) => {
+    e.preventDefault()
+
+    const message = {
+      title: editableQuestion,
+      description: editableAnswer,
+      id: id,
+      likes: likes,
+      delete: true
+    }
+
+    setEdit(false)
+
+    const response = await fetch('api/ama/question-update', {
+      method: 'POST',
+      body: JSON.stringify({ message }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = await response.json()
+  }
   
   return(
     <>
       <Flex>
         <div>
           {
-            editableAnswer.length > 0 ? (
+            editableAnswer && editableAnswer.length > 0 ? (
               <Avatar>
                 <MessageCircle size={20}/>
               </Avatar>
@@ -116,7 +163,12 @@ export const Question = ({id, question, answer, likes, edited, created }) => {
           {
             edit ? (
               <div>
-                <label>Question</label>
+                <label>
+                  Question
+                  <small style={{ color: 'var(--grey700)', marginLeft: designTokens.space[2], color: 'var(--grey700)' }}>
+                    (Asked {created})
+                  </small>
+                </label>
                 <textarea
                   rows="3"
                   style={{ height: 'auto' }}
@@ -132,17 +184,20 @@ export const Question = ({id, question, answer, likes, edited, created }) => {
                   onChange={e => setAnswer(e.target.value)}
                 />
                 <div style={{
-                  display: 'inline-flex'
+                  display: 'flex',
+                  justifyContent: 'space-between'
                   }}
                 >
+                  <SmallButtonDanger
+                    onClick={handleDelete}
+                  >
+                    Delete Question
+                  </SmallButtonDanger>
+                  &nbsp;&nbsp;
                   <SmallButton
-                  onClick={() => setEdit(false)}
+                    onClick={handleClick}
                   >
                     Save
-                  </SmallButton>
-                  &nbsp;&nbsp;
-                  <SmallButton>
-                    Delete Question
                   </SmallButton>
                 </div>
               </div>
@@ -160,6 +215,19 @@ export const Question = ({id, question, answer, likes, edited, created }) => {
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <small style={{ display: 'inline-flex', alignItems: 'center' }}>
                   <Like id={id} likes={likes}/>&nbsp;&nbsp;
+                  {
+                    editable ? (
+                      <>
+                        <SmallButton onClick={() => setEdit(true)}>
+                          <Edit2 size={16}/>&nbsp;
+                          Edit
+                        </SmallButton>
+                        &nbsp;&nbsp;
+                      </>
+                    )
+                    :
+                    null
+                  }
                   <span style={{ color: 'var(--grey700)' }}>
                     Asked {created}
                   </span>
@@ -175,9 +243,42 @@ export const Question = ({id, question, answer, likes, edited, created }) => {
   )
 }
 
-export const Questions = ({ questions }) => {
+export const Questions = ({ editable, questions }) => {
   return(
     <List>
+      {
+        questions ? (
+          <>
+            {
+              editable && questions.questions.waiting.length > 0 ? (
+                <>
+                  <h4>Pending Questions ({questions.questions.waiting.length})</h4>
+                  {
+                    questions.questions.waiting.map((item) => (
+                      <ListItem key={item.id}>
+                        <Question
+                          id={item.id}
+                          question={item.question}
+                          answer={item.answer}
+                          likes={item.likes}
+                          edited={format(item.edited)}
+                          created={format(item.created)}
+                          editable={editable}
+                        />
+                      </ListItem>
+                    ))
+                  }
+                  <h4>Answered Questions ({questions.questions.answered.length})</h4>
+                </>
+              )
+              :
+              null
+            }
+          </>
+        )
+        :
+        null
+      }
       {
         questions ? (
           <>
@@ -192,6 +293,7 @@ export const Questions = ({ questions }) => {
                       likes={item.likes}
                       edited={format(item.edited)}
                       created={format(item.created)}
+                      editable={editable}
                     />
                   </ListItem>
                 ))

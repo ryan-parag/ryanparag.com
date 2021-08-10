@@ -6,7 +6,7 @@ import Title from '@components/Title'
 import { Questions, Form } from '@components/AMA'
 import { AMALogo } from '@components/Logo'
 
-const AMA = ({ posts, title, description, ...props }) => {
+const AMA = ({ token, posts, title, description, ...props }) => {
 
   const { data } = useSWR('/api/ama/questions/', fetcher);
   return (
@@ -22,23 +22,9 @@ const AMA = ({ posts, title, description, ...props }) => {
             <Form/>
           </Title>
           <Questions
+            editable={token === "loggedIn"}
             questions={data}
           />
-          {
-            data && data.questions.waiting.length > 0 ? (
-              <small
-                style={{
-                  color: 'var(--secondaryDark)'
-                }}
-              >
-                {data.questions.waiting.length} question{data.questions.waiting.length > 1 ? 's' : ''} waiting to be answered
-              </small>
-            )
-            :
-            (
-              null
-            )
-          }
         </Wrapper>
       </Layout>
     </>
@@ -47,13 +33,14 @@ const AMA = ({ posts, title, description, ...props }) => {
 
 export default AMA
 
-export async function getStaticProps() {
+export async function getServerSideProps({ req, res}) {
   const configData = await import(`../siteconfig.json`)
 
   return {
     props: {
       title: configData.default.title,
       description: configData.default.description,
+      token: req.cookies.token || ""
     },
   }
 }

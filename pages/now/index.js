@@ -10,7 +10,7 @@ import fetcher from '@utils/fetcher';
 import { SpotifyCurrentlyPlaying } from '@components/Spotify'
 import { format } from 'timeago.js'
 import List, { ListItem } from '@components/List'
-import { ButtonAnchorTag, SmallButton } from '@components/Button'
+import { ButtonAnchorTag, SmallButton, SmallButtonDanger } from '@components/Button'
 import { CreateItem } from '@components/Now'
 
 const Label = styled.div`
@@ -127,9 +127,14 @@ const LineItem = ({ token, item }) => {
               style={{ height: designTokens.space[8] }}
               onChange={e => setDescription(e.target.value)}
             />
-            <SmallButton onClick={() => deleteLineItem()}>Delete</SmallButton>
-            &nbsp;&nbsp;
-            <SmallButton onClick={() => handleClick()}>Save</SmallButton>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <SmallButtonDanger onClick={() => deleteLineItem()}>Delete</SmallButtonDanger>
+              <div>
+                <SmallButton onClick={() => setEdit(false)}>Cancel</SmallButton>
+                &nbsp;&nbsp;
+                <SmallButton onClick={() => handleClick()}>Save</SmallButton>
+              </div>
+            </div>
           </div>
         )
       }

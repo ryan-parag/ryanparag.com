@@ -4,17 +4,16 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 export default async (req,res) => {
   if(req.method === 'POST') {
-
-    const response = await notion.pages.create({
-      parent: {
-        database_id: process.env.NOTION_AMA_DATABASE_ID,
-      },
+    const pageId = req.body.message.id
+    const response = await notion.pages.update({
+      page_id: pageId,
+      archived: req.body.message.delete,
       properties: {
         Question: {
           title: [
             {
               text: {
-                content: req.body.message.text,
+                content: req.body.message.title,
               },
             },
           ],
@@ -23,16 +22,19 @@ export default async (req,res) => {
           rich_text: [
             {
               text: {
-                content: '',
+                content: req.body.message.description,
               },
             },
           ],
         },
         Likes: {
-          number: 0,
+          number: req.body.message.likes
         },
-      }
-    })
+        Verified: {
+          checkbox: true
+        }
+      },
+    });
   
     res.status(201).json(req.body.message)
   }

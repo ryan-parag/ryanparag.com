@@ -18,7 +18,8 @@ const Login = ({ token, title, description, ...props }) => {
   const [pass, setPass] = useState('')
   const router = useRouter()
 
-  const checkLogin = async () => {
+  const checkLogin = async (event) => {
+    event.preventDefault()
     const response = await fetch("/api/profile/login", {
       method: "POST",
       headers: {
@@ -60,7 +61,7 @@ const Login = ({ token, title, description, ...props }) => {
               )
               :
               (
-                <>
+                <form onSubmit={checkLogin}>
                   <p>Enter the admin password to access editing features</p>
                   <input
                     type="password"
@@ -80,7 +81,8 @@ const Login = ({ token, title, description, ...props }) => {
                   {
                     pass.length > 0 ? (
                       <ButtonPrimary
-                        onClick={() => checkLogin()}
+                        type="submit"
+                        onClick={checkLogin}
                       >
                         Login
                       </ButtonPrimary>
@@ -88,7 +90,7 @@ const Login = ({ token, title, description, ...props }) => {
                     :
                     null
                   }
-                </>
+                </form>
               )
             }
           </Container>
