@@ -259,18 +259,31 @@ const Portfolio = ({pending, item}) => {
   )
 }
 
-export const PortfolioList = ({ items }) => {
+export const PortfolioList = ({ filterString, items }) => {
+
   return(
     <List>
       {
         items ? (
           <>
             {
-               items.portfolios.waiting.length > 0 ? (
+               items.portfolios.waiting.filter((item) => {
+                if(filterString == "") {
+                  return item
+                } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
+                  return item
+                }
+              }).length > 0 ? (
                 <>
                   <h4>Pending Portfolios</h4>
                    {
-                     items.portfolios.waiting.map(item => (
+                     items.portfolios.waiting.filter((item) => {
+                      if(filterString == "") {
+                        return item
+                      } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
+                        return item
+                      }
+                    }).map(item => (
                        <ListItem key={item.id}>
                          <Portfolio pending item={item}/>
                        </ListItem>
@@ -291,8 +304,20 @@ export const PortfolioList = ({ items }) => {
         items ? (
           <>
             {
-              items.portfolios.verified.length > 0 ? (
-                items.portfolios.verified.map((item) => (
+              items.portfolios.verified.filter((item) => {
+                if(filterString == "") {
+                  return item
+                } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
+                  return item
+                }
+              }).length > 0 ? (
+                items.portfolios.verified.filter((item) => {
+                  if(filterString == "") {
+                    return item
+                  } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
+                    return item
+                  }
+                }).map((item) => (
                   <ListItem key={item.id}>
                     <Portfolio item={item}/>
                   </ListItem>
