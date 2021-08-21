@@ -5,6 +5,16 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 export default async (req,res) => {
   if(req.method === 'POST') {
     const pageId = req.body.portfolio.id
+
+    const getTags = () => {
+      const tags = []
+      req.body.portfolio.tags.map(item => {
+        tags.push({ name: item })
+      })
+
+      return tags
+    }
+    
     const response = await notion.pages.update({
       page_id: pageId,
       archived: req.body.portfolio.archived,
@@ -29,6 +39,9 @@ export default async (req,res) => {
         },
         Verified: {
           checkbox: req.body.portfolio.verified
+        },
+        Tags: {
+          multi_select: getTags()
         },
         Description: {
           rich_text: [

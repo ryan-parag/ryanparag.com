@@ -4,7 +4,9 @@ import getPosts from '@utils/getPosts'
 import Subscribe from '@components/Subscribe'
 import Title from '@components/Title'
 import { NotesLogo } from '@components/Logo'
-import { designTokens } from '@components/Theme/designTokens'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
 const Notes = ({ posts, title, description, ...props }) => {
 
@@ -45,9 +47,17 @@ export default Notes
 export async function getStaticProps() {
   const configData = await import(`../siteconfig.json`)
 
-  const posts = ((context) => {
-    return getPosts(context)
-  })(require.context('../notes', true, /\.md$/))
+  const files = fs.readdirSync(path.join('notes'))
+
+  const posts = files.map(filename => {
+    const slug = filename.replace('.md','')
+    const markdownWithMeta = fs.readFileSync(path.join('notes', filename), 'utf-8')
+    const {data:frontmatter} = matter(markdownWithMeta)
+    return {
+      slug,
+      frontmatter
+    }
+  })
 
   return {
     props: {

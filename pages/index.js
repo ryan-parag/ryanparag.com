@@ -10,8 +10,9 @@ import Randomizer from '@components/Randomizer'
 import FAQ from '@components/FAQ'
 import { ArrowRight } from 'react-feather'
 import { WorkHistory } from '@components/Projects'
-
-import getPosts from '@utils/getPosts'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
 const Index = ({ posts, title, description, ...props }) => {
 
@@ -92,9 +93,17 @@ export default Index
 export async function getStaticProps() {
   const configData = await import(`../siteconfig.json`)
 
-  const posts = ((context) => {
-    return getPosts(context)
-  })(require.context('../notes', true, /\.md$/))
+  const files = fs.readdirSync(path.join('notes'))
+
+  const posts = files.map(filename => {
+    const slug = filename.replace('.md','')
+    const markdownWithMeta = fs.readFileSync(path.join('notes', filename), 'utf-8')
+    const {data:frontmatter} = matter(markdownWithMeta)
+    return {
+      slug,
+      frontmatter
+    }
+  })
 
   return {
     props: {

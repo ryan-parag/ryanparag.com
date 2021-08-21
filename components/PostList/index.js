@@ -84,15 +84,15 @@ export default function PostList({ posts }) {
     })
     return date
   }
-
+  
   return (
     <>
       <div>
         {!posts && <div>No posts!</div>}
         <List>
           {
-            posts && posts.map(post => (
-              <ListItem key={post.slug}>
+            posts && posts.map((post,i) => (
+              <ListItem key={i}>
                 <NewPostContainer>
                   <Link href={`/notes/${post.slug}`}>
                     <a>
