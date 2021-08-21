@@ -41,7 +41,7 @@ const Index = ({ posts, title, description, ...props }) => {
         </Wrapper>
         <main>
           <Wrapper>
-            <h3><Link href="/work"><a>Selected Work 💼</a></Link></h3>
+            <h3><Link href="work"><a>Selected Work 💼</a></Link></h3>
             <p>I'm in the process of moving over my work to this site, but before that happens:</p>
             <ul>
               <li>find my work <a className="link" href="https://work.ryanparag.com">here</a> for now</li>
@@ -49,7 +49,7 @@ const Index = ({ posts, title, description, ...props }) => {
             </ul>
             <br/>
             <p>
-              <Link href="/work">
+              <Link href="work">
                 <a className="link">
                   View more work
                   <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>

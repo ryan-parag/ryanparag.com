@@ -2,28 +2,28 @@ import { ProjectItem } from '@components/Projects'
 import List, { ListItem } from '@components/List'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
-import { Box } from '@components/Box'
+import { LoadingSmall } from '@components/LoadingBox'
+import Error from '@components/Error'
 
 const Featured = () => {
 
-  const { data } = useSWR('/api/featured', fetcher);
-
-  if (!data) {
-    return (
-      <Box center>
-        Something went wrong
-      </Box>
-    )
-  }
+  const { data, error } = useSWR('/api/featured', fetcher);
 
   return(
     <List>
       {
-        data.items.map(project => (
-          <ListItem key={project.name}>
-            <ProjectItem project={project}/>
-          </ListItem>
-        ))
+        error && (<Error/>)
+      }
+      {
+        data ? (
+          data.items.map(project => (
+            <ListItem key={project.name}>
+              <ProjectItem project={project}/>
+            </ListItem>
+          ))
+        )
+        :
+        <LoadingSmall/>
       }
     </List>
   )

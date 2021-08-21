@@ -201,60 +201,6 @@ export const WorkItem = ({project}) => {
   )
 }
 
-export const WorkHistory = () => {
-
-  const work = [
-    {
-      name: 'TrustLayer',
-      description: 'Senior Product Designer',
-      image: '/static/projects/icon-tl.png',
-      link:'https://trustlayer.io',
-      outbound: true,
-      time: '2021 - Present'
-    }, {
-      name: 'Masonite',
-      description: 'Senior Product Designer',
-      image: '/static/projects/icon-masonite.png',
-      link:'https://masonite.com',
-      outbound: true,
-      time: '2019 - Present'
-    }, {
-      name: 'DisputeLab',
-      description: 'Product Designer',
-      image: '/static/projects/icon-disputelab.png',
-      link:'https://f1911.com',
-      outbound: true,
-      time: '2017 - 2019'
-    }, {
-      name: 'Chargebacks911',
-      description: 'Product Designer',
-      image: '/static/projects/icon-cb911.png',
-      link:'https://chargebacks911.com',
-      outbound: true,
-      time: '2016 - 2019'
-    }, {
-      name: 'SoleVenture',
-      description: 'Design Consultant',
-      image: '/static/projects/icon-sv.png',
-      link:'https://soleventure.com',
-      outbound: true,
-      time: '2019 - 2020'
-    }
-  ]
-
-  return(
-    <List>
-      {
-        work.map(item => (
-          <ListItem key={item.name}>
-            <WorkItem project={item}/>
-          </ListItem>
-        ))
-      }
-    </List>
-  )
-}
-
 export const WorkList = () => {
   const work = [
     {
@@ -297,6 +243,33 @@ export const WorkList = () => {
         ))
       }
     </List>
+  )
+}
+
+export const Experience = ({ data }) => {
+  return(
+    <div style={{ paddingTop: designTokens.space[3], paddingBottom: designTokens.space[4] }}>
+      <h5 style={{ color: 'var(--grey500)' }}>
+        Experience
+      </h5>
+      <List>
+        {
+          data.roles.verified.map((item) => (
+            <ListItem key={item.id}>
+              <div style={{ display: 'flex', alignItems: 'center', paddingTop: designTokens.space[2], paddingBottom: designTokens.space[3] }}>
+                <img src={item.logo} style={{ border: '1px solid var(--grey200)', width: `calc(${designTokens.space[5]} + ${designTokens.space[2]})`, borderRadius: designTokens.space[2] }}/>
+                <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: designTokens.space[3] }}>
+                  <strong style={{ fontSize: designTokens.fontSizes[1] }}>{item.company}</strong>
+                  <small style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)', display: 'block' }}>
+                    <span>{item.role}</span> • <span>{item.date}</span>
+                  </small>
+                </div>
+              </div>
+            </ListItem>
+          ))
+        }
+      </List>
+    </div>
   )
 }
 

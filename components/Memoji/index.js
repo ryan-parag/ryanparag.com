@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 
@@ -81,7 +81,11 @@ const Memoji = () => {
     return random
   }
 
-  const [isRandom, setIsRandom] = useState(memojiRandom())
+  const [isRandom, setIsRandom] = useState('memoji-thanks.png')
+
+  useEffect(() => {
+    setIsRandom(memojiRandom())
+  }, [])
 
   return(
     <ProfileImg onClick={() => setIsRandom(memojiRandom())}>
