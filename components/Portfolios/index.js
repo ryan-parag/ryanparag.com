@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { SmallButton } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
@@ -50,6 +50,10 @@ const Portfolios = ({ verified, waiting }) => {
     setFilterString(value)
     filterData(value)
   }
+
+  useEffect(() => {
+
+  }, [waitingList, verifiedList])
 
   return(
     <>

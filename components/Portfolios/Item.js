@@ -337,6 +337,14 @@ export const Form = () => {
     setCurrentTag('')
   }
 
+  const onEnterPress = (e) => {
+    if(e.key == 'Enter') {
+      e.preventDefault();
+      setPortfolioTags(portfolioTags => [...portfolioTags, currentTag])
+      setCurrentTag('')
+    }
+  }
+
   const removeTag = (name) => {
     const updated = portfolioTags.filter(item => item !== name)
     setPortfolioTags(updated)
@@ -401,6 +409,7 @@ export const Form = () => {
                   placeholder="eg. Current company, type of designer, etc."
                   value={currentTag}
                   onChange={(e) => setCurrentTag(e.target.value)}
+                  onKeyPress={(e) => onEnterPress(e)}
                 />
                 {currentTag && (<SmallButton onClick={(e) => addTag(e)}>Add tag</SmallButton>)}
               </TagInput>
