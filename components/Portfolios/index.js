@@ -311,82 +311,36 @@ const Portfolio = ({pending, item}) => {
   )
 }
 
-export const PortfolioList = ({ filterString, items }) => {
+export const PortfolioList = ({ verified, waiting }) => {
 
   return(
     <List>
       {
-        items ? (
+        waiting.length > 0 && (
           <>
-            {
-               items.portfolios.waiting.filter((item) => {
-                if(filterString == "") {
-                  return item
-                } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
-                  return item
-                }
-              }).length > 0 ? (
-                <>
-                  <h4>Pending Portfolios</h4>
-                   {
-                     items.portfolios.waiting.filter((item) => {
-                      if(filterString == "") {
-                        return item
-                      } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
-                        return item
-                      }
-                    }).map(item => (
-                       <ListItem key={item.id}>
-                         <Portfolio pending item={item}/>
-                       </ListItem>
-                     ))
-                   }
-                  <h4>Verified Portfolios</h4>
-                </>
-              )
-              :
-              null
-            }
+            <h4>Pending Portfolios</h4>
+             {
+               waiting.map(item => (
+                 <ListItem key={item.id}>
+                   <Portfolio pending item={item}/>
+                 </ListItem>
+               ))
+             }
+            <h4>Verified Portfolios</h4>
           </>
         )
-        :
-        null
       }
       {
-        items ? (
-          <>
-            {
-              items.portfolios.verified.filter((item) => {
-                if(filterString == "") {
-                  return item
-                } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
-                  return item
-                }
-              }).length > 0 ? (
-                items.portfolios.verified.filter((item) => {
-                  if(filterString == "") {
-                    return item
-                  } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
-                    return item
-                  }
-                }).map((item) => (
-                  <ListItem key={item.id}>
-                    <Portfolio item={item}/>
-                  </ListItem>
-                ))
-              )
-              :
-              (
-                <span>No portfolios</span>
-              )
-            }
-          </>
+        verified.length > 0 ? (
+          verified.map((item) => (
+            <ListItem key={item.id}>
+              <Portfolio item={item}/>
+            </ListItem>
+          ))
         )
         :
         (
-          <LoadingBox>
-            No Questions
-          </LoadingBox>
+          <span>No portfolios</span>
         )
       }
     </List>

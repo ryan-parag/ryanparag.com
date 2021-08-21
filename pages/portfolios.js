@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import Layout, { Wrapper } from '@components/Layout/'
@@ -7,6 +7,7 @@ import { PortfolioList, Form } from '@components/Portfolios'
 import styled from 'styled-components'
 import { SmallButton, Button } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
+import LoadingBox from '@components/LoadingBox'
 
 const SearchFilter = styled.div`
   position: relative;
@@ -32,8 +33,6 @@ const ScrolledButton = styled(Button)`
 
 const Page = ({ token, title, description, ...props }) => {
 
-  const [filterString, setFilterString] = useState('')
-
   const scrollToTop = () => {
     if(process.browser) {
       window.scroll({
@@ -44,7 +43,51 @@ const Page = ({ token, title, description, ...props }) => {
     }
   }
 
-  const { data } = useSWR('/api/portfolios/list', fetcher);
+  const [filterString, setFilterString] = useState('')
+
+  const [list, setList] = useState({ verified: [], waiting: []})
+
+  const filterData = value => {
+    const lowerCaseValue = value.toLowerCase().trim()
+    if(!lowerCaseValue) {
+      setList(prevState => ({
+        ...prevState,
+        verified: data.portfolios.verified,
+        waiting: data.portfolios.waiting
+      }))
+    } else {
+      const filteredVerified = data.portfolios.verified.filter(item => {
+        return Object.keys(item).some(key => {
+          return item[key].toString().toLowerCase().includes(lowerCaseValue)
+        })
+      })
+      const filteredWaiting = []
+      setList(prevState => ({
+        ...prevState,
+        verified: filteredVerified,
+        waiting: filteredWaiting
+      }))
+    }
+  }
+
+  const handleChange = value => {
+    setFilterString(value)
+    filterData(value)
+  }
+
+  const { data, error } = useSWR('/api/portfolios/list', fetcher)
+
+  useEffect(() => {
+    if(data) {
+      setList(prevState => ({
+        ...prevState,
+        verified: data.portfolios.verified,
+        waiting: data.portfolios.waiting
+      }))
+    }
+
+    handleChange('')
+  }, [data])
 
   return (
     <>
@@ -62,13 +105,13 @@ const Page = ({ token, title, description, ...props }) => {
             <input
               type="text"
               value={filterString}
-              placeholder="Filter by a name..."
-              onChange={e => setFilterString(e.target.value)}
+              placeholder="Filter by a name or tag..."
+              onChange={e => handleChange(e.target.value)}
             />
             {
               filterString.length > 0 ? (
                 <SmallButton
-                  onClick={() => setFilterString('')}
+                  onClick={() => handleChange('')}
                 >
                   Clear
                 </SmallButton>
@@ -77,10 +120,26 @@ const Page = ({ token, title, description, ...props }) => {
               null
             }
           </SearchFilter>
-          <PortfolioList
-            items={data}
-            filterString={filterString}
-          />
+          {
+            data ? (
+              <PortfolioList
+                verified={list.verified}
+                waiting={list.waiting}
+                filterString={filterString}
+              />
+            )
+            :
+            (
+              <LoadingBox>
+                Loading
+              </LoadingBox>
+            )
+          }
+          {
+            error && (
+              <span>An error occured</span>
+            )
+          }
         </Wrapper>
         <ScrolledButton
           onClick={() => scrollToTop()}
