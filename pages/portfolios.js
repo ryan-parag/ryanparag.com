@@ -9,19 +9,6 @@ import { SmallButton, Button } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import LoadingBox from '@components/LoadingBox'
 
-const SearchFilter = styled.div`
-  position: relative;
-  input {
-    padding: ${designTokens.space[3]};
-  }
-  ${SmallButton} {
-    position: absolute;
-    right: ${designTokens.space[2]};
-    top: 50%;
-    transform: translateY(-50%);
-  }
-`
-
 const ScrolledButton = styled(Button)`
   position: fixed;
   bottom: ${designTokens.space[3]};
@@ -43,51 +30,7 @@ const Page = ({ token, title, description, ...props }) => {
     }
   }
 
-  const [filterString, setFilterString] = useState('')
-
-  const [list, setList] = useState({ verified: [], waiting: []})
-
-  const filterData = value => {
-    const lowerCaseValue = value.toLowerCase().trim()
-    if(!lowerCaseValue) {
-      setList(prevState => ({
-        ...prevState,
-        verified: data.portfolios.verified,
-        waiting: data.portfolios.waiting
-      }))
-    } else {
-      const filteredVerified = data.portfolios.verified.filter(item => {
-        return Object.keys(item).some(key => {
-          return item[key].toString().toLowerCase().includes(lowerCaseValue)
-        })
-      })
-      const filteredWaiting = []
-      setList(prevState => ({
-        ...prevState,
-        verified: filteredVerified,
-        waiting: filteredWaiting
-      }))
-    }
-  }
-
-  const handleChange = value => {
-    setFilterString(value)
-    filterData(value)
-  }
-
   const { data, error } = useSWR('/api/portfolios/list', fetcher)
-
-  useEffect(() => {
-    if(data) {
-      setList(prevState => ({
-        ...prevState,
-        verified: data.portfolios.verified,
-        waiting: data.portfolios.waiting
-      }))
-    }
-
-    handleChange('')
-  }, [data])
 
   return (
     <>
@@ -101,31 +44,11 @@ const Page = ({ token, title, description, ...props }) => {
             <p className="lead">A list of portfolios, personal sites, and designers that are dope </p>
             <Form/>
           </Title>
-          <SearchFilter>
-            <input
-              type="text"
-              value={filterString}
-              placeholder="Filter by a name or tag..."
-              onChange={e => handleChange(e.target.value)}
-            />
-            {
-              filterString.length > 0 ? (
-                <SmallButton
-                  onClick={() => handleChange('')}
-                >
-                  Clear
-                </SmallButton>
-              )
-              :
-              null
-            }
-          </SearchFilter>
           {
             data ? (
               <PortfolioList
-                verified={list.verified}
-                waiting={list.waiting}
-                filterString={filterString}
+                verified={data.portfolios.verified}
+                waiting={data.portfolios.waiting}
               />
             )
             :
