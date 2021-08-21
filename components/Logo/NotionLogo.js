@@ -6,9 +6,11 @@ const NotionLogo = () => {
   return (
     <div style={{ marginBottom: designTokens.space[4], display: 'flex', alignItems: 'center' }}>
       <small style={{ color: 'var(--grey700)', marginRight: designTokens.space[2] }}>Powered by</small>
-      <SmallButton
+      <a
+        className="link"
         href="https://developers.notion.com/"
         target="_blank"
+        style={{ display: 'inline-flex', alignItems: 'center' }}
       >
         <svg style={{ marginRight: designTokens.space[2] }} width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clipPath="url(#notion)">
@@ -25,7 +27,7 @@ const NotionLogo = () => {
             Notion API
           </strong>
         </small>
-      </SmallButton>
+      </a>
     </div>
   )
 }
