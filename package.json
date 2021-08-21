@@ -13,6 +13,7 @@
     "@liveblocks/node": "^0.3.0",
     "@liveblocks/react": "^0.11.0",
     "@notionhq/client": "^0.2.3",
+    "@octokit/rest": "^18.9.1",
     "@sendgrid/mail": "^7.4.6",
     "@statickit/react": "^2.1.1",
     "airtable": "^0.10.1",

@@ -195,14 +195,7 @@ export const SpotifyTrack = ({track}) => {
         )
         :
         (
-          <SpotifyContainer>
-            <SpotifyIcon/>
-            <ContentContainer>
-              <Content subtle>
-                <div>Something went wrong</div>
-              </Content>
-            </ContentContainer>
-          </SpotifyContainer>
+          <LoadingSmall title={'Loading...'}/>
         )
       }
     </>
@@ -243,14 +236,7 @@ export const SpotifyPodcast = ({podcast}) => {
         )
         :
         (
-          <SpotifyContainer>
-            <SpotifyIcon/>
-            <ContentContainer>
-              <Content subtle>
-                <div>Something went wrong</div>
-              </Content>
-            </ContentContainer>
-          </SpotifyContainer>
+          <LoadingSmall title={'Loading...'}/>
         )
       }
     </>
@@ -298,14 +284,7 @@ export const SpotifyPlaylist = ({playlist}) => {
         )
         :
         (
-          <SpotifyContainer>
-            <SpotifyIcon/>
-            <ContentContainer>
-              <Content subtle>
-                <div>Something went wrong</div>
-              </Content>
-            </ContentContainer>
-          </SpotifyContainer>
+          <LoadingSmall title={'Loading...'}/>
         )
       }
     </>
@@ -359,33 +338,7 @@ export const SpotifyLastPlayed = ({action}) => {
       )
       :
       (
-        <SpotifyContainer>
-          <SpotifyIcon/>
-          <ContentContainer>
-            <Content subtle>
-              <div>Something went wrong</div>
-              {
-                action ? (
-                  <>
-                    <InteriorButton
-                      onClick={action}
-                    >
-                      View Currently Playing
-                    </InteriorButton>
-                    {' '}<small>or</small>{' '}
-                    <Link href="/listening" shallow>
-                      <InteriorLink>
-                        View More...
-                      </InteriorLink>
-                    </Link>
-                  </>
-                )
-                :
-                null
-              }
-            </Content>
-          </ContentContainer>
-        </SpotifyContainer>
+        <LoadingSmall title={'Loading...'}/>
       )
     }
     {

@@ -35,7 +35,7 @@ const About = ({ posts, title, description, ...props }) => {
     {name: 'Feedback from many nice humans', href: 'https://www.tampabay.design/'}
   ]
 
-  const { data } = useSWR('/api/profile/roles/', fetcher);
+  const { data, error } = useSWR('/api/profile/roles/', fetcher);
   
   return (
     <>
@@ -126,6 +126,7 @@ export default About
 
 export async function getStaticProps() {
   const configData = await import(`../siteconfig.json`)
+  const dependencies = await import(`../package.json`)
 
   const posts = ((context) => {
     return getPosts(context)

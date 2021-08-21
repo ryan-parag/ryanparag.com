@@ -8,6 +8,8 @@ import { GitHub, Dribbble, Codepen, Send, Linkedin } from 'react-feather'
 import { Wrapper } from '@components/Layout/'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
+import { LoadingSmall } from '@components/LoadingBox'
+import { format } from 'timeago.js' 
 
 export const IconLink = styled.a`
   align-items: center;
@@ -100,6 +102,19 @@ const BottomColumn = styled.div`
   align-items: center;
 `
 
+const Avatar = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: calc(${designTokens.space[4]} + ${designTokens.space[1]});
+  width: calc(${designTokens.space[4]} + ${designTokens.space[1]});
+  background: var(--grey200);
+  font-size: ${designTokens.fontSizes[0]};
+  font-weight: ${designTokens.fontWeights.bold};
+  color: ${props => props.waiting ? 'var(--grey600)' : 'var(--primaryDark)'};
+`
+
 const FooterLink = ({link}) => {
   return(
     <>
@@ -124,18 +139,47 @@ const FooterLink = ({link}) => {
   )
 }
 
-const DescriptionSection = ({debug,debugGrid}) => {
+const Repo = () => {
 
-  const { data } = useSWR('https://api.github.com/repos/ryan-parag/notes.ryanparag.com', fetcher);
+  const { data, error } = useSWR('/api/site', fetcher);
 
-  const getDate = (el) => {
-    const date = new Date(el).toLocaleDateString('en-us', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    })
-    return date
+  if(error) {
+    return null
   }
+
+  return (
+    <>
+      {
+        data ? (
+          <div>
+            <small>
+              <a
+                className="link"
+                href={data.repo.link}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  marginRight: designTokens.space[2]
+                }}
+              >
+                View Source
+              </a>
+            </small>
+            <small style={{ color: 'var(--grey700)'}}>
+              Last Updated {format(data.repo.updated)}
+            </small>
+          </div>
+        )
+        :
+        (
+          <LoadingSmall/>
+        )
+      }
+    </>
+  )
+}
+
+const DescriptionSection = ({debug,debugGrid}) => {
 
   const clearStorage = () => {
     localStorage.removeItem('ryansNotesNewTheme')
@@ -186,11 +230,7 @@ const DescriptionSection = ({debug,debugGrid}) => {
       </IconBar>
       <BottomContainer>
       <BottomColumn>
-        {
-          data && (
-            <small><a className="link" href="https://github.com/ryan-parag/notes.ryanparag.com">View Source</a> • Last Updated {getDate(data.updated_at)}</small>
-          )
-        }
+        <Repo/>
       </BottomColumn>
       <BottomColumn>
         <Button small onClick={clearStorage}>Reset Theme</Button>
