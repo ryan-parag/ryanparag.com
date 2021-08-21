@@ -25,6 +25,7 @@ const About = ({ posts, title, description, ...props }) => {
     {name: 'Figma', href: 'https://www.figma.com/'},
     {name: 'React', href: 'https://reactjs.org/'},
     {name: 'Next.js', href: 'https://nextjs.org/'},
+    {name: 'Vercel', href: 'https://vercel.com/'},
     {name: 'Styled Components', href: 'https://styled-components.com/'},
     {name: 'Feathericons', href: 'https://feathericons.com/'},
     {name: 'Inter typeface family', href: 'https://rsms.me/inter/'},
@@ -32,6 +33,7 @@ const About = ({ posts, title, description, ...props }) => {
     {name: 'Spotify API', href: 'https://developer.spotify.com/documentation/web-api/'},
     {name: 'Framer Motion', href: 'https://www.framer.com/api/motion/'},
     {name: 'Liveblocks', href: 'https://liveblocks.io/'},
+    {name: 'GitHub', href: 'https://api.github.com/'},
     {name: 'Feedback from many nice humans', href: 'https://www.tampabay.design/'}
   ]
 

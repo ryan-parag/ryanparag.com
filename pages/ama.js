@@ -7,6 +7,7 @@ import { Questions, Form } from '@components/AMA'
 import { AMALogo } from '@components/Logo'
 import LoadingBox from '@components/LoadingBox'
 import Error from '@components/Error'
+import NotionLogo from '@components/Logo/NotionLogo'
 
 const AMA = ({ token, posts, title, description, ...props }) => {
 
@@ -22,6 +23,7 @@ const AMA = ({ token, posts, title, description, ...props }) => {
             </div>
             <h1>Ask me anything</h1>
             <p className="lead">Send over any kind of question you may have for me - once it's answered, it'll show up in the list</p>
+            <NotionLogo/>
             <Form/>
           </Title>
           {

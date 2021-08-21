@@ -6,6 +6,7 @@ import List, { ListItem } from '@components/List'
 import { Portfolio } from './Item'
 import { Box } from '@components/Box'
 import { Search } from 'react-feather'
+import NotionLogo from '@components/Logo/NotionLogo'
 
 const SearchFilter = styled.div`
   position: relative;
@@ -59,6 +60,7 @@ const Portfolios = ({ verified, waiting }) => {
 
   return(
     <>
+      <NotionLogo/>
       <SearchFilter>
         <input
           type="text"
