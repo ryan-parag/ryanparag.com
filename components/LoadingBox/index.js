@@ -8,6 +8,13 @@ export const LoadingSpinner = styled(Loader)`
   animation: rotation 2s infinite linear;
 `
 
+const InlineContainer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  padding: ${designTokens.space[3]} 0;
+  margin-bottom: ${designTokens.space[3]};
+`
+
 const LoadingBox = ({title, description}) => {
   return(
     <Box
@@ -21,15 +28,25 @@ const LoadingBox = ({title, description}) => {
         { title ? title : 'Loading...' }
       </h3>
       {
-        description ? (
+        description && (
           <p style={{ marginBottom: designTokens.space[2] }}>
             <small>{description}</small>
           </p>
         )
-        :
-        null
       }
     </Box>
+  )
+}
+
+export const LoadingSmall = ({title}) => {
+  return (
+    <InlineContainer>
+      <LoadingSpinner
+        size={'32'}
+        style={{ marginRight: designTokens.space[3] }}
+      />
+      <strong>{ title ? title : 'Loading...' }</strong>
+    </InlineContainer>
   )
 }
 

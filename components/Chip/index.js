@@ -8,6 +8,7 @@ const ChipStyles = css`
   padding: ${designTokens.space[1]} ${designTokens.space[2]};
   font-weight: ${designTokens.fontWeights.body};
   font-size: ${designTokens.fontSizes[0]};
+  border: 1px solid ${props => props.border ? props.border : 'var(--grey500)'};
   margin-bottom: ${props => props.mb ? props.mb : '0'};
   margin-top: ${props => props.mt ? props.mt : '0'};
   margin-right: ${props => props.mr ? props.mr : designTokens.space[1]};
@@ -80,7 +81,9 @@ const Chip = ({ ghost, type, children }) => {
 export const ChipLink = styled.a`
   ${ChipStyles}
   &:hover, &:focus {
-    transform: scale(1.03);
+    background: var(--grey700);
+    color: var(--grey0);
+    border-color: var(--grey700);
   }
 `
 

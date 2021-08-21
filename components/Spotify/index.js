@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { truncateString } from '@utils/text'
 import { format } from 'timeago.js' 
+import { LoadingSmall } from '@components/LoadingBox'
 
 const AlbumImage = styled.img`
   width: ${designTokens.space[7]};
@@ -584,37 +585,47 @@ export const SpotifyCurrentlyPlaying = ({playing}) => {
   const [toggle, setToggle] = useState(playing)
 
   return (
-    <motion.div
-      style={{ position: 'relative' }}
-      initial={{ top: designTokens.space[4], opacity: 0 }}
-      animate={{ top: 0, opacity: 1 }}
-      transition={{ duration: 0.3, delay: 0.2 }}
-      ariaLive="polite"
-    >
-      {
-        toggle ? (
-          <>
-            {
-              data?.isPlaying ? (
-                <SpotifyNowPlaying
-                  action={() => setToggle(!toggle)}
-                />
-              )
-              :
-              (
-                <SpotifyNowPlayingPodcast
-                  action={() => setToggle(!toggle)}
-                />
-              )
-            }
-          </>
-        )
-        : (
-          <SpotifyLastPlayed
-            action={() => setToggle(!toggle)}
-          />
-        )
-      }
-    </motion.div>
+    <>
+    {
+      data ? (
+        <motion.div
+          style={{ position: 'relative' }}
+          initial={{ top: designTokens.space[4], opacity: 0 }}
+          animate={{ top: 0, opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+          ariaLive="polite"
+        >
+          {
+            toggle ? (
+              <>
+                {
+                  data?.isPlaying ? (
+                    <SpotifyNowPlaying
+                      action={() => setToggle(!toggle)}
+                    />
+                  )
+                  :
+                  (
+                    <SpotifyNowPlayingPodcast
+                      action={() => setToggle(!toggle)}
+                    />
+                  )
+                }
+              </>
+            )
+            : (
+              <SpotifyLastPlayed
+                action={() => setToggle(!toggle)}
+              />
+            )
+          }
+        </motion.div>
+      )
+      :
+      (
+        <LoadingSmall/>
+      )
+    }
+    </>
   );
 }

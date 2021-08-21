@@ -1,12 +1,8 @@
 import Layout, { Wrapper } from '@components/Layout/'
-import { ButtonPrimaryAnchorTag } from '@components/Button'
 import Title from '@components/Title'
 import { WorkLogo } from '@components/Logo'
 import Projects, { WorkList } from '@components/Projects'
 import FAQ from '@components/FAQ'
-import { Box } from '@components/Box'
-import Memoji from '@components/Memoji'
-import { designTokens } from '@components/Theme/designTokens'
 
 const Work = ({ title, description}) => {
 

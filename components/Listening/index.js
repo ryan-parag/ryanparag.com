@@ -5,6 +5,8 @@ import List, { ListItem } from '@components/List'
 import { Box } from '@components/Box'
 import { designTokens } from '@components/Theme/designTokens'
 import { format } from 'timeago.js'
+import Error from '@components/Error'
+import LoadingBox from '@components/LoadingBox'
 
 const Tracks = () => {
 
@@ -63,70 +65,89 @@ const ListeningTitle = ({title}) => {
 
 export const ListeningMusic = () => {
 
-  const { data } = useSWR('/api/recently-played', fetcher);
-
-  if (!data) {
-    return (
-      <Box center>
-        Something went wrong
-      </Box>
-    )
-  }
+  const { data, error } = useSWR('/api/recently-played', fetcher);
 
   return(
     <>
-      <ListeningTitle title={`Last listened tracks (${data.tracks.length}):`}/>
-      <List>
-        <RecentlyPlayed tracks={data.tracks} />
-      </List>
-      <hr/>
-      <ListeningTitle title={`Most listened to tracks recently:`}/>
-      <List>
-        <Tracks/>
-      </List>
+      <ListeningTitle title={`Last listened tracks (${data ? data.tracks.length : ''}):`}/>
+      {
+        error && (<Error/>)
+      }
+      {
+        data ? (
+          <>
+            <List>
+              <RecentlyPlayed tracks={data.tracks} />
+            </List>
+            <hr/>
+            <ListeningTitle title={`Most listened to tracks recently:`}/>
+            <List>
+              <Tracks/>
+            </List>
+          </>
+        )
+        :
+        (
+          <LoadingBox
+            title="Loading last listens"
+          />
+        )
+      }
     </>
   )
 }
 
 export const ListeningPodcasts = () => {
 
-  const { data } = useSWR('/api/podcast-subscriptions', fetcher);
+  const { data, error } = useSWR('/api/podcast-subscriptions', fetcher);
 
-  if (!data) {
-    return (
-      <Box center>
-        Something went wrong
-      </Box>
-    )
-  }
   return(
     <>
       <ListeningTitle title={`Recent podcasts I've been digging:`}/>
-      <List>
-        <Subscriptions podcasts={data.podcasts}/>
-      </List>
+      {
+        error && (<Error/>)
+      }
+      {
+        data ? (
+          <List>
+            <Subscriptions podcasts={data.podcasts}/>
+          </List>
+        )
+        :
+        (
+          <LoadingBox
+            title="Loading podcasts"
+          />
+        )
+      }
     </>
   )
 }
 
 export const ListeningPlaylists = () => {
 
-  const { data } = useSWR('/api/playlists', fetcher);
+  const { data, error } = useSWR('/api/playlists', fetcher);
 
-  if (!data) {
-    return (
-      <Box center>
-        Something went wrong
-      </Box>
-    )
-  }
   return(
     <>
       <ListeningTitle title={`Playlists for focused work:`}/>
       <p>I tend to listen to music in long strings of time while working. Here are a few playlists that keep me tuned into some heads down work while playing something constant in the background.</p>
-      <List>
-        <Playlists playlists={data.playlists}/>
-      </List>
+      {
+        error && (<Error/>)
+      }
+      {
+        data ? (
+          <List>
+            <Playlists playlists={data.playlists}/>
+          </List>
+        )
+        :
+        (
+          <LoadingBox
+            title="Loading playlists"
+          />
+        )
+      }
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 
@@ -71,7 +71,11 @@ const Randomizer = () => {
     return random
   }
 
-  const [isRandom, setIsRandom] = useState(randomFact())
+  const [isRandom, setIsRandom] = useState('')
+
+  useEffect(() => {
+    setIsRandom(randomFact())
+  }, [])
 
   return(
     <RandomText

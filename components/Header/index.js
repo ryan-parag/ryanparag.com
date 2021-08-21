@@ -11,6 +11,8 @@ import fetcher from '@utils/fetcher';
 import { X } from 'react-feather'
 import { LogoWithLabel } from '@components/Logo'
 import { Wrapper } from '@components/Layout/'
+import { LoadingSmall } from '@components/LoadingBox'
+import Error from '@components/Error'
 
 const HeaderContainer = styled.div`
   position: relative;
@@ -291,36 +293,48 @@ const LatestTheme = ({handleThemeToggle, activeTheme}) => {
 }
 
 const ThemeList = ({ handleThemeToggle, activeTheme }) => {
-  const { data } = useSWR('/api/themes', fetcher);
+  const { data, error } = useSWR('/api/themes', fetcher);
   const [active, setActive] = useState()
 
   if (!data) {
-    return null;
+    return (
+      <Error/>
+    )
   }
 
   return (
     <>
-      <LatestTheme
-        handleThemeToggle={handleThemeToggle}
-        activeTheme={activeTheme}
-      />
       {
-        data.themes.map((theme, index) => (
-          <div
-            key={index}
-            style={{
-              margin: `0 ${designTokens.space[3]}`,
-              display: 'inline-block'
-            }}
-          >
-            <ThemeItem
-              tabIndex={'0'}
-              theme={theme}
-              clickHandle={() => handleThemeToggle(theme)}
-              active={activeTheme === theme.name}
+        data ? (
+          <>
+            <LatestTheme
+              handleThemeToggle={handleThemeToggle}
+              activeTheme={activeTheme}
             />
-          </div>
-        ))
+            {
+              data.themes.map((theme, index) => (
+                <div
+                  key={index}
+                  style={{
+                    margin: `0 ${designTokens.space[3]}`,
+                    display: 'inline-block'
+                  }}
+                >
+                  <ThemeItem
+                    tabIndex={'0'}
+                    theme={theme}
+                    clickHandle={() => handleThemeToggle(theme)}
+                    active={activeTheme === theme.name}
+                  />
+                </div>
+              ))
+            }
+          </>
+        )
+        :
+        (
+          <LoadingSmall/>
+        )
       }
     </>
   )
