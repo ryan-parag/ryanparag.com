@@ -14,6 +14,7 @@ module.exports = {
     NOTION_AUTH_DATABASE_ID: process.env.NOTION_AUTH_DATABASE_ID,
     NOTION_PORTFOLIO_DATABASE_ID: process.env.NOTION_PORTFOLIO_DATABASE,
     LIVEBLOCKS_API_KEY: process.env.LIVEBLOCKS_API_KEY,
+    NEW_SENDGRID_API_KEY: process.env.NEW_SENDGRID_API_KEY,
     AUTH_STRING: process.env.AUTH_STRING
   },
   target: 'serverless',

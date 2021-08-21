@@ -1,9 +1,39 @@
 const { Client } = require('@notionhq/client');
+const mail = require('@sendgrid/mail');
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
+const triggerEmail = (data) => {
+  mail.setApiKey(process.env.SENDGRID_API_KEY);
+
+  const message = {
+    to: 'parag.ryan@gmail.com',
+    from: 'parag.ryan@gmail.com',
+    subject: `New portfolio added`,
+    text: data.portfolio.name,
+    html: data.portfolio.name,
+  };
+
+  mail.send(message)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+}
+
 export default async (req,res) => {
   if(req.method === 'POST') {
+
+    const getTags = () => {
+      const tags = []
+      req.body.portfolio.tags.map(item => {
+        tags.push({ name: item })
+      })
+
+      return tags
+    }
 
     const response = await notion.pages.create({
       parent: {
@@ -23,13 +53,16 @@ export default async (req,res) => {
           url: req.body.portfolio.link
         },
         Likes: {
-          number: req.body.portfolio.likes
+          number: 1
         },
         Password: {
           checkbox: req.body.portfolio.password
         },
         Verified: {
           checkbox: false
+        },
+        Tags: {
+          multi_select: getTags()
         },
         Description: {
           rich_text: [
@@ -42,7 +75,8 @@ export default async (req,res) => {
         },
       }
     })
-  
+
+    triggerEmail(req.body)
     res.status(201).json(req.body.portfolio)
 
   } else {
@@ -56,26 +90,33 @@ export default async (req,res) => {
     }
   
     response.results.map(item => {
+
+      const getTags = () => {
+        const items = []
+
+        if(item.properties.Tags.multi_select.length > 0) {
+          item.properties.Tags.multi_select.map(tag => {
+            items.push(tag.name)
+          })
+        }
+
+        return items
+      }
+
+      const data = {
+        id: item.id,
+        name: item.properties.Name.title[0].plain_text,
+        description: item.properties.Description.rich_text[0].plain_text,
+        password: item.properties.Password.checkbox,
+        link: item.properties.Portfolio.url,
+        likes: item.properties.Likes.number,
+        created: item.created_time,
+        tags: getTags()
+      }
       if(item.properties.Verified.checkbox) {
-        portfolios.verified.push({
-          id: item.id,
-          name: item.properties.Name.title[0].plain_text,
-          description: item.properties.Description.rich_text[0].plain_text,
-          password: item.properties.Password.checkbox,
-          link: item.properties.Portfolio.url,
-          likes: item.properties.Likes.number,
-          created: item.created_time
-        })
+        portfolios.verified.push(data)
       } else {
-        portfolios.waiting.push({
-          id: item.id,
-          name: item.properties.Name.title[0].plain_text,
-          description: item.properties.Description.rich_text[0].plain_text,
-          password: item.properties.Password.checkbox,
-          link: item.properties.Portfolio.url,
-          likes: item.properties.Likes.number,
-          created: item.created_time
-        })
+        portfolios.waiting.push(data)
       }
     })
 

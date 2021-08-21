@@ -3,12 +3,13 @@ import { format } from 'timeago.js'
 import styled from 'styled-components'
 import { SmallButton, ButtonPrimary, Button, SmallButtonDanger } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
-import { User, Key, Check } from 'react-feather'
+import { User, Key, Check, XCircle } from 'react-feather'
 import List, { ListItem } from '@components/List'
 import LoadingBox from '@components/LoadingBox'
-import { Box } from '@components/Box'
 import Switch from '@components/Switch'
 import Accordion from '@components/Accordion'
+import Chip from '@components/Chip'
+import { Box } from '@components/Box'
 
 const Label = styled.div`
   font-size: ${designTokens.fontSizes[0]};
@@ -65,6 +66,28 @@ const Avatar = styled.div`
   color: ${props => props.waiting ? 'var(--grey600)' : 'var(--primaryDark)'};
 `
 
+const TagInput = styled.div`
+  position: relative;
+  input {
+    padding: ${designTokens.space[3]};
+  }
+  ${SmallButton} {
+    position: absolute;
+    right: ${designTokens.space[2]};
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`
+
+const IconButton = styled.button`
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  margin-left: ${designTokens.space[1]};
+  margin-top: 2px;
+`
+
 const Like = ({ item }) => {
 
   const [liked, setLiked] = useState(false)
@@ -85,6 +108,7 @@ const Like = ({ item }) => {
       likes: updatedCount,
       verified: true,
       archived: false,
+      tags: item.tags
     }
     
     const response = await fetch('api/portfolios/update', {
@@ -129,6 +153,7 @@ const Portfolio = ({pending, item}) => {
       likes: item.likes,
       verified: update === 'verify' ? true : false,
       archived: update === 'verify' ? false : true,
+      tags: item.tags
     }
     
     const response = await fetch('api/portfolios/update', {
@@ -189,11 +214,27 @@ const Portfolio = ({pending, item}) => {
                         }
                       </small>
                     </p>
+                    <div style={{ marginTop: designTokens.space[1], marginBottom: designTokens.space[1] }}>
+                    <small style={{ color: 'var(--grey700)'}}>Tags:</small>&nbsp;
+                      {
+                        item.tags.length > 0 ? (
+                          item.tags.map(tag => (
+                            <Chip ghost key={tag} type={'secondary'}>{tag}</Chip>
+                          ))
+                        )
+                        :
+                        (
+                          <>
+                            <small style={{ color: 'var(--grey500)'}}>None</small>
+                          </>
+                        )
+                      }
+                    </div>
                     <Label>
                       Submitted {format(item.created)}
                     </Label>
                   </div>
-                  <div>
+                  <div style={{ paddingTop: designTokens.space[2] }}>
                     <SmallButtonDanger onClick={() => updatePortfolio('delete')}>Remove</SmallButtonDanger>&nbsp;&nbsp;
                     <SmallButton onClick={() => updatePortfolio('verify')}>Verify</SmallButton>
                   </div>
@@ -215,7 +256,13 @@ const Portfolio = ({pending, item}) => {
             <NewContent>
               <Content>
                 <h4 style={{ marginTop: designTokens.space[2], marginBottom: designTokens.space[2], display: 'flex', alignItems: 'center' }}>
-                  {item.name}
+                  <span
+                    style={{
+                      marginRight: designTokens.space[2]
+                    }}
+                  >
+                    {item.name}
+                  </span>
                   {
                     item.password ? (
                       <span style={{
@@ -229,7 +276,7 @@ const Portfolio = ({pending, item}) => {
                         <Key
                           size={'16'}
                           style={{
-                            marginRight: designTokens.space[1]
+                            marginRight: designTokens.space[2]
                           }}
                         />
                       </span>
@@ -237,8 +284,13 @@ const Portfolio = ({pending, item}) => {
                     :
                     null
                   }
+                  {
+                    item.tags.map(tag => (
+                      <Chip ghost key={tag} type={'secondary'}>{tag}</Chip>
+                    ))
+                  }
                 </h4>
-                <div>
+                <div style={{ padding: `${designTokens.space[1]} 0`}}>
                   <small>
                     <a className="link" href={item.link} target="_blank" rel="noopener">{item.link}</a>
                   </small>
@@ -259,82 +311,36 @@ const Portfolio = ({pending, item}) => {
   )
 }
 
-export const PortfolioList = ({ filterString, items }) => {
+export const PortfolioList = ({ verified, waiting }) => {
 
   return(
     <List>
       {
-        items ? (
+        waiting.length > 0 && (
           <>
-            {
-               items.portfolios.waiting.filter((item) => {
-                if(filterString == "") {
-                  return item
-                } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
-                  return item
-                }
-              }).length > 0 ? (
-                <>
-                  <h4>Pending Portfolios</h4>
-                   {
-                     items.portfolios.waiting.filter((item) => {
-                      if(filterString == "") {
-                        return item
-                      } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
-                        return item
-                      }
-                    }).map(item => (
-                       <ListItem key={item.id}>
-                         <Portfolio pending item={item}/>
-                       </ListItem>
-                     ))
-                   }
-                  <h4>Verified Portfolios</h4>
-                </>
-              )
-              :
-              null
-            }
+            <h4>Pending Portfolios</h4>
+             {
+               waiting.map(item => (
+                 <ListItem key={item.id}>
+                   <Portfolio pending item={item}/>
+                 </ListItem>
+               ))
+             }
+            <h4>Verified Portfolios</h4>
           </>
         )
-        :
-        null
       }
       {
-        items ? (
-          <>
-            {
-              items.portfolios.verified.filter((item) => {
-                if(filterString == "") {
-                  return item
-                } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
-                  return item
-                }
-              }).length > 0 ? (
-                items.portfolios.verified.filter((item) => {
-                  if(filterString == "") {
-                    return item
-                  } else if(item.name.toLowerCase().includes(filterString.toLowerCase())) {
-                    return item
-                  }
-                }).map((item) => (
-                  <ListItem key={item.id}>
-                    <Portfolio item={item}/>
-                  </ListItem>
-                ))
-              )
-              :
-              (
-                <span>No portfolios</span>
-              )
-            }
-          </>
+        verified.length > 0 ? (
+          verified.map((item) => (
+            <ListItem key={item.id}>
+              <Portfolio item={item}/>
+            </ListItem>
+          ))
         )
         :
         (
-          <LoadingBox>
-            No Questions
-          </LoadingBox>
+          <span>No portfolios</span>
         )
       }
     </List>
@@ -347,7 +353,10 @@ export const Form = () => {
   const [portfolioName, setPortfolioName] = useState('')
   const [portfolioDesc, setPortfolioDesc] = useState('')
   const [portfolioPassword, setPortfolioPassword] = useState(false)
+  const [portfolioTags, setPortfolioTags] = useState([])
   const [sent, setSent] = useState(false)
+
+  const [currentTag, setCurrentTag] = useState('')
 
   const clearForm = () => {
     setPortfolioLink('')
@@ -355,7 +364,20 @@ export const Form = () => {
     setPortfolioDesc('')
     setPortfolioPassword(false)
     setEdit(false)
+    setCurrentTag('')
+    setPortfolioTags([])
   }
+
+  const addTag = (e) => {
+    e.preventDefault()
+    setPortfolioTags(portfolioTags => [...portfolioTags, currentTag])
+    setCurrentTag('')
+  }
+
+  const removeTag = (name) => {
+    const updated = portfolioTags.filter(item => item !== name)
+    setPortfolioTags(updated)
+   };
 
   const handleClick = async () => {
 
@@ -364,8 +386,8 @@ export const Form = () => {
       link: portfolioLink,
       description: portfolioDesc,
       password: portfolioPassword,
-      likes: 0,
       archived: false,
+      tags: portfolioTags
     }
     
     const response = await fetch('api/portfolios/list', {
@@ -375,6 +397,7 @@ export const Form = () => {
         'Content-Type': 'application/json'
       }
     })
+
     const data = await response.json()
     setSent(true)
     clearForm()
@@ -408,6 +431,38 @@ export const Form = () => {
               />
             </div>
             <Accordion label={'Any additional info?'}>
+              <Label>Tags</Label>
+              <TagInput>
+                <input
+                  type="text"
+                  placeholder="eg. Current company, type of designer, etc."
+                  value={currentTag}
+                  onChange={(e) => setCurrentTag(e.target.value)}
+                />
+                {currentTag && (<SmallButton onClick={(e) => addTag(e)}>Add tag</SmallButton>)}
+              </TagInput>
+              <div style={{ marginBottom: designTokens.space[3] }}>
+                {
+                  portfolioTags.map((tag,i) => (
+                    <Chip ghost key={i} type={'secondary'}>
+                      {tag}
+                      <IconButton onClick={() => removeTag(tag)}>
+                        <XCircle
+                          size={'16'}
+                        />
+                      </IconButton>
+                    </Chip>
+                  ))
+                }
+                {
+                  currentTag.length > 0 && (
+                    <Chip ghost>
+                      {currentTag}
+                    </Chip>
+                  )
+                }
+              </div>
+              <Label>Additional information</Label>
               <textarea
                 rows="3"
                 value={portfolioDesc}
