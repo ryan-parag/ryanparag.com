@@ -5,10 +5,13 @@ import Layout, { Wrapper } from '@components/Layout/'
 import Title from '@components/Title'
 import { Questions, Form } from '@components/AMA'
 import { AMALogo } from '@components/Logo'
+import LoadingBox from '@components/LoadingBox'
+import Error from '@components/Error'
 
 const AMA = ({ token, posts, title, description, ...props }) => {
 
-  const { data } = useSWR('/api/ama/questions/', fetcher);
+  const { data, error } = useSWR('/api/ama/questions/', fetcher);
+
   return (
     <>
       <Layout pageTitle={`${title} | AMA`} description={description} ogImage="/ama-social-media.png">
@@ -21,10 +24,25 @@ const AMA = ({ token, posts, title, description, ...props }) => {
             <p className="lead">Send over any kind of question you may have for me - once it's answered, it'll show up in the list</p>
             <Form/>
           </Title>
-          <Questions
-            editable={token === "loggedIn"}
-            questions={data}
-          />
+          {
+            data ? (
+              <Questions
+                editable={token === "loggedIn"}
+                questions={data}
+              />
+            )
+            :
+            (
+              <LoadingBox>
+                Loading
+              </LoadingBox>
+            )
+          }
+          {
+            error && (
+              <Error/>
+            )
+          }
         </Wrapper>
       </Layout>
     </>

@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import { SmallButton, Button } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import LoadingBox from '@components/LoadingBox'
+import Error from '@components/Error'
 
 const ScrolledButton = styled(Button)`
   position: fixed;
@@ -61,7 +62,7 @@ const Page = ({ token, title, description, ...props }) => {
           }
           {
             error && (
-              <span>An error occured</span>
+              <Error/>
             )
           }
         </Wrapper>

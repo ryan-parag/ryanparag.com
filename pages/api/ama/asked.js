@@ -29,7 +29,7 @@ export default async (req,res) => {
           ],
         },
         Likes: {
-          number: 0,
+          number: 1,
         },
       }
     })
