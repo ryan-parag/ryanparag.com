@@ -3,7 +3,8 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import Layout, { Wrapper } from '@components/Layout/'
 import Title from '@components/Title'
-import { PortfolioList, Form } from '@components/Portfolios'
+import Portfolios from '@components/Portfolios'
+import { Form } from '@components/Portfolios/Item'
 import styled from 'styled-components'
 import { SmallButton, Button } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
@@ -46,7 +47,7 @@ const Page = ({ token, title, description, ...props }) => {
           </Title>
           {
             data ? (
-              <PortfolioList
+              <Portfolios
                 verified={data.portfolios.verified}
                 waiting={data.portfolios.waiting}
               />
