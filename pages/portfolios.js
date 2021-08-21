@@ -65,12 +65,12 @@ const Page = ({ token, title, description, ...props }) => {
             )
           }
         </Wrapper>
-        <ScrolledButton
+      </Layout>
+      <ScrolledButton
           onClick={() => scrollToTop()}
         >
           Scroll to Top
         </ScrolledButton>
-      </Layout>
     </>
   )
 }
