@@ -4,6 +4,8 @@ import { SmallButton } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import List, { ListItem } from '@components/List'
 import { Portfolio } from './Item'
+import { Box } from '@components/Box'
+import { Search } from 'react-feather'
 
 const SearchFilter = styled.div`
   position: relative;
@@ -102,7 +104,41 @@ const Portfolios = ({ verified, waiting }) => {
           )
           :
           (
-            <span>No portfolios</span>
+            <Box
+              center
+              border={'transparent'}
+              bg={'transparent'}
+            >
+              <Search
+                size={'24'}
+              />
+              <>
+                {
+                  filterString.length > 0 ? (
+                    <>
+                      <p style={{ marginTop: designTokens.space[3], marginBottom: designTokens.space[3] }}>
+                        <strong>No portfolios matched the search <span style={{ color: 'var(--secondaryDark)'}}>{filterString}</span></strong>
+                        <br/>
+                        <small>Try searching for a different name or tag to help land on a result</small>
+                      </p>
+                      <SmallButton
+                        onClick={() => handleChange('')}
+                      >
+                        Try again
+                      </SmallButton>
+                    </>
+                  )
+                  :
+                  (
+                    <p style={{ marginTop: designTokens.space[3], marginBottom: designTokens.space[3] }}>
+                      <strong>No portfolios to show</strong>
+                      <br/>
+                      <small>Submit a portfolio to add to the list</small>
+                    </p>
+                  )
+                }
+              </>
+            </Box>
           )
         }
       </List>
