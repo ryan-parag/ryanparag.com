@@ -321,6 +321,18 @@ export default function Projects(){
       image: '/static/projects/icon-listens.png',
       link:'/listening',
       outbound: false
+    },{
+      name: 'Portfolios',
+      description: 'A list of portfolios, personal sites, and designers that are dope',
+      image: '/static/projects/icon-portfolios.png',
+      link:'/portfolios',
+      outbound: false
+    },{
+      name: 'Ask me anything',
+      description: 'Send over any kind of question you may have for me!',
+      image: '/static/projects/icon-ama.png',
+      link:'/ama',
+      outbound: false
     }, {
       name: 'Theme Creator',
       description: 'Feed your curiousity by theming this website',
