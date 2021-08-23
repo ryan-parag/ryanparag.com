@@ -45,7 +45,7 @@ const Notes = ({ posts, title, description, ...props }) => {
 export default Notes
 
 export async function getStaticProps() {
-  const configData = await import(`../siteconfig.json`)
+  const configData = await import(`../../siteconfig.json`)
 
   const files = fs.readdirSync(path.join('notes'))
 

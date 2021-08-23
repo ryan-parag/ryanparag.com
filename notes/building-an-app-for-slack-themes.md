@@ -50,6 +50,7 @@ The first thing we should probably do is start to think how we will store our th
 Slack gives us the ability to customize 9 colors in a theme, all denoted by a label (eg. Active Item). Why don't we take a look at a data object of a theme that contains the items listed above:
 
 ```js
+// theme object
 {
   theme_name: 'Example Theme',
   active_item: '#5469D4',

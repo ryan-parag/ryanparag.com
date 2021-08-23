@@ -1,5 +1,6 @@
 import React from 'react'
 import Zoom from 'react-medium-image-zoom'
+import Image from 'next/image'
 
 const ImgZoom = ({src,alt}) => {
   return(
@@ -8,6 +9,7 @@ const ImgZoom = ({src,alt}) => {
         overlayBgColorStart={'var(--transparent)'}
         closeText={'Close'}
         zoomMargin={40}
+        wrapElement={'picture'}
       >
         <img
           src={src}
@@ -15,7 +17,6 @@ const ImgZoom = ({src,alt}) => {
           style={{
             display: 'block',
             margin: 'auto',
-            border: '1px solid var(--grey300)',
             width: '100%'
           }}
         />

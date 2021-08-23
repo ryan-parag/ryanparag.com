@@ -23,7 +23,7 @@ const ChipBase = styled.div`
   background: ${props => props.bg ? props.bg : 'transparent'};
 `
 
-const Chip = ({ ghost, type, children }) => {
+const Chip = ({ ghost, type, children, mb, mr, mt, ml }) => {
 
   const getBorder = () => {
     switch (type) {
@@ -65,13 +65,28 @@ const Chip = ({ ghost, type, children }) => {
   }
   if(ghost) {
     return (
-      <ChipBase border={'transparent'} bg={getBg()} color={getColor()}>
+      <ChipBase
+        border={'transparent'}
+        bg={getBg()}
+        color={getColor()}
+        mr={mr ? mr : '0'}
+        ml={ml ? ml : '0'}
+        mt={mt ? mt : '0'}
+        mb={mb ? mb : '0'}
+      >
         {children}
       </ChipBase>
     )
   } else {
     return (
-      <ChipBase border={getBorder()} color={getColor()}>
+      <ChipBase
+        border={getBorder()}
+        color={getColor()}
+        mr={mr ? mr : '0'}
+        ml={ml ? ml : '0'}
+        mt={mt ? mt : '0'}
+        mb={mb ? mb : '0'}
+      >
         {children}
       </ChipBase>
     )

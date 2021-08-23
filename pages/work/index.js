@@ -3,9 +3,13 @@ import Title from '@components/Title'
 import { WorkLogo } from '@components/Logo'
 import Projects, { WorkList } from '@components/Projects'
 import FAQ from '@components/FAQ'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
-const Work = ({ title, description}) => {
+const Work = ({ title, description, work}) => {
 
+  console.log(work)
   return (
     <>
       <Layout pageTitle={`${title} | Work`} description={description} ogImage="/social-media.png">
@@ -22,7 +26,7 @@ const Work = ({ title, description}) => {
           <p>
             I'm in the proceess of moving my work/case studies to this site, but you can <a className="link" href="https://work.ryanparag.com">find my current work here</a> or through one of the links below.
           </p>
-          <WorkList/>
+          <WorkList work={work} />
           <hr/>
           <h3>... or take a look at a few of my side projects</h3>
           <Projects/>
@@ -37,10 +41,23 @@ const Work = ({ title, description}) => {
 export default Work
 
 export async function getStaticProps() {
-  const configData = await import(`../siteconfig.json`)
+  const configData = await import(`../../siteconfig.json`)
+
+  const files = fs.readdirSync(path.join('projects'))
+
+  const work = files.map(filename => {
+    const slug = filename.replace('.md','')
+    const markdownWithMeta = fs.readFileSync(path.join('projects', filename), 'utf-8')
+    const {data:frontmatter} = matter(markdownWithMeta)
+    return {
+      slug,
+      frontmatter
+    }
+  })
 
   return {
     props: {
+      work,
       title: configData.default.title,
       description: configData.default.description,
     },
