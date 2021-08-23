@@ -117,6 +117,8 @@ export default function PostList({ posts }) {
                           layout="fill"
                           objectFit="cover"
                           alt={post.frontmatter?.title}
+                          quality={25}
+                          priority
                         />
                       </NewImage>
                     </a>
