@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import List, { ListItem } from '@components/List'
 import { truncateString } from '@utils/text'
+import Image from 'next/image'
+import { LoadingSpinner } from '@components/LoadingBox'
 
 const NewImage = styled.div`
   width: ${designTokens.space[7]};
@@ -12,12 +14,14 @@ const NewImage = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(${props => props.bg});
   position: absolute;
   right: ${designTokens.space[1]};
   top: 50%;
   transform: translateY(-50%) scale(1);
   transition: all 120ms ease-out 0ms;
+  img {
+    border-radius: ${designTokens.space[1]};
+  }
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     width: ${designTokens.space[6]};
     height: ${designTokens.space[6]};
@@ -107,7 +111,14 @@ export default function PostList({ posts }) {
                           </p>
                         </Content>
                       </NewContent>
-                      <NewImage bg={post.frontmatter.hero_image}/>
+                      <NewImage>
+                        <Image
+                          src={post.frontmatter.hero_image}
+                          layout="fill"
+                          objectFit="cover"
+                          alt={post.frontmatter?.title}
+                        />
+                      </NewImage>
                     </a>
                   </Link>
                 </NewPostContainer>

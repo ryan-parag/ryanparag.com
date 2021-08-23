@@ -4,7 +4,7 @@ import Link from 'next/link'
 import getPosts from '@utils/getPosts'
 import fs from 'fs'
 import { ButtonLink } from '@components/Button'
-import { ProjectItem } from '@components/Projects'
+import { WorkItem } from '@components/Projects'
 import Subscribe from '@components/Subscribe'
 import { designTokens } from '@components/Theme/designTokens'
 import Title from '@components/Title'
@@ -37,7 +37,7 @@ const Notes = ({ posts, title, description, ...props }) => {
           </Title>
           <Subscribe/>
           <p>Need an RSS reader? Here's what I use:</p>
-          <ProjectItem project={netNewsWire}/>
+          <WorkItem project={netNewsWire}/>
         </Wrapper>
       </Layout>
     </>

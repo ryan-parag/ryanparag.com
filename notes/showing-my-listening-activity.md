@@ -121,12 +121,12 @@ We would repeat the same function for the currently playing podcast - making sli
 
 Let's see how we can design a single component to account for all 3 of these states:
 
-![component states](../static/showing-my-listening-activity_1.png)
+![component states](/../static/showing-my-listening-activity_1.png)
 
 This component can account for each of the scenarios our API response may give us - helping us only surface the correct information in a way that is a bit more seamless to the user.
 
 ### What's next?
 
-![podcast subscriptions](../static/showing-my-listening-activity_2.png)
+![podcast subscriptions](/../static/showing-my-listening-activity_2.png)
 
 I've been having some fun grabbing my recent top tracks and my recent podcast subscriptions - [check it out!](/listening/music) If you have feedback or ideas of what else could be a fun way to make this information more transparent and tangible, I'd love to know - let me know using the form below.

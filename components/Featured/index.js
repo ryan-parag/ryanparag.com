@@ -1,4 +1,4 @@
-import { ProjectItem } from '@components/Projects'
+import { WorkItem } from '@components/Projects'
 import List, { ListItem } from '@components/List'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
@@ -18,7 +18,7 @@ const Featured = () => {
         data ? (
           data.items.map(project => (
             <ListItem key={project.name}>
-              <ProjectItem project={project}/>
+              <WorkItem project={project}/>
             </ListItem>
           ))
         )

@@ -5,7 +5,8 @@ description: 'Connecting doors to the cloud and simplifying home-remodeling'
 text: 'At Masonite (a global company known for manufacturing residential and architectural doors), I help build cross-platform design systems and products for core experience, integrations, native mobile, and growth - focusing on establishing a process of lean user research and working directly with software engineers, product management, and other stakeholders.'
 location: 'Tampa, FL'
 role: ['Product Design', 'Front-end Engineering', 'Product']
-date: '2019 - Present'
+startDate: '2019'
+endDate: 'Present'
 spaces: ['Enterprise', 'Growth', 'Building Materials']
 platforms: ['Web', 'Mobile', 'Tablet']
 ---

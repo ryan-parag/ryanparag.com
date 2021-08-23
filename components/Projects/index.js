@@ -6,8 +6,9 @@ import List, { ListItem } from '@components/List'
 import { designTokens } from '@components/Theme/designTokens'
 import { truncateString } from '@utils/text'
 import Chip from '@components/Chip'
+import Image from 'next/image'
 
-const NewProjectImage = styled.img`
+const NewProjectImage = styled.div`
   width: ${designTokens.space[7]};
   height: ${designTokens.space[7]};
   position: absolute;
@@ -17,6 +18,9 @@ const NewProjectImage = styled.img`
   border-radius: ${designTokens.space[1]};
   box-shadow: 0px 0px 0px 2px var(--grey200);
   transition: all 120ms ease-out 0ms;
+  img {
+    border-radius: ${designTokens.space[1]};
+  }
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     width: ${designTokens.space[6]};
     height: ${designTokens.space[6]};
@@ -77,67 +81,41 @@ const NewProjectContent = styled.div`
 export const ProjectItem = ({project}) => {
   return(
     <>
-      {
-        project.outbound ? (
-          <NewProjectAnchorTag
-            href={project.link}
-          >
+      <NewProjectLink>
+        <Link href={`/work/${project.slug}`}>
+          <a>
             <NewProjectContentContainer>
               <NewProjectContent>
-                <div style={{ display: 'flex', alignItems: 'center',  marginBottom: designTokens.space[2]}}>
-                  <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[3] }}>
-                    {project.name}
-                  </h4>
-                  {
-                    project.time && (
-                      <Chip>{project.time}</Chip>
-                    )
-                  }
-                </div>
-                <p style={{ marginBottom: designTokens.space[2] }}>
-                  {truncateString(project.description, 72)}
-                </p>
+              <div style={{ display: 'flex', alignItems: 'center',  marginBottom: designTokens.space[2]}}>
+                <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[2] }}>
+                  {project?.frontmatter?.title}
+                </h4>
+                {
+                  project?.frontmatter?.startDate && (
+                    <Chip>{project?.frontmatter?.startDate} - {project?.frontmatter?.endDate}</Chip>
+                  )
+                }
+              </div>
+              <p style={{ marginBottom: designTokens.space[2] }}>
+                {project?.frontmatter?.description}
+              </p>
               </NewProjectContent>
             </NewProjectContentContainer>
             {
-              project.image && (
-                <NewProjectImage src={project.image} alt={project.name} />
+              project?.frontmatter?.logo && (
+                <NewProjectImage>
+                  <Image
+                    src={project?.frontmatter?.logo}
+                    width={designTokens.space[7]}
+                    height={designTokens.space[7]}
+                    alt={project?.frontmatter?.title}
+                  />
+                </NewProjectImage>
               )
             }
-          </NewProjectAnchorTag>
-        )
-        :
-        (
-          <NewProjectLink>
-            <Link href={project.link}>
-              <a>
-                <NewProjectContentContainer>
-                  <NewProjectContent>
-                  <div style={{ display: 'flex', alignItems: 'center',  marginBottom: designTokens.space[2]}}>
-                    <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[2] }}>
-                      {project.name}
-                    </h4>
-                    {
-                      project.time && (
-                        <Chip>{project.time}</Chip>
-                      )
-                    }
-                  </div>
-                  <p style={{ marginBottom: designTokens.space[2] }}>
-                    {truncateString(project.description, 72)}
-                  </p>
-                  </NewProjectContent>
-                </NewProjectContentContainer>
-                {
-                  project.image && (
-                    <NewProjectImage src={project.image} alt={project.name} />
-                  )
-                }
-              </a>
-            </Link>
-          </NewProjectLink>
-        )
-      }
+          </a>
+        </Link>
+      </NewProjectLink>
     </>
   )
 }
@@ -152,17 +130,24 @@ export const WorkItem = ({project}) => {
           >
             <NewProjectContentContainer>
               <NewProjectContent>
-                <h5 style={{ marginTop: '0', marginBottom: designTokens.space[2], marginRight: designTokens.space[3] }}>
+                <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2], marginRight: designTokens.space[3] }}>
+                  {project.name}
+                </h4>
+                <p style={{ marginBottom: designTokens.space[2] }}>
                   {project.description}
-                </h5>
-                <p style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)', marginBottom: designTokens.space[2] }}>
-                  {project.name} • {project.time}
                 </p>
               </NewProjectContent>
             </NewProjectContentContainer>
             {
               project.image && (
-                <NewProjectImage src={project.image} alt={project.name} />
+                <NewProjectImage>
+                  <Image
+                    src={project.image}
+                    width={designTokens.space[7]}
+                    height={designTokens.space[7]}
+                    alt={project.name}
+                  />
+                </NewProjectImage>
               )
             }
           </NewProjectAnchorTag>
@@ -175,16 +160,23 @@ export const WorkItem = ({project}) => {
                 <NewProjectContentContainer>
                   <NewProjectContent>
                     <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2], marginRight: designTokens.space[3] }}>
-                      {project.description}
+                      {project.name}
                     </h4>
                     <p style={{ marginBottom: designTokens.space[2] }}>
-                      {project.name} • {project.time}
+                      {project.description}
                     </p>
                   </NewProjectContent>
                 </NewProjectContentContainer>
                 {
                   project.image && (
-                    <NewProjectImage src={project.image} alt={project.name} />
+                    <NewProjectImage>
+                      <Image
+                        src={project.image}
+                        width={designTokens.space[7]}
+                        height={designTokens.space[7]}
+                        alt={project.name}
+                      />
+                    </NewProjectImage>
                   )
                 }
               </a>
@@ -196,43 +188,15 @@ export const WorkItem = ({project}) => {
   )
 }
 
-export const WorkList = () => {
-  const work = [
-    {
-      name: 'Masonite',
-      description: 'Connecting doors to the cloud and simplifying the home-remodeling experience?',
-      image: '/static/projects/icon-masonite.png',
-      link:'/work/masonite',
-      outbound: false,
-      time: '2019 - Present'
-    }, {
-      name: 'DisputeLab',
-      description: 'Enabling financial enterprises to filter, optimize, and submit thousands of disputes',
-      image: '/static/projects/icon-disputelab.png',
-      link:'https://work.ryanparag.com/work/disputelab',
-      outbound: true,
-      time: '2017 - 2019'
-    }, {
-      name: 'Chargebacks911',
-      description: 'Helping online merchants optimize profitability by intelligently managing payment disputes',
-      image: '/static/projects/icon-cb911.png',
-      link:'/work/chargebacks911',
-      outbound: false,
-      time: '2016 - 2019'
-    }, {
-      name: 'SoleVenture',
-      description: 'Giving freelancers the security of steady income and traditional benefits',
-      image: '/static/projects/icon-sv.png',
-      link:'https://work.ryanparag.com/work/soleventure',
-      outbound: true,
-      time: '2019 - 2020'
-    }
-  ]
+export const WorkList = ({work}) => {
+
+  const sorted = work.slice().sort((a, b) => new Date(b.frontmatter.startDate) - new Date(a.frontmatter.startDate))
+
   return(
     <List>
       {
-        work.map(project => (
-          <ListItem key={project.name}>
+        sorted.map(project => (
+          <ListItem key={project.frontmatter.title}>
             <ProjectItem project={project}/>
           </ListItem>
         ))
@@ -327,7 +291,7 @@ export default function Projects(){
       {
         projects.map(project => (
           <ListItem key={project.name}>
-            <ProjectItem project={project}/>
+            <WorkItem project={project}/>
           </ListItem>
         ))
       }

@@ -9,11 +9,12 @@ import Featured from '@components/Featured'
 import Randomizer from '@components/Randomizer'
 import FAQ from '@components/FAQ'
 import { ArrowRight } from 'react-feather'
+import { WorkList } from '@components/Projects'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const Index = ({ posts, title, description, ...props }) => {
+const Index = ({ posts, work, title, description, ...props }) => {
 
   const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
   const latestPosts = sortedPosts.slice(0, 5)
@@ -41,12 +42,7 @@ const Index = ({ posts, title, description, ...props }) => {
         <main>
           <Wrapper>
             <h3><Link href="work"><a>Selected Work 💼</a></Link></h3>
-            <p>I'm in the process of moving over my work to this site, but before that happens:</p>
-            <ul>
-              <li>find my work <a className="link" href="https://work.ryanparag.com">here</a> for now</li>
-              <li><a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a closer look</li>
-            </ul>
-            <br/>
+            <WorkList work={work} />
             <p>
               <Link href="work">
                 <a className="link">
@@ -104,9 +100,23 @@ export async function getStaticProps() {
     }
   })
 
+  const filesWork = fs.readdirSync(path.join('projects'))
+
+  const work = filesWork.map(filename => {
+    const slug = filename.replace('.md','')
+    const markdownWithMeta = fs.readFileSync(path.join('projects', filename), 'utf-8')
+    const {data:frontmatter} = matter(markdownWithMeta)
+    return {
+      slug,
+      frontmatter
+    }
+  })
+
+
   return {
     props: {
       posts,
+      work,
       title: configData.default.title,
       description: configData.default.description,
     },

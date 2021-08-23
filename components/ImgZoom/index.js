@@ -1,5 +1,6 @@
 import React from 'react'
 import Zoom from 'react-medium-image-zoom'
+import Image from 'next/image'
 
 const ImgZoom = ({src,alt}) => {
   return(

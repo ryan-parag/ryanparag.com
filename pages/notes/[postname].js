@@ -14,6 +14,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypePrism from 'rehype-prism-plus'
 import Layout, { Wrapper } from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
+import Image from 'next/image'
 
 const ScrolledButton = styled(Button)`
   position: fixed;
@@ -28,6 +29,13 @@ const LinkContainer = styled.div`
   padding: ${designTokens.space[6]} 0 0;
   display: flex;
   justify-content: center;
+`
+
+const HeroImage = styled.div`
+  width: 100%;
+  position: relative;
+  height: 412px;
+  margin-bottom: ${designTokens.space[4]};
 `
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
@@ -65,15 +73,16 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
             </Chip>
             <h1>{frontmatter.title}</h1>
             {frontmatter.hero_image && (
-              <img
-                src={frontmatter.hero_image}
-                style={{
-                  marginBottom: designTokens.space[3],
-                  display: 'block',
-                  width: '100%'
-                }}
-                alt={frontmatter.title}
-              />
+              <HeroImage>
+                <Image
+                  src={frontmatter.hero_image}
+                  layout={'fill'}
+                  priority
+                  alt={frontmatter.title}
+                  objectFit={'cover'}
+                  blur
+                />
+              </HeroImage>
             )}
             <div>
               <ReactMarkdown
