@@ -19,6 +19,8 @@ const Index = ({ posts, work, title, description, ...props }) => {
   const sortedPosts = posts.slice().sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
   const latestPosts = sortedPosts.slice(0, 5)
 
+  const sortedWork = work.slice().sort((a, b) => new Date(b.frontmatter.startDate) - new Date(a.frontmatter.startDate))
+
   return (
     <>
       <Layout pageTitle={title} description={description} ogImage="/social-media.png">
@@ -41,10 +43,10 @@ const Index = ({ posts, work, title, description, ...props }) => {
         </Wrapper>
         <main>
           <Wrapper>
-            <h3><Link href="work"><a>Selected Work 💼</a></Link></h3>
-            <WorkList work={work} />
+            <h3><Link href="/work"><a>Selected Work 💼</a></Link></h3>
+            <WorkList work={sortedWork}/>
             <p>
-              <Link href="work">
+              <Link href="/work">
                 <a className="link">
                   View more work
                   <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>

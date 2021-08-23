@@ -9,7 +9,8 @@ import matter from 'gray-matter'
 
 const Work = ({ title, description, work}) => {
 
-  console.log(work)
+  const sortedWork = work.slice().sort((a, b) => new Date(b.frontmatter.startDate) - new Date(a.frontmatter.startDate))
+
   return (
     <>
       <Layout pageTitle={`${title} | Work`} description={description} ogImage="/social-media.png">
@@ -26,7 +27,7 @@ const Work = ({ title, description, work}) => {
           <p>
             I'm in the proceess of moving my work/case studies to this site, but you can <a className="link" href="https://work.ryanparag.com">find my current work here</a> or through one of the links below.
           </p>
-          <WorkList work={work} />
+          <WorkList work={sortedWork} />
           <hr/>
           <h3>... or take a look at a few of my side projects</h3>
           <Projects/>

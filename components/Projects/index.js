@@ -190,12 +190,10 @@ export const WorkItem = ({project}) => {
 
 export const WorkList = ({work}) => {
 
-  const sorted = work.slice().sort((a, b) => new Date(b.frontmatter.startDate) - new Date(a.frontmatter.startDate))
-
   return(
     <List>
       {
-        sorted.map(project => (
+        work.map(project => (
           <ListItem key={project.frontmatter.title}>
             <ProjectItem project={project}/>
           </ListItem>
