@@ -37,7 +37,7 @@ const Work = ({ title, description}) => {
 export default Work
 
 export async function getStaticProps() {
-  const configData = await import(`../siteconfig.json`)
+  const configData = await import(`../../siteconfig.json`)
 
   return {
     props: {

@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import { normalize } from 'styled-normalize'
 import { designTokens } from '../Theme/designTokens'
-import { transparentize } from 'polished'
+import { PrismStyles } from '@components/CodeBlock'
 
 export const GlobalStyles = createGlobalStyle`
   ${normalize}
@@ -192,6 +192,14 @@ export const GlobalStyles = createGlobalStyle`
         }
       }
     }
+    .anchor {
+      padding: 0;
+      height: 0;
+      width: 0;
+    }
+    .icon-link {
+      display: none;
+    }
   }
 
   hr {
@@ -259,14 +267,6 @@ export const GlobalStyles = createGlobalStyle`
   }
   del {
     opacity: 0.6;
-  }
-  pre, code {
-    font-family: ${designTokens.fonts.monospace};
-    margin-top:${designTokens.space[4]} !important;
-    margin-bottom:${designTokens.space[5]} !important;
-  }
-  code {
-    color: var--grey500;
   }
 
   blockquote {
@@ -357,4 +357,7 @@ export const GlobalStyles = createGlobalStyle`
       transform: rotate(359deg);
     }
   }
+
+  //syntax highlighting
+  ${PrismStyles}
 `;

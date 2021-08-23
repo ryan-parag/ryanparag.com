@@ -2,16 +2,16 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
-import CodeBlock from '@components/CodeBlock'
 import { designTokens } from '@components/Theme/designTokens'
 import ContactForm from '@components/ContactForm'
 import ImgZoom from '@components/ImgZoom'
 import { Button, ButtonLink } from '@components/Button'
-import ContactBox from '@components/ContactBox'
 import FAQ from '@components/FAQ'
 import Chip from '@components/Chip'
 import 'react-medium-image-zoom/dist/styles.css'
-
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from 'rehype-slug'
+import rehypePrism from 'rehype-prism-plus'
 import Layout, { Wrapper } from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
 
@@ -28,13 +28,6 @@ const LinkContainer = styled.div`
   padding: ${designTokens.space[6]} 0 0;
   display: flex;
   justify-content: center;
-`
-
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-bottom: ${designTokens.space[1]};
-  width: 100%;
 `
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
@@ -67,9 +60,9 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
             </ButtonLink>
           </div>
           <article>
-            <Label>
+            <Chip ghost>
                 {date}
-            </Label>
+            </Chip>
             <h1>{frontmatter.title}</h1>
             {frontmatter.hero_image && (
               <img
@@ -84,11 +77,22 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
             )}
             <div>
               <ReactMarkdown
-                source={markdownBody}
-                renderers={{
-                  code: CodeBlock,
-                  image: ImgZoom
+                children={markdownBody}
+                components={{
+                  img: ImgZoom
                 }}
+                rehypePlugins={[
+                  rehypeSlug,
+                  [
+                    rehypeAutolinkHeadings,
+                    {
+                      properties: {
+                        className: ['anchor']
+                      }
+                    }
+                  ],
+                  rehypePrism
+                ]}
               />
             </div>
           </article>

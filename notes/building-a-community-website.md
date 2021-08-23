@@ -29,7 +29,7 @@ I decided I would just grab all of the currently upcoming events and throw them 
 
 ![Airtable](../static/building-a-community-website_3.png)
 
-By using Airtable, I could grab all upcoming events for all the communities in a single API call. After an event's date had passed, it would no longer be listed. I also included a column called `verified` to mark an event as verified and listed in the event list on the website.
+By using Airtable, I could grab all upcoming events for all the communities in a single API call. After an event's date had passed, it would no longer be listed. I also included a column called _Verified_ to mark an event as verified and listed in the event list on the website.
 
 If an event was unverified, I would receive a notification and a message on the website, letting me know to verify the event in Airtable, either on Airtable's website or mobile app - case closed 👏.
 

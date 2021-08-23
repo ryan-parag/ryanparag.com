@@ -126,11 +126,6 @@ export const ProjectItem = ({project}) => {
                   <p style={{ marginBottom: designTokens.space[2] }}>
                     {truncateString(project.description, 72)}
                   </p>
-                  {
-                    project.time && (
-                      <Chip>{project.time}</Chip>
-                    )
-                  }
                   </NewProjectContent>
                 </NewProjectContentContainer>
                 {
@@ -207,8 +202,8 @@ export const WorkList = () => {
       name: 'Masonite',
       description: 'Connecting doors to the cloud and simplifying the home-remodeling experience?',
       image: '/static/projects/icon-masonite.png',
-      link:'https://work.ryanparag.com/work/masonite',
-      outbound: true,
+      link:'/work/masonite',
+      outbound: false,
       time: '2019 - Present'
     }, {
       name: 'DisputeLab',
@@ -221,8 +216,8 @@ export const WorkList = () => {
       name: 'Chargebacks911',
       description: 'Helping online merchants optimize profitability by intelligently managing payment disputes',
       image: '/static/projects/icon-cb911.png',
-      link:'https://work.ryanparag.com/work/chargebacks911/',
-      outbound: true,
+      link:'/work/chargebacks911',
+      outbound: false,
       time: '2016 - 2019'
     }, {
       name: 'SoleVenture',
