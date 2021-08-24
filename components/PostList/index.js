@@ -3,54 +3,11 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import List, { ListItem } from '@components/List'
 import { truncateString } from '@utils/text'
-import Image from 'next/image'
-import { LoadingSpinner } from '@components/LoadingBox'
-
-const NewImage = styled.div`
-  width: ${designTokens.space[7]};
-  height: ${designTokens.space[7]};
-  border-radius: ${designTokens.space[1]};
-  box-shadow: 0px 0px 0px 2px var(--grey200);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: ${designTokens.space[1]};
-  top: 50%;
-  transform: translateY(-50%) scale(1);
-  transition: all 120ms ease-out 0ms;
-  img {
-    border-radius: ${designTokens.space[1]};
-  }
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    width: ${designTokens.space[6]};
-    height: ${designTokens.space[6]};
-  }
-`
+import { HoverImage, NewProjectStyles } from '@components/Projects'
 
 const NewPostContainer = styled.div`
   a {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: ${designTokens.space[3]} 0;
-    transition: all 120ms ease-out 0s;
-    color: var(--grey900);
-    position: relative;
-    overflow: hidden;
-    &:hover, &:focus {
-      padding-left: ${designTokens.space[3]};
-      text-decoration: none;
-      box-shadow: inset 4px 0px 0px var(--primary);
-      background: var(--grey100);
-      ${NewImage} {
-        transform: translateY(-50%) translateX(-${designTokens.space[6]}) rotate(10deg) scale(3);
-        box-shadow: 0px 4px 8px -1px var(--grey300);
-        @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-          transform: translateY(-50%) translateX(${designTokens.space[3]}) rotate(10deg) scale(1.5);
-        }
-      }
-    }
+    ${NewProjectStyles}
     p {
       color: var(--grey600);
       @media screen and (max-width: ${designTokens.breakpoints[4]}) {
@@ -111,16 +68,10 @@ export default function PostList({ posts }) {
                           </p>
                         </Content>
                       </NewContent>
-                      <NewImage>
-                        <Image
-                          src={post.frontmatter.hero_image}
-                          layout="fill"
-                          objectFit="cover"
-                          alt={post.frontmatter?.title}
-                          quality={25}
-                          priority
-                        />
-                      </NewImage>
+                      <HoverImage
+                        src={post.frontmatter.hero_image}
+                        alt={post.frontmatter?.title}
+                      />
                     </a>
                   </Link>
                 </NewPostContainer>

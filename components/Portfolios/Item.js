@@ -416,7 +416,7 @@ export const Form = () => {
               <div style={{ marginBottom: designTokens.space[3] }}>
                 {
                   portfolioTags.map((tag,i) => (
-                    <Chip ghost key={i} type={'secondary'}>
+                    <Chip mr={designTokens.space[1]} ghost key={i} type={'secondary'}>
                       {tag}
                       <IconButton onClick={() => removeTag(tag)}>
                         <XCircle
@@ -430,6 +430,11 @@ export const Form = () => {
                   currentTag.length > 0 && (
                     <Chip ghost>
                       {currentTag}
+                      <IconButton onClick={() => setCurrentTag('')}>
+                        <XCircle
+                          size={'16'}
+                        />
+                      </IconButton>
                     </Chip>
                   )
                 }
