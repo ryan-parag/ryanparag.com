@@ -2,20 +2,18 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
-import CodeBlock from '@components/CodeBlock'
 import { designTokens } from '@components/Theme/designTokens'
 import ImgZoom from '@components/ImgZoom'
 import { Button } from '@components/Button'
 import FAQ from '@components/FAQ'
 import Chip from '@components/Chip'
-import Card from '@components/Card'
 import Title from '@components/Title'
 import { Box, MapPin, User, Calendar, Smartphone } from 'react-feather'
 import 'react-medium-image-zoom/dist/styles.css'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import rehypePrism from 'rehype-prism-plus'
-
+import Image from 'next/image'
 import Layout, { Wrapper } from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
 
@@ -28,34 +26,17 @@ const ScrolledButton = styled(Button)`
   }
 `
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: ${designTokens.space[4]};
-  width: 100%;
-  margin: auto;
-  max-width: ${designTokens.breakpoints[2]};
-  padding: ${designTokens.space[5]} ${designTokens.space[3]} 0;
-  @media screen and (max-width: ${designTokens.breakpoints[1]}) {
-    max-width: ${designTokens.layoutWidth.lg};
+const LogoContainer = styled.div`
+  height: ${designTokens.space[7]};
+  width: ${designTokens.space[7]};
+  padding: 0;
+  display: block;
+  border-radius: ${designTokens.space[2]};
+  border: 1px solid var(--grey200);
+  margin-bottom: ${designTokens.space[4]};
+  img {
+    border-radius: ${designTokens.space[2]};
   }
-  @media screen and (max-width: ${designTokens.breakpoints[3]}) {
-    max-width: ${designTokens.layoutWidth.sm};
-    grid-template-columns: repeat(1, 1fr);
-  }
-`
-
-const Avatar = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  height: ${designTokens.space[5]};
-  width: ${designTokens.space[5]};
-  background: ${props => props.waiting ? 'var(--grey200)' : 'var(--primaryTransparent)'};
-  font-size: ${designTokens.fontSizes[0]};
-  font-weight: ${designTokens.fontWeights.bold};
-  color: ${props => props.waiting ? 'var(--grey600)' : 'var(--primaryDark)'};
 `
 
 const Table = styled.table`
@@ -67,6 +48,7 @@ const Table = styled.table`
   }
   th, td {
     padding: ${designTokens.space[1]} 0;
+    vertical-align: top;
   }
 `
 
@@ -81,7 +63,7 @@ const Info = ({data}) => {
                 <MapPin size={'16'} style={{ transform: 'translateY(4px)', marginRight: designTokens.space[2] }}/>
                 Location
               </th>
-              <td>{data.location}</td>
+              <Chip ghost mb={designTokens.space[1]} mt={designTokens.space[1]} mr={designTokens.space[1]}>{data.location}</Chip>
             </tr>
           )
         }
@@ -95,7 +77,7 @@ const Info = ({data}) => {
               <td>
                 {
                   data.role.map((item, i) => (
-                    <Chip key={i} ghost mr={designTokens.space[1]}>{item}</Chip>
+                    <Chip key={i} ghost mb={designTokens.space[1]} mt={designTokens.space[1]} mr={designTokens.space[1]}>{item}</Chip>
                   ))
                 }
               </td>
@@ -110,7 +92,7 @@ const Info = ({data}) => {
                 Date
               </th>
               <td>
-                <Chip ghost mr={designTokens.space[1]}>{data.date}</Chip>
+                <Chip ghost mb={designTokens.space[1]} mt={designTokens.space[1]} mr={designTokens.space[1]}>{data.date}</Chip>
               </td>
             </tr>
           )
@@ -125,7 +107,7 @@ const Info = ({data}) => {
               <td>
                 {
                   data.spaces.map((item, i) => (
-                    <Chip key={i} ghost mr={designTokens.space[1]}>{item}</Chip>
+                    <Chip key={i} mb={designTokens.space[1]} mt={designTokens.space[1]} ghost mr={designTokens.space[1]}>{item}</Chip>
                   ))
                 }
               </td>
@@ -179,11 +161,15 @@ export default function Project({ siteTitle, frontmatter, markdownBody }) {
       <Layout pageTitle={`${frontmatter.title} | ${siteTitle}`} description={frontmatter.description}>
         <Wrapper>
           <Title>
-            <img
-              src={frontmatter.logo}
-              width={designTokens.space[7] + designTokens.space[2]}
-              style={{ display: 'block', marginBottom: designTokens.space[4], border: '1px solid var(--grey200)', borderRadius: designTokens.space[2] }}
-            />
+            <LogoContainer>
+              <Image
+                src={frontmatter.logo}
+                width={designTokens.space[7]}
+                height={designTokens.space[7]}
+                objectFit={'cover'}
+                alt={frontmatter.title}
+              />
+            </LogoContainer>
             <Link href="/work">
               <a className="link">←{' '}Back</a>
             </Link>

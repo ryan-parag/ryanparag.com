@@ -18,6 +18,9 @@ module.exports = {
     GITHUB_API_KEY: process.env.GITHUB_API_KEY,
     AUTH_STRING: process.env.AUTH_STRING
   },
+  images: {
+    domains: ['i.scdn.co', 'mosaic.scdn.co'],
+  },
   target: 'serverless',
   webpack: function (config) {
     config.module.rules.push({

@@ -1,14 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
-import { BoxAnchorLink, BoxBaseLink } from '@components/Box'
 import styled, { css } from 'styled-components'
 import List, { ListItem } from '@components/List'
 import { designTokens } from '@components/Theme/designTokens'
-import { truncateString } from '@utils/text'
 import Chip from '@components/Chip'
 import Image from 'next/image'
 
-const NewProjectImage = styled.div`
+export const NewProjectImage = styled.div`
   width: ${designTokens.space[7]};
   height: ${designTokens.space[7]};
   position: absolute;
@@ -27,7 +25,20 @@ const NewProjectImage = styled.div`
   }
 `
 
-const NewProjectStyles = css`
+export const HoverImage = ({src,alt}) => {
+  return (
+    <NewProjectImage>
+      <Image
+        src={src}
+        width={designTokens.space[7]}
+        height={designTokens.space[7]}
+        alt={alt}
+      />
+    </NewProjectImage>
+  )
+}
+
+export const NewProjectStyles = css`
   display: flex;
   align-items: center;
   width: 100%;
@@ -103,14 +114,7 @@ export const ProjectItem = ({project}) => {
             </NewProjectContentContainer>
             {
               project?.frontmatter?.logo && (
-                <NewProjectImage>
-                  <Image
-                    src={project?.frontmatter?.logo}
-                    width={designTokens.space[7]}
-                    height={designTokens.space[7]}
-                    alt={project?.frontmatter?.title}
-                  />
-                </NewProjectImage>
+                <HoverImage src={project?.frontmatter?.logo} alt={project?.frontmatter?.title}/>
               )
             }
           </a>
@@ -140,14 +144,7 @@ export const WorkItem = ({project}) => {
             </NewProjectContentContainer>
             {
               project.image && (
-                <NewProjectImage>
-                  <Image
-                    src={project.image}
-                    width={designTokens.space[7]}
-                    height={designTokens.space[7]}
-                    alt={project.name}
-                  />
-                </NewProjectImage>
+                <HoverImage src={project.image} alt={project.name}/>
               )
             }
           </NewProjectAnchorTag>
@@ -169,14 +166,7 @@ export const WorkItem = ({project}) => {
                 </NewProjectContentContainer>
                 {
                   project.image && (
-                    <NewProjectImage>
-                      <Image
-                        src={project.image}
-                        width={designTokens.space[7]}
-                        height={designTokens.space[7]}
-                        alt={project.name}
-                      />
-                    </NewProjectImage>
+                    <HoverImage src={project.image} alt={project.name}/>
                   )
                 }
               </a>
@@ -193,8 +183,8 @@ export const WorkList = ({work}) => {
   return(
     <List>
       {
-        work.map(project => (
-          <ListItem key={project.frontmatter.title}>
+        work.map((project, i) => (
+          <ListItem key={i}>
             <ProjectItem project={project}/>
           </ListItem>
         ))

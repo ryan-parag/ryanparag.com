@@ -8,46 +8,10 @@ import { motion } from 'framer-motion'
 import { truncateString } from '@utils/text'
 import { format } from 'timeago.js' 
 import { LoadingSmall } from '@components/LoadingBox'
-
-const AlbumImage = styled.img`
-  width: ${designTokens.space[7]};
-  height: ${designTokens.space[7]};
-  border-radius: ${designTokens.space[1]};
-  box-shadow: 0px 0px 0px 2px var(--grey200);
-  position: absolute;
-  right: ${designTokens.space[1]};
-  top: 50%;
-  transform: translateY(-50%);
-  transition: all 120ms ease-out 0ms;
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    width: ${designTokens.space[6]};
-    height: ${designTokens.space[6]};
-  }
-`
+import { HoverImage, NewProjectStyles } from '@components/Projects'
 
 const SpotifyLink = styled.a`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-bottom: ${designTokens.space[2]};
-  padding: ${designTokens.space[3]} 0;
-  transition: all 120ms ease-out 0s;
-  color: var(--grey900);
-  position: relative;
-  overflow: hidden;
-  &:hover, &:focus {
-    padding-left: ${designTokens.space[3]};
-    text-decoration: none;
-    box-shadow: inset 4px 0px 0px var(--primary);
-    background: var(--grey100);
-    ${AlbumImage} {
-      transform: translateY(-50%) translateX(-${designTokens.space[6]}) rotate(10deg) scale(3);
-      box-shadow: 0px 4px 8px -1px var(--grey300);
-      @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-        transform: translateY(-50%) translateX(${designTokens.space[3]}) rotate(10deg) scale(1.5);
-      }
-    }
-  }
+  ${NewProjectStyles}
 `
 
 const SpotifyContainer = styled.div`
@@ -148,6 +112,19 @@ const CollabIcon = () => {
   )
 }
 
+const SpotifyImage = ({src, alt}) => {
+  return(
+    <NewProjectImage>
+      <Image
+        src={src}
+        alt={alt}
+        layout={'fill'}
+        objectFit={'cover'}
+      />
+    </NewProjectImage>
+  )
+}
+
 export const SpotifyTrack = ({track}) => {
 
   return (
@@ -190,7 +167,7 @@ export const SpotifyTrack = ({track}) => {
                 </small>
               </Content>
             </ContentContainer>
-            <AlbumImage src={track.albumImageUrl} alt={track.artist}/>
+            <HoverImage src={track.albumImageUrl} alt={track.artist} />
           </SpotifyLink>
         )
         :
@@ -231,7 +208,7 @@ export const SpotifyPodcast = ({podcast}) => {
                 </p>
               </Content>
             </ContentContainer>
-            <AlbumImage src={podcast.showImageUrl} alt={podcast.name}/>
+            <HoverImage src={podcast.showImageUrl} alt={podcast.name} />
           </SpotifyLink>
         )
         :
@@ -279,7 +256,7 @@ export const SpotifyPlaylist = ({playlist}) => {
                 </p>
               </Content>
             </ContentContainer>
-            <AlbumImage src={playlist.playlistImageUrl} alt={playlist.title}/>
+            <HoverImage src={playlist.playlistImageUrl} alt={playlist.title} />
           </SpotifyLink>
         )
         :
@@ -333,7 +310,7 @@ export const SpotifyLastPlayed = ({action}) => {
               </small>
             </Content>
           </ContentContainer>
-          <AlbumImage src={data.albumImageUrl} alt={data.artist}/>
+          <HoverImage src={data.albumImageUrl} alt={data.artist} />
         </SpotifyLink>
       )
       :
@@ -395,7 +372,7 @@ export const SpotifyNowPlaying = ({action}) => {
               </small>
             </Content>
           </ContentContainer>
-          <AlbumImage src={data.albumImageUrl} alt={data.artist}/>
+          <HoverImage src={data.albumImageUrl} alt={data.artist} />
         </SpotifyLink>
       )
       :
@@ -479,7 +456,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
               <small>{data.podcastName} by {data.publisher}</small>
             </Content>
           </ContentContainer>
-          <AlbumImage src={data.podcastImgUrl} alt={data.podcastName}/>
+          <HoverImage src={data.podcastImgUrl} alt={data.podcastName} />
         </SpotifyLink>
       )
       :
