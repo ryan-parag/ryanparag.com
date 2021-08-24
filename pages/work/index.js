@@ -23,9 +23,8 @@ const Work = ({ title, description, work}) => {
           </Title>
         </Wrapper>
         <Wrapper>
-          <h3>Projects (coming soon)</h3>
-          <p>
-            I'm in the proceess of moving my work/case studies to this site, but you can <a className="link" href="https://work.ryanparag.com">find my current work here</a> or through one of the links below.
+          <h3>Projects</h3>
+          <p>Below are some case studies and work samples of projects that I’ve been involved with.
           </p>
           <WorkList work={sortedWork} />
           <hr/>

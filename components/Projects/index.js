@@ -30,8 +30,8 @@ export const HoverImage = ({src,alt}) => {
     <NewProjectImage>
       <Image
         src={src}
-        width={designTokens.space[7]}
-        height={designTokens.space[7]}
+        layout="fill"
+        objectFit="cover"
         alt={alt}
       />
     </NewProjectImage>
@@ -89,6 +89,12 @@ const NewProjectContent = styled.div`
   }
 `
 
+const Label = styled.div`
+  font-size: ${designTokens.fontSizes[0]};
+  opacity: 50%;
+  margin-bottom: ${designTokens.space[1]};
+`
+
 export const ProjectItem = ({project}) => {
   return(
     <>
@@ -97,19 +103,19 @@ export const ProjectItem = ({project}) => {
           <a>
             <NewProjectContentContainer>
               <NewProjectContent>
-              <div style={{ display: 'flex', alignItems: 'center',  marginBottom: designTokens.space[2]}}>
+              <div style={{ marginBottom: designTokens.space[2]}}>
                 <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[2] }}>
                   {project?.frontmatter?.title}
                 </h4>
-                {
-                  project?.frontmatter?.startDate && (
-                    <Chip>{project?.frontmatter?.startDate} - {project?.frontmatter?.endDate}</Chip>
-                  )
-                }
               </div>
-              <p style={{ marginBottom: designTokens.space[2] }}>
+              <p style={{ marginBottom: designTokens.space[0] }}>
                 {project?.frontmatter?.description}
               </p>
+              {
+                project?.frontmatter?.startDate && (
+                  <Label>{project?.frontmatter?.startDate} - {project?.frontmatter?.endDate}</Label>
+                )
+              }
               </NewProjectContent>
             </NewProjectContentContainer>
             {

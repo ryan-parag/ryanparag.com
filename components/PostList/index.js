@@ -59,13 +59,13 @@ export default function PostList({ posts }) {
                     <a>
                       <NewContent>
                         <Content>
-                          <Label>{getDate(post.frontmatter.date)}</Label>
                           <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
                             {post?.frontmatter?.title}
                           </h4>
-                          <p style={{ marginBottom: designTokens.space[2] }}>
+                          <p style={{ marginBottom: designTokens.space[0] }}>
                             {truncateString(post.frontmatter.description, 72)}
                           </p>
+                          <Label>{getDate(post.frontmatter.date)}</Label>
                         </Content>
                       </NewContent>
                       <HoverImage
