@@ -6,7 +6,7 @@ text: 'At Masonite (a global company known for manufacturing residential and arc
 location: 'Tampa, FL'
 role: ['Product Design', 'Front-end Engineering', 'Product']
 startDate: '2019'
-endDate: 'Present'
+endDate: '2021'
 spaces: ['Enterprise', 'Growth', 'Building Materials']
 platforms: ['Web', 'Mobile', 'Tablet']
 ---
