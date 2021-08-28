@@ -6,9 +6,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import ImgZoom from '@components/ImgZoom'
 import { Button } from '@components/Button'
 import FAQ from '@components/FAQ'
-import Chip from '@components/Chip'
 import Title from '@components/Title'
-import { Box, MapPin, User, Calendar, Smartphone } from 'react-feather'
 import 'react-medium-image-zoom/dist/styles.css'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
@@ -16,6 +14,7 @@ import rehypePrism from 'rehype-prism-plus'
 import Image from 'next/image'
 import Layout, { Wrapper } from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
+import Info from './Info'
 
 const ScrolledButton = styled(Button)`
   position: fixed;
@@ -38,105 +37,6 @@ const LogoContainer = styled.div`
     border-radius: ${designTokens.space[2]};
   }
 `
-
-const Table = styled.table`
-  font-size: ${designTokens.fontSizes[0]};
-  th {
-    text-align: left;
-    color: var(--grey600);
-    width: calc(${designTokens.space[8]} + ${designTokens.space[2]});
-  }
-  th, td {
-    vertical-align: top;
-  }
-  th {
-    padding: ${designTokens.space[1]} 0;
-  }
-`
-
-const Info = ({data}) => {
-  return(
-    <Table>
-      <tbody>
-        {
-          data.location && (
-            <tr>
-              <th>
-                <MapPin size={'16'} style={{ transform: 'translateY(4px)', marginRight: designTokens.space[2] }}/>
-                Location
-              </th>
-              <Chip ghost mb={designTokens.space[1]} mt={designTokens.space[1]} mr={designTokens.space[1]}>{data.location}</Chip>
-            </tr>
-          )
-        }
-        {
-          data.role && (
-            <tr>
-              <th>
-                <User size={'16'} style={{ transform: 'translateY(4px)', marginRight: designTokens.space[2] }}/>
-                Roles
-              </th>
-              <td>
-                {
-                  data.role.map((item, i) => (
-                    <Chip key={i} ghost mb={designTokens.space[1]} mt={designTokens.space[1]} mr={designTokens.space[1]}>{item}</Chip>
-                  ))
-                }
-              </td>
-            </tr>
-          )
-        }
-        {
-          data.date && (
-            <tr>
-              <th>
-                <Calendar size={'16'} style={{ transform: 'translateY(4px)', marginRight: designTokens.space[2] }}/>
-                Date
-              </th>
-              <td>
-                <Chip ghost mb={designTokens.space[1]} mt={designTokens.space[1]} mr={designTokens.space[1]}>{data.date}</Chip>
-              </td>
-            </tr>
-          )
-        }
-        {
-          data.spaces && (
-            <tr>
-              <th>
-                <Box size={'16'} style={{ transform: 'translateY(4px)', marginRight: designTokens.space[2] }}/>
-                Spaces
-              </th>
-              <td>
-                {
-                  data.spaces.map((item, i) => (
-                    <Chip key={i} mb={designTokens.space[1]} mt={designTokens.space[1]} ghost mr={designTokens.space[1]}>{item}</Chip>
-                  ))
-                }
-              </td>
-            </tr>
-          )
-        }
-        {
-          data.platforms && (
-            <tr>
-              <th>
-                <Smartphone size={'16'} style={{ transform: 'translateY(4px)', marginRight: designTokens.space[2] }}/>
-                Platforms
-              </th>
-              <td>
-                {
-                  data.platforms.map((item, i) => (
-                    <Chip key={i} ghost mr={designTokens.space[1]}>{item}</Chip>
-                  ))
-                }
-              </td>
-            </tr>
-          )
-        }
-      </tbody>
-    </Table>
-  )
-}
 
 export default function Project({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>
@@ -173,7 +73,7 @@ export default function Project({ siteTitle, frontmatter, markdownBody }) {
               />
             </LogoContainer>
             <Link href="/work">
-              <a className="link">←{' '}Back</a>
+              <a className="link">←{' '}Projects</a>
             </Link>
             <h1>{frontmatter.title}</h1>
             <p className="lead">{frontmatter.description}</p>

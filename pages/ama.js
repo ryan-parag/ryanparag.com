@@ -8,6 +8,8 @@ import { AMALogo } from '@components/Logo'
 import LoadingBox from '@components/LoadingBox'
 import Error from '@components/Error'
 import NotionLogo from '@components/Logo/NotionLogo'
+import Link from 'next/link'
+import { designTokens } from '@components/Theme/designTokens'
 
 const AMA = ({ token, posts, title, description, ...props }) => {
 
@@ -18,9 +20,12 @@ const AMA = ({ token, posts, title, description, ...props }) => {
       <Layout pageTitle={`${title} | AMA`} description={description} ogImage="/ama-social-media.png">
         <Wrapper>
           <Title>
-            <div style={{ width: '64px'}}>
+            <div style={{ width: '64px', marginBottom: designTokens.space[4] }}>
               <AMALogo/>
             </div>
+            <Link href="/work">
+              <a className="link">←{' '}Projects</a>
+            </Link>
             <h1>Ask me anything</h1>
             <p className="lead">Send over any kind of question you may have for me - once it's answered, it'll show up in the list</p>
             <NotionLogo/>

@@ -3,7 +3,7 @@ import { format } from 'timeago.js'
 import styled from 'styled-components'
 import { SmallButton, ButtonPrimary, Button, SmallButtonDanger } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
-import { User, Key, Check, XCircle } from 'react-feather'
+import { User, Key, Check, XCircle, ArrowRight } from 'react-feather'
 import Avatar from '@components/Avatar'
 import Switch from '@components/Switch'
 import Accordion from '@components/Accordion'
@@ -72,6 +72,64 @@ const IconButton = styled.button`
   background: transparent;
   margin-left: ${designTokens.space[1]};
   margin-top: 2px;
+`
+
+const PortfolioLink = styled.a`
+  display: inline-block;
+  color: var(--grey700);
+  border-radius: calc(${designTokens.space[1]}/2);
+  box-shadow: 0px 0px 0px 0 var(--grey200);
+  background: transparent;
+  .hover-icon {
+    opacity: 0;
+    transform: scale(.5);
+    transition: all 120ms ease-out;
+  }
+  &:hover, &:focus {
+    color: var(--grey900);
+    background: var(--grey200);
+    box-shadow: 0px 0px 0px ${designTokens.space[2]} var(--grey200);
+    .hover-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    margin-bottom: ${designTokens.space[2]};
+  }
+`
+
+const PortfolioTitle = styled.h4`
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+`
+
+const PortfolioHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: calc(${designTokens.space[2]} + ${designTokens.space[1]});
+  margin-bottom: ${designTokens.space[2]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    flex-direction: column;
+    align-items: flex-start
+  }
+`
+
+const PortfolioPassword = styled.span`
+  font-size: ${designTokens.fontSizes[0]};
+  display: inline-flex;
+  align-items: center;
+  color: var(--secondaryDark);
+  margin: 0 0 0 ${designTokens.space[2]};
+`
+
+const PortfolioTags = styled.div`
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    margin: ${designTokens.space[2]} 0 0;
+  }
 `
 
 const Like = ({ item }) => {
@@ -235,51 +293,41 @@ export const Portfolio = ({pending, item}) => {
             <div style={{ marginTop: designTokens.space[2] }}>
               <Avatar
                 icon={<User size={20}/>}
-                type={'primary'}
+                type={'default'}
               />
             </div>
             <NewContent>
               <Content>
-                <h4 style={{ marginTop: designTokens.space[2], marginBottom: designTokens.space[2], display: 'flex', alignItems: 'center' }}>
-                  <span
-                    style={{
-                      marginRight: designTokens.space[2]
-                    }}
+                <PortfolioHeader>
+                  <PortfolioLink
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener"
                   >
-                    {item.name}
-                  </span>
-                  {
-                    item.password ? (
-                      <span style={{
-                        fontSize: designTokens.fontSizes[0],
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        fontWeight: designTokens.fontWeights.body,
-                        color: 'var(--secondaryDark)',
-                        padding: `0 0 0 ${designTokens.space[2]}`
-                      }}>
-                        <Key
-                          size={'16'}
-                          style={{
-                            marginRight: designTokens.space[2]
-                          }}
-                        />
+                    <PortfolioTitle>
+                      <span>
+                        {item.name}
                       </span>
-                    )
-                    :
-                    null
-                  }
-                  {
-                    item.tags.map(tag => (
-                      <Chip ghost key={tag} type={'secondary'}>{tag}</Chip>
-                    ))
-                  }
-                </h4>
-                <div style={{ padding: `${designTokens.space[1]} 0`}}>
-                  <small>
-                    <a className="link" href={item.link} target="_blank" rel="noopener">{item.link}</a>
-                  </small>
-                </div>
+                      {
+                        item.password && (
+                          <PortfolioPassword>
+                            <Key
+                              size={'16'}
+                            />
+                          </PortfolioPassword>
+                        )
+                      }
+                      <ArrowRight size={'16'} style={{ marginLeft: designTokens.space[1] }} className="hover-icon"/>
+                    </PortfolioTitle>
+                  </PortfolioLink>
+                  <PortfolioTags>
+                    {
+                      item.tags.map(tag => (
+                        <Chip ghost mr={designTokens.space[1]} key={tag} type={'secondary'}>{tag}</Chip>
+                      ))
+                    }
+                  </PortfolioTags>
+                </PortfolioHeader>
                 <p style={{ marginBottom: '0', marginTop: designTokens.space[1], color: 'var(--grey700)' }}>
                   <small>{item.description}</small>
                 </p>

@@ -37,11 +37,6 @@ const Avatar = styled.div`
   color: ${props => props.waiting ? 'var(--grey600)' : 'var(--primaryDark)'};
 `
 
-const SpecContent = styled.div`
-  padding-left: ${designTokens.space[3]};
-  flex: 1 1 0%;
-`
-
 const Table = styled.table`
   font-size: ${designTokens.fontSizes[0]};
   th {

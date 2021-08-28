@@ -6,7 +6,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import List, { ListItem } from '@components/List'
 import { Question } from './Item'
 import { Box } from '@components/Box'
-import { Inbox } from 'react-feather'
+import { Inbox, Check } from 'react-feather'
 
 export const Questions = ({ editable, questions }) => {
   return(
@@ -128,9 +128,28 @@ export const Form = () => {
         )
         :
         (
-          <Button onClick={() => setSent(false)}>
-            Send another question
-          </Button>
+          <>
+            <Button onClick={() => setSent(false)}>
+              Send another question
+            </Button>
+            <br/>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                marginTop: designTokens.space[3],
+                background: 'var(--primaryTransparent)',
+                padding: `${designTokens.space[1]} ${designTokens.space[2]}`,
+                borderRadius: designTokens.space[1]
+              }}
+            >
+              <Check
+                size={24}
+                style={{ marginRight: designTokens.space[2], color: 'var(--primaryDark)' }}
+              />
+              <small>Thanks - once I've answered your question, it'll show up in the list</small>
+            </div>
+          </>
         )
       }
     </div>

@@ -11,6 +11,7 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import styled from 'styled-components'
 import { WorksheetsIcon } from '@components/Logo'
+import Link from 'next/link'
 
 const ScrolledButton = styled(Button)`
   position: fixed;
@@ -72,9 +73,12 @@ const Sheet = ({title, description}) => {
       <Layout pageTitle={`${title} | UX Worksheets`} description={description} ogImage="/worksheets-social-media.png">
         <Wrapper>
           <Title>
-            <div style={{ width: '64px'}}>
+            <div style={{ width: '64px', marginBottom: designTokens.space[4] }}>
               <WorksheetsIcon/>
             </div>
+            <Link href="/work">
+              <a className="link">←{' '}Projects</a>
+            </Link>
             <h1>Worksheets</h1>
             <p className="lead">Questions and framework resources you can use when planning for your UX research process.</p>
             <p>

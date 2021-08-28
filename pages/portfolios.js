@@ -10,6 +10,7 @@ import { Button } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import LoadingBox from '@components/LoadingBox'
 import Error from '@components/Error'
+import Link from 'next/link'
 
 const ScrolledButton = styled(Button)`
   position: fixed;
@@ -39,9 +40,12 @@ const Page = ({ token, title, description, ...props }) => {
       <Layout pageTitle={`${title} | Portfolios`} description={description} ogImage="/portfolios-social-media.png">
         <Wrapper>
           <Title>
-            <div style={{ width: '64px', fontSize: '64px', lineHeight: '1' }}>
+            <div style={{ width: '64px', fontSize: '64px', lineHeight: '1', marginBottom: designTokens.space[4] }}>
               🤠
             </div>
+            <Link href="/work">
+              <a className="link">←{' '}Projects</a>
+            </Link>
             <h1>Portfolios</h1>
             <p className="lead">A list of portfolios, personal sites, and designers that are dope </p>
             <Form/>

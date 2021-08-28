@@ -36,9 +36,12 @@ const ListenType = ({title, description}) => {
       <Layout pageTitle={`${title} | Recent Listens`} description={description} ogImage="/listens-social-media.png">
         <Wrapper>
           <Title>
-            <div style={{ width: '64px'}}>
+            <div style={{ width: '64px', marginBottom: designTokens.space[4] }}>
               <ListensIcon/>
             </div>
+            <Link href="/work">
+              <a className="link">←{' '}Projects</a>
+            </Link>
             <h1>Recent Listens</h1>
             <p className="lead">Take a peek at what I've been listening to!</p>
             <p>
