@@ -14,7 +14,7 @@ import rehypePrism from 'rehype-prism-plus'
 import Image from 'next/image'
 import Layout, { Wrapper } from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
-import Info from './Info'
+import Info from '@components/Projects/Info'
 
 const ScrolledButton = styled(Button)`
   position: fixed;
