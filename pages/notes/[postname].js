@@ -36,6 +36,9 @@ const HeroImage = styled.div`
   position: relative;
   height: 412px;
   margin-bottom: ${designTokens.space[4]};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    height: calc(${designTokens.space[9]} + ${designTokens.space[5]});
+  }
 `
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {

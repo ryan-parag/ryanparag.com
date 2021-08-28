@@ -47,8 +47,10 @@ const Table = styled.table`
     width: calc(${designTokens.space[8]} + ${designTokens.space[2]});
   }
   th, td {
-    padding: ${designTokens.space[1]} 0;
     vertical-align: top;
+  }
+  th {
+    padding: ${designTokens.space[1]} 0;
   }
 `
 

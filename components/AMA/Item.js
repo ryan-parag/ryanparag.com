@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import { SmallButton, ButtonPrimary, Button, SmallButtonDanger } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import { MessageCircle, Edit2 } from 'react-feather'
-import List, { ListItem } from '@components/List'
-import LoadingBox from '@components/LoadingBox'
+import Avatar from '@components/Avatar'
 
 const AskedQuestion = styled.p`
   font-size: ${designTokens.fontSizes[2]};
@@ -29,19 +28,6 @@ const Flex = styled.div`
 const FlexCol = styled.div`
   flex: 1 1 0%;
   padding-left: ${designTokens.space[3]};
-`
-
-const Avatar = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  height: ${designTokens.space[5]};
-  width: ${designTokens.space[5]};
-  background: ${props => props.waiting ? 'var(--grey200)' : 'var(--primaryTransparent)'};
-  font-size: ${designTokens.fontSizes[0]};
-  font-weight: ${designTokens.fontWeights.bold};
-  color: ${props => props.waiting ? 'var(--grey600)' : 'var(--primaryDark)'};
 `
 
 const Like = ({ id, likes }) => {
@@ -147,15 +133,17 @@ export const Question = ({id, editable, question, answer, likes, edited, created
         <div>
           {
             editableAnswer && editableAnswer.length > 0 ? (
-              <Avatar>
-                <MessageCircle size={20}/>
-              </Avatar>
+              <Avatar
+                icon={<MessageCircle size={20}/>}
+                type={'primary'}
+              />
             )
             :
             (
-              <Avatar waiting>
-                <MessageCircle size={20}/>
-              </Avatar>
+              <Avatar
+                icon={<MessageCircle size={20}/>}
+                type={'default'}
+              />
             )
           }
         </div>

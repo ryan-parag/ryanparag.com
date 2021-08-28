@@ -71,8 +71,6 @@ The core ordering platforms allows the various customers of Masonite to configur
 
 ![M-Pwr](../static/projects/masonite/m-pwr-4.png)
 
-![M-Pwr](../static/projects/masonite/m-pwr-5.png)
-
 ![M-Pwr](../static/projects/masonite/dc-5.gif)
 _Single platform + configurable design tokens = cohesive product experience across Masonite_
 

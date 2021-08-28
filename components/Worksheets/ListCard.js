@@ -1,5 +1,5 @@
 import { designTokens } from '@components/Theme/designTokens'
-import { Box } from '@components/Box'
+import Avatar from '@components/Avatar'
 import styled from 'styled-components'
 import {PrimaryChip, TertiaryChip, SecondaryChip} from '@components/Chip'
 
@@ -40,29 +40,13 @@ const GridCol = styled.div`
   padding-right: ${designTokens.space[3]};
 `
 
-const Avatar = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  height: ${designTokens.space[5]};
-  width: ${designTokens.space[5]};
-  background: var(--grey200);
-  font-size: ${designTokens.fontSizes[0]};
-  font-weight: ${designTokens.fontWeights.bold};
-  color: var(--grey700);
-  box-shadow: 0px 0px 0px 1px var(--grey300), inset 0px 0px 4px var(--grey300);
-`
-
 const ListCard = ({type, data, number}) => {
   switch (type) {
     case 'research':
       return (
         <Flex>
           <div>
-            <Avatar>
-              {number}
-            </Avatar>
+            <Avatar type={'default'} text={number}/>
           </div>
           <FlexCol>
             <SmallText bold primary>{data.Questions}</SmallText>
@@ -92,9 +76,7 @@ const ListCard = ({type, data, number}) => {
       return (
         <Flex>
           <div>
-            <Avatar>
-              {number}
-            </Avatar>
+            <Avatar type={'default'} text={number}/>
           </div>
           <FlexCol>
             <SmallText bold primary>{data.Name}</SmallText>
@@ -119,9 +101,7 @@ const ListCard = ({type, data, number}) => {
       return (
         <Flex>
           <div>
-            <Avatar>
-              {number}
-            </Avatar>
+            <Avatar type={'default'} text={number}/>
           </div>
           <FlexCol>
             <SmallText bold primary>{data.Name}</SmallText>
@@ -133,9 +113,7 @@ const ListCard = ({type, data, number}) => {
       return (
         <Flex>
           <div>
-            <Avatar>
-              {number}
-            </Avatar>
+            <Avatar type={'default'} text={number}/>
           </div>
           <FlexCol>
             <SmallText bold primary>{data.Name}</SmallText>
@@ -147,9 +125,7 @@ const ListCard = ({type, data, number}) => {
       return (
         <Flex>
           <div>
-            <Avatar>
-              {number}
-            </Avatar>
+            <Avatar type={'default'} text={number}/>
           </div>
           <FlexCol>
             <SmallText bold primary>{data.Name}</SmallText>

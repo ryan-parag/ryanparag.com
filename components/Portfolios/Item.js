@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { SmallButton, ButtonPrimary, Button, SmallButtonDanger } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import { User, Key, Check, XCircle } from 'react-feather'
-import List, { ListItem } from '@components/List'
+import Avatar from '@components/Avatar'
 import Switch from '@components/Switch'
 import Accordion from '@components/Accordion'
 import Chip from '@components/Chip'
@@ -50,19 +50,6 @@ const SubmitContainer = styled.div`
 const FormContainer = styled.div`
   padding: ${designTokens.space[3]};
   border-left: ${designTokens.space[1]} solid var(--primary);
-`
-
-const Avatar = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  height: ${designTokens.space[5]};
-  width: ${designTokens.space[5]};
-  background: ${props => props.waiting ? 'var(--grey200)' : 'var(--primaryTransparent)'};
-  font-size: ${designTokens.fontSizes[0]};
-  font-weight: ${designTokens.fontWeights.bold};
-  color: ${props => props.waiting ? 'var(--grey600)' : 'var(--primaryDark)'};
 `
 
 const TagInput = styled.div`
@@ -246,11 +233,10 @@ export const Portfolio = ({pending, item}) => {
         (
           <NewPostContainer>
             <div style={{ marginTop: designTokens.space[2] }}>
-              <Avatar>
-                <User
-                  size={20}
-                />
-              </Avatar>
+              <Avatar
+                icon={<User size={20}/>}
+                type={'primary'}
+              />
             </div>
             <NewContent>
               <Content>

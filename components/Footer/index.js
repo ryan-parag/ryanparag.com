@@ -102,19 +102,6 @@ const BottomColumn = styled.div`
   align-items: center;
 `
 
-const Avatar = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  height: calc(${designTokens.space[4]} + ${designTokens.space[1]});
-  width: calc(${designTokens.space[4]} + ${designTokens.space[1]});
-  background: var(--grey200);
-  font-size: ${designTokens.fontSizes[0]};
-  font-weight: ${designTokens.fontWeights.bold};
-  color: ${props => props.waiting ? 'var(--grey600)' : 'var(--primaryDark)'};
-`
-
 const FooterLink = ({link}) => {
   return(
     <>
