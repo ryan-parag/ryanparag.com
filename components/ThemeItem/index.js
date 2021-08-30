@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
+import { useRouter } from 'next/router'
+import { ListItem } from '@components/List'
+import { format } from 'timeago.js'
 
 const ThemeContainer = styled.button`
   display: inline-block;
@@ -46,6 +49,25 @@ const SwatchItem = styled.div`
   margin: 0 ${designTokens.space[1]};
 `
 
+const ListContainer = styled.div`
+  display: flex;
+  width: 100%;
+  padding: ${designTokens.space[3]} 0;
+`
+
+const ListContent = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-left: ${designTokens.space[3]};
+`
+
+const Label = styled.div`
+  font-size: ${designTokens.fontSizes[0]};
+  opacity: 50%;
+  margin-bottom: ${designTokens.space[1]};
+`
+
 export default function ThemeItem({theme, clickHandle, active, ...props}) {
   return(
     <ThemeContainer
@@ -77,5 +99,33 @@ export default function ThemeItem({theme, clickHandle, active, ...props}) {
         />
       </div>
     </ThemeContainer>
+  )
+}
+
+export const ThemeListItem = ({ theme }) => {
+
+  const router = useRouter()
+
+  const toggleTheme = (theme) => {
+    localStorage.setItem('ryansNotesNewTheme', JSON.stringify(theme))
+    router.reload()
+  }
+
+  return(
+    <ListItem>
+      <ListContainer>
+        <ThemeItem
+          theme={theme}
+          custom
+          clickHandle={() => toggleTheme(theme)}
+        />
+        <ListContent>
+          <strong>{theme.name}</strong>
+          <div style={{ display: 'flex' }}>
+            <Label>Submitted {format(theme.created)}</Label>
+          </div>
+        </ListContent>
+      </ListContainer>
+    </ListItem>
   )
 }

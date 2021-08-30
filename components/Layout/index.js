@@ -68,7 +68,7 @@ const GradientClip = styled.div`
   background: linear-gradient(${props => props.slant ? '-12deg, var(--grey0),var(--grey0), transparent' : 'to top, var(--grey0), transparent'});
 `
 
-const GradientContainer = () => {
+export const GradientContainer = () => {
   return(
     <GradientBox
       initial={{ opacity: 0 }}

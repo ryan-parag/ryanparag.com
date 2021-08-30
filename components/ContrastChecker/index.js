@@ -47,11 +47,11 @@ export default function ContrastChecker({foregroundColor, backgroundColor}){
           background: backgroundColor,
           color: foregroundColor,
           borderRadius: '999px',
-          minWidth: `calc(${designTokens.space[5]} + ${designTokens.space[3]})`,
+          minWidth: `calc(${designTokens.space[5]} + ${designTokens.space[1]})`,
           textAlign: 'center',
-          marginRight: designTokens.space[2]
+          marginRight: designTokens.space[1]
         }}>
-          {colorContrast(foregroundColor, backgroundColor).toFixed(2)}
+          <strong>{colorContrast(foregroundColor, backgroundColor).toFixed(2)}</strong>
         </div>
         <span>
           {getPassFail()}
