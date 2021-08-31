@@ -137,7 +137,7 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   p {
-    font-size: ${designTokens.sizing._base};
+    font-size: ${designTokens.sizing._sm};
     line-height: 180%;
     margin-top: 0;
     margin-bottom: ${designTokens.space[5]};
@@ -320,6 +320,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-left: 0;
     li {
       margin-bottom: ${designTokens.space[3]};
+      line-height: 130%;
     }
   }
   details summary {
