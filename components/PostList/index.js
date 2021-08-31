@@ -4,6 +4,7 @@ import { designTokens } from '../Theme/designTokens'
 import List, { ListItem } from '@components/List'
 import { truncateString } from '@utils/text'
 import { HoverImage, NewProjectStyles } from '@components/Projects'
+import { Label, Body, ItemTitle} from '@components/Typography'
 
 const NewPostContainer = styled.div`
   a {
@@ -11,7 +12,7 @@ const NewPostContainer = styled.div`
     p {
       color: var(--grey600);
       @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-        font-size: ${designTokens.fontSizes[0]};
+        font-size: ${designTokens.sizing._sm};
       }
     }
   }
@@ -26,12 +27,6 @@ const Content = styled.div`
 
 const NewContent = styled.div`
   flex: 1 1 0%;
-`
-
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-bottom: ${designTokens.space[1]};
 `
 
 export default function PostList({ posts }) {
@@ -59,13 +54,13 @@ export default function PostList({ posts }) {
                     <a>
                       <NewContent>
                         <Content>
-                          <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2]}}>
+                          <ItemTitle>
                             {post?.frontmatter?.title}
-                          </h4>
-                          <p style={{ marginBottom: designTokens.space[0] }}>
+                          </ItemTitle>
+                          <Body>
                             {truncateString(post.frontmatter.description, 72)}
-                          </p>
-                          <Label>{getDate(post.frontmatter.date)}</Label>
+                          </Body>
+                          <Label mt={2}>{getDate(post.frontmatter.date)}</Label>
                         </Content>
                       </NewContent>
                       <HoverImage

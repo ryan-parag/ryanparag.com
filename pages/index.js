@@ -13,6 +13,7 @@ import { WorkList } from '@components/Projects'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import Typography from '@components/Typography'
 
 const Index = ({ posts, work, title, description, ...props }) => {
 
@@ -29,52 +30,56 @@ const Index = ({ posts, work, title, description, ...props }) => {
             <div style={{ width: '64px'}}>
               <Logo/>
             </div>
-            <h1>Hey, I'm Ryan!</h1>
-            <p className="lead">I'm a designer and <Randomizer/>. Currently, designing early-phase products at <Link href="work"><a>Masonite</a></Link>, based in Tampa, FL.</p>
-            <p>
+            <Typography variant={'h1'}>Hey, I'm Ryan!</Typography>
+            <Typography variant={'lead'}>I'm a designer and <Randomizer/>.</Typography>
+            <Typography>
               <Link href="/about">
                 <a className="link">
                   More about me
                   <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
                 </a>
               </Link>
-            </p>
+            </Typography>
           </Title>
         </Wrapper>
         <main>
           <Wrapper>
-            <h3><Link href="/work"><a>Selected Work 💼</a></Link></h3>
+            <Typography variant={'h3'}><Link href="/work"><a>Selected Work 💼</a></Link></Typography>
             <WorkList work={sortedWork}/>
-            <p>
+            <Typography>
               <Link href="/work">
                 <a className="link">
                   View more work
                   <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
                 </a>
               </Link>
-            </p>
+            </Typography>
             <hr/>
           </Wrapper>
           <Wrapper>
-            <h3><Link href="/notes"><a>Recent Writing 📝</a></Link></h3>
+            <Typography variant={'h3'}>
+              <Link href="/notes"><a>Recent Writing 📝</a></Link>
+            </Typography>
             <PostList posts={latestPosts} />
-            <p>
+            <Typography>
               <Link href="/notes">
                 <a className="link">
                   Read more notes
                   <ArrowRight size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
                 </a>
               </Link>
-            </p>
+            </Typography>
             <hr/>
           </Wrapper>
           <Wrapper>
-            <h3><Link href="/listening/music"><a>Recent Listens 🎧</a></Link></h3>
+            <Typography variant={'h3'}>
+              <Link href="/listening/music"><a>Recent Listens 🎧</a></Link>
+            </Typography>
             <SpotifyCurrentlyPlaying playing />
             <hr/>
           </Wrapper>
           <Wrapper>
-            <h3>Featured 👨‍🏫</h3>
+            <Typography variant={'h3'}>Featured 👨‍🏫</Typography>
             <Featured/>
             <hr/>
           </Wrapper>

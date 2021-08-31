@@ -70,7 +70,7 @@ export const PrismStyles = css`
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-    font-size: ${designTokens.fontSizes[2]};
+    font-size: ${designTokens.sizing._sm};
 
     -moz-tab-size: 4;
     -o-tab-size: 4;

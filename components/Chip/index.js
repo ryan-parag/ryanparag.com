@@ -7,7 +7,7 @@ const ChipStyles = css`
   align-items: center;
   padding: ${designTokens.space[1]} ${designTokens.space[2]};
   font-weight: ${designTokens.fontWeights.body};
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._xs};
   border: 1px solid ${props => props.border ? props.border : 'var(--grey500)'};
   margin-bottom: ${props => props.mb ? props.mb : '0'};
   margin-top: ${props => props.mt ? props.mt : '0'};

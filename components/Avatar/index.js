@@ -10,7 +10,7 @@ const AvatarBase = styled.div`
   height: ${designTokens.space[5]};
   width: ${designTokens.space[5]};
   background: ${props => props.bg ? props.bg : 'var(--grey200)'};
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._base};
   font-weight: ${designTokens.fontWeights.bold};
   color: ${props => props.color ? props.color : 'var(--grey600)'};
 `

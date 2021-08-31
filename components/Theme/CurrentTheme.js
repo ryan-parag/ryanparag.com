@@ -11,7 +11,7 @@ const ListLabel = styled.div`
   align-items: center;
   padding: ${designTokens.space[2]} 0;
   line-height: ${designTokens.lineHeights.smallHeading};
-  font-size: ${designTokens.fontSizes[1]};
+  font-size: ${designTokens.sizing._sm};
 `
 
 const ListContent = styled.div`
@@ -28,7 +28,7 @@ const Swatch = styled.div`
 `
 
 const SwatchLabel = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._xs};
   color: var(--grey600);
 `
 

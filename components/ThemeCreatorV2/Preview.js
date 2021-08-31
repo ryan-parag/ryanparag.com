@@ -46,7 +46,7 @@ const PreviewContainer = styled.div`
 const PreviewLabel = styled.span`
   position: absolute;
   font-weight: ${designTokens.fontWeights.bold};
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._xs};
   top: ${designTokens.space[3]};
   left: ${designTokens.space[3]};
   color: var(--grey600);

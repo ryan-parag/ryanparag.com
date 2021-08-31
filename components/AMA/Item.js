@@ -5,14 +5,13 @@ import { SmallButton, ButtonPrimary, Button, SmallButtonDanger } from '@componen
 import { designTokens } from '@components/Theme/designTokens'
 import { MessageCircle, Edit2 } from 'react-feather'
 import Avatar from '@components/Avatar'
+import { Label, Body, ItemTitle } from '@components/Typography'
 
-const AskedQuestion = styled.p`
-  font-size: ${designTokens.fontSizes[2]};
-  font-weight: ${designTokens.fontWeights.bold};
+const AskedQuestion = styled(ItemTitle)`
+
 `
 
-const Answer = styled.p`
-  font-size: ${designTokens.fontSizes[1]};
+const Answer = styled(Body)`
   color: var(--grey700);
   padding-left: ${designTokens.space[3]};
   border-left: 2px solid var(--primary);
@@ -151,12 +150,12 @@ export const Question = ({id, editable, question, answer, likes, edited, created
           {
             edit ? (
               <div>
-                <label>
+                <Label>
                   Question
                   <small style={{ color: 'var(--grey700)', marginLeft: designTokens.space[2], color: 'var(--grey700)' }}>
                     (Asked {created})
                   </small>
-                </label>
+                </Label>
                 <textarea
                   rows="3"
                   style={{ height: 'auto' }}
@@ -164,7 +163,7 @@ export const Question = ({id, editable, question, answer, likes, edited, created
                   placeholder="Edit the question..."
                   onChange={e => setQuestion(e.target.value)}
                 />
-                <label>Answer</label>
+                <Label>Answer</Label>
                 <textarea
                   rows="5"
                   value={editableAnswer}
@@ -199,14 +198,14 @@ export const Question = ({id, editable, question, answer, likes, edited, created
             :
             (
               <>
-                <AskedQuestion>{editableQuestion}</AskedQuestion>
+                <AskedQuestion smakk>{editableQuestion}</AskedQuestion>
                 <Answer>{editableAnswer}</Answer>
               </>
             )
           }
           {
             !edit ? (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{ marginTop: designTokens.space[3], display: 'flex', alignItems: 'center' }}>
                 <small style={{ display: 'inline-flex', alignItems: 'center' }}>
                   <Like id={id} likes={likes}/>&nbsp;&nbsp;
                   {

@@ -3,12 +3,7 @@ import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import { ListItem } from '@components/List'
 import { SmallButton, SmallButtonDanger } from '@components/Button'
-
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-top: ${designTokens.space[1]};
-`
+import { Label } from '@components/Typography'
 
 export const CreateItem = ({ type }) => {
   const [edit, setEdit] = useState(false)
@@ -63,14 +58,14 @@ export const CreateItem = ({ type }) => {
             }}
           >
             <h4>Create new item: <span style={{ color: 'var(--secondaryDark)'}}>{type}</span></h4>
-            <Label>Title</Label>
+            <Label mb={2}>Title</Label>
             <input
               type="text"
               placeholder="Enter the primary value..."
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
-            <Label>Description</Label>
+            <Label mb={2}>Description</Label>
             <textarea
               placeholder="Enter a description..."
               value={description}

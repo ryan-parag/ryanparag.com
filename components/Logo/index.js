@@ -15,13 +15,15 @@ const LogoLabelContainer = styled.div`
   }
 `
 
-const LogoLabel = styled.strong`
-  font-size: ${designTokens.fontSizes[2]};
+const LogoLabel = styled.h6`
+  font-size: ${designTokens.sizing._base};
   display:block;
+  margin-top: 0;
+  margin-bottom: 0;
 `
 
 const LogoSubtitle = styled.span`
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._sm};
   margin-top: ${designTokens.space[1]};
   display: block;
 `

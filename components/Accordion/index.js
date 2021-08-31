@@ -23,7 +23,7 @@ const AccordionControl = styled.button`
   border: 0;
   justify-content: space-between;
   padding: ${designTokens.space[3]} ${designTokens.space[4]};
-  font-size: ${designTokens.fontSizes[1]};
+  font-size: ${designTokens.sizing._base};
   cursor: pointer;
   width: 100%;
   appearance: none;

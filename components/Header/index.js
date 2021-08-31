@@ -87,7 +87,7 @@ const HeaderInner = styled.div`
 const Nav = styled.nav`
   a {
     padding: ${designTokens.space[1]};
-    font-size: ${designTokens.fontSizes[1]};
+    font-size: ${designTokens.sizing._sm};
     margin: 0;
     display: inline-flex;
     border-bottom: 2px solid transparent;
@@ -115,19 +115,13 @@ const NavList = styled.ul`
 
 const NavListItem = styled.li`
   padding: ${designTokens.space[1]};
-  font-size: ${designTokens.fontSizes[1]};
+  font-size: ${designTokens.sizing._sm};
   margin: 0;
   &:not(:last-of-type) {
     margin-right: ${designTokens.space[1]};
   }
 `
 
-const OutboundNavLink = styled.a`
-  display: inline-block;
-  &:hover {
-    color: var(--grey900);
-  }
-`
 const MobileNav = styled.header`
   display: none;
   align-items: center;

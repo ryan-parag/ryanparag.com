@@ -9,7 +9,7 @@ export const ButtonBase = css`
   justify-content: center;
   font-weight: ${(props) => props.small ? '400' : '700'};
   cursor: pointer;
-  font-size: ${(props) => props.small ? designTokens.fontSizes[0] : designTokens.fontSizes[1]};
+  font-size: ${(props) => props.small ? designTokens.sizing._sm : designTokens.sizing._base};
   border-radius: ${designTokens.space[2]};
   border: 1px solid var(--grey300);
   color: var(--grey900);
