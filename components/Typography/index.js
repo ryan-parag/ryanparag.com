@@ -34,6 +34,9 @@ export const ItemTitle = styled.h6`
   margin-top: 0;
   margin-bottom: ${designTokens.space[2]};
   font-size: ${props => props.small ? designTokens.sizing._base : designTokens.sizing._lg};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    font-size: ${props => props.small ? designTokens.sizing._sm : designTokens.sizing._base};
+  }
 `
 
 const Typography = ({ variant, children, customClass=null, ...props }) => {

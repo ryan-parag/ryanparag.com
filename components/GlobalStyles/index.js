@@ -93,7 +93,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.sizing._4xl};
+      font-size: ${designTokens.sizing._3xl};
     }
   }
   h2 {
@@ -101,7 +101,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.sizing._3xl};
+      font-size: ${designTokens.sizing._2xl};
     }
   }
   h3 {
@@ -109,7 +109,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.sizing._2xl};
+      font-size: ${designTokens.sizing._xl};
     }
   }
   h4 {
@@ -117,7 +117,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.sizing._xl};
+      font-size: ${designTokens.sizing._lg};
     }
   }
   h5 {
@@ -125,7 +125,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.sizing._lg};
+      font-size: ${designTokens.sizing._base};
     }
   }
   h6 {
@@ -133,7 +133,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.sizing._base};
+      font-size: ${designTokens.sizing._sm};
     }
   }
   p {

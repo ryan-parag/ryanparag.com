@@ -53,6 +53,9 @@ const SmallLink = css`
   &:hover,&:focus {
     background: var(--primaryTransparent);
   }
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    font-size: ${designTokens.sizing._xs};
+  }
 `
 
 const InteriorButton = styled.button`
