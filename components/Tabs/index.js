@@ -10,7 +10,7 @@ export const TabBar = styled.nav`
 export const TabItem = styled.div`
   text-align: center;
   width: 100%;
-  font-size: ${designTokens.fontSizes[1]};
+  font-size: ${designTokens.sizing._sm};
   border-bottom: 2px solid var(--grey200);
   a, button {
     color: var(--grey600);

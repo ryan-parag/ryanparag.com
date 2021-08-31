@@ -8,15 +8,7 @@ import Avatar from '@components/Avatar'
 import Switch from '@components/Switch'
 import Accordion from '@components/Accordion'
 import Chip from '@components/Chip'
-
-
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  margin-top: ${designTokens.space[1]};
-  display: flex;
-  align-items: center;
-  color: var(--grey700);
-`
+import { Label, ItemTitle, Body } from '@components/Typography'
 
 const NewPostContainer = styled.div`
   display: flex;
@@ -99,7 +91,7 @@ const PortfolioLink = styled.a`
   }
 `
 
-const PortfolioTitle = styled.h4`
+const PortfolioTitle = styled.h6`
   display: flex;
   align-items: center;
   margin-top: 0;
@@ -119,7 +111,7 @@ const PortfolioHeader = styled.div`
 `
 
 const PortfolioPassword = styled.span`
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._sm};
   display: inline-flex;
   align-items: center;
   color: var(--secondaryDark);
@@ -219,13 +211,13 @@ export const Portfolio = ({pending, item}) => {
               <NewContent>
                 <Content>
                   <div>
-                    <p style={{ marginBottom: '0', marginTop: '0' }}>
+                    <ItemTitle small>
                       <strong>{item.name}</strong>
-                    </p>
-                    <p style={{ marginBottom: '0', marginTop: designTokens.space[1] }}>
+                    </ItemTitle>
+                    <Body>
                       <small>
                         <a
-                          style={{ paddingTop: '0', paddingBottom: '0', textDecoration: 'underline' }}
+                          style={{ textDecoration: 'underline' }}
                           href={item.link}
                           target="_blank"
                           rel="noopener"
@@ -233,19 +225,19 @@ export const Portfolio = ({pending, item}) => {
                           {item.link}
                         </a>
                       </small>
-                    </p>
+                    </Body>
                     {
                       item.description.length > 0 ? (
-                        <p style={{ marginBottom: '0', marginTop: designTokens.space[1] }}>
+                        <Body>
                         <small>
                           <span style={{ color: 'var(--grey700)'}}>Description:</span> {item.description}
                         </small>
-                        </p>
+                        </Body>
                       )
                       :
                       null
                     }
-                    <p style={{ marginBottom: '0', marginTop: designTokens.space[1] }}>
+                    <Body>
                       <small>
                       <span style={{ color: 'var(--grey700)'}}>Password-protected:</span> {
                           item.password ? (
@@ -257,8 +249,8 @@ export const Portfolio = ({pending, item}) => {
                           )
                         }
                       </small>
-                    </p>
-                    <div style={{ marginTop: designTokens.space[1], marginBottom: designTokens.space[1] }}>
+                    </Body>
+                    <Body>
                     <small style={{ color: 'var(--grey700)'}}>Tags:</small>&nbsp;
                       {
                         item.tags.length > 0 ? (
@@ -273,8 +265,8 @@ export const Portfolio = ({pending, item}) => {
                           </>
                         )
                       }
-                    </div>
-                    <Label>
+                    </Body>
+                    <Label small mb={2} mt={2}>
                       Submitted {format(item.created)}
                     </Label>
                   </div>

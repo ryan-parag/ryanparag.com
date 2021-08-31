@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styled, { css } from 'styled-components'
 import List, { ListItem } from '@components/List'
 import { designTokens } from '@components/Theme/designTokens'
-import Chip from '@components/Chip'
+import { Label, Body, ItemTitle } from '@components/Typography'
 import Image from 'next/image'
 
 export const NewProjectImage = styled.div`
@@ -60,12 +60,6 @@ export const NewProjectStyles = css`
       }
     }
   }
-  p {
-    color: var(--grey600);
-    @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizes[0]};
-    }
-  }
 `
 
 const NewProjectAnchorTag = styled.a`
@@ -89,12 +83,6 @@ const NewProjectContent = styled.div`
   }
 `
 
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-bottom: ${designTokens.space[1]};
-`
-
 export const ProjectItem = ({project}) => {
   return(
     <>
@@ -103,17 +91,15 @@ export const ProjectItem = ({project}) => {
           <a>
             <NewProjectContentContainer>
               <NewProjectContent>
-              <div style={{ marginBottom: designTokens.space[2]}}>
-                <h4 style={{ marginTop: '0', marginBottom: '0', marginRight: designTokens.space[2] }}>
-                  {project?.frontmatter?.title}
-                </h4>
-              </div>
-              <p style={{ marginBottom: designTokens.space[0] }}>
+              <ItemTitle>
+                {project?.frontmatter?.title}
+              </ItemTitle>
+              <Body>
                 {project?.frontmatter?.description}
-              </p>
+              </Body>
               {
                 project?.frontmatter?.startDate && (
-                  <Label>{project?.frontmatter?.startDate} - {project?.frontmatter?.endDate}</Label>
+                  <Label mt={2}>{project?.frontmatter?.startDate} - {project?.frontmatter?.endDate}</Label>
                 )
               }
               </NewProjectContent>
@@ -140,12 +126,12 @@ export const WorkItem = ({project}) => {
           >
             <NewProjectContentContainer>
               <NewProjectContent>
-                <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2], marginRight: designTokens.space[3] }}>
+                <ItemTitle>
                   {project.name}
-                </h4>
-                <p style={{ marginBottom: designTokens.space[2] }}>
+                </ItemTitle>
+                <Body>
                   {project.description}
-                </p>
+                </Body>
               </NewProjectContent>
             </NewProjectContentContainer>
             {
@@ -162,12 +148,12 @@ export const WorkItem = ({project}) => {
               <a>
                 <NewProjectContentContainer>
                   <NewProjectContent>
-                    <h4 style={{ marginTop: '0', marginBottom: designTokens.space[2], marginRight: designTokens.space[3] }}>
+                    <ItemTitle>
                       {project.name}
-                    </h4>
-                    <p style={{ marginBottom: designTokens.space[2] }}>
+                    </ItemTitle>
+                    <Body>
                       {project.description}
-                    </p>
+                    </Body>
                   </NewProjectContent>
                 </NewProjectContentContainer>
                 {
@@ -202,7 +188,7 @@ export const WorkList = ({work}) => {
 export const Experience = ({ data }) => {
   return(
     <div style={{ paddingTop: designTokens.space[3], paddingBottom: designTokens.space[4] }}>
-      <h5 style={{ color: 'var(--grey500)' }}>
+      <h5>
         Experience
       </h5>
       <List>
@@ -212,8 +198,8 @@ export const Experience = ({ data }) => {
               <div style={{ display: 'flex', alignItems: 'center', paddingTop: designTokens.space[2], paddingBottom: designTokens.space[3] }}>
                 <img src={item.logo} style={{ border: '1px solid var(--grey200)', width: `calc(${designTokens.space[5]} + ${designTokens.space[2]})`, borderRadius: designTokens.space[2] }}/>
                 <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: designTokens.space[3] }}>
-                  <strong style={{ fontSize: designTokens.fontSizes[1] }}>{item.company}</strong>
-                  <small style={{ fontSize: designTokens.fontSizes[0], color: 'var(--grey600)', display: 'block' }}>
+                  <h6 style={{ fontSize: designTokens.sizing._sm, marginTop: '0', marginBottom: designTokens.space[2] }}>{item.company}</h6>
+                  <small style={{ fontSize: designTokens.sizing._sm, color: 'var(--grey600)', display: 'block' }}>
                     <span>{item.role}</span> • <span>{item.date}</span>
                   </small>
                 </div>

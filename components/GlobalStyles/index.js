@@ -5,6 +5,14 @@ import { PrismStyles } from '@components/CodeBlock'
 
 export const GlobalStyles = createGlobalStyle`
   ${normalize}
+
+  @font-face {
+    font-family: 'iA Quattro';
+    font-stretch: 25% 150%;
+    font-weight: 100 1000;
+    src: url('/static/fonts/iAWriterQuattroV.ttf') format('truetype-variations');
+  }
+
   :root {
     --grey900: ${({ theme }) => theme.grey900};
     --grey800: ${({ theme }) => theme.grey800};
@@ -30,7 +38,6 @@ export const GlobalStyles = createGlobalStyle`
   }
   html {
     box-sizing: border-box;
-    font-size: 62.5%;
     scroll-behavior: smooth;
   }
   *,*:before,*:after {
@@ -41,13 +48,13 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
   body {
-    font-size: ${designTokens.fontSizesMobile[2]};
+    font-size: ${designTokens.sizing._base};
     background-color: var(--grey0);
     color: var(--grey900);
-    font-family: ${designTokens.fonts.body};
+    font-family: ${designTokens.fonts.monospace};
     overscroll-behavior-x: none;
     @media screen and (max-width: ${designTokens.breakpoints[2]}) {
-      font-size: ${designTokens.fontSizes[1]};
+      font-size: ${designTokens.sizing._sm};
     }
   }
   ::selection {
@@ -65,6 +72,10 @@ export const GlobalStyles = createGlobalStyle`
       -webkit-tap-highlight-color: transparent;
     }
   }
+  h1,h2,h3 {
+    letter-spacing: -.06rem;
+  }
+  
   h1,
   h2,
   h3,
@@ -74,69 +85,75 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom: ${designTokens.space[4]};
     margin-top: ${designTokens.space[4]};
     word-wrap: break-word;
-    letter-spacing: -.06rem;
+    font-family: ${designTokens.fonts.body};
+    font-weight: 900;
   }
   h1 {
-    font-size: ${designTokens.fontSizes[5]};
+    font-size: ${designTokens.sizing._5xl};
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[5]};
+      font-size: ${designTokens.sizing._4xl};
     }
   }
   h2 {
-    font-size: ${designTokens.fontSizes[4]};
+    font-size: ${designTokens.sizing._4xl};
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[4]};
+      font-size: ${designTokens.sizing._3xl};
     }
   }
   h3 {
-    font-size: ${designTokens.fontSizes[3]};
+    font-size: ${designTokens.sizing._3xl};
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.heading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[3]};
+      font-size: ${designTokens.sizing._2xl};
     }
   }
   h4 {
-    font-size: ${designTokens.fontSizes[2]};
+    font-size: ${designTokens.sizing._2xl};
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[2]};
+      font-size: ${designTokens.sizing._xl};
     }
   }
   h5 {
-    font-size: ${designTokens.fontSizes[1]};
+    font-size: ${designTokens.sizing._xl};
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[1]};
+      font-size: ${designTokens.sizing._lg};
     }
   }
   h6 {
-    font-size: ${designTokens.fontSizes[0]};
+    font-size: ${designTokens.sizing._lg};
     line-height: ${designTokens.lineHeights.bigHeading};
     font-weight: ${designTokens.fontWeights.subheading};
     @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-      font-size: ${designTokens.fontSizesMobile[0]};
+      font-size: ${designTokens.sizing._base};
     }
   }
   p {
-    font-size: ${designTokens.fontSizesMobile[1]};
-    line-height: ${designTokens.lineHeights.body};
+    font-size: ${designTokens.sizing._base};
+    line-height: 180%;
     margin-top: 0;
-    margin-bottom: ${designTokens.space[4]};
+    margin-bottom: ${designTokens.space[5]};
     @media screen and (min-width: ${designTokens.breakpoints[2]}) {
-      font-size: ${designTokens.fontSizes[2]};
+      font-size: ${designTokens.sizing._lg};
     }
   }
+  p + p {
+    margin-top: 0;
+  }
   .lead {
-    font-size: 1.8rem;
+    font-size: ${designTokens.sizing._base};
+    line-height: 160%;
+    letter-spacing: -.06rem;
     @media screen and (min-width: ${designTokens.breakpoints[2]}) {
-      font-size: ${designTokens.fontSizes[3]};
+      font-size: ${designTokens.sizing._2xl};
     }
   }
   a {
@@ -216,7 +233,7 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     border: 1px solid var(--grey400);
     border-radius: ${designTokens.space[1]};
-    padding: ${designTokens.space[2]} ${designTokens.space[3]};
+    padding: ${designTokens.space[3]} ${designTokens.space[3]};
     margin: ${designTokens.space[2]} auto ${designTokens.space[3]};
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -254,7 +271,7 @@ export const GlobalStyles = createGlobalStyle`
 
   form {
     label {
-      font-size: ${designTokens.fontSizes[1]};
+      font-size: ${designTokens.sizing._sm};
       color: var(--grey700);
     }
   }
@@ -277,10 +294,10 @@ export const GlobalStyles = createGlobalStyle`
     margin-left: 0;
     margin-right: 0;
     position: relative;
-    font-size: ${designTokens.fontSizes[2]};
+    font-size: ${designTokens.sizing._lg};
     color: var(--primaryDark);
     p {
-      font-size: ${designTokens.fontSizes[2]};
+      font-size: ${designTokens.sizing._lg};
     }
     &:before {
       content: '';
@@ -294,6 +311,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   ul {
     list-style: circle inside;
+    margin-bottom: ${designTokens.space[5]};
   }
   ol {
     list-style-position: inside;
@@ -301,8 +319,7 @@ export const GlobalStyles = createGlobalStyle`
   ul, ol {
     padding-left: 0;
     li {
-      line-height: ${designTokens.lineHeights.body};
-      margin-bottom: ${designTokens.space[2]};
+      margin-bottom: ${designTokens.space[3]};
     }
   }
   details summary {

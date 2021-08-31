@@ -8,9 +8,9 @@ const SwitchContainer = styled.div`
 `
 
 const ToggleLabel = styled.span`
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._sm};
   display: inline-block;
-  margin: 0 ${designTokens.space[1]};
+  margin: 0 ${designTokens.space[2]};
 `
 
 const SwitchInput = styled.input`

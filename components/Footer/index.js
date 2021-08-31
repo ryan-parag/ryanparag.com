@@ -67,9 +67,9 @@ const FooterList = styled.ul`
 `
 
 const FooterListItem = styled.li`
-  margin-bottom: ${designTokens.space[2]};
+  margin-bottom: calc(${designTokens.space[2]} + ${designTokens.space[1]});
   a {
-    font-size: ${designTokens.fontSizes[1]};
+    font-size: ${designTokens.sizing._sm};
     color: var(--grey600);
     padding: ${designTokens.space[1]} ${designTokens.space[1]} ${designTokens.space[1]} 0;
     transition: all 120ms ease-out 0s;

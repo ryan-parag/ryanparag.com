@@ -26,6 +26,21 @@ export const designTokens = {
     '128px',// 9
     '256px',// 10
   ],
+  sizing: {
+    _xs: '0.75rem',
+    _sm: '0.875rem',
+    _base: '1rem',
+    _lg: '1.125rem',
+    _xl: '1.25rem',
+    _2xl: '1.5rem',
+    _3xl: '1.875rem',
+    _4xl: '2.25rem',
+    _5xl: '3rem',
+    _6xl: '3.75rem',
+    _7xl: '4.5rem',
+    _8xl: '6rem',
+    _9xl: '8rem'
+  },
   fontSizes: [
     '1.2rem',   // 0
     '1.4rem',   // 1
@@ -48,7 +63,7 @@ export const designTokens = {
   ],
   fonts: {
     body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    monospace: 'SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace',
+    monospace: "'iA Quattro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
   fontWeights: {
     body: 400,

@@ -18,7 +18,7 @@ const ThemeContainer = styled.button`
   font-family: inherit;
   cursor: pointer;
   border-radius: 50%;
-  font-size: ${designTokens.fontSizes[4]};
+  font-size: ${designTokens.sizing._base};
   position: relative;
   transform: translateY(calc(${designTokens.space[3]} + ${designTokens.space[1]}));
   transition: all 200ms ease-out 0s;

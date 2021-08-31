@@ -7,6 +7,7 @@ import List, { ListItem } from '@components/List'
 import { Question } from './Item'
 import { Box } from '@components/Box'
 import { Inbox, Check } from 'react-feather'
+import { ItemTitle, Body } from '@components/Typography'
 
 export const Questions = ({ editable, questions }) => {
   return(
@@ -62,11 +63,10 @@ export const Questions = ({ editable, questions }) => {
             <Inbox
               size={'24'}
             />
-            <p style={{ marginTop: designTokens.space[3], marginBottom: designTokens.space[3] }}>
-              <strong>No questions to show</strong>
-              <br/>
-              <small>Submit a question to add to the list</small>
-            </p>
+            <div style={{ padding: `${designTokens.space[3]} 0`}}>
+              <ItemTitle small>No questions to show</ItemTitle>
+              <Body small>Submit a question to add to the list</Body>
+            </div>
           </Box>
         )
       }

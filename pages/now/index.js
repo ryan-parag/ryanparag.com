@@ -15,12 +15,7 @@ import { CreateItem } from '@components/Now'
 import LoadingBox from '@components/LoadingBox'
 import Error from '@components/Error'
 import NotionLogo from '@components/Logo/NotionLogo'
-
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-top: ${designTokens.space[1]};
-`
+import { Label, Body, ItemTitle } from '@components/Typography'
 
 const ListInner = styled.div`
   padding: ${designTokens.space[3]} 0;
@@ -79,10 +74,9 @@ const LineItem = ({ token, item }) => {
         !edit ? (
           <ListItem key={item.id}>
             <ListInner>
-              <strong>{title}</strong>
-              <br/>
-              {description}
-              <Label>Updated {format(item.last_edited)}</Label>
+              <ItemTitle>{title}</ItemTitle>
+              <Body>{description}</Body>
+              <Label mt={2} mb={token === "loggedIn" ? 3 : 0}>Updated {format(item.last_edited)}</Label>
               {
                 token === "loggedIn" ? (<SmallButton onClick={() => setEdit(true)}>Edit</SmallButton>) : null
               }

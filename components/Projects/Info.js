@@ -5,11 +5,12 @@ import { Box, MapPin, User, Calendar, Smartphone } from 'react-feather'
 import Chip from '@components/Chip'
 
 const Table = styled.table`
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._xs};
   th {
     text-align: left;
     color: var(--grey600);
     width: calc(${designTokens.space[8]} + ${designTokens.space[2]});
+    font-family: ${designTokens.fonts.body};
   }
   th, td {
     vertical-align: top;

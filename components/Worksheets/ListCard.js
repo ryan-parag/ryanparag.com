@@ -2,21 +2,12 @@ import { designTokens } from '@components/Theme/designTokens'
 import Avatar from '@components/Avatar'
 import styled from 'styled-components'
 import {PrimaryChip, TertiaryChip, SecondaryChip} from '@components/Chip'
+import { ItemTitle, Body, Label } from '@components/Typography'
 
-const SmallText = styled.div`
-  font-size: ${designTokens.fontSizes[1]};
+const SmallText = styled(Body)`
   color: ${props => props.primary ? 'inherit' : 'var(--grey700)'};
-  line-height: ${designTokens.lineHeights.body};
   padding-top: ${props => props.space ? designTokens.space[2] : '0'};
   font-weight: ${props => props.bold ? designTokens.fontWeights.bold : 'inherit'};
-`
-
-const Label = styled.span`
-  font-size: ${designTokens.fontSizes[0]};
-  color: var(--grey600);
-  margin-right: ${designTokens.space[2]};
-  display: block;
-  margin-bottom: ${designTokens.space[2]};
 `
 
 const Flex = styled.div`
@@ -52,11 +43,11 @@ const ListCard = ({type, data, number}) => {
             <SmallText bold primary>{data.Questions}</SmallText>
             <Grid>
               <GridCol>
-                <Label>Stakeholder:</Label>
+                <Label mb={2}>Stakeholder:</Label>
                 <PrimaryChip>{data.Stakeholder}</PrimaryChip>
               </GridCol>
               <GridCol>
-                <Label>Goals:</Label>
+                <Label mb={2}>Goals:</Label>
                 {
                   data.Goal.map((goal, i) => (
                     <SecondaryChip key={i}>{goal}</SecondaryChip>
@@ -64,7 +55,7 @@ const ListCard = ({type, data, number}) => {
                 }
               </GridCol>
               <GridCol>
-                <Label>Stage:</Label>
+                <Label mb={2}>Stage:</Label>
                 <TertiaryChip>{data.Stage}</TertiaryChip>
               </GridCol>
             </Grid>
@@ -82,7 +73,7 @@ const ListCard = ({type, data, number}) => {
             <SmallText bold primary>{data.Name}</SmallText>
             <SmallText space>{data.Notes}</SmallText>
             <GridCol>
-              <Label>Target Behavior:</Label>
+              <Label mb={2}>Target Behavior:</Label>
               {
                 data.Behavior.map((item, i) => (
                   <SecondaryChip key={i}>{item}</SecondaryChip>

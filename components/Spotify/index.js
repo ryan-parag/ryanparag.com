@@ -9,6 +9,7 @@ import { truncateString } from '@utils/text'
 import { format } from 'timeago.js' 
 import { LoadingSmall } from '@components/LoadingBox'
 import { HoverImage, NewProjectStyles } from '@components/Projects'
+import { Label, ItemTitle, Body } from '@components/Typography'
 
 const SpotifyLink = styled.a`
   ${NewProjectStyles}
@@ -30,18 +31,12 @@ const ContentContainer = styled.div`
   }
 `
 
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-bottom: ${designTokens.space[1]};
-`
-
 const Content = styled.div`
   color: ${props => props.subtle ? 'var(--grey500)' : 'inherit'};
 `
 
 const SmallLink = css`
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._sm};
   color: var(--grey900);
   border: 0;
   cursor: pointer;
@@ -72,7 +67,7 @@ const InteriorLink = styled.a`
 
 const TypeIcon = styled.div`
   display: inline-flex;
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._sm};
   background: ${props => props.secondary ? 'var(--secondaryTransparent)' : 'var(--tertiaryTransparent)'};
   margin-right: ${designTokens.space[2]};
   color: ${props => props.secondary ? 'var(--secondaryDark)' : 'var(--tertiaryDark)'};;
@@ -139,11 +134,10 @@ export const SpotifyTrack = ({track}) => {
             <SpotifyIcon active/>
             <ContentContainer>
               <Content>
-                <strong>
+                <ItemTitle small>
                   {truncateString(track.title, 56)}
-                </strong>
-                <br/>
-                <small>
+                </ItemTitle>
+                <Label>
                   {
                     track.explicit ? (
                       <ExplicitIcon/>
@@ -154,17 +148,14 @@ export const SpotifyTrack = ({track}) => {
                   by {truncateString(track.artist,56)}
                   {
                     track.played ? (
-                      <span style={{
-                        fontSize: designTokens.fontSizes[0],
-                        color: 'var(--grey600)'
-                      }}>
+                      <span>
                         &nbsp;• {format(track.played)}
                       </span>
                     )
                     :
                     null
                   }
-                </small>
+                </Label>
               </Content>
             </ContentContainer>
             <HoverImage src={track.albumImageUrl} alt={track.artist} />
@@ -192,20 +183,12 @@ export const SpotifyPodcast = ({podcast}) => {
           >
             <SpotifyIcon active/>
             <ContentContainer>
-              <Label>{truncateString(podcast.publisher, 56)}</Label>
+              <Label mb={2}>{truncateString(podcast.publisher, 56)}</Label>
               <Content>
-                <strong>{truncateString(podcast.name, 56)}</strong>
-                <br/>
-                <p
-                  style={{
-                    opacity: 0.5,
-                    fontSize: designTokens.fontSizes[0],
-                    lineHeight: designTokens.lineHeights.body,
-                    marginBottom: '0'
-                  }}
-                >
+                <ItemTitle>{truncateString(podcast.name, 56)}</ItemTitle>
+                <Body small>
                   {truncateString(podcast.description, 80)}
-                </p>
+                </Body>
               </Content>
             </ContentContainer>
             <HoverImage src={podcast.showImageUrl} alt={podcast.name} />
@@ -233,18 +216,10 @@ export const SpotifyPlaylist = ({playlist}) => {
           >
             <SpotifyIcon active/>
             <ContentContainer>
-              <Label>Playlist ({playlist.tracks} song{playlist.tracks !== 1 ? 's' : null})</Label>
               <Content>
-                <strong>{truncateString(playlist.title, 56)}</strong>
-                <br/>
-                <p
-                  style={{
-                    opacity: 0.5,
-                    fontSize: designTokens.fontSizes[0],
-                    lineHeight: designTokens.lineHeights.body,
-                    marginBottom: '0'
-                  }}
-                >
+                <Label mb={2}>Playlist ({playlist.tracks} song{playlist.tracks !== 1 ? 's' : null})</Label>
+                <ItemTitle small>{truncateString(playlist.title, 56)}</ItemTitle>
+                <Body small>
                   {
                     playlist.collaborative ? (
                       <CollabIcon/>
@@ -253,7 +228,7 @@ export const SpotifyPlaylist = ({playlist}) => {
                     null
                   }
                   {truncateString(playlist.description, 80)}
-                </p>
+                </Body>
               </Content>
             </ContentContainer>
             <HoverImage src={playlist.playlistImageUrl} alt={playlist.title} />
@@ -282,11 +257,10 @@ export const SpotifyLastPlayed = ({action}) => {
         >
           <SpotifyIcon active/>
           <ContentContainer>
-            <Label>Recently played:</Label>
             <Content>
-              <strong>{truncateString(data.title, 56)}</strong>
-              <br/>
-              <small>
+              <Label mb={2}>Recently played:</Label>
+              <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
+              <Label>
                 {
                     data.explicit ? (
                       <ExplicitIcon/>
@@ -297,17 +271,14 @@ export const SpotifyLastPlayed = ({action}) => {
                 by {data.artist}
                 {
                   data.played ? (
-                    <span style={{
-                      fontSize: designTokens.fontSizes[0],
-                      color: 'var(--grey600)'
-                    }}>
+                    <span>
                       &nbsp;• {format(data.played)}
                     </span>
                   )
                   :
                   null
                 }
-              </small>
+              </Label>
             </Content>
           </ContentContainer>
           <HoverImage src={data.albumImageUrl} alt={data.artist} />
@@ -356,11 +327,10 @@ export const SpotifyNowPlaying = ({action}) => {
         >
           <SpotifyIcon active/>
           <ContentContainer>
-            <Label>Currently Playing</Label>
+            <Label mb={2}>Currently Playing</Label>
             <Content>
-              <strong>{truncateString(data.title, 56)}</strong>
-              <br/>
-              <small>
+              <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
+              <Body small>
                 {
                   data.explicit ? (
                     <ExplicitIcon/>
@@ -369,7 +339,7 @@ export const SpotifyNowPlaying = ({action}) => {
                   null
                 }
                 by {data.artist}
-              </small>
+              </Body>
             </Content>
           </ContentContainer>
           <HoverImage src={data.albumImageUrl} alt={data.artist} />
@@ -381,7 +351,7 @@ export const SpotifyNowPlaying = ({action}) => {
           <SpotifyIcon/>
           <ContentContainer>
             <Content subtle>
-              <div style={{ marginBottom: designTokens.space[2] }}>Not currently listening</div>
+              <Body>Not currently listening</Body>
               {
                 action ? (
                   <>
@@ -438,11 +408,10 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
         >
           <SpotifyIcon active/>
           <ContentContainer>
-            <Label>Currently Playing</Label>
+            <Label mb={2}>Currently Playing</Label>
             <Content>
-              <strong>{truncateString(data.episodeTitle, 56)}</strong>
-              <br/>
-              <small style={{ opacity: 0.5 }}>
+              <ItemTitle small>{truncateString(data.episodeTitle, 56)}</ItemTitle>
+              <Body small>
                 {
                   data.explicit ? (
                     <ExplicitIcon/>
@@ -451,9 +420,8 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
                   null
                 }
                 {truncateString(data.episodeDescription, 80)}
-              </small>
-              <br/>
-              <small>{data.podcastName} by {data.publisher}</small>
+              </Body>
+              <Label mt={1}>{data.podcastName} by {data.publisher}</Label>
             </Content>
           </ContentContainer>
           <HoverImage src={data.podcastImgUrl} alt={data.podcastName} />
@@ -465,7 +433,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
           <SpotifyIcon/>
           <ContentContainer>
             <Content subtle>
-              <div style={{ marginBottom: designTokens.space[2] }}>Not currently listening</div>
+              <Body>Not currently listening</Body>
               {
                 action ? (
                   <>

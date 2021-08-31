@@ -4,6 +4,7 @@ import { designTokens } from '../Theme/designTokens'
 import { useRouter } from 'next/router'
 import { ListItem } from '@components/List'
 import { format } from 'timeago.js'
+import { ItemTitle, Label, Body } from '@components/Typography'
 
 const ThemeContainer = styled.button`
   display: inline-block;
@@ -14,7 +15,7 @@ const ThemeContainer = styled.button`
   cursor: pointer;
   border-radius: ${designTokens.space[1]};
   margin: 0;
-  font-size: ${designTokens.fontSizes[0]};
+  font-size: ${designTokens.sizing._xs};
   min-width: ${designTokens.space[9]};
   position: relative;
   transition: all 200ms ease-out 0s;
@@ -60,12 +61,6 @@ const ListContent = styled.div`
   width: 100%;
   flex-direction: column;
   padding-left: ${designTokens.space[3]};
-`
-
-const Label = styled.div`
-  font-size: ${designTokens.fontSizes[0]};
-  opacity: 50%;
-  margin-bottom: ${designTokens.space[1]};
 `
 
 export default function ThemeItem({theme, clickHandle, active, ...props}) {
@@ -120,10 +115,8 @@ export const ThemeListItem = ({ theme }) => {
           clickHandle={() => toggleTheme(theme)}
         />
         <ListContent>
-          <strong>{theme.name}</strong>
-          <div style={{ display: 'flex' }}>
-            <Label>Submitted {format(theme.created)}</Label>
-          </div>
+          <ItemTitle small>{theme.name}</ItemTitle>
+          <Label>Submitted {format(theme.created)}</Label>
         </ListContent>
       </ListContainer>
     </ListItem>

@@ -116,7 +116,7 @@ export default function ContactForm() {
           errors={state.errors}
           style={{
             color: 'var(--secondaryDark)',
-            fontSize: designTokens.fontSizes[1],
+            fontSize: designTokens.sizing._sm,
             marginBottom: designTokens.space[3],
             display: 'block'
           }}
