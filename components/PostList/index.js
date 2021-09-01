@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { designTokens } from '../Theme/designTokens'
 import List, { ListItem } from '@components/List'
 import { truncateString } from '@utils/text'
-import { HoverImage, NewProjectStyles } from '@components/Projects'
+import { HoverImage, NewProjectStyles, NewProjectContent } from '@components/Projects'
 import { Label, Body, ItemTitle} from '@components/Typography'
 
 const NewPostContainer = styled.div`
@@ -49,17 +49,17 @@ export default function PostList({ posts }) {
               <ListItem key={i}>
                 <NewPostContainer>
                   <Link href={`/notes/${post.slug}`}>
-                    <a>
+                    <a title={post?.frontmatter?.title}>
                       <NewContent>
-                        <Content>
+                        <NewProjectContent>
                           <ItemTitle>
                             {post?.frontmatter?.title}
                           </ItemTitle>
                           <Body subtle>
-                            {truncateString(post.frontmatter.description, 72)}
+                            {truncateString(post.frontmatter.description, 60)}
                           </Body>
                           <Label subtle mt={2}>{getDate(post.frontmatter.date)}</Label>
-                        </Content>
+                        </NewProjectContent>
                       </NewContent>
                       <HoverImage
                         src={post.frontmatter.hero_image}

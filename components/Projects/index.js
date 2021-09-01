@@ -5,6 +5,7 @@ import List, { ListItem } from '@components/List'
 import { designTokens } from '@components/Theme/designTokens'
 import { Label, Body, ItemTitle } from '@components/Typography'
 import Image from 'next/image'
+import { ArrowRight } from 'react-feather'
 
 export const NewProjectImage = styled.div`
   width: ${designTokens.space[7]};
@@ -22,6 +23,11 @@ export const NewProjectImage = styled.div`
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     width: ${designTokens.space[6]};
     height: ${designTokens.space[6]};
+    transform: translateY(-40%) translateX(${designTokens.space[6]}) rotate(10deg) scale(1.5);
+    user-select: none;
+    border:0;
+    z-index: 0;
+    opacity: 0.5;
   }
 `
 
@@ -38,6 +44,14 @@ export const HoverImage = ({src,alt}) => {
   )
 }
 
+export const NewProjectContent = styled.div`
+  padding-right: ${designTokens.space[8]};
+  transition: all 120ms ease-out;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    padding-right: 0;
+  }
+`
+
 export const NewProjectStyles = css`
   display: flex;
   align-items: center;
@@ -48,15 +62,18 @@ export const NewProjectStyles = css`
   position: relative;
   overflow: hidden;
   &:hover, &:focus {
-    padding-left: ${designTokens.space[3]};
     text-decoration: none;
     box-shadow: inset 4px 0px 0px var(--primary);
     background: var(--grey100);
+    ${NewProjectContent} {
+      transform: translateX(16px);
+    }
     ${NewProjectImage} {
-      transform: translateY(-40%) translateX(-${designTokens.space[3]}) rotate(10deg) scale(2.5);
-      box-shadow: 0px 4px 8px -1px var(--grey300);
-      @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-        transform: translateY(-50%) translateX(${designTokens.space[3]}) rotate(10deg) scale(1.5);
+      opacity: 1;
+      transform: translateY(-40%) translateX(${designTokens.space[4]}) rotate(10deg) scale(1.5);
+      @media screen and (min-width: ${designTokens.breakpoints[4]}) {
+        transform: translateY(-40%) translateX(-${designTokens.space[3]}) rotate(10deg) scale(2.5);
+        box-shadow: 0px 4px 8px -1px var(--grey300);
       }
     }
   }
@@ -76,23 +93,29 @@ const NewProjectContentContainer = styled.div`
   flex: 1 1 0%;
 `
 
-const NewProjectContent = styled.div`
-  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    padding-right: ${designTokens.space[8]};
-  }
-`
-
 const ExperienceContainer = styled.div`
   display: flex;
   align-items: center;
   padding-top: ${designTokens.space[3]};
-  padding-Bottom: ${designTokens.space[3]};
+  padding-bottom: ${designTokens.space[3]};
+  transition: all 120ms ease-out 0s;
   .link {
     opacity: 0;
     font-size: ${designTokens.sizing._sm};
+    display: inline-flex;
+    align-items: center;
     transition: all 120ms ease-out;
+    @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+      .mobileText {
+        display: none;
+      }
+    }
   }
   &:hover, &:focus {
+    padding-left: ${designTokens.space[3]};
+    padding-right: ${designTokens.space[3]};
+    background: var(--grey100);
+    box-shadow: -4px 0px 0px var(--primary);
     .link {
       opacity: 1;
     }
@@ -111,7 +134,7 @@ export const ProjectItem = ({project}) => {
     <>
       <NewProjectLink>
         <Link href={`/work/${project.slug}`}>
-          <a>
+          <a title={project?.frontmatter?.title}>
             <NewProjectContentContainer>
               <NewProjectContent>
               <ItemTitle>
@@ -122,7 +145,7 @@ export const ProjectItem = ({project}) => {
               </Body>
               {
                 project?.frontmatter?.startDate && (
-                  <Label mt={2}>{project?.frontmatter?.startDate} - {project?.frontmatter?.endDate}</Label>
+                  <Label subtle mt={2}>{project?.frontmatter?.startDate} - {project?.frontmatter?.endDate}</Label>
                 )
               }
               </NewProjectContent>
@@ -146,6 +169,7 @@ export const WorkItem = ({project}) => {
         project.outbound ? (
           <NewProjectAnchorTag
             href={project.link}
+            title={project.name}
           >
             <NewProjectContentContainer>
               <NewProjectContent>
@@ -168,7 +192,7 @@ export const WorkItem = ({project}) => {
         (
           <NewProjectLink>
             <Link href={project.link}>
-              <a>
+              <a title={project.name}>
                 <NewProjectContentContainer>
                   <NewProjectContent>
                     <ItemTitle>
@@ -223,7 +247,8 @@ const ExperienceItem = ({ item }) => {
           item.link !== 'null' && (
             <Link href={`/work${item.link}`}>
               <a className="link">
-                View work &rarr;
+                <span className="mobileText" style={{ marginRight: designTokens.space[1]}}>View work</span>
+                <ArrowRight size={'16'} />
               </a>
             </Link>
           )
