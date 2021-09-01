@@ -16,14 +16,18 @@ const variants = {
 };
 
 export const Label = styled.div`
-  font-size: ${designTokens.sizing._sm};
+  font-size: ${props => props.small ? designTokens.sizing._xs : designTokens.sizing._sm};
   margin-bottom: ${props => props.mb ? `${designTokens.space[props.mb]}` : '0'};
   margin-top: ${props => props.mt ? `${designTokens.space[props.mt]}` : '0'};
+  opacity: ${props => props.subtle ? '0.6' : '1'};
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    font-size: ${designTokens.sizing._xs};
+  }
 `
 
 export const Body = styled.p`
   margin-bottom: 0;
-  color: var(--grey600);
+  opacity: ${props => props.subtle ? '0.6' : '1'};
   font-size: ${props => props.small ? designTokens.sizing._sm : designTokens.sizing._base};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     font-size: ${designTokens.sizing._sm};
@@ -33,6 +37,7 @@ export const Body = styled.p`
 export const ItemTitle = styled.h6`
   margin-top: 0;
   margin-bottom: ${designTokens.space[2]};
+  opacity: ${props => props.subtle ? '0.75' : '1'};
   font-size: ${props => props.small ? designTokens.sizing._base : designTokens.sizing._lg};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     font-size: ${props => props.small ? designTokens.sizing._sm : designTokens.sizing._base};

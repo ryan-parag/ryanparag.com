@@ -1,7 +1,7 @@
 import { designTokens } from '@components/Theme/designTokens'
 import Avatar from '@components/Avatar'
 import styled from 'styled-components'
-import {PrimaryChip, TertiaryChip, SecondaryChip} from '@components/Chip'
+import Chip from '@components/Chip'
 import { ItemTitle, Body, Label } from '@components/Typography'
 
 const SmallText = styled(Body)`
@@ -43,20 +43,20 @@ const ListCard = ({type, data, number}) => {
             <SmallText bold primary>{data.Questions}</SmallText>
             <Grid>
               <GridCol>
-                <Label mb={2}>Stakeholder:</Label>
-                <PrimaryChip>{data.Stakeholder}</PrimaryChip>
+                <Label>Stakeholder:</Label>
+                <Chip ghost type={'primary'} mt={designTokens.space[2]}>{data.Stakeholder}</Chip>
               </GridCol>
               <GridCol>
-                <Label mb={2}>Goals:</Label>
+                <Label>Goals:</Label>
                 {
                   data.Goal.map((goal, i) => (
-                    <SecondaryChip key={i}>{goal}</SecondaryChip>
+                    <Chip ghost type={'secondary'} mr={designTokens.space[2]} mt={designTokens.space[2]} key={i}>{goal}</Chip>
                   ))
                 }
               </GridCol>
               <GridCol>
-                <Label mb={2}>Stage:</Label>
-                <TertiaryChip>{data.Stage}</TertiaryChip>
+                <Label>Stage:</Label>
+                <Chip ghost type={'tertiary'} mt={designTokens.space[2]}>{data.Stage}</Chip>
               </GridCol>
             </Grid>
           </FlexCol>
@@ -73,10 +73,10 @@ const ListCard = ({type, data, number}) => {
             <SmallText bold primary>{data.Name}</SmallText>
             <SmallText space>{data.Notes}</SmallText>
             <GridCol>
-              <Label mb={2}>Target Behavior:</Label>
+              <Label>Target Behavior:</Label>
               {
                 data.Behavior.map((item, i) => (
-                  <SecondaryChip key={i}>{item}</SecondaryChip>
+                  <Chip ghost type={'secondary'} mr={designTokens.space[2]} mt={designTokens.space[2]} key={i}>{item}</Chip>
                 ))
               }
             </GridCol>

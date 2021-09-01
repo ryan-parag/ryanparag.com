@@ -77,10 +77,33 @@ const NewProjectContentContainer = styled.div`
 `
 
 const NewProjectContent = styled.div`
-  color: ${props => props.subtle ? 'var(--grey400)' : 'inherit'};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     padding-right: ${designTokens.space[8]};
   }
+`
+
+const ExperienceContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding-top: ${designTokens.space[3]};
+  padding-Bottom: ${designTokens.space[3]};
+  .link {
+    opacity: 0;
+    font-size: ${designTokens.sizing._sm};
+    transition: all 120ms ease-out;
+  }
+  &:hover, &:focus {
+    .link {
+      opacity: 1;
+    }
+  }
+`
+
+const ExperienceBody = styled.div`
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  padding-left: ${designTokens.space[3]};
 `
 
 export const ProjectItem = ({project}) => {
@@ -94,7 +117,7 @@ export const ProjectItem = ({project}) => {
               <ItemTitle>
                 {project?.frontmatter?.title}
               </ItemTitle>
-              <Body>
+              <Body subtle>
                 {project?.frontmatter?.description}
               </Body>
               {
@@ -129,7 +152,7 @@ export const WorkItem = ({project}) => {
                 <ItemTitle>
                   {project.name}
                 </ItemTitle>
-                <Body>
+                <Body subtle>
                   {project.description}
                 </Body>
               </NewProjectContent>
@@ -151,7 +174,7 @@ export const WorkItem = ({project}) => {
                     <ItemTitle>
                       {project.name}
                     </ItemTitle>
-                    <Body>
+                    <Body subtle>
                       {project.description}
                     </Body>
                   </NewProjectContent>
@@ -185,6 +208,31 @@ export const WorkList = ({work}) => {
   )
 }
 
+const ExperienceItem = ({ item }) => {
+  return(
+    <ListItem key={item.id}>
+      <ExperienceContainer>
+        <img src={item.logo} style={{ border: '1px solid var(--grey200)', width: `calc(${designTokens.space[5]} + ${designTokens.space[2]})`, borderRadius: designTokens.space[2] }}/>
+        <ExperienceBody>
+          <h6 style={{ fontSize: designTokens.sizing._sm, marginTop: '0', marginBottom: '0' }}>{item.company}</h6>
+          <Label subtle mt={2}>
+            {item.role} • {item.date}
+          </Label>
+        </ExperienceBody>
+        {
+          item.link !== 'null' && (
+            <Link href={`/work${item.link}`}>
+              <a className="link">
+                View work &rarr;
+              </a>
+            </Link>
+          )
+        }
+      </ExperienceContainer>
+    </ListItem>
+  )
+}
+
 export const Experience = ({ data }) => {
   return(
     <div style={{ paddingTop: designTokens.space[3], paddingBottom: designTokens.space[4] }}>
@@ -194,17 +242,7 @@ export const Experience = ({ data }) => {
       <List>
         {
           data.roles.verified.map((item) => (
-            <ListItem key={item.id}>
-              <div style={{ display: 'flex', alignItems: 'center', paddingTop: designTokens.space[2], paddingBottom: designTokens.space[3] }}>
-                <img src={item.logo} style={{ border: '1px solid var(--grey200)', width: `calc(${designTokens.space[5]} + ${designTokens.space[2]})`, borderRadius: designTokens.space[2] }}/>
-                <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: designTokens.space[3] }}>
-                  <h6 style={{ fontSize: designTokens.sizing._sm, marginTop: '0', marginBottom: designTokens.space[2] }}>{item.company}</h6>
-                  <small style={{ fontSize: designTokens.sizing._sm, color: 'var(--grey600)', display: 'block' }}>
-                    <span>{item.role}</span> • <span>{item.date}</span>
-                  </small>
-                </div>
-              </div>
-            </ListItem>
+            <ExperienceItem key={item.id} item={item} />
           ))
         }
       </List>

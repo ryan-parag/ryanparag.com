@@ -10,12 +10,12 @@ const ThemeContainer = styled.button`
   display: inline-block;
   padding: ${designTokens.space[3]} ${designTokens.space[2]};
   text-align: center;
-  font-family: inherit;
   border: 1px solid;
   cursor: pointer;
   border-radius: ${designTokens.space[1]};
   margin: 0;
   font-size: ${designTokens.sizing._xs};
+  font-family: ${designTokens.fonts.body};
   min-width: ${designTokens.space[9]};
   position: relative;
   transition: all 200ms ease-out 0s;

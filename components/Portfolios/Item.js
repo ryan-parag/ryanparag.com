@@ -320,11 +320,17 @@ export const Portfolio = ({pending, item}) => {
                     }
                   </PortfolioTags>
                 </PortfolioHeader>
-                <p style={{ marginBottom: '0', marginTop: designTokens.space[1], color: 'var(--grey700)' }}>
-                  <small>{item.description}</small>
-                </p>
-                <Label>
-                  Added {format(item.created)}&nbsp;&nbsp;
+                {
+                  item.description && (
+                    <p style={{ marginBottom: '0', marginTop: designTokens.space[1], color: 'var(--grey700)' }}>
+                      <small>{item.description}</small>
+                    </p>
+                  )
+                }
+                <Label mt={2}>
+                  <span style={{ position: 'relative', display: 'inline-block', transform: `translateY(-${designTokens.space[1]})`, marginRight: designTokens.space[2]}}>
+                    Added {format(item.created)}
+                  </span>
                   <Like item={item} />
                 </Label>
               </Content>

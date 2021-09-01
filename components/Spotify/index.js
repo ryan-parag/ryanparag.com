@@ -140,7 +140,7 @@ export const SpotifyTrack = ({track}) => {
                 <ItemTitle small>
                   {truncateString(track.title, 56)}
                 </ItemTitle>
-                <Label>
+                <Label subtle>
                   {
                     track.explicit ? (
                       <ExplicitIcon/>
@@ -186,10 +186,10 @@ export const SpotifyPodcast = ({podcast}) => {
           >
             <SpotifyIcon active/>
             <ContentContainer>
-              <Label mb={2}>{truncateString(podcast.publisher, 56)}</Label>
+              <Label subtle mb={2}>{truncateString(podcast.publisher, 56)}</Label>
               <Content>
                 <ItemTitle>{truncateString(podcast.name, 56)}</ItemTitle>
-                <Body small>
+                <Body subtle small>
                   {truncateString(podcast.description, 80)}
                 </Body>
               </Content>
@@ -220,9 +220,9 @@ export const SpotifyPlaylist = ({playlist}) => {
             <SpotifyIcon active/>
             <ContentContainer>
               <Content>
-                <Label mb={2}>Playlist ({playlist.tracks} song{playlist.tracks !== 1 ? 's' : null})</Label>
+                <Label subtle mb={2}>Playlist ({playlist.tracks} song{playlist.tracks !== 1 ? 's' : null})</Label>
                 <ItemTitle small>{truncateString(playlist.title, 56)}</ItemTitle>
-                <Body small>
+                <Body subtle small>
                   {
                     playlist.collaborative ? (
                       <CollabIcon/>
@@ -261,9 +261,9 @@ export const SpotifyLastPlayed = ({action}) => {
           <SpotifyIcon active/>
           <ContentContainer>
             <Content>
-              <Label mb={2}>Recently played:</Label>
+              <Label subtle mb={2}>Recently played:</Label>
               <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
-              <Label>
+              <Label subtle>
                 {
                     data.explicit ? (
                       <ExplicitIcon/>
@@ -330,10 +330,10 @@ export const SpotifyNowPlaying = ({action}) => {
         >
           <SpotifyIcon active/>
           <ContentContainer>
-            <Label mb={2}>Currently Playing</Label>
+            <Label subtle mb={2}>Currently Playing</Label>
             <Content>
               <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
-              <Body small>
+              <Body subtle small>
                 {
                   data.explicit ? (
                     <ExplicitIcon/>
@@ -411,10 +411,10 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
         >
           <SpotifyIcon active/>
           <ContentContainer>
-            <Label mb={2}>Currently Playing</Label>
+            <Label subtle mb={2}>Currently Playing</Label>
             <Content>
               <ItemTitle small>{truncateString(data.episodeTitle, 56)}</ItemTitle>
-              <Body small>
+              <Body subtle small>
                 {
                   data.explicit ? (
                     <ExplicitIcon/>

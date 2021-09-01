@@ -10,7 +10,6 @@ const NewPostContainer = styled.div`
   a {
     ${NewProjectStyles}
     p {
-      color: var(--grey600);
       @media screen and (max-width: ${designTokens.breakpoints[4]}) {
         font-size: ${designTokens.sizing._sm};
       }
@@ -19,7 +18,6 @@ const NewPostContainer = styled.div`
 `
 
 const Content = styled.div`
-  color: ${props => props.subtle ? 'var(--grey400)' : 'inherit'};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     padding-right: ${designTokens.space[7]};
   }
@@ -57,10 +55,10 @@ export default function PostList({ posts }) {
                           <ItemTitle>
                             {post?.frontmatter?.title}
                           </ItemTitle>
-                          <Body>
+                          <Body subtle>
                             {truncateString(post.frontmatter.description, 72)}
                           </Body>
-                          <Label mt={2}>{getDate(post.frontmatter.date)}</Label>
+                          <Label subtle mt={2}>{getDate(post.frontmatter.date)}</Label>
                         </Content>
                       </NewContent>
                       <HoverImage
