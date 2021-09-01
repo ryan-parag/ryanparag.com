@@ -76,7 +76,7 @@ const LineItem = ({ token, item }) => {
             <ListInner>
               <ItemTitle>{title}</ItemTitle>
               <Body>{description}</Body>
-              <Label mt={2} mb={token === "loggedIn" ? 3 : 0}>Updated {format(item.last_edited)}</Label>
+              <Label subtle mt={2} mb={token === "loggedIn" ? 3 : 0}>Updated {format(item.last_edited)}</Label>
               {
                 token === "loggedIn" ? (<SmallButton onClick={() => setEdit(true)}>Edit</SmallButton>) : null
               }

@@ -61,7 +61,7 @@ export const GlobalStyles = createGlobalStyle`
     background: var(--primaryTransparent);
   }
   code {
-    font-family: ${designTokens.fonts.code};
+    font-family: ${designTokens.fonts.monospace};
   }
   button, select, input, textarea {
     color: inherit;
@@ -74,6 +74,11 @@ export const GlobalStyles = createGlobalStyle`
   }
   h1,h2,h3 {
     letter-spacing: -.06rem;
+    font-weight: 900;
+  }
+
+  h4,h5,h6 {
+    font-weight: 700;
   }
   
   h1,
@@ -148,6 +153,23 @@ export const GlobalStyles = createGlobalStyle`
   p + p {
     margin-top: 0;
   }
+  
+  .text--xs {
+    font-size: ${designTokens.sizing._xs};
+  }
+
+  .text--sm {
+    font-size: ${designTokens.sizing._sm};
+  }
+
+  .text--base {
+    font-size: ${designTokens.sizing._base};
+  }
+
+  .text--lg {
+    font-size: ${designTokens.sizing._lg};
+  }
+
   .lead {
     font-size: ${designTokens.sizing._base};
     line-height: 160%;

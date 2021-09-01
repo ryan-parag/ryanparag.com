@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import Layout, { Wrapper } from '@components/Layout/'

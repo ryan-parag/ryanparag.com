@@ -20,7 +20,8 @@ export default async (req,res) => {
         date: item.properties.Time.rich_text[0].plain_text,
         role: item.properties.Role.rich_text[0].plain_text,
         logo: item.properties.Logo.url,
-        order: item.properties.Order.number
+        order: item.properties.Order.number,
+        link: item.properties.Link.url
       })
     }
   })

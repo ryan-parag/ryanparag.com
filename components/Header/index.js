@@ -32,6 +32,7 @@ const ThemePicker = styled.div`
   overflow: hidden;
   background: var(--grey100);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
+  font-family: ${designTokens.fonts.body};
   &.isOpen {
     max-height: 200px;
   }
@@ -371,7 +372,7 @@ export default function Header({ toggleTheme, theme }) {
               target="_blank"
               rel="noreferrer noopener"
               style={{
-                color: 'var(--secondaryDark)'
+                color: 'var(--secondaryDark)',
               }}
             >
               Max's awesome color switcher
