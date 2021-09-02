@@ -8,6 +8,12 @@ import Logo from '@components/Logo'
 import { ArrowRight } from 'react-feather'
 import CurrentTheme from '@components/Theme/CurrentTheme'
 
+const PreviewLayout = styled.div`
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    height: 40vh;
+  }
+`
+
 const PreviewContainer = styled.div`
   --grey0: ${props => props.theme.grey0};
   --grey100: ${props => props.theme.grey100};
@@ -37,8 +43,7 @@ const PreviewContainer = styled.div`
   overflow: hidden;
   transition: all 80ms ease-out;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    height: 400px;
-    background: transparent;
+    background: var(--grey200);
     padding: 0;
   }
 `
@@ -87,7 +92,7 @@ const HeaderBar = styled.div`
 const Preview = ({ theme }) => {
 
   return(
-    <div>
+    <PreviewLayout>
       <PreviewContainer theme={theme}>
         <PreviewLabel>Preview</PreviewLabel>
         <PreviewPage theme={theme}>
@@ -127,7 +132,7 @@ const Preview = ({ theme }) => {
             </article>
         </PreviewPage>
       </PreviewContainer>
-    </div>
+    </PreviewLayout>
   )
 }
 
