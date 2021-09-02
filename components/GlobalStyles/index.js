@@ -5,14 +5,7 @@ import { PrismStyles } from '@components/CodeBlock'
 
 export const GlobalStyles = createGlobalStyle`
   ${normalize}
-
-  @font-face {
-    font-family: 'iA Quattro';
-    font-stretch: 25% 150%;
-    font-weight: 100 1000;
-    src: url('/static/fonts/iAWriterQuattroV.ttf') format('truetype-variations');
-  }
-
+  
   :root {
     --grey900: ${({ theme }) => theme.grey900};
     --grey800: ${({ theme }) => theme.grey800};

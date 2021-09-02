@@ -21,8 +21,9 @@ const PickerContainer = styled.div`
 const PickerInput = styled.input`
  margin-top: 0;
  margin-bottom: 0;
- padding-left: calc(${designTokens.space[8]} + ${designTokens.space[3]});
+ padding: ${designTokens.space[2]} ${designTokens.space[2]} ${designTokens.space[2]} calc(${designTokens.space[8]} + ${designTokens.space[3]});
  background: transparent;
+ font-size: ${designTokens.sizing._sm};
  user-select: none;
  cursor: pointer;
  border: 0;
