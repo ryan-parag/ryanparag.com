@@ -5,14 +5,7 @@ import { PrismStyles } from '@components/CodeBlock'
 
 export const GlobalStyles = createGlobalStyle`
   ${normalize}
-
-  @font-face {
-    font-family: 'iA Quattro';
-    font-stretch: 25% 150%;
-    font-weight: 100 1000;
-    src: url('/static/fonts/iAWriterQuattroV.ttf') format('truetype-variations');
-  }
-
+  
   :root {
     --grey900: ${({ theme }) => theme.grey900};
     --grey800: ${({ theme }) => theme.grey800};
@@ -145,8 +138,12 @@ export const GlobalStyles = createGlobalStyle`
     font-size: ${designTokens.sizing._sm};
     line-height: 180%;
     margin-top: 0;
+    letter-spacing: -.03rem;
     margin-bottom: ${designTokens.space[5]};
     @media screen and (min-width: ${designTokens.breakpoints[2]}) {
+      font-size: ${designTokens.sizing._base};
+    }
+    @media screen and (min-width: ${designTokens.breakpoints[1]}) {
       font-size: ${designTokens.sizing._lg};
     }
   }
@@ -175,6 +172,9 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 160%;
     letter-spacing: -.06rem;
     @media screen and (min-width: ${designTokens.breakpoints[2]}) {
+      font-size: ${designTokens.sizing._xl};
+    }
+    @media screen and (min-width: ${designTokens.breakpoints[1]}) {
       font-size: ${designTokens.sizing._2xl};
     }
   }

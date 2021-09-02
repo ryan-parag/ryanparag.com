@@ -11,8 +11,20 @@ import { LoadingSmall } from '@components/LoadingBox'
 import { HoverImage, NewProjectStyles } from '@components/Projects'
 import { Label, ItemTitle, Body } from '@components/Typography'
 
+const SpotifyContent = styled.div`
+  position: relative;
+  transition: all 120ms ease-out;
+  display: flex;
+  align-items: center;
+`
+
 const SpotifyLink = styled.a`
   ${NewProjectStyles}
+  &:hover, &:focus {
+    ${SpotifyContent} {
+      transform: translateX(${designTokens.space[3]});
+    }
+  }
 `
 
 const SpotifyContainer = styled.div`
@@ -26,8 +38,9 @@ const SpotifyContainer = styled.div`
 const ContentContainer = styled.div`
   flex: 1 1 0%;
   padding-left: ${designTokens.space[3]};
+  padding-right: ${designTokens.space[8]};
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
-    padding-right: ${designTokens.space[7]};
+    padding-right: ${designTokens.space[3]};
   }
 `
 
@@ -83,6 +96,13 @@ const TypeIcon = styled.div`
   font-weight: ${designTokens.fontWeights.subheading};
 `
 
+const MobileTextContainer = styled.div`
+  display: block;
+  @media screen and (max-width: ${designTokens.breakpoints[5]}) {
+    display: none;
+  }
+`
+
 const SpotifyIcon = ({active}) => {
   return(
     <svg width="24" viewBox="0 0 168 168">
@@ -110,19 +130,6 @@ const CollabIcon = () => {
   )
 }
 
-const SpotifyImage = ({src, alt}) => {
-  return(
-    <NewProjectImage>
-      <Image
-        src={src}
-        alt={alt}
-        layout={'fill'}
-        objectFit={'cover'}
-      />
-    </NewProjectImage>
-  )
-}
-
 export const SpotifyTrack = ({track}) => {
 
   return (
@@ -133,34 +140,37 @@ export const SpotifyTrack = ({track}) => {
             href={track.songUrl}
             target="_blank"
             rel="noopener noreferrer"
+            title={track.title}
           >
-            <SpotifyIcon active/>
-            <ContentContainer>
-              <Content>
-                <ItemTitle small>
-                  {truncateString(track.title, 56)}
-                </ItemTitle>
-                <Label subtle>
-                  {
-                    track.explicit ? (
-                      <ExplicitIcon/>
-                    )
-                    :
-                    null
-                  }
-                  by {truncateString(track.artist,56)}
-                  {
-                    track.played ? (
-                      <span>
-                        &nbsp;• {format(track.played)}
-                      </span>
-                    )
-                    :
-                    null
-                  }
-                </Label>
-              </Content>
-            </ContentContainer>
+            <SpotifyContent>
+              <SpotifyIcon active/>
+              <ContentContainer>
+                <Content>
+                  <ItemTitle small>
+                    {truncateString(track.title, 56)}
+                  </ItemTitle>
+                  <Label subtle>
+                    {
+                      track.explicit ? (
+                        <ExplicitIcon/>
+                      )
+                      :
+                      null
+                    }
+                    by {truncateString(track.artist,56)}
+                    {
+                      track.played ? (
+                        <span>
+                          &nbsp;• {format(track.played)}
+                        </span>
+                      )
+                      :
+                      null
+                    }
+                  </Label>
+                </Content>
+              </ContentContainer>
+            </SpotifyContent>
             <HoverImage src={track.albumImageUrl} alt={track.artist} />
           </SpotifyLink>
         )
@@ -183,17 +193,20 @@ export const SpotifyPodcast = ({podcast}) => {
             href={podcast.showUrl}
             target="_blank"
             rel="noopener noreferrer"
+            title={podcast.name}
           >
-            <SpotifyIcon active/>
-            <ContentContainer>
-              <Label subtle mb={2}>{truncateString(podcast.publisher, 56)}</Label>
-              <Content>
-                <ItemTitle>{truncateString(podcast.name, 56)}</ItemTitle>
-                <Body subtle small>
-                  {truncateString(podcast.description, 80)}
-                </Body>
-              </Content>
-            </ContentContainer>
+            <SpotifyContent>
+              <SpotifyIcon active/>
+              <ContentContainer>
+                <Label subtle mb={2}>{truncateString(podcast.publisher, 56)}</Label>
+                <Content>
+                  <ItemTitle small>{truncateString(podcast.name, 56)}</ItemTitle>
+                  <Body subtle small>
+                    {truncateString(podcast.description, 76)}
+                  </Body>
+                </Content>
+              </ContentContainer>
+            </SpotifyContent>
             <HoverImage src={podcast.showImageUrl} alt={podcast.name} />
           </SpotifyLink>
         )
@@ -216,24 +229,27 @@ export const SpotifyPlaylist = ({playlist}) => {
             href={playlist.playlistUrl}
             target="_blank"
             rel="noopener noreferrer"
+            title={playlist.title}
           >
-            <SpotifyIcon active/>
-            <ContentContainer>
-              <Content>
-                <Label subtle mb={2}>Playlist ({playlist.tracks} song{playlist.tracks !== 1 ? 's' : null})</Label>
-                <ItemTitle small>{truncateString(playlist.title, 56)}</ItemTitle>
-                <Body subtle small>
-                  {
-                    playlist.collaborative ? (
-                      <CollabIcon/>
-                    )
-                    :
-                    null
-                  }
-                  {truncateString(playlist.description, 80)}
-                </Body>
-              </Content>
-            </ContentContainer>
+            <SpotifyContent>
+              <SpotifyIcon active/>
+              <ContentContainer>
+                <Content>
+                  <Label subtle mb={2}>Playlist ({playlist.tracks} song{playlist.tracks !== 1 ? 's' : null})</Label>
+                  <ItemTitle small>{truncateString(playlist.title, 56)}</ItemTitle>
+                  <Body subtle small>
+                    {
+                      playlist.collaborative ? (
+                        <CollabIcon/>
+                      )
+                      :
+                      null
+                    }
+                    {truncateString(playlist.description, 72)}
+                  </Body>
+                </Content>
+              </ContentContainer>
+            </SpotifyContent>
             <HoverImage src={playlist.playlistImageUrl} alt={playlist.title} />
           </SpotifyLink>
         )
@@ -258,32 +274,34 @@ export const SpotifyLastPlayed = ({action}) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <SpotifyIcon active/>
-          <ContentContainer>
-            <Content>
-              <Label subtle mb={2}>Recently played:</Label>
-              <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
-              <Label subtle>
-                {
-                    data.explicit ? (
-                      <ExplicitIcon/>
+          <SpotifyContent>
+            <SpotifyIcon active/>
+            <ContentContainer>
+              <Content>
+                <Label subtle mb={2}>Recently played:</Label>
+                <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
+                <Label subtle>
+                  {
+                      data.explicit ? (
+                        <ExplicitIcon/>
+                      )
+                      :
+                      null
+                  }
+                  by {data.artist}
+                  {
+                    data.played ? (
+                      <span>
+                        &nbsp;• {format(data.played)}
+                      </span>
                     )
                     :
                     null
-                }
-                by {data.artist}
-                {
-                  data.played ? (
-                    <span>
-                      &nbsp;• {format(data.played)}
-                    </span>
-                  )
-                  :
-                  null
-                }
-              </Label>
-            </Content>
-          </ContentContainer>
+                  }
+                </Label>
+              </Content>
+            </ContentContainer>
+          </SpotifyContent>
           <HoverImage src={data.albumImageUrl} alt={data.artist} />
         </SpotifyLink>
       )
@@ -294,7 +312,7 @@ export const SpotifyLastPlayed = ({action}) => {
     }
     {
       data?.songUrl && action ? (
-        <>
+        <div style={{ marginTop: designTokens.space[2] }}>
           <InteriorButton
             marginLeft
             onClick={action}
@@ -307,7 +325,7 @@ export const SpotifyLastPlayed = ({action}) => {
               View More...
             </InteriorLink>
           </Link>
-        </>
+        </div>
       )
       :
       null
@@ -328,23 +346,25 @@ export const SpotifyNowPlaying = ({action}) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <SpotifyIcon active/>
-          <ContentContainer>
-            <Label subtle mb={2}>Currently Playing</Label>
-            <Content>
-              <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
-              <Body subtle small>
-                {
-                  data.explicit ? (
-                    <ExplicitIcon/>
-                  )
-                  :
-                  null
-                }
-                by {data.artist}
-              </Body>
-            </Content>
-          </ContentContainer>
+          <SpotifyContent>
+            <SpotifyIcon active/>
+            <ContentContainer>
+              <Label subtle mb={2}>Currently Playing</Label>
+              <Content>
+                <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
+                <Body subtle small>
+                  {
+                    data.explicit ? (
+                      <ExplicitIcon/>
+                    )
+                    :
+                    null
+                  }
+                  by {data.artist}
+                </Body>
+              </Content>
+            </ContentContainer>
+          </SpotifyContent>
           <HoverImage src={data.albumImageUrl} alt={data.artist} />
         </SpotifyLink>
       )
@@ -357,7 +377,7 @@ export const SpotifyNowPlaying = ({action}) => {
               <Body>Not currently listening</Body>
               {
                 action ? (
-                  <>
+                  <div style={{ marginTop: designTokens.space[2] }}>
                     <InteriorButton
                       onClick={action}
                     >
@@ -369,7 +389,7 @@ export const SpotifyNowPlaying = ({action}) => {
                         View More...
                       </InteriorLink>
                     </Link>
-                  </>
+                  </div>
                 )
                 :
                 null
@@ -381,14 +401,14 @@ export const SpotifyNowPlaying = ({action}) => {
     }
     {
       data?.songUrl && action ? (
-        <>
+        <div style={{ marginTop: designTokens.space[2] }}>
           <InteriorButton
             marginLeft
             onClick={action}
           >
             View Last Played
           </InteriorButton>
-        </>
+        </div>
       )
       :
       null
@@ -409,24 +429,28 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <SpotifyIcon active/>
-          <ContentContainer>
-            <Label subtle mb={2}>Currently Playing</Label>
-            <Content>
-              <ItemTitle small>{truncateString(data.episodeTitle, 56)}</ItemTitle>
-              <Body subtle small>
-                {
-                  data.explicit ? (
-                    <ExplicitIcon/>
-                  )
-                  :
-                  null
-                }
-                {truncateString(data.episodeDescription, 80)}
-              </Body>
-              <Label mt={1}>{data.podcastName} by {data.publisher}</Label>
-            </Content>
-          </ContentContainer>
+          <SpotifyContent>
+            <SpotifyIcon active/>
+            <ContentContainer>
+              <Label subtle mb={2}>Currently Playing</Label>
+              <Content>
+                <ItemTitle small>{truncateString(data.episodeTitle, 56)}</ItemTitle>
+                <MobileTextContainer>
+                  <Body subtle small>
+                    {
+                      data.explicit ? (
+                        <ExplicitIcon/>
+                      )
+                      :
+                      null
+                    }
+                    {truncateString(data.episodeDescription, 80)}
+                  </Body>
+                </MobileTextContainer>
+                <Label mt={1}>{data.podcastName} by {data.publisher}</Label>
+              </Content>
+            </ContentContainer>
+          </SpotifyContent>
           <HoverImage src={data.podcastImgUrl} alt={data.podcastName} />
         </SpotifyLink>
       )
@@ -439,7 +463,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
               <Body>Not currently listening</Body>
               {
                 action ? (
-                  <>
+                  <div style={{ marginTop: designTokens.space[2] }}>
                     <InteriorButton
                       onClick={action}
                     >
@@ -451,7 +475,7 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
                         View More...
                       </InteriorLink>
                     </Link>
-                  </>
+                  </div>
                 )
                 :
                 null
@@ -463,14 +487,14 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
     }
     {
       data?.podcastUrl && action ? (
-        <>
+        <div style={{ marginTop: designTokens.space[2] }}>
           <InteriorButton
             marginLeft
             onClick={action}
           >
             View Last Played
           </InteriorButton>
-        </>
+        </div>
       )
       :
       null

@@ -1,7 +1,7 @@
 export const designTokens = {
   layoutWidth: {
     sm: '672px',
-    lg: '832px'
+    lg: '782px'
   },
   breakpoints: [
     '1440px', // 0
@@ -73,6 +73,7 @@ export const designTokens = {
   },
   lineHeights: {
     body: '160%',
+    compact: '140%',
     bigHeading: '110%',
     heading: '128%',
     smallHeading: '135%',

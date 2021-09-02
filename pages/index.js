@@ -31,7 +31,7 @@ const Index = ({ posts, work, title, description, ...props }) => {
               <Logo/>
             </div>
             <Typography variant={'h1'}>Hey, I'm Ryan!</Typography>
-            <Typography variant={'lead'}>I'm a designer and <Randomizer/>.</Typography>
+            <Typography variant={'lead'}>I'm a designer and <Randomizer/>. Currently, designing early-phase products at Masonite, based in Tampa, FL.</Typography>
             <Typography>
               <Link href="/about">
                 <a className="link">

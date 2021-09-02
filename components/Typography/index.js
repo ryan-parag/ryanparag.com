@@ -20,6 +20,7 @@ export const Label = styled.div`
   margin-bottom: ${props => props.mb ? `${designTokens.space[props.mb]}` : '0'};
   margin-top: ${props => props.mt ? `${designTokens.space[props.mt]}` : '0'};
   opacity: ${props => props.subtle ? '0.6' : '1'};
+  letter-spacing: -0.02rem;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     font-size: ${designTokens.sizing._xs};
   }
@@ -28,7 +29,9 @@ export const Label = styled.div`
 export const Body = styled.p`
   margin-bottom: 0;
   opacity: ${props => props.subtle ? '0.6' : '1'};
+  line-height: ${props => props.small ? designTokens.lineHeights.body : designTokens.lineHeights.compact};
   font-size: ${props => props.small ? designTokens.sizing._sm : designTokens.sizing._base};
+  letter-spacing: -0.02rem;
   @media screen and (max-width: ${designTokens.breakpoints[4]}) {
     font-size: ${designTokens.sizing._sm};
   }

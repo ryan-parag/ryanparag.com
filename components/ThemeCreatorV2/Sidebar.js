@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import ColorPicker from '@components/ColorPicker'
@@ -6,10 +6,11 @@ import Link from 'next/link'
 import List, { ListItem } from '@components/List'
 import Switch from '@components/Switch'
 import ContrastChecker from '@components/ContrastChecker'
-import { transparentize, darken, lighten, saturate } from 'polished'
 import RangeSlider from '@components/RangeSlider'
 import Chip from '@components/Chip'
 import { ButtonPrimary } from '@components/Button'
+import { Label, ItemTitle } from '@components/Typography'
+import { TabBar, TabItem } from '@components/Tabs'
 
 const SidebarContainer = styled.div`
   padding: ${designTokens.space[7]} ${designTokens.space[5]};
@@ -24,13 +25,6 @@ const SidebarContainer = styled.div`
     max-width: 100%;
     padding: ${designTokens.space[4]} ${designTokens.space[3]};
   }
-`
-
-const Label = styled.span`
-  font-size: ${designTokens.fontSizes[1]};
-  font-weight: ${designTokens.fontWeights.bold};
-  display: block;
-  margin-bottom: ${designTokens.space[2]};
 `
 
 const Row = styled.div`
@@ -72,8 +66,8 @@ const ListTitle = styled.li`
 `
 
 const LogoIcon = styled.div`
-  width: ${designTokens.space[7]};
-  height: ${designTokens.space[7]};
+  width: ${designTokens.space[6]};
+  height: ${designTokens.space[6]};
   overflow: hidden;
   display: block;
   box-shadow: 0px ${designTokens.space[1]} ${designTokens.space[2]} rgba(0,0,0,0.12);
@@ -122,6 +116,9 @@ const Sidebar = ({ easing, submitTheme, neutrals, theme, changeColor, darkMode, 
     {name: 'Secondary', value: theme.secondary},
     {name: 'Tertiary', value: theme.tertiary}
   ]
+  const [activeTab,setActiveTab] = useState('State Colors')
+
+  const tabItems = ['State Colors', 'Neutral Colors', 'Options']
 
   const spacings = [
     { name: 'Quad - EaseIn', value: 'easeInQuad'},
@@ -181,147 +178,203 @@ const Sidebar = ({ easing, submitTheme, neutrals, theme, changeColor, darkMode, 
 updateEasing
   return(
     <SidebarContainer>
+     <div>
       <Link href={'/create-theme'}>
-        <a className="link">
-          ←{' '}Back
-        </a>
-      </Link>
-      <LogoHorizontal>
-        <LogoIcon>
-          <img src="/static/projects/icon-theme-creator.png"/>
-        </LogoIcon>
-        <div style={{ paddingLeft: designTokens.space[3]}}>
-          <h3 className="title">Create a Theme</h3>
-          <small>
-            <span>Version 2</span><Chip ml={designTokens.space[2]} ghost type={'primary'}>Beta</Chip>
-          </small>
-        </div>
-      </LogoHorizontal>
-      <p className="lead">Pick a few colors and build a new theme!</p>
-      <List>
-        <ListItem>
-          <Row>
-            <Label>Dark Mode</Label>
-            <Switch
-              isOn={darkMode}
-              handleToggle={() => changeDarkMode(!darkMode)}
-              startLabel={'Light'}
-              endLabel={'Dark'}
-            />
-          </Row>
-        </ListItem>
-        <ListTitle>
-          State colors
-        </ListTitle>
+          <a className="link">
+            ←{' '}Back
+          </a>
+        </Link>
+        <LogoHorizontal>
+          <LogoIcon>
+            <img src="/static/projects/icon-theme-creator.png"/>
+          </LogoIcon>
+          <div style={{ paddingLeft: designTokens.space[3]}}>
+            <h6 className="title">Create a Theme</h6>
+            <small>
+              <span>Version 2</span><Chip ml={designTokens.space[2]} ghost type={'primary'}>Beta</Chip>
+            </small>
+          </div>
+        </LogoHorizontal>
+     </div>
+      <p>Pick a few colors and build a new theme!</p>
+      <TabBar>
         {
-          colors.map(item => (
-            <ListItem key={item.name}>
-              <ColorItem
-                label={item.name}
-                color={item.value}
-                changeColor={changeColor}
-                textColor={theme.grey0}
-                dark={darkMode}
-              />
-            </ListItem>
+          tabItems.map((item, i) => (
+            <TabItem
+              key={i}
+              className={item === activeTab ? 'active' : 'inactive'}
+            >
+              <button onClick={() => setActiveTab(item)}>{item}</button>
+            </TabItem>
           ))
         }
-        <ListTitle>
-          Neutral colors
-        </ListTitle>
-        <ListItem>
-          <Row>
-            <SliderGrid theme={theme}>
-              <div>
-                <Label>Hue Start <SmallLabel>{neutrals.hueStart}</SmallLabel></Label>
-                <RangeSlider
-                  min={0}
-                  max={359}
-                  value={neutrals.hueStart}
-                  changeFunction={updateHueStart}
-                  modifier={'hue'}
+      </TabBar>
+      {
+        activeTab === 'Options' && (
+          <List>
+            <Label subtle small mt={4} mb={2}>
+              Color options
+            </Label>
+            <ListItem>
+              <Row>
+                <Label>Dark Mode</Label>
+                <Switch
+                  isOn={darkMode}
+                  handleToggle={() => changeDarkMode(!darkMode)}
+                  startLabel={'Light'}
+                  endLabel={'Dark'}
                 />
-              </div>
-              <div>
-                <Label>Hue End <SmallLabel>{neutrals.hueEnd}</SmallLabel></Label>
-                <RangeSlider
-                  min={0}
-                  max={359}
-                  value={neutrals.hueEnd}
-                  changeFunction={updateHueEnd}
-                  modifier={'hue'}
-                />
-              </div>
-            </SliderGrid>
-          </Row>
-        </ListItem>
-        <ListItem>
-          <Row>
-            <SliderGrid theme={theme}>
-              <div>
-                <Label>Saturation Start <SmallLabel>{neutrals.satStart}</SmallLabel></Label>
-                <RangeSlider
-                  min={0}
-                  max={100}
-                  value={neutrals.satStart}
-                  changeFunction={updateSatStart}
-                  modifier={'saturation'}
-                />
-              </div>
-              <div>
-                <Label>Saturation End <SmallLabel>{neutrals.satEnd}</SmallLabel></Label>
-                <RangeSlider
-                  min={0}
-                  max={100}
-                  value={neutrals.satEnd}
-                  changeFunction={updateSatEnd}
-                  modifier={'saturation'}
-                />
-              </div>
-            </SliderGrid>
-          </Row>
-        </ListItem>
-        <ListItem>
-          <Row>
-            <SliderGrid theme={theme}>
-              <div>
-                <Label>Brightness Start <SmallLabel>{neutrals.lumStart}</SmallLabel></Label>
-                <RangeSlider
-                  min={0}
-                  max={40}
-                  value={neutrals.lumStart}
-                  changeFunction={updateLumStart}
-                  modifier={darkMode ? 'brightness-rev-start' : 'brightness-start'}
-                  colors
-                />
-              </div>
-              <div>
-                <Label>Brightness End <SmallLabel>{neutrals.lumEnd}</SmallLabel></Label>
-                <RangeSlider
-                  min={60}
-                  max={100}
-                  value={neutrals.lumEnd}
-                  changeFunction={updateLumEnd}
-                  modifier={darkMode ? 'brightness-rev-end' : 'brightness-end'}
-                />
-              </div>
-            </SliderGrid>
-          </Row>
-        </ListItem>
-        <ListItem>
-          <Row>
-            <select
-              onChange={updateEasing}
-              value={easing}
-            >
-              {
-                spacings.map(option => (
-                  <option key={option.name} value={option.value}>{option.name}</option>
-                ))
-              }
-            </select>
-          </Row>
-        </ListItem>
+              </Row>
+            </ListItem>
+            <ListItem>
+              <Row>
+               <div style={{ width: '100%' }}>
+                <Label>Color easing</Label>
+                  <select
+                    onChange={updateEasing}
+                    value={easing}
+                  >
+                    {
+                      spacings.map(option => (
+                        <option key={option.name} value={option.value}>{option.name}</option>
+                      ))
+                    }
+                  </select>
+               </div>
+              </Row>
+            </ListItem>
+          </List>
+        )
+      }
+      {
+        activeTab === 'State Colors' && (
+          <List>
+            <Label subtle small mt={4}>
+              State colors
+            </Label>
+            {
+              colors.map(item => (
+                <ListItem key={item.name}>
+                  <ColorItem
+                    label={item.name}
+                    color={item.value}
+                    changeColor={changeColor}
+                    textColor={theme.grey0}
+                    dark={darkMode}
+                  />
+                </ListItem>
+              ))
+            }
+          </List>
+        )
+      }
+      {
+        activeTab === 'Neutral Colors' && (
+          <List>
+            <Label subtle small mt={4} mb={2}>
+              Neutral colors
+            </Label>
+            <ListItem>
+              <Row>
+                <SliderGrid theme={theme}>
+                  <div>
+                    <div style={{ display: 'inline-flex' }}>
+                      <Label>Hue Start</Label>&nbsp;
+                      <Label small subtle>{neutrals.hueStart}</Label>
+                    </div>
+                    <RangeSlider
+                      min={0}
+                      max={359}
+                      value={neutrals.hueStart}
+                      changeFunction={updateHueStart}
+                      modifier={'hue'}
+                    />
+                  </div>
+                  <div>
+                    <div style={{ display: 'inline-flex' }}>
+                      <Label>Hue End</Label>&nbsp;
+                      <Label small subtle>{neutrals.hueEnd}</Label>
+                    </div>
+                    <RangeSlider
+                      min={0}
+                      max={359}
+                      value={neutrals.hueEnd}
+                      changeFunction={updateHueEnd}
+                      modifier={'hue'}
+                    />
+                  </div>
+                </SliderGrid>
+              </Row>
+            </ListItem>
+            <ListItem>
+              <Row>
+                <SliderGrid theme={theme}>
+                  <div>
+                    <div style={{ display: 'inline-flex' }}>
+                      <Label>Saturation Start</Label>&nbsp;
+                      <Label small subtle>{neutrals.satStart}</Label>
+                    </div>
+                    <RangeSlider
+                      min={0}
+                      max={100}
+                      value={neutrals.satStart}
+                      changeFunction={updateSatStart}
+                      modifier={'saturation'}
+                    />
+                  </div>
+                  <div>
+                    <div style={{ display: 'inline-flex' }}>
+                      <Label>Saturation End</Label>&nbsp;
+                      <Label small subtle>{neutrals.satEnd}</Label>
+                    </div>
+                    <RangeSlider
+                      min={0}
+                      max={100}
+                      value={neutrals.satEnd}
+                      changeFunction={updateSatEnd}
+                      modifier={'saturation'}
+                    />
+                  </div>
+                </SliderGrid>
+              </Row>
+            </ListItem>
+            <ListItem>
+              <Row>
+                <SliderGrid theme={theme}>
+                  <div>
+                    <div style={{ display: 'inline-flex' }}>
+                      <Label>Brightness Start</Label>&nbsp;
+                      <Label small subtle>{neutrals.lumStart}</Label>
+                    </div>
+                    <RangeSlider
+                      min={0}
+                      max={40}
+                      value={neutrals.lumStart}
+                      changeFunction={updateLumStart}
+                      modifier={darkMode ? 'brightness-rev-start' : 'brightness-start'}
+                      colors
+                    />
+                  </div>
+                  <div>
+                    <div style={{ display: 'inline-flex' }}>
+                      <Label>Brightness End</Label>&nbsp;
+                      <Label small subtle>{neutrals.lumEnd}</Label>
+                    </div>
+                    <RangeSlider
+                      min={60}
+                      max={100}
+                      value={neutrals.lumEnd}
+                      changeFunction={updateLumEnd}
+                      modifier={darkMode ? 'brightness-rev-end' : 'brightness-end'}
+                    />
+                  </div>
+                </SliderGrid>
+              </Row>
+            </ListItem>
+          </List>
+        )
+      }
+      <List>
         <ListItem>
           <Row>
             <ButtonPrimary onClick={() => submitTheme()}>

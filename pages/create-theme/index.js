@@ -10,28 +10,85 @@ import fetcher from '@utils/fetcher';
 import Error from '@components/Error'
 import LoadingBox from '@components/LoadingBox'
 import { ButtonAnchorTag } from '@components/Button'
-import { ThemeListItem } from '@components/ThemeItem'
+import ThemeItem, { ThemeListItem } from '@components/ThemeItem'
 import ContactBox from '@components/ContactBox'
+import { ItemTitle, Label } from '@components/Typography'
+
+const BlankContainer = styled.div`
+  
+`
 
 const BuilderLink = styled.a`
-  display: block;
-  text-align: center;
-  padding: ${designTokens.space[4]};
-  border: 2px dashed var(--primary);
-  border-radius: ${designTokens.space[2]};
+  display: flex;
+  align-items: center;
+  padding: ${designTokens.space[3]} 0;
   cursor: pointer;
-  color: var(--primaryDark);
+  color: var(--grey700);
   margin-bottom: ${designTokens.space[3]};
-  font-weight: ${designTokens.fontWeights.bold};
+  border: 2px solid transparent;
   transition: all 120ms ease-out;
+  ${BlankContainer} {
+    opacity: 0.6;
+    margin-right: ${designTokens.space[3]};
+    transition: all 120ms ease-out 60ms;
+  }
   &:hover, &:focus {
-    background: var(--primaryTransparent);
-    transform: scale(1.02);
+    background: var(--grey100);
+    border: 2px dashed var(--grey200);
+    padding-left: ${designTokens.space[3]};
+    box-shadow: -${designTokens.space[1]} 0px 0px 0px var(--primary);
+    ${BlankContainer} {
+      opacity: 1;
+    }
   }
   &:focus {
-    box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--primaryTransparent);
+    box-shadow: 0px 0px 0px ${designTokens.space[1]} var(--grey300);
   }
 `
+
+const ComplexLink = () => {
+
+  const blankTheme = {
+    name: 'New Theme',
+    grey900: 'var(--grey900)',
+    grey800: 'var(--grey800)',
+    grey700: 'var(--grey700)',
+    grey600: 'var(--grey600)',
+    grey500: 'var(--grey500)',
+    grey400: 'var(--grey400)',
+    grey300: 'var(--grey300)',
+    grey200: 'var(--grey200)',
+    grey100: 'var(--grey100)',
+    grey0: 'var(--grey0)',
+    primary: 'var(--grey300)',
+    tertiary: 'var(--grey300)',
+    secondary: 'var(--grey300)',
+    primaryTransparent: 'var(--grey100)',
+    tertiaryTransparent:'var(--grey100)',
+    secondaryTransparent: 'var(--grey100)',
+    transparent: 'var(--transparent)',
+    secondaryDark: 'var(--grey400)',
+    primaryDark: 'var(--grey400)',
+    tertiaryDark: 'var(--grey400)',
+  }
+
+  return (
+    <Link href={'/create-theme/builder'}>
+      <BuilderLink>
+        <BlankContainer>
+          <ThemeItem
+            theme={blankTheme}
+            clickHandle={() => console.log(blankTheme)}
+          />
+        </BlankContainer>
+        <div>
+          <ItemTitle>Open the Theme Builder</ItemTitle>
+          <Label subtle mt={2}>Design a new theme!</Label>
+        </div>
+      </BuilderLink>
+    </Link>
+  )
+}
 
 const ColorboxButton = () => {
   return(
@@ -70,11 +127,9 @@ const Page = ({ title, description, ...props }) => {
 
   const { data, error } = useSWR('/api/themes/submitted/list', fetcher)
 
-  console.log(data)
-
   return (
     <>
-      <Layout pageTitle={`${title} | RSS`} description={description} ogImage="/social-media.png">
+      <Layout pageTitle={`${title} | Create a Theme`} description={description} ogImage="/social-media.png">
         <Wrapper>
           <Title>
             <TitleIcon>
@@ -88,11 +143,7 @@ const Page = ({ title, description, ...props }) => {
             <p className="lead">Pick a few colors and build a new theme!</p>
             <p>I like to believe design is a fluid skill and that <strong>everyone is a bit of a designer</strong> 👍 - we all have the ability to feel certain ways about things that are designed. <strong>Feed that curiousity</strong> and play around with creating a new theme for this website!</p>
           </Title>
-          <Link href={'/create-theme/builder'}>
-            <BuilderLink>
-              Design a new theme!
-            </BuilderLink>
-          </Link>
+          <ComplexLink/>
           <List>
             <ListItem>
               <h3>Recently Created Themes</h3>
