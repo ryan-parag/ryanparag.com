@@ -140,6 +140,7 @@ function Demo({ children, pageTitle, description, ogImage, ...props }) {
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"></link>
             <link rel="manifest" href="/favicon/site.webmanifest"></link>
             <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5"></link>
+            <link href="static/fonts/fonts.css" rel="stylesheet"/>
             <meta name="msapplication-TileColor" content="#000000"></meta>
             <meta name="theme-color" content="#00d1b2"></meta>
             <title>{pageTitle}</title>
