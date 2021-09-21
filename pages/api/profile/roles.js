@@ -19,7 +19,7 @@ export default async (req,res) => {
         company: item.properties.Company.title[0].plain_text,
         date: item.properties.Time.rich_text[0].plain_text,
         role: item.properties.Role.rich_text[0].plain_text,
-        logo: item.properties.Logo.url,
+        logo: item.properties.Icon.files[0].file.url,
         order: item.properties.Order.number,
         link: item.properties.Link.url
       })

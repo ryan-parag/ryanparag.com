@@ -17,7 +17,8 @@ module.exports = {
     LIVEBLOCKS_API_KEY: process.env.LIVEBLOCKS_API_KEY,
     NEW_SENDGRID_API_KEY: process.env.NEW_SENDGRID_API_KEY,
     GITHUB_API_KEY: process.env.GITHUB_API_KEY,
-    AUTH_STRING: process.env.AUTH_STRING
+    AUTH_STRING: process.env.AUTH_STRING,
+    LINKPREVIEW_API_KEY: process.env.LINKPREVIEW_API_KEY
   },
   images: {
     domains: ['i.scdn.co', 'mosaic.scdn.co'],
