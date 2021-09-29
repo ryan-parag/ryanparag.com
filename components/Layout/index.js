@@ -128,6 +128,9 @@ function Demo({ children, pageTitle, description, ogImage, ...props }) {
             <meta charSet="utf-8" />
             <meta name="Description" content={description}></meta>
             <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
+            <meta itemprop="name" content={pageTitle}></meta>
+            <meta itemprop="description" content={description}></meta>
+            <meta itemprop="image" content={`https://ryanparag.com${ogImage}`}></meta>
             <meta property="og:url" content="https://ryanparag.com"></meta>
             <meta property="og:type" content="website"></meta>
             <meta property="og:title" content={pageTitle}></meta>
@@ -143,6 +146,10 @@ function Demo({ children, pageTitle, description, ogImage, ...props }) {
             <link href="/static/fonts/fonts.css" rel="stylesheet"/>
             <meta name="msapplication-TileColor" content="#000000"></meta>
             <meta name="theme-color" content="#00d1b2"></meta>
+            <meta name="twitter:card" content="summary_large_image"></meta>
+            <meta name="twitter:title" content={pageTitle}></meta>
+            <meta name="twitter:description" content={description}></meta>
+            <meta name="twitter:image" content={`https://ryanparag.com${ogImage}`}></meta>
             <title>{pageTitle}</title>
           </Head>
           <GlobalStyles/>
