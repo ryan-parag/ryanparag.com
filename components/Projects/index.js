@@ -236,7 +236,7 @@ const ExperienceItem = ({ item }) => {
   return(
     <ListItem key={item.id}>
       <ExperienceContainer>
-        <img src={item.logo} style={{ border: '1px solid var(--grey200)', width: `calc(${designTokens.space[5]} + ${designTokens.space[2]})`, borderRadius: designTokens.space[2] }}/>
+        <img src={`/static/projects/${item.logo}`} style={{ border: '1px solid var(--grey200)', width: `calc(${designTokens.space[5]} + ${designTokens.space[2]})`, borderRadius: designTokens.space[2] }}/>
         <ExperienceBody>
           <h6 style={{ fontSize: designTokens.sizing._sm, marginTop: '0', marginBottom: '0' }}>{item.company}</h6>
           <Label subtle mt={2}>
