@@ -8,6 +8,7 @@ import { ButtonAnchorTag } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
 import { ListensIcon } from '@components/Logo'
 import Link from 'next/link'
+import Card from '@components/Card'
 
 const ListenType = ({title, description}) => {
   const router = useRouter();
@@ -44,9 +45,6 @@ const ListenType = ({title, description}) => {
             </Link>
             <h1>Recent Listens</h1>
             <p className="lead">Take a peek at what I've been listening to!</p>
-            <p>
-              I <Link href="/notes/showing-my-listening-activity"><a className="link">wrote</a></Link> about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
-            </p>
             <SpotifyCurrentlyPlaying playing/>
           </Title>
           <TabNav
@@ -54,21 +52,27 @@ const ListenType = ({title, description}) => {
             active={listenType}
           />
           {displayContent(listenType)}
-          <div
-            style={{
-              textAlign: 'center',
-              padding: designTokens.space[3]
-            }}
-          >
-            <ButtonAnchorTag href={`mailto:hello@ryanparag.com?Subject=I have ${listenType === 'music' || listenType === 'playlists' ? 'dope music' : 'a podcast rec'}`}>
-              <img
-                src="/static/email.svg"
-                width="32"
-                className="buttonIcon"
-              />
-              Have a recommendation?
-            </ButtonAnchorTag>
-          </div>
+          <hr/>
+          <Card>
+            <h5 style={{ marginTop: 0 }}>About</h5>
+            <p>
+              I <Link href="/notes/showing-my-listening-activity"><a className="link">wrote</a></Link> about how and why I wanted to create this list, using <a className="link" href="https://leerob.io/blog/spotify-api-nextjs" target="_blank">Lee Robinson's</a> extremely helpful Spotify/Next.js tutorial.
+            </p>
+            <div
+              style={{
+                paddingTop: designTokens.space[4]
+              }}
+            >
+              <ButtonAnchorTag href={`mailto:hello@ryanparag.com?Subject=I have ${listenType === 'music' || listenType === 'playlists' ? 'dope music' : 'a podcast rec'}`}>
+                <img
+                  src="/static/email.svg"
+                  width="32"
+                  className="buttonIcon"
+                />
+                Have a recommendation?
+              </ButtonAnchorTag>
+            </div>
+          </Card>
         </Wrapper>
       </Layout>
     </>

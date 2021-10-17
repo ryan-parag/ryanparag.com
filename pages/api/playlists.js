@@ -14,6 +14,12 @@ export default async (_, res) => {
     tracks: playlist.tracks.total
   }));
 
+  playlists.sort(function(a, b) {
+    const textA = a.title.toUpperCase();
+    const textB = b.title.toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
+
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=86400, stale-while-revalidate=43200'

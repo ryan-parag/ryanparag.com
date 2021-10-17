@@ -12,6 +12,12 @@ export default async (_, res) => {
     showImageUrl: podcast.show.images[0].url
   }));
 
+  podcasts.sort(function(a, b) {
+    const textA = a.name.toUpperCase();
+    const textB = b.name.toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
+
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=86400, stale-while-revalidate=43200'
