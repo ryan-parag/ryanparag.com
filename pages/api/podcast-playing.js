@@ -28,13 +28,6 @@ export default async (_, res) => {
   );
 
   return res.status(200).json({
-    isPlaying,
-    episodeTitle,
-    episodeDescription,
-    podcastName,
-    publisher,
-    podcastImgUrl,
-    podcastUrl,
-    explicit
+    podcast
   });
 };
