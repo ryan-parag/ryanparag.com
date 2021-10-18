@@ -3,13 +3,13 @@ import { getPodcastPlaying } from '@utils/spotify';
 export default async (_, res) => {
   const response = await getPodcastPlaying();
 
+  const podcast = await response.json();
+
   if (response.status === 204 || response.status > 400 || response.status === 500) {
     return res.status(200).json({ isPlaying: false, playing: null });
   }
 
-  const podcast = await response.json();
-
-  if(podcast.context.type !== 'show') {
+  if(podcast.currently_playing_type !== 'episode') {
     return res.status(200).json({ isPlaying: false, playing: 'track' });
   }
 
@@ -29,10 +29,10 @@ export default async (_, res) => {
 
   return res.status(200).json({
     isPlaying,
-    publisher,
-    podcastName,
     episodeTitle,
     episodeDescription,
+    podcastName,
+    publisher,
     podcastImgUrl,
     podcastUrl,
     explicit
