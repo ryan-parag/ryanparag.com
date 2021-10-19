@@ -4,14 +4,10 @@ export default async (_, res) => {
   const response = await getPlayer();
 
   if (response.status === 204 || response.status > 400 || response.status === 500) {
-    return res.status(200).json({ isPlaying: false });
+    return res.status(200).json({ isPlaying: false , playing: false });
   }
 
   const playing = await response.json();
-
-  if(playing.currently_playing_type === "episode") {
-    return res.status(200).json({ playing });
-  }
 
   res.setHeader(
     'Cache-Control',
@@ -19,6 +15,8 @@ export default async (_, res) => {
   );
 
   return res.status(200).json({
-    playing
+      device: playing.device.type,
+      playing: playing.currently_playing_type,
+      isPlaying: true
     });
 };

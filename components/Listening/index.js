@@ -3,14 +3,12 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import List, { ListItem } from '@components/List'
 import { Box } from '@components/Box'
-import { designTokens } from '@components/Theme/designTokens'
-import { format } from 'timeago.js'
 import Error from '@components/Error'
 import LoadingBox from '@components/LoadingBox'
 
 const Tracks = () => {
 
-  const { data } = useSWR('/api/top-tracks', fetcher);
+  const { data } = useSWR('/api/spotify/top-tracks', fetcher);
 
   if (!data) {
     return (
@@ -65,7 +63,7 @@ const ListeningTitle = ({title}) => {
 
 export const ListeningMusic = () => {
 
-  const { data, error } = useSWR('/api/recently-played', fetcher);
+  const { data, error } = useSWR('/api/spotify/recently-played', fetcher);
 
   return(
     <>
@@ -99,7 +97,7 @@ export const ListeningMusic = () => {
 
 export const ListeningPodcasts = () => {
 
-  const { data, error } = useSWR('/api/podcast-subscriptions', fetcher);
+  const { data, error } = useSWR('/api/spotify/podcast-subscriptions', fetcher);
 
   return(
     <>
@@ -126,7 +124,7 @@ export const ListeningPodcasts = () => {
 
 export const ListeningPlaylists = () => {
 
-  const { data, error } = useSWR('/api/playlists', fetcher);
+  const { data, error } = useSWR('/api/spotify/playlists', fetcher);
 
   return(
     <>

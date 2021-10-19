@@ -1,5 +1,4 @@
 import { getPlaylists } from '@utils/spotify'
-import { Filter } from 'react-feather';
 
 export default async (_, res) => {
   const response = await getPlaylists();

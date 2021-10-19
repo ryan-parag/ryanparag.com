@@ -263,7 +263,7 @@ export const SpotifyPlaylist = ({playlist}) => {
 }
 
 export const SpotifyLastPlayed = ({action}) => {
-  const { data } = useSWR('/api/last-played', fetcher);
+  const { data } = useSWR('/api/spotify/last-played', fetcher);
 
   return (
     <>
@@ -335,128 +335,139 @@ export const SpotifyLastPlayed = ({action}) => {
 }
 
 export const SpotifyNowPlaying = ({action}) => {
-  const { data } = useSWR('/api/now-playing', fetcher);
+  const { data } = useSWR('/api/spotify/playing-music', fetcher);
 
   return (
     <>
-    {
-      data?.isPlaying ? (
-        <SpotifyLink
-          href={data.songUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <SpotifyContent>
-            <SpotifyIcon active/>
-            <ContentContainer>
-              <Label subtle mb={2}>Currently Playing</Label>
-              <Content>
-                <ItemTitle small>{truncateString(data.title, 56)}</ItemTitle>
-                <Body subtle small>
-                  {
-                    data.explicit ? (
-                      <ExplicitIcon/>
-                    )
-                    :
-                    null
-                  }
-                  by {data.artist}
-                </Body>
-              </Content>
-            </ContentContainer>
-          </SpotifyContent>
-          <HoverImage src={data.albumImageUrl} alt={data.artist} />
-        </SpotifyLink>
-      )
-      :
-      (
-        <SpotifyContainer>
-          <SpotifyIcon/>
-          <ContentContainer>
-            <Content subtle>
-              <Body>Not currently listening</Body>
-              {
-                action ? (
-                  <div style={{ marginTop: designTokens.space[2] }}>
-                    <InteriorButton
-                      onClick={action}
-                    >
-                      View Last Played
-                    </InteriorButton>
-                    {' '}<small>or</small>{' '}
-                    <Link href="/listening" shallow>
-                      <InteriorLink>
-                        View More...
-                      </InteriorLink>
-                    </Link>
-                  </div>
-                )
-                :
-                null
-              }
-            </Content>
-          </ContentContainer>
-        </SpotifyContainer>
-      )
-    }
-    {
-      data?.songUrl && action ? (
-        <div style={{ marginTop: designTokens.space[2] }}>
-          <InteriorButton
-            marginLeft
-            onClick={action}
-          >
-            View Last Played
-          </InteriorButton>
-        </div>
-      )
-      :
-      null
-    }
+      {
+        data ? (
+          <>
+            {
+              data.currently_playing.isPlaying && (
+                <SpotifyLink
+                  href={data.currently_playing.songUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <SpotifyContent>
+                    <SpotifyIcon active/>
+                    <ContentContainer>
+                      <Label subtle mb={2}>Currently Playing</Label>
+                      <Content>
+                        <ItemTitle small>{truncateString(data.currently_playing.title, 56)}</ItemTitle>
+                        <Body subtle small>
+                          {
+                            data.currently_playing.explicit ? (
+                              <ExplicitIcon/>
+                            )
+                            :
+                            null
+                          }
+                          by {data.currently_playing.artist}
+                        </Body>
+                      </Content>
+                    </ContentContainer>
+                  </SpotifyContent>
+                  <HoverImage src={data.currently_playing.albumImageUrl} alt={data.currently_playing.artist} />
+                </SpotifyLink>
+              )
+            }
+            <div style={{ marginTop: designTokens.space[2] }}>
+              <InteriorButton
+                marginLeft
+                onClick={action}
+              >
+                View Last Played
+              </InteriorButton>
+              {' '}<small>or</small>{' '}
+              <Link href="/listening" shallow>
+                <InteriorLink>
+                  View More...
+                </InteriorLink>
+              </Link>
+            </div>
+          </>
+        )
+        :
+        (
+          <LoadingSmall/>
+        )
+      }
     </>
   );
 }
 
 export const SpotifyNowPlayingPodcast = ({action}) => {
-  const { data } = useSWR('/api/podcast-playing', fetcher);
+  const { data } = useSWR('/api/spotify/playing-podcast', fetcher);
 
   return (
     <>
-    {
-      data?.isPlaying ? (
-        <SpotifyLink
-          href={data.podcastUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <SpotifyContent>
-            <SpotifyIcon active/>
-            <ContentContainer>
-              <Label subtle mb={2}>Currently Playing</Label>
-              <Content>
-                <ItemTitle small>{truncateString(data.episodeTitle, 56)}</ItemTitle>
-                <MobileTextContainer>
-                  <Body subtle small>
-                    {
-                      data.explicit ? (
-                        <ExplicitIcon/>
-                      )
-                      :
-                      null
-                    }
-                    {truncateString(data.episodeDescription, 80)}
-                  </Body>
-                </MobileTextContainer>
-                <Label mt={1}>{data.podcastName} by {data.publisher}</Label>
-              </Content>
-            </ContentContainer>
-          </SpotifyContent>
-          <HoverImage src={data.podcastImgUrl} alt={data.podcastName} />
-        </SpotifyLink>
-      )
-      :
-      (
-        <SpotifyContainer>
+      {
+        data ? (
+          <>
+            {
+              data.currently_playing.isPlaying && (
+                <SpotifyLink
+                  href={data.currently_playing.podcastUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <SpotifyContent>
+                    <SpotifyIcon active/>
+                    <ContentContainer>
+                      <Label subtle mb={2}>Currently Playing</Label>
+                      <Content>
+                        <ItemTitle small>{truncateString(data.currently_playing.episodeTitle, 56)}</ItemTitle>
+                        <MobileTextContainer>
+                          <Body subtle small>
+                            {
+                              data.currently_playing.explicit ? (
+                                <ExplicitIcon/>
+                              )
+                              :
+                              null
+                            }
+                            {truncateString(data.currently_playing.episodeDescription, 80)}
+                          </Body>
+                        </MobileTextContainer>
+                        <Label mt={1}>{data.currently_playing.podcastName} by {data.currently_playing.publisher}</Label>
+                      </Content>
+                    </ContentContainer>
+                  </SpotifyContent>
+                  <HoverImage src={data.currently_playing.podcastImgUrl} alt={data.currently_playing.podcastName} />
+                </SpotifyLink>
+              )
+            }
+            <div style={{ marginTop: designTokens.space[2] }}>
+              <InteriorButton
+                marginLeft
+                onClick={action}
+              >
+                View Last Played
+              </InteriorButton>
+              {' '}<small>or</small>{' '}
+              <Link href="/listening" shallow>
+                <InteriorLink>
+                  View More...
+                </InteriorLink>
+              </Link>
+            </div>
+          </>
+        )
+        :
+        (
+          <LoadingSmall/>
+        )
+      }
+    </>
+  );
+}
+
+const SpotifyNotPlaying = ({ action }) => {
+
+  return (
+    <>
+      <SpotifyContainer>
           <SpotifyIcon/>
           <ContentContainer>
             <Content subtle>
@@ -483,29 +494,13 @@ export const SpotifyNowPlayingPodcast = ({action}) => {
             </Content>
           </ContentContainer>
         </SpotifyContainer>
-      )
-    }
-    {
-      data?.podcastUrl && action ? (
-        <div style={{ marginTop: designTokens.space[2] }}>
-          <InteriorButton
-            marginLeft
-            onClick={action}
-          >
-            View Last Played
-          </InteriorButton>
-        </div>
-      )
-      :
-      null
-    }
     </>
   );
 }
 
 export const SpotifyCurrentlyPlaying = ({playing}) => {
 
-  const { data } = useSWR('/api/now-playing', fetcher);
+  const { data } = useSWR('/api/spotify/player', fetcher);
 
   const [toggle, setToggle] = useState(playing)
 
@@ -524,21 +519,34 @@ export const SpotifyCurrentlyPlaying = ({playing}) => {
             toggle ? (
               <>
                 {
-                  data?.isPlaying ? (
-                    <SpotifyNowPlaying
-                      action={() => setToggle(!toggle)}
-                    />
+                  data.isPlaying ? (
+                    <>
+                      {
+                        data.playing === 'episode' ? (
+                          <SpotifyNowPlayingPodcast
+                            action={() => setToggle(!toggle)}
+                          />
+                        )
+                        :
+                        (
+                          <SpotifyNowPlaying
+                            action={() => setToggle(!toggle)}
+                          />
+                        )
+                      }
+                    </>
                   )
                   :
                   (
-                    <SpotifyNowPlayingPodcast
+                    <SpotifyNotPlaying
                       action={() => setToggle(!toggle)}
                     />
                   )
                 }
               </>
             )
-            : (
+            :
+            (
               <SpotifyLastPlayed
                 action={() => setToggle(!toggle)}
               />
