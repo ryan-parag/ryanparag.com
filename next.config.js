@@ -18,7 +18,8 @@ module.exports = {
     NEW_SENDGRID_API_KEY: process.env.NEW_SENDGRID_API_KEY,
     GITHUB_API_KEY: process.env.GITHUB_API_KEY,
     AUTH_STRING: process.env.AUTH_STRING,
-    LINKPREVIEW_API_KEY: process.env.LINKPREVIEW_API_KEY
+    LINKPREVIEW_API_KEY: process.env.LINKPREVIEW_API_KEY,
+    NOTION_WORDLE: process.env.NOTION_WORDLE
   },
   images: {
     domains: ['i.scdn.co', 'mosaic.scdn.co'],

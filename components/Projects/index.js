@@ -279,6 +279,12 @@ export default function Projects(){
 
   const projects = [
     {
+      name: 'Wordle Results',
+      description: 'Take a look at a history of my Wordle attmepts',
+      image: '/static/projects/icon-wordle.png',
+      link:'/wordle',
+      outbound: false
+    },{
       name: 'Slack Themes',
       description: 'Having trouble keeping track of all of your Slack workspaces?',
       image: '/static/projects/icon-slack-themes.png',

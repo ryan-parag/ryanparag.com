@@ -112,6 +112,18 @@ export const ListensIcon = () => {
   )
 }
 
+export const WordleIcon = () => {
+  return(
+    <LogoIcon>
+      <svg viewBox="0 0 245 258" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="12.5" width="245" height="245" rx="37" fill="#416835"/>
+        <rect width="245" height="245" rx="37" fill="#618B55"/>
+        <path d="M78.8486 174.468L54.8636 86.3083L43.0852 85.2376V70.5325H89.9845V85.2376L78.4203 86.8794L89.7704 133.35L91.4122 140.061H91.8405L93.5537 133.279L113.898 70.5325H131.173L152.588 136.206L154.087 140.703H154.516L155.729 136.206L167.864 86.8794L155.943 85.2376V70.5325H201.915V85.2376L190.85 86.3083L165.794 174.468H143.451L125.534 120.715L123.321 113.291H122.893L120.109 121.144L101.906 174.468H78.8486Z" fill="white"/>
+      </svg>
+    </LogoIcon>
+  )
+}
+
 export const WorksheetsIcon = () => {
   return(
     <LogoIcon>

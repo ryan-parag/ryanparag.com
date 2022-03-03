@@ -128,9 +128,9 @@ function Demo({ children, pageTitle, description, ogImage, ...props }) {
             <meta charSet="utf-8" />
             <meta name="Description" content={description}></meta>
             <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
-            <meta itemprop="name" content={pageTitle}></meta>
-            <meta itemprop="description" content={description}></meta>
-            <meta itemprop="image" content={`https://ryanparag.com${ogImage}`}></meta>
+            <meta itemProp="name" content={pageTitle}></meta>
+            <meta itemProp="description" content={description}></meta>
+            <meta itemProp="image" content={`https://ryanparag.com${ogImage}`}></meta>
             <meta property="og:url" content="https://ryanparag.com"></meta>
             <meta property="og:type" content="website"></meta>
             <meta property="og:title" content={pageTitle}></meta>
