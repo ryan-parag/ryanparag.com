@@ -276,6 +276,28 @@ export const GlobalStyles = createGlobalStyle`
     resize: none;
   }
 
+  progress {
+    border-radius: ${designTokens.space[2]};
+    width: 100%;
+    height: ${designTokens.space[2]};
+    box-shadow: none;
+  }
+
+  progress::-webkit-progress-bar {
+    background-color: var(--grey200);
+    border-radius: ${designTokens.space[2]};
+  }
+
+  progress::-webkit-progress-value {
+    background-color: var(--primary);
+    border-radius: ${designTokens.space[2]};
+    box-shadow: none;
+  }
+
+  progress::-moz-progress-bar {
+    /* style rules */
+  }
+
   select {
     cursor: pointer;
     background: linear-gradient(45deg,transparent 50%,var(--primary) 0),linear-gradient(135deg,var(--primary) 50%,transparent 0),linear-gradient(90deg,var(--grey0),var(--grey0));

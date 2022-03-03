@@ -58,6 +58,10 @@ const Page = ({ token, title, description, ...props }) => {
           {
             data ? (
               <>
+                <h6>📊 Statistics</h6>
+                <WordleAnalytics data={data.wordles} />
+                <hr/>
+                <h6>⌨️ Activity</h6>
                 {
                   data.wordles.map(item => (
                     <Wordle
