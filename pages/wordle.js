@@ -37,7 +37,7 @@ const Page = ({ token, title, description, ...props }) => {
 
   return (
     <>
-      <Layout pageTitle={`${title} | Portfolios`} description={description} ogImage="/portfolios-social-media.png">
+      <Layout pageTitle={`${title} | Wordle`} description={description} ogImage="/wordle-social-media.png">
         <Wrapper>
           <Title>
             <div style={{ width: '64px', marginBottom: designTokens.space[4] }}>
