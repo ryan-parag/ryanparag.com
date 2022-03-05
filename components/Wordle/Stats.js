@@ -7,7 +7,7 @@ import Error from '@components/Error'
 import { designTokens } from '@components/Theme/designTokens'
 import { Label, ItemTitle } from '@components/Typography'
 import { Title } from '@components/Wordle'
-
+import { motion } from 'framer-motion'
 const Block = styled.div`
   border: 1px solid var(--grey200);
   border-radius: ${designTokens.space[2]};
@@ -64,13 +64,16 @@ const Progress = ({ value, max }) => {
 
   return(
     <ProgressContainer>
-      <div
+      <motion.div
         style={{
-          width: getValue(),
+          width: '0%',
           background: 'var(--primary)',
           borderRadius: designTokens.space[1],
-          height: '100%'
+          height: '100%',
+          opacity: '0'
         }}
+        animate={{ width: getValue(), opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.6 }}
       />
       <small style={{ marginLeft: designTokens.space[1] }}>
         <strong>{value}&nbsp;</strong>
