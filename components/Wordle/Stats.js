@@ -13,6 +13,10 @@ const Block = styled.div`
   border-radius: ${designTokens.space[2]};
   padding: ${designTokens.space[3]};
   grid-column: span ${props => props.wide ? '3' : '1'};
+  width: 100%;
+  @media screen and (max-width: ${designTokens.breakpoints[5]}) {
+    grid-column: span 3;
+  }
 `
 
 const Container = styled.div`
@@ -20,6 +24,9 @@ const Container = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-row-gap: ${designTokens.space[3]};
   grid-column-gap: ${designTokens.space[3]};
+  @media screen and (max-width: ${designTokens.breakpoints[5]}) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const ProgressContainer = styled.div`
@@ -35,6 +42,16 @@ const RowContainer = styled.div`
   display:grid;
   grid-template-columns: ${designTokens.space[8]} auto ${designTokens.space[5]};
   margin-top: ${designTokens.space[2]};
+`
+
+const StatContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: ${designTokens.breakpoints[5]}) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `
 
 const Progress = ({ value, max }) => {
@@ -60,8 +77,10 @@ const Progress = ({ value, max }) => {
 const StatCard = ({ label, value }) => {
   return(
     <Block>
-      <Label subtle>{label}</Label>
-      <h4 style={{ marginTop: designTokens.space[2], marginBottom: 0 }}>{value}</h4>
+      <StatContainer>
+        <Label subtle>{label}</Label>
+        <h4 style={{ marginTop: designTokens.space[2], marginBottom: 0 }}>{value}</h4>
+      </StatContainer>
     </Block>
   )
 }
@@ -103,7 +122,7 @@ const Stats = () => {
         data ? (
           <>
             <Title>
-              <ItemTitle>Data from {data.stats.numOfMatches} Wordles</ItemTitle>
+              <Label><strong>Stats from {data.stats.numOfMatches} Wordles</strong></Label>
               <Label subtle>{formatDate(data.stats.firstDate)} - {formatDate(data.stats.lastDate)}</Label>
             </Title>
             <Container>

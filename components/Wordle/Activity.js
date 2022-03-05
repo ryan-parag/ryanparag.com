@@ -6,6 +6,7 @@ import LoadingBox from '@components/LoadingBox'
 import Error from '@components/Error'
 import { Title } from '@components/Wordle'
 import { Label, ItemTitle } from '@components/Typography'
+import Link from 'next/link'
 
 const Activity = () => {
 
@@ -30,8 +31,12 @@ const Activity = () => {
         data ? (
           <>
             <Title>
-              <ItemTitle>Data from {data.wordles.length} Wordles</ItemTitle>
-              <Label subtle>{formatDate(data.wordles[data.wordles.length - 1].date)} - {formatDate(data.wordles[0].date)}</Label>
+              <Label subtle><strong>10 Wordles</strong> ({formatDate(data.wordles[data.wordles.length - 1].date)} - {formatDate(data.wordles[0].date)})</Label>
+              <Link href={'/wordle/submit'}>
+                <a className="link">
+                  Add New
+                </a>
+              </Link>
             </Title>
             {
               data.wordles.map(item => (

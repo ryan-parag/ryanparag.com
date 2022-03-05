@@ -136,14 +136,12 @@ function Demo({ children, pageTitle, description, ogImage, ...props }) {
             <meta property="og:title" content={pageTitle}></meta>
             <meta property="og:description" content={description}></meta>
             <meta property="og:image" content={`https://ryanparag.com${ogImage}`}></meta>
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet"></link>
             <link rel="icon" href="/favicon/favicon.svg"></link>
             <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"></link>
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"></link>
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"></link>
             <link rel="manifest" href="/favicon/site.webmanifest"></link>
             <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5"></link>
-            <link href="/static/fonts/fonts.css" rel="stylesheet"/>
             <meta name="msapplication-TileColor" content="#000000"></meta>
             <meta name="theme-color" content="#00d1b2"></meta>
             <meta name="twitter:card" content="summary_large_image"></meta>

@@ -20,7 +20,7 @@ const ScrolledButton = styled(Button)`
   }
 `
 
-const Page = ({ token, title, description, ...props }) => {
+const Page = ({ title, description, ...props }) => {
 
   const scrollToTop = () => {
     if(process.browser) {

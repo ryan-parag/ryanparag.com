@@ -68,6 +68,9 @@ export const Title = styled.div`
   @media screen and (max-width: ${designTokens.breakpoints[5]}) {
     flex-direction: column;
     align-items: flex-start;
+    ${Label} {
+      margin-bottom: ${designTokens.space[2]};
+    }
   }
 `
 
