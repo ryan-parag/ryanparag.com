@@ -201,8 +201,6 @@ export const WordleAnalytics = ({data}) => {
     return wins
   }
 
-  console.log(getWins())
-
   return(
     <AnaylticsContainer>
       <AnalyticsBody>

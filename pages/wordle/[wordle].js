@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react'
-import useSWR from 'swr';
-import fetcher from '@utils/fetcher';
+import { useRouter } from "next/router";
 import Layout, { Wrapper } from '@components/Layout/'
 import Title from '@components/Title'
 import styled from 'styled-components'
 import { Button } from '@components/Button'
 import { designTokens } from '@components/Theme/designTokens'
-import LoadingBox from '@components/LoadingBox'
-import Error from '@components/Error'
 import Link from 'next/link'
-import Wordle, { WordleAnalytics } from '@components/Wordle'
+import TabNav from '@components/Wordle/TabNav'
+import Activity from '@components/Wordle/Activity'
+import Stats from '@components/Wordle/Stats'
 import { WordleIcon } from '@components/Logo'
 
 const ScrolledButton = styled(Button)`
@@ -33,7 +32,23 @@ const Page = ({ token, title, description, ...props }) => {
     }
   }
 
-  const { data, error } = useSWR('/api/wordle', fetcher)
+  const router = useRouter();
+  const { wordle } = router.query;
+
+  const categories = ['Activity', 'Statistics']
+
+  const displayContent = (type) => {
+    switch (type) {
+      case 'activity':
+        return <Activity/>
+        break;
+      case 'statistics':
+        return <Stats/>
+        break;
+      default:
+        return null
+    }
+  }
 
   return (
     <>
@@ -52,31 +67,11 @@ const Page = ({ token, title, description, ...props }) => {
               <small>Wordle is a daily word game where players have six attempts to guess a five letter word. Feedback for each guess is given in the form of colored tiles to indicate if letters match the correct position.</small>
             </p>
           </Title>
-          {
-              error && (<Error/>)
-            }
-          {
-            data ? (
-              <>
-                <h6>📊 Statistics</h6>
-                <WordleAnalytics data={data.wordles} />
-                <hr/>
-                <h6>⌨️ Activity</h6>
-                {
-                  data.wordles.map(item => (
-                    <Wordle
-                      key={item.id}
-                      wordle={item}
-                    />
-                  ))
-                }
-              </>
-            )
-            :
-            (
-              <LoadingBox/>
-            )
-          }
+          <TabNav
+            items={categories}
+            active={wordle}
+          />
+          {displayContent(wordle)}
         </Wrapper>
       </Layout>
       <ScrolledButton
@@ -90,14 +85,22 @@ const Page = ({ token, title, description, ...props }) => {
 
 export default Page
 
-export async function getServerSideProps({ req, res}) {
-  const configData = await import(`../siteconfig.json`)
+export async function getStaticPaths() {
+  const categories = ['activity', 'statistics']
+  const paths = categories.map((wordle) => ({
+    params: { wordle }
+  }))
+
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params: {wordle} }) {
+  const configData = await import('../../siteconfig.json')
 
   return {
     props: {
       title: configData.default.title,
       description: configData.default.description,
-      token: req.cookies.token || "",
     },
   }
 }
