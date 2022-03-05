@@ -30,17 +30,18 @@ const Container = styled.div`
 `
 
 const ProgressContainer = styled.div`
-  background: var(--grey200);
+  background: var(--grey100);
   height: ${designTokens.space[3]};
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   border-radius: ${designTokens.space[1]};
 `
 
 const RowContainer = styled.div`
   display:grid;
-  grid-template-columns: ${designTokens.space[8]} auto ${designTokens.space[5]};
+  grid-template-columns: ${designTokens.space[8]} auto;
   margin-top: ${designTokens.space[2]};
 `
 
@@ -67,9 +68,14 @@ const Progress = ({ value, max }) => {
         style={{
           width: getValue(),
           background: 'var(--primary)',
-          borderRadius: designTokens.space[1]
+          borderRadius: designTokens.space[1],
+          height: '100%'
         }}
       />
+      <small style={{ marginLeft: designTokens.space[1] }}>
+        <strong>{value}&nbsp;</strong>
+       ({((value/max).toFixed(2)*100) + '%'})
+      </small>
     </ProgressContainer>
   )
 }
@@ -90,11 +96,6 @@ const GuessRow = ({ label, max, value }) => {
     <RowContainer>
       <Label>{label}</Label>
       <Progress value={value} max={max} />
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-        <small>
-          <strong>{value}</strong>
-        </small>
-      </div>
     </RowContainer>
   )
 }
