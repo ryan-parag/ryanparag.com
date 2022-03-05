@@ -31,7 +31,7 @@ const Activity = () => {
         data ? (
           <>
             <Title>
-              <Label subtle><strong>10 Wordles</strong> ({formatDate(data.wordles[data.wordles.length - 1].date)} - {formatDate(data.wordles[0].date)})</Label>
+              <Label subtle><strong>{data.wordles.length} Wordles</strong> ({formatDate(data.wordles[data.wordles.length - 1].date)} - {formatDate(data.wordles[0].date)})</Label>
               <Link href={'/wordle/submit'}>
                 <a className="link">
                   Add New
