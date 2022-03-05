@@ -70,7 +70,9 @@ export default async (req,res) => {
     six: 0,
     winPercentage: null,
     numOfMatches: null,
-    average: null
+    average: null,
+    firstDate: null,
+    lastDate: null
   }
 
   const getWins = () => {
@@ -123,6 +125,8 @@ export default async (req,res) => {
     wins.winPercentage = percentage
     wins.numOfMatches = wordles.length
     wins.average = (((wins.one*1) + (wins.two*2) + (wins.three*3) + (wins.four*4) + (wins.five*5) + (wins.six*6)) / wins.numOfMatches).toFixed(2)
+    wins.lastDate = wordles[0].date
+    wins.firstDate = wordles[wordles.length - 1].date
 
     return wins
   }

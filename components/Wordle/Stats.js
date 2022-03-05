@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import LoadingBox from '@components/LoadingBox'
 import Error from '@components/Error'
 import { designTokens } from '@components/Theme/designTokens'
-import { Label, ItemTitle, Body } from '@components/Typography'
+import { Label, ItemTitle } from '@components/Typography'
+import { Title } from '@components/Wordle'
 
 const Block = styled.div`
   border: 1px solid var(--grey200);
@@ -83,6 +84,16 @@ const Stats = () => {
 
   const { data, error } = useSWR('/api/wordle/stats', fetcher)
 
+  const formatDate = (input) => {
+    const date = new Date(input).toLocaleDateString('en-us', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+
+    return date
+  }
+
   return(
     <>
       {
@@ -90,20 +101,26 @@ const Stats = () => {
         }
       {
         data ? (
-          <Container>
-            <StatCard label={'Total Wins'} value={data.stats.winPercentage} />
-            <StatCard label={'Current Streak'} value={data.stats.numOfMatches} />
-            <StatCard label={'Avg. Attempts'} value={data.stats.average} />
-            <Block wide>
-              <Label subtle>Guess Distribution</Label>
-              <GuessRow label={'1 Guess'} max={data.stats.numOfMatches} value={data.stats.one} />
-              <GuessRow label={'2 Guesses'} max={data.stats.numOfMatches} value={data.stats.two} />
-              <GuessRow label={'3 Guesses'} max={data.stats.numOfMatches} value={data.stats.three} />
-              <GuessRow label={'4 Guesses'} max={data.stats.numOfMatches} value={data.stats.four} />
-              <GuessRow label={'5 Guesses'} max={data.stats.numOfMatches} value={data.stats.five} />
-              <GuessRow label={'6 Guesses'} max={data.stats.numOfMatches} value={data.stats.six} />
-            </Block>
-          </Container>
+          <>
+            <Title>
+              <ItemTitle>Data from {data.stats.numOfMatches} Wordles</ItemTitle>
+              <Label subtle>{formatDate(data.stats.firstDate)} - {formatDate(data.stats.lastDate)}</Label>
+            </Title>
+            <Container>
+              <StatCard label={'Total Wins'} value={data.stats.winPercentage} />
+              <StatCard label={'Current Streak'} value={data.stats.numOfMatches} />
+              <StatCard label={'Avg. Attempts'} value={data.stats.average} />
+              <Block wide>
+                <Label subtle>Guess Distribution</Label>
+                <GuessRow label={'1 Guess'} max={data.stats.numOfMatches} value={data.stats.one} />
+                <GuessRow label={'2 Guesses'} max={data.stats.numOfMatches} value={data.stats.two} />
+                <GuessRow label={'3 Guesses'} max={data.stats.numOfMatches} value={data.stats.three} />
+                <GuessRow label={'4 Guesses'} max={data.stats.numOfMatches} value={data.stats.four} />
+                <GuessRow label={'5 Guesses'} max={data.stats.numOfMatches} value={data.stats.five} />
+                <GuessRow label={'6 Guesses'} max={data.stats.numOfMatches} value={data.stats.six} />
+              </Block>
+            </Container>
+          </>
         )
         :
         (

@@ -282,7 +282,7 @@ export default function Projects(){
       name: 'Wordle Results',
       description: 'Take a look at a history of my Wordle attmepts',
       image: '/static/projects/icon-wordle.png',
-      link:'/wordle',
+      link:'/wordle/activity',
       outbound: false
     },{
       name: 'Slack Themes',

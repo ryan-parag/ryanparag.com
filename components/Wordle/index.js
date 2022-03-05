@@ -60,6 +60,17 @@ const AnalyticsFooter = styled.div`
   padding: ${designTokens.space[2]} ${designTokens.space[3]};
 `
 
+export const Title = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: ${designTokens.space[3]};
+  @media screen and (max-width: ${designTokens.breakpoints[5]}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`
+
 const WordleResult = ({result}) => {
 
   return(
