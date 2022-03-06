@@ -2,28 +2,29 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import { Label, ItemTitle, Body } from '@components/Typography'
-import Chip from '@components/Chip'
+import { ListItem } from '@components/List'
+import Tooltip from '@components/Tooltip'
 
 const WordleContainer = styled.div`
-  border: 1px solid var(--grey200);
-  padding: ${designTokens.space[3]};
   display: grid;
   grid-template-columns: auto ${designTokens.space[8]};
   grid-column-gap: ${designTokens.space[4]};
-  margin-bottom: ${designTokens.space[4]};
-  border-radius: ${designTokens.space[2]};
+  padding: ${designTokens.space[3]} 0;
+  min-height: ${designTokens.space[9]};
 `
 
 const ResultContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: ${designTokens.space[1]};
+  height: fit-content;
 `
 
 const Row = styled.div`
   display: grid;
   grid-column-gap: ${designTokens.space[1]};
   grid-template-columns: repeat(5, ${designTokens.space[3]});
+  height: ${designTokens.space[3]};
 `
 
 const Block = styled.span`
@@ -31,6 +32,7 @@ const Block = styled.span`
   height: ${designTokens.space[3]};
   background: ${props => props.type === 'correct' ? '#0BB409' : props.type === 'present' ? '#FBCC1B' : 'var(--grey300)'};
   display: inline-block;
+  border-radius: ${designTokens.space[1]};
 `
 
 const Header = styled.div`
@@ -41,23 +43,6 @@ const Header = styled.div`
 
 const Emoji = styled.label`
   font-size: ${designTokens.fontSizes[2]};
-`
-
-const AnaylticsContainer = styled.div`
-  border: 1px solid var(--grey200);
-  border-radius: ${designTokens.space[2]};
-`
-
-const AnalyticsBody = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: ${designTokens.space[2]};
-  padding: ${designTokens.space[3]};
-`
-
-const AnalyticsFooter = styled.div`
-  background: var(--grey100);
-  padding: ${designTokens.space[2]} ${designTokens.space[3]};
 `
 
 export const Title = styled.div`
@@ -76,6 +61,22 @@ export const Title = styled.div`
 
 const WordleResult = ({result}) => {
 
+  const getResultContent = (content) => {
+    switch (content) {
+      case 'absent':
+        return 'Incorrect guess 🙃'
+        break;
+      case 'present':
+        return 'Almost there...'
+        break;
+      case 'correct':
+        return 'Correct ✅'
+        break;
+      default:
+        return ''
+    }
+  }
+
   return(
     <ResultContainer>
       {
@@ -83,7 +84,9 @@ const WordleResult = ({result}) => {
           <Row key={i}>
             {
               item.map((letter, i) => (
-                <Block type={letter} key={i} title={letter}/>
+                <Tooltip content={getResultContent(letter)} direction="top">
+                  <Block type={letter} key={i} title={letter}/>
+                </Tooltip>
               ))
             }
           </Row>
@@ -146,95 +149,18 @@ const Wordle = ({wordle}) => {
   }
 
   return(
-    <WordleContainer>
-      <Header>
-        <div>
-          <ItemTitle>Wordle {wordle.matchNumber}</ItemTitle>
-          <Label subtle>{formatDate(wordle.date)}</Label>
-        </div>
-        <Evaluation value={wordle.eval}/>
-      </Header>
-      <WordleResult result={wordle.result} />
-    </WordleContainer>
-  )
-}
-
-export const WordleAnalytics = ({data}) => {
-
-  const getWins = () => {
-    const losses = []
-    const wins = {
-      loss: 0,
-      one: 0,
-      two: 0,
-      three: 0,
-      four: 0,
-      five: 0,
-      six: 0,
-      winPercentage: null,
-      numOfMatches: null,
-      average: null
-    }
-
-    data.map(item => {
-      if(item.eval === 'X') {
-        losses.push(item)
-      }
-      switch (item.eval) {
-        case 'X':
-          wins.loss++
-          break;
-        case '6':
-          wins.six++
-          break;
-        case '5':
-          wins.five++
-          break;
-        case '4':
-          wins.four++
-          break;
-        case '3':
-          wins.three++
-          break;
-        case '2':
-          wins.two++
-          break;
-        case '1':
-          wins.one++
-          break;
-        default:
-          return ''
-      }
-    })
-
-    const percentage = ((data.length - losses.length)/data.length) * 100 + '%'
-    wins.winPercentage = percentage
-    wins.numOfMatches = data.length
-    wins.average = (((wins.one*1) + (wins.two*2) + (wins.three*3) + (wins.four*4) + (wins.five*5) + (wins.six*6)) / wins.numOfMatches).toFixed(2)
-
-    return wins
-  }
-
-  return(
-    <AnaylticsContainer>
-      <AnalyticsBody>
-        <div>
-          <Label subtle>Total Wins</Label>
-          <h4 style={{ marginTop: designTokens.space[2], marginBottom: '0' }}>{getWins().winPercentage}</h4>
-        </div>
-        <div>
-          <Label subtle>Current Streak</Label>
-          <h4 style={{ marginTop: designTokens.space[2], marginBottom: '0' }}>{getWins().numOfMatches}</h4>
-        </div>
-        <div>
-          <Label subtle>Avg. Attempts</Label>
-          <h4 style={{ marginTop: designTokens.space[2], marginBottom: '0' }}>{getWins().average}</h4>
-        </div>
-      </AnalyticsBody>
-      <AnalyticsFooter>
-        <Label subtle>{getWins().numOfMatches} wordles</Label>
-      </AnalyticsFooter>
-    </AnaylticsContainer>
+    <ListItem>
+      <WordleContainer>
+        <Header>
+          <div>
+            <ItemTitle>Wordle {wordle.matchNumber}</ItemTitle>
+            <Label subtle>{formatDate(wordle.date)}</Label>
+          </div>
+          <Evaluation value={wordle.eval}/>
+        </Header>
+        <WordleResult result={wordle.result} />
+      </WordleContainer>
+    </ListItem>
   )
 }
 

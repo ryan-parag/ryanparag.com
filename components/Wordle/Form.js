@@ -5,9 +5,8 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import LoadingBox from '@components/LoadingBox'
 import Error from '@components/Error'
-import { Box } from '@components/Box'
 import { CheckCircle } from 'react-feather'
-import { designTokens } from '@components/Theme/designTokens'
+import Link from 'next/link'
 
 const FormInput = () => {
 
@@ -92,15 +91,18 @@ const Form = () => {
           <>
            {
              formatDate(data.wordles[0].date) === formatDate(today) ? (
-               <Box>
-                 <div style={{
-                   display: 'flex',
-                   alignItems: 'center'
-                 }}>
-                  <CheckCircle size={'24'} style={{ color: 'var(--primary)', marginRight: designTokens.space[2] }} />
-                  Already Submitted for {formatDate(today)}
-                 </div>
-               </Box>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+                textAlign: 'center'
+              }}>
+               <CheckCircle size={'32'} style={{ color: 'var(--primaryDark)' }} />
+               <Label mt={'3'} mb={'3'}>Already Submitted for {formatDate(today)}</Label>
+               <Link href={'/wordle/activity'}>
+                 <a className="link">View in Activity</a>
+               </Link>
+              </div>
              )
              :
              (
