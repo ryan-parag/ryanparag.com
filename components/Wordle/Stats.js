@@ -58,8 +58,8 @@ const StatContainer = styled.div`
 const Progress = ({ value, max }) => {
 
   const getValue = () => {
-    const percent = ((value/max).toFixed(2)*100) + '%'
-    return percent
+    const percent = ((value/max).toFixed(2)*100)
+    return parseFloat(percent).toFixed(2)+"%"
   }
 
   return(
@@ -77,7 +77,7 @@ const Progress = ({ value, max }) => {
       />
       <small style={{ marginLeft: designTokens.space[1] }}>
         <strong>{value}&nbsp;</strong>
-       ({((value/max).toFixed(2)*100) + '%'})
+       ({getValue()})
       </small>
     </ProgressContainer>
   )

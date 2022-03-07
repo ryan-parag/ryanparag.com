@@ -85,7 +85,7 @@ const WordleResult = ({result}) => {
             {
               item.map((letter, i) => (
                 <Tooltip content={getResultContent(letter)} direction="top">
-                  <Block type={letter} key={i} title={letter}/>
+                  <Block type={letter} key={i}/>
                 </Tooltip>
               ))
             }
