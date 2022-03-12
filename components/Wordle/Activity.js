@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import Wordle from '@components/Wordle'
@@ -7,10 +7,12 @@ import Error from '@components/Error'
 import { Title } from '@components/Wordle'
 import { Label, ItemTitle } from '@components/Typography'
 import Link from 'next/link'
+import Switch from '@components/Switch'
 
 const Activity = () => {
 
   const { data, error } = useSWR('/api/wordle', fetcher)
+  const [contrast, setContrast] = useState(false)
 
   const formatDate = (input) => {
     const date = new Date(input).toLocaleDateString('en-us', {
@@ -30,8 +32,16 @@ const Activity = () => {
       {
         data ? (
           <>
+            <Title responsive>
+              <Label><strong>Activity from {data.wordles.length} Wordles</strong></Label>
+              <Label subtle>{formatDate(data.wordles[data.wordles.length - 1].date)} - {formatDate(data.wordles[0].date)}</Label>
+            </Title>
             <Title>
-              <Label subtle><strong>{data.wordles.length} Wordles</strong> ({formatDate(data.wordles[data.wordles.length - 1].date)} - {formatDate(data.wordles[0].date)})</Label>
+              <Switch
+                isOn={contrast}
+                handleToggle={() => setContrast(!contrast)}
+                endLabel={'High Contrast'}
+              />
               <Link href={'/wordle/submit'}>
                 <a className="link">
                   Add New
@@ -41,6 +51,7 @@ const Activity = () => {
             {
               data.wordles.map(item => (
                 <Wordle
+                  contrast={contrast ? 'high' : 'normal'}
                   key={item.id}
                   wordle={item}
                 />

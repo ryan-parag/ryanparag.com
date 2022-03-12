@@ -20,16 +20,13 @@ export default async (req,res) => {
     const firstLine = item.properties.Result.title[0].plain_text.split('\n')[0];
     const match = firstLine.split(' ')[1];
     const result = firstLine.split(' ')[2];
-    const evaulation = item.properties.Result.title[0].plain_text.replace(/(?:\r\n|\r|\n)/g, '<br>');
-
-    const evaulations = []
     const results = item.properties.Result.title[0].plain_text.split('\n').slice(1)
 
     const parsed = () => {
       const answers = []
       results.map(item => {
 
-        const replaced = item.replace(/⬛/g, '0').replace(/🟨/g, '1').replace(/🟩/g, '2')
+        const replaced = item.replace(/⬛/g, '0').replace(/⬜/g, '0').replace(/🟨/g, '1').replace(/🟩/g, '2')
 
         const guess = replaced.split('')
 
@@ -56,7 +53,8 @@ export default async (req,res) => {
       result: parsed(),
       date: item.properties.Date.date.start,
       matchNumber: match,
-      eval: result.split('')[0]
+      eval: result.split('')[0],
+      hardMode: firstLine.includes('*')
     })
   })
 

@@ -12,7 +12,7 @@ const Block = styled.div`
   border: 1px solid var(--grey200);
   border-radius: ${designTokens.space[2]};
   padding: ${designTokens.space[3]};
-  grid-column: span ${props => props.wide ? '3' : '1'};
+  grid-column: span ${props => props.wide ? '2' : '1'};
   width: 100%;
   @media screen and (max-width: ${designTokens.breakpoints[5]}) {
     grid-column: span 3;
@@ -21,7 +21,7 @@ const Block = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-row-gap: ${designTokens.space[3]};
   grid-column-gap: ${designTokens.space[3]};
   @media screen and (max-width: ${designTokens.breakpoints[5]}) {
@@ -125,7 +125,7 @@ const Stats = () => {
       {
         data ? (
           <>
-            <Title>
+            <Title responsive>
               <Label><strong>Stats from {data.stats.numOfMatches} Wordles</strong></Label>
               <Label subtle>{formatDate(data.stats.firstDate)} - {formatDate(data.stats.lastDate)}</Label>
             </Title>
@@ -133,14 +133,15 @@ const Stats = () => {
               <StatCard label={'Total Wins'} value={data.stats.winPercentage} />
               <StatCard label={'Current Streak'} value={data.stats.numOfMatches} />
               <StatCard label={'Avg. Attempts'} value={data.stats.average} />
+              <StatCard label={'Avg. 1st Try'} value={data.stats.prediction + ' / 5 letters'} />
               <Block wide>
                 <Label subtle>Guess Distribution</Label>
-                <GuessRow label={'1 Guess'} max={data.stats.numOfMatches} value={data.stats.one} />
-                <GuessRow label={'2 Guesses'} max={data.stats.numOfMatches} value={data.stats.two} />
-                <GuessRow label={'3 Guesses'} max={data.stats.numOfMatches} value={data.stats.three} />
-                <GuessRow label={'4 Guesses'} max={data.stats.numOfMatches} value={data.stats.four} />
-                <GuessRow label={'5 Guesses'} max={data.stats.numOfMatches} value={data.stats.five} />
-                <GuessRow label={'6 Guesses'} max={data.stats.numOfMatches} value={data.stats.six} />
+                <GuessRow label={'1 Guess'} max={data.stats.numOfMatches} value={data.stats.guesses.one} />
+                <GuessRow label={'2 Guesses'} max={data.stats.numOfMatches} value={data.stats.guesses.two} />
+                <GuessRow label={'3 Guesses'} max={data.stats.numOfMatches} value={data.stats.guesses.three} />
+                <GuessRow label={'4 Guesses'} max={data.stats.numOfMatches} value={data.stats.guesses.four} />
+                <GuessRow label={'5 Guesses'} max={data.stats.numOfMatches} value={data.stats.guesses.five} />
+                <GuessRow label={'6 Guesses'} max={data.stats.numOfMatches} value={data.stats.guesses.six} />
               </Block>
             </Container>
           </>

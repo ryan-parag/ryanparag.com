@@ -4,6 +4,7 @@ import { designTokens } from '@components/Theme/designTokens'
 import { Label, ItemTitle, Body } from '@components/Typography'
 import { ListItem } from '@components/List'
 import Tooltip from '@components/Tooltip'
+import Chip from '@components/Chip'
 
 const WordleContainer = styled.div`
   display: grid;
@@ -33,6 +34,18 @@ const Block = styled.span`
   background: ${props => props.type === 'correct' ? '#0BB409' : props.type === 'present' ? '#FBCC1B' : 'var(--grey300)'};
   display: inline-block;
   border-radius: ${designTokens.space[1]};
+  transition: all 120ms ease-out 0s;
+  &:hover, &:focus {
+    transform: scale(1.2);
+  }
+`
+
+const BlockDefault = styled(Block)`
+  background: ${props => props.type === 'correct' ? '#0BB409' : props.type === 'present' ? '#FBCC1B' : 'var(--grey300)'};
+`
+
+const BlockHighContrast = styled(Block)`
+background: ${props => props.type === 'correct' ? '#E76A29' : props.type === 'present' ? '#78B7FF' : 'var(--grey300)'};
 `
 
 const Header = styled.div`
@@ -50,16 +63,18 @@ export const Title = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: ${designTokens.space[3]};
-  @media screen and (max-width: ${designTokens.breakpoints[5]}) {
-    flex-direction: column;
-    align-items: flex-start;
-    ${Label} {
-      margin-bottom: ${designTokens.space[2]};
+  ${({ responsive }) => responsive && `
+    @media screen and (max-width: ${designTokens.breakpoints[5]}) {
+      flex-direction: column;
+      align-items: flex-start;
+      ${Label} {
+        margin-bottom: ${designTokens.space[2]};
+      }
     }
-  }
+  `}
 `
 
-const WordleResult = ({result}) => {
+const WordleResult = ({contrast, result}) => {
 
   const getResultContent = (content) => {
     switch (content) {
@@ -85,7 +100,15 @@ const WordleResult = ({result}) => {
             {
               item.map((letter, i) => (
                 <Tooltip content={getResultContent(letter)} direction="top">
-                  <Block type={letter} key={i}/>
+                  {
+                    contrast === 'high' ? (
+                      <BlockHighContrast type={letter} key={i}/>
+                    )
+                    :
+                    (
+                      <BlockDefault type={letter} key={i}/>
+                    )
+                  }
                 </Tooltip>
               ))
             }
@@ -136,7 +159,7 @@ const Evaluation = ({ value }) => {
   }
 }
 
-const Wordle = ({wordle}) => {
+const Wordle = ({contrast, wordle}) => {
 
   const formatDate = (input) => {
     const date = new Date(input).toLocaleDateString('en-us', {
@@ -155,10 +178,11 @@ const Wordle = ({wordle}) => {
           <div>
             <ItemTitle>Wordle {wordle.matchNumber}</ItemTitle>
             <Label subtle>{formatDate(wordle.date)}</Label>
+            <Label mt={'2'}>{wordle.hardMode && <Chip ghost type={'secondary'}>Hard</Chip>}</Label>
           </div>
           <Evaluation value={wordle.eval}/>
         </Header>
-        <WordleResult result={wordle.result} />
+        <WordleResult contrast={contrast} result={wordle.result} />
       </WordleContainer>
     </ListItem>
   )
