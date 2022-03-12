@@ -58,6 +58,20 @@ const Emoji = styled.label`
   font-size: ${designTokens.fontSizes[2]};
 `
 
+const RangeContainer = styled.div`
+  display: flex;
+`
+
+const RangeItem = styled.div`
+  color: ${props => props.state === 'active' ? 'var(--primaryDark)' : 'inherit'};
+  opacity: ${props => props.state === 'active' ? '1' : '.5'};
+  padding: ${designTokens.space[1]} ${designTokens.space[1]};
+  display: inline-flex;
+  justify-content: center;
+  border-bottom: ${designTokens.space[1]} solid ${props => props.state === 'active' ? 'var(--primaryDark)' : 'var(--grey300)'};
+  font-weight: ${props => props.state === 'active' ? designTokens.fontWeights.bold : designTokens.fontWeights.body};
+`
+
 export const Title = styled.div`
   display: flex;
   align-items: center;
@@ -119,6 +133,23 @@ const WordleResult = ({contrast, result}) => {
   )
 }
 
+const Range = ({value}) => {
+
+  const options = ['1', '2', '3', '4', '5', '6']
+
+  return(
+    <RangeContainer>
+      {
+        options.map(item => (
+          <RangeItem state={value === item ? 'active' : 'default'}>
+            <Label>{item}</Label>
+          </RangeItem>
+        ))
+      }
+    </RangeContainer>
+  )
+}
+
 const Evaluation = ({ value }) => {
 
   const getProgress = () => {
@@ -152,8 +183,8 @@ const Evaluation = ({ value }) => {
   } else {
     return (
       <div>
-        <Emoji>{getProgress()}</Emoji>
-        <Label subtle>{value} attempts</Label>
+        <Label mb={'2'}>Attempts {getProgress()}</Label>
+        <Range value={value} />
       </div>
     )
   }
