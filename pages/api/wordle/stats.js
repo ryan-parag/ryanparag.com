@@ -132,7 +132,7 @@ export default async (req,res) => {
     wins.average = (((wins.guesses.one*1) + (wins.guesses.two*2) + (wins.guesses.three*3) + (wins.guesses.four*4) + (wins.guesses.five*5) + (wins.guesses.six*6)) / wins.numOfMatches).toFixed(2)
     wins.lastDate = wordles[0].date
     wins.firstDate = wordles[wordles.length - 1].date
-    wins.prediction = prediction.toFixed(2) * 5
+    wins.prediction = (prediction * 5).toFixed(2)
 
     return wins
   }
