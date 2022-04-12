@@ -219,8 +219,19 @@ export const WorkItem = ({project}) => {
 
 export const WorkList = ({work}) => {
 
+  const portfolio = {
+    name: 'Private Portfolio',
+    description: 'Selected works and case studies',
+    image: '/static/projects/icon-lock.png',
+    link:'https://portfolio.ryanparag.com',
+    outbound: true
+  }
+
   return(
     <List>
+      <ListItem>
+        <WorkItem project={portfolio}/>
+      </ListItem>
       {
         work.map((project, i) => (
           <ListItem key={i}>
