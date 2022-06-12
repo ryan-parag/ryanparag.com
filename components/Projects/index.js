@@ -220,11 +220,11 @@ export const WorkItem = ({project}) => {
 export const WorkList = ({work}) => {
 
   const portfolio = {
-    name: 'Private Portfolio',
+    name: 'Private Portfolio 🔒',
     description: 'Selected works and case studies',
     image: '/static/projects/icon-lock.png',
     link:'https://portfolio.ryanparag.com',
-    outbound: true
+    outbound: true,
   }
 
   return(
@@ -295,11 +295,17 @@ export default function Projects(){
       image: '/static/projects/icon-wordle.png',
       link:'/wordle/activity',
       outbound: false
-    },{
+    }, {
+      name: 'Race Times',
+      description: 'A directory of translated race time schedules and leaderboards',
+      image: '/static/projects/icon-race-times.png',
+      link:'https://race-times.vercel.app/',
+      outbound: true
+    }, {
       name: 'Slack Themes',
       description: 'Having trouble keeping track of all of your Slack workspaces?',
       image: '/static/projects/icon-slack-themes.png',
-      link:'https://slack-themes.now.sh/',
+      link:'https://slack-themes.vercel.app/',
       outbound: true
     }, {
       name: 'TampaBay.design',

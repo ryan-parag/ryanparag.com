@@ -12,18 +12,23 @@ platforms: ['Web', 'Mobile', 'Tablet']
 ---
 
 ### Projects
+- [Design System](#design-system)
 - [Masonite M-Pwr Smart Doors](#masonite-m-pwr-smart-doors)
+- [Consumer Mobile App](#consumer-mobile-app)
+- [Installation and Manufacturing App](#installation-and-manufacturing-app)
 - [Door Configurator](#door-configurator)
 - [Core ordering platform for home builders](#core-ordering-platform-for-home-builders)
 
-### Case Studies
+--------------------------------------------
 
-- [🔒 Installing Smart Doors](https://portfolio.ryanparag.com/projects/installing-smart-doors)
-- [🔒 Managing Doors in the Field](https://portfolio.ryanparag.com/projects/door-management)
-- [🔒 A Multi-Platform Design System](https://portfolio.ryanparag.com/projects/design-system)
-- [🔒 A Powered and Connected Door](https://portfolio.ryanparag.com/projects/a-powered-smart-door)
-- [🔒 Order Management Platform](https://portfolio.ryanparag.com/projects/order-management-platform)
-- [🔒 Door Configuration Made Easy](https://portfolio.ryanparag.com/projects/door-configuration-made-easy)
+### Design System
+
+[🔒 Case Study: Design System](https://portfolio.ryanparag.com/projects/design-system)
+
+> Bridging our language across the web, mobile, print, and email.
+
+![M-Pwr](../static/projects/masonite/m-pwr-2.png)
+_A Multi-Platform Design System_
 
 --------------------------------------------
 
@@ -31,28 +36,36 @@ platforms: ['Web', 'Mobile', 'Tablet']
 
 This project was complex, and as such, requires multiple teams to manage - we needed to build a door system that is directly powered from a home, as well as have a mobile app & IoT infrastructure to support the embedded features (multiple sensors, third-party cameras & locks, LED lightning, etc.). [Take a look!](https://residential.masonite.com/product/exterior-doors/smart/)
 
+#### Consumer Mobile App
+
+[🔒 Case Study: Consumer Mobile](https://portfolio.ryanparag.com/projects/a-powered-smart-door)
+
 > Users need a way to manage and control a powered and connected door conveniently with their mobile phones and with their home automation applications.
 
-![M-Pwr](../static/projects/masonite/m-pwr-1.png)
-_Consumer mobile app for smart doors_
-
-![M-Pwr](../static/projects/masonite/m-pwr-2.png)
-_Mobile design system_
-
 ![M-Pwr](../static/projects/masonite/m-pwr-3.png)
+
+#### Installation and Manufacturing Apps
+
+[🔒 Case Study: Installer/Manufacturer](https://portfolio.ryanparag.com/projects/installing-smart-doors)
+
+> An application to help test and replace parts of a powered smart door
 
 ![M-Pwr](../static/projects/masonite/m-pwr-6.png)
 _Testing application for manufacturing and home installers_
 
-#### Case Studies
+#### Internal Management
 
-- [🔒 A Powered and Connected Door](https://portfolio.ryanparag.com/projects/a-powered-smart-door)
-- [🔒 Installing Smart Doors](https://portfolio.ryanparag.com/projects/installing-smart-doors)
-- [🔒 Managing Doors in the Field](https://portfolio.ryanparag.com/projects/door-management)
+[🔒 Case Study: Internal Management](https://portfolio.ryanparag.com/projects/door-management)
+
+> Helping internal team members manage doors in the field, upgrade cloud devices remotely, and much more.
+
+![M-Pwr](../static/projects/masonite/omni.png)
 
 --------------------------------------------
 
 ### Door Configurator
+
+[🔒 Case Study: Configurator](https://portfolio.ryanparag.com/projects/door-configuration-made-easy)
 
 The exterior door configurator is an app that allows our users to build a custom door and quickly assess their new door per their unique specifications.
 
@@ -72,13 +85,13 @@ _Tracking user interviews_
 _Configuring and filtering for details_
 ![Door Configurator](../static/projects/masonite/dc-4.png)
 
-#### Case Studies
-
-- [🔒 Door Configuration Made Easy](https://portfolio.ryanparag.com/projects/door-configuration-made-easy)
+[🔒 Case Study: Configurator](https://portfolio.ryanparag.com/projects/door-configuration-made-easy)
 
 --------------------------------------------
 
 ### Core ordering platform for home builders
+
+[🔒 Case Study: Order Management](https://portfolio.ryanparag.com/projects/order-management-platform)
 
 The core ordering platforms allows the various customers of Masonite to configure door systems from one of the many business units. Using qualitative research, market data, and iterative design methods, an application was created to help buyers (contractors, dealers, retailers, etc.) configure, quote, order and track their purchases.
 
@@ -93,6 +106,4 @@ _Single platform + configurable design tokens = cohesive product experience acro
 
 ![M-Pwr](../static/projects/masonite/dc-7.png)
 
-#### Case Studies
-
-- [🔒 Order Management Platform](https://portfolio.ryanparag.com/projects/order-management-platform)
+[🔒 Case Study: Order Management](https://portfolio.ryanparag.com/projects/order-management-platform)
