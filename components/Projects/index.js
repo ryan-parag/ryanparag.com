@@ -229,9 +229,6 @@ export const WorkList = ({work}) => {
 
   return(
     <List>
-      <ListItem>
-        <WorkItem project={portfolio}/>
-      </ListItem>
       {
         work.map((project, i) => (
           <ListItem key={i}>
@@ -239,6 +236,9 @@ export const WorkList = ({work}) => {
           </ListItem>
         ))
       }
+      <ListItem>
+        <WorkItem project={portfolio}/>
+      </ListItem>
     </List>
   )
 }

@@ -11,6 +11,13 @@ spaces: ['Finance', 'Payments', 'Banking', 'Integration']
 platforms: ['Web']
 ---
 
+### Case Studies
+
+- [🔒 Merchant Wizard & Application](https://portfolio.ryanparag.com/projects/merchant-wizard)
+- [🔒 Enterprise Dispute Management](https://portfolio.ryanparag.com/projects/enterprise-dispute-management)
+- [🔒 Email Signature Generator](https://portfolio.ryanparag.com/projects/email-signature-generator)
+- [🔒 Flexible Marketing Toolbox](https://portfolio.ryanparag.com/projects/flexible-marketing-toolbox)
+
 ![Chargebacks911](../static/projects/cb911/cb911-1.png)
 
 ![Chargebacks911](../static/projects/cb911/cb911-2.png)
@@ -22,5 +29,3 @@ platforms: ['Web']
 ![Chargebacks911](../static/projects/cb911/cb911-5.png)
 
 ![Chargebacks911](../static/projects/cb911/cb911-6.png)
-
-> Case studies coming soon

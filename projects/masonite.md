@@ -16,6 +16,15 @@ platforms: ['Web', 'Mobile', 'Tablet']
 - [Door Configurator](#door-configurator)
 - [Core ordering platform for home builders](#core-ordering-platform-for-home-builders)
 
+### Case Studies
+
+- [🔒 Installing Smart Doors](https://portfolio.ryanparag.com/projects/installing-smart-doors)
+- [🔒 Managing Doors in the Field](https://portfolio.ryanparag.com/projects/door-management)
+- [🔒 A Multi-Platform Design System](https://portfolio.ryanparag.com/projects/design-system)
+- [🔒 A Powered and Connected Door](https://portfolio.ryanparag.com/projects/a-powered-smart-door)
+- [🔒 Order Management Platform](https://portfolio.ryanparag.com/projects/order-management-platform)
+- [🔒 Door Configuration Made Easy](https://portfolio.ryanparag.com/projects/door-configuration-made-easy)
+
 --------------------------------------------
 
 ### Masonite M-Pwr Smart Doors
@@ -35,7 +44,11 @@ _Mobile design system_
 ![M-Pwr](../static/projects/masonite/m-pwr-6.png)
 _Testing application for manufacturing and home installers_
 
-> Case study coming soon
+#### Case Studies
+
+- [🔒 A Powered and Connected Door](https://portfolio.ryanparag.com/projects/a-powered-smart-door)
+- [🔒 Installing Smart Doors](https://portfolio.ryanparag.com/projects/installing-smart-doors)
+- [🔒 Managing Doors in the Field](https://portfolio.ryanparag.com/projects/door-management)
 
 --------------------------------------------
 
@@ -59,7 +72,9 @@ _Tracking user interviews_
 _Configuring and filtering for details_
 ![Door Configurator](../static/projects/masonite/dc-4.png)
 
-> Case study coming soon
+#### Case Studies
+
+- [🔒 Door Configuration Made Easy](https://portfolio.ryanparag.com/projects/door-configuration-made-easy)
 
 --------------------------------------------
 
@@ -78,4 +93,6 @@ _Single platform + configurable design tokens = cohesive product experience acro
 
 ![M-Pwr](../static/projects/masonite/dc-7.png)
 
-> Case study coming soon
+#### Case Studies
+
+- [🔒 Order Management Platform](https://portfolio.ryanparag.com/projects/order-management-platform)
