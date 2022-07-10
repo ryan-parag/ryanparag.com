@@ -252,7 +252,7 @@ export const ContactList = () => {
         <ListItem>
           <ListInner>
             <div>
-              <Body>Email</Body>
+              <Body>Email 📬</Body>
               <Label subtle mt={2} mb={3}>parag.ryan@gmail.com</Label>
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -266,7 +266,7 @@ export const ContactList = () => {
         <ListItem>
           <ListInner>
             <div>
-              <Body>Resumé</Body>
+              <Body>Resumé 👨‍💼</Body>
               <Label subtle mt={2} mb={3}>Download a PDF of my resumé</Label>
             </div>
             <div>
@@ -277,7 +277,7 @@ export const ContactList = () => {
         <ListItem>
           <ListInner>
             <div>
-              <Body>Stay in touch</Body>
+              <Body>Stay in touch 👯‍♀️</Body>
               <Label subtle mt={2} mb={3}>Check out what I'm currently up to</Label>
             </div>
             <div>
