@@ -185,6 +185,10 @@ const ListInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: ${designTokens.breakpoints[4]}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 const ContactBox = () => {
