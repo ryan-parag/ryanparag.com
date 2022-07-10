@@ -2,7 +2,10 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { designTokens } from '@components/Theme/designTokens'
 import { Send } from 'react-feather'
-import { ButtonAnchorTag } from '@components/Button'
+import { ButtonAnchorTag, SmallButton, Button } from '@components/Button'
+import { Copy, Edit3, GitHub, Linkedin } from 'react-feather'
+import List, { ListItem } from '@components/List'
+import { Label, Body, ItemTitle } from '@components/Typography'
 
 export const ContainerStyles = css`
   padding-top: ${designTokens.space[5]};
@@ -177,6 +180,13 @@ export const EmailButtonInline = () => {
   )
 }
 
+const ListInner = styled.div`
+  padding: ${designTokens.space[3]} 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
 const ContactBox = () => {
   return(
     <ContactContainerLink href="mailto:hello@ryanparag.com?subject=Hey Ryan!">
@@ -232,3 +242,58 @@ export const ContactAbout = ({img, title, children}) => {
 }
 
 export default ContactBox
+
+export const ContactList = () => {
+
+  return(
+    <>
+      <h5>Contact</h5>
+      <List>
+        <ListItem>
+          <ListInner>
+            <div>
+              <Body>Email</Body>
+              <Label subtle mt={2} mb={3}>parag.ryan@gmail.com</Label>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <a className="link" href="mailto:parag.ryan@gmail.com?subject=Hey Ryan!">
+                <Edit3 size={16} style={{ marginRight: designTokens.space[1] }}/>
+                Compose
+              </a>
+            </div>
+          </ListInner>
+        </ListItem>
+        <ListItem>
+          <ListInner>
+            <div>
+              <Body>Resumé</Body>
+              <Label subtle mt={2} mb={3}>Download a PDF of my resumé</Label>
+            </div>
+            <div>
+              <a href="/static/about/RyanParag-resume.pdf" target="_blank" className="link">Download</a>
+            </div>
+          </ListInner>
+        </ListItem>
+        <ListItem>
+          <ListInner>
+            <div>
+              <Body>Stay in touch</Body>
+              <Label subtle mt={2} mb={3}>Check out what I'm currently up to</Label>
+            </div>
+            <div>
+              <a className="link" href="https://github.com/ryan-parag" target="_blank">
+                <GitHub size={16} style={{ marginRight: designTokens.space[1] }}/>
+                GitHub
+              </a>
+              <span style={{ margin: `0 ${designTokens.space[1]}`}}>|</span>
+              <a className="link" href="https://linkedin.com/in/ryan-parag" target="_blank">
+                <Linkedin size={16} style={{ marginRight: designTokens.space[1] }}/>
+                LinkedIn
+              </a>
+            </div>
+          </ListInner>
+        </ListItem>
+      </List>
+    </>
+  )
+}

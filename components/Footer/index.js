@@ -197,7 +197,7 @@ const DescriptionSection = ({debug,debugGrid}) => {
       icon: <Linkedin size={'16'}/>
     },{
       name: 'Email',
-      href: 'mailto:hello@ryanparag.com?subject=Hey Ryan!',
+      href: 'mailto:parag.ryan@gmail.com?subject=Hey Ryan!',
       outbound: true,
       icon: <Send size={'16'}/>
     }

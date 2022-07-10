@@ -14,6 +14,7 @@ import { Send, ArrowRight } from 'react-feather'
 import { ChipLink } from '@components/Chip'
 import { LoadingSmall } from '@components/LoadingBox'
 import { Experience } from '@components/Projects'
+import { ContactList } from '@components/ContactBox'
 
 const About = ({ posts, title, description, ...props }) => {
 
@@ -60,6 +61,9 @@ const About = ({ posts, title, description, ...props }) => {
               <p>
                 In my free time, you can find me <a className="link" href="https://github.com/ryan-parag">tinkering on a random project</a>, traveling to a random spot on the globe 🧳, learning how to race cars 🏎, biking around town 🚴‍♂️, or a bunch of other random things.
               </p>
+              <p>
+                <a href="/static/about/RyanParag-resume.pdf" target="_blank">View my resumé</a>, <Link href="/work/"><a className="link">view my work</a></Link>, view what I'm up to <Link href="/now/"><a className="link">now</a></Link>, or <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a more in-depth look.
+              </p>
               {
                 data ? (
                   <Experience data={data}/>
@@ -69,34 +73,11 @@ const About = ({ posts, title, description, ...props }) => {
                   <LoadingSmall/>
                 )
               }
-              <p>
-                <a href="/static/about/RyanParag-resume.pdf" target="_blank">View my resumé</a>, <Link href="/work/"><a className="link">view my work</a></Link>, view what I'm up to <Link href="/now/"><a className="link">now</a></Link>, or <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">contact me</a> for a more in-depth look.
-              </p>
+              <ContactList/>
             </Title>
           </Wrapper>
         </article>
         <Wrapper>
-          <h3>How can I help?</h3>
-          <p>
-            Don't be a stranger &mdash; I'd love to help out or chat! Feel free to contact me if you:
-          </p>
-          <ul style={{ marginBottom: designTokens.space[4] }}>
-            <li>Are looking for a designer who codes?</li>
-            <li>Want to trade design feedback?</li>
-            <li>Want to collaborate on a cool project?</li>
-            <li>Have any cool movies, tv series, <Link href="/listening/podcasts"><a className="link">music/podcasts</a></Link> to recommend?</li>
-            <li>Like to chat over coffee, tea, seltzer water, coke zero, whatever really ☕️</li>
-          </ul>
-          <p>
-            <a className="link" href="mailto:hello@ryanparag.com?subject=Hey Ryan!">
-              Send me an email
-              <Send size={'20'} className="icon" style={{ top: designTokens.space[1] }}/>
-            </a>
-          </p>
-          <hr/>
-          <h3><Link href="/listening/music"><a>Recent Listens 🎧</a></Link></h3>
-          <SpotifyCurrentlyPlaying playing />
-          <hr/>
           <h3>Site Colophon</h3>
           <p>Like any designer, my portfolio is really never finished and is in a constant state of having the code reworked. This is the 5th iteration of my portfolio and I put this version together with help from the following resources:</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: designTokens.space[3] }}>
