@@ -178,24 +178,29 @@ export const GlobalStyles = createGlobalStyle`
       font-size: ${designTokens.sizing._2xl};
     }
   }
+
+  .link {
+    text-decoration: none;
+    overflow-wrap: break-word;
+    border-radius: ${designTokens.space[1]};
+    padding-left: ${designTokens.space[1]};
+    padding-right: ${designTokens.space[1]};
+    padding-top: ${designTokens.space[1]};
+    padding-bottom: ${designTokens.space[1]};
+    line-height: 1;
+    border: 0;
+    cursor: pointer;
+    background: var(--grey200);
+    transition: all 120ms ease-out 0s;
+    &:hover,&:focus {
+      background: var(--primaryTransparent);
+      box-shadow: 0px 0px 0px 2px var(--primaryTransparent);
+    }
+  }
+
   a {
     text-decoration: none;
     color: inherit;
-    &.link {
-      text-decoration: none;
-      overflow-wrap: break-word;
-      border-radius: ${designTokens.space[1]};
-      padding-left: ${designTokens.space[1]};
-      padding-right: ${designTokens.space[1]};
-      padding-top: ${designTokens.space[1]};
-      padding-bottom: ${designTokens.space[1]};
-      background: var(--grey200);
-      transition: all 120ms ease-out 0s;
-      &:hover,&:focus {
-        background: var(--primaryTransparent);
-        box-shadow: 0px 0px 0px 2px var(--primaryTransparent);
-      }
-    }
     &:focus {
       outline: none;
     }
